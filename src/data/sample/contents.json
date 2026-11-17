@@ -5,16 +5,486 @@
       "id": "contoh-mat-1",
       "categoryId": "matematika",
       "title": "Penjumlahan sampai 10 (contoh)",
-      "grades": [1],
+      "grades": [
+        1
+      ],
       "difficulty": 1,
       "version": 1,
       "questions": [
         {
           "id": "q1",
           "prompt": "3 + 4 = ...",
-          "options": ["6", "7", "8", "9"],
+          "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
           "answerIndex": 1,
           "explanation": "Hitung maju 4 langkah dari 3: 4, 5, 6, 7. Jadi 3 + 4 = 7."
+        },
+        {
+          "id": "q2",
+          "prompt": "6 + 3 = ...",
+          "options": [
+            "8",
+            "10",
+            "9",
+            "7"
+          ],
+          "answerIndex": 2,
+          "explanation": "Dari 6 maju 3 langkah: 7, 8, 9. Jadi 6 + 3 = 9."
+        },
+        {
+          "id": "q3",
+          "prompt": "5 + 5 = ...",
+          "options": [
+            "10",
+            "11",
+            "9",
+            "12"
+          ],
+          "answerIndex": 0,
+          "explanation": "Dua tangan masing-masing 5 jari, jumlahnya 10."
+        },
+        {
+          "id": "q4",
+          "prompt": "Ani punya 4 apel. Ibu memberi 3 apel lagi. Berapa apel Ani sekarang?",
+          "options": [
+            "6",
+            "8",
+            "5",
+            "7"
+          ],
+          "answerIndex": 3,
+          "explanation": "4 + 3 = 7 apel."
+        }
+      ]
+    },
+    {
+      "id": "contoh-mat-2",
+      "categoryId": "matematika",
+      "title": "Perkalian dasar (contoh)",
+      "grades": [
+        2,
+        3
+      ],
+      "difficulty": 2,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "3 × 4 = ...",
+          "options": [
+            "7",
+            "12",
+            "14",
+            "10"
+          ],
+          "answerIndex": 1,
+          "explanation": "3 × 4 artinya 3 dijumlahkan 4 kali: 3 + 3 + 3 + 3 = 12."
+        },
+        {
+          "id": "q2",
+          "prompt": "5 × 2 = ...",
+          "options": [
+            "10",
+            "7",
+            "12",
+            "15"
+          ],
+          "answerIndex": 0,
+          "explanation": "5 × 2 = 5 + 5 = 10."
+        },
+        {
+          "id": "q3",
+          "prompt": "6 × 3 = ...",
+          "options": [
+            "16",
+            "24",
+            "18",
+            "21"
+          ],
+          "answerIndex": 2,
+          "explanation": "6 + 6 + 6 = 18."
+        },
+        {
+          "id": "q4",
+          "prompt": "Ada 4 kotak, tiap kotak berisi 5 permen. Berapa semua permen?",
+          "options": [
+            "9",
+            "25",
+            "15",
+            "20"
+          ],
+          "answerIndex": 3,
+          "explanation": "4 × 5 = 20 permen."
+        }
+      ]
+    },
+    {
+      "id": "contoh-mat-3",
+      "categoryId": "matematika",
+      "title": "Pecahan sederhana (contoh)",
+      "grades": [
+        3,
+        4
+      ],
+      "difficulty": 2,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Setengah (1/2) dari 10 adalah ...",
+          "options": [
+            "5",
+            "2",
+            "4",
+            "20"
+          ],
+          "answerIndex": 0,
+          "explanation": "Setengah artinya dibagi 2. 10 : 2 = 5."
+        },
+        {
+          "id": "q2",
+          "prompt": "Mana yang lebih besar?",
+          "options": [
+            "1/4",
+            "1/2",
+            "Sama besar",
+            "Tidak bisa dibandingkan"
+          ],
+          "answerIndex": 1,
+          "explanation": "Semakin kecil penyebutnya (dengan pembilang sama), semakin besar potongannya. 1/2 lebih besar dari 1/4."
+        },
+        {
+          "id": "q3",
+          "prompt": "Pizza dibagi 4 potong sama besar. Rina makan 1 potong. Pecahan yang dimakan Rina adalah ...",
+          "options": [
+            "1/2",
+            "1/3",
+            "1/4",
+            "4/1"
+          ],
+          "answerIndex": 2,
+          "explanation": "Satu dari empat potong sama besar ditulis 1/4."
+        },
+        {
+          "id": "q4",
+          "prompt": "3/4 dari 8 adalah ...",
+          "options": [
+            "4",
+            "6",
+            "3",
+            "2"
+          ],
+          "answerIndex": 1,
+          "explanation": "8 : 4 = 2, lalu 2 × 3 = 6."
+        }
+      ]
+    },
+    {
+      "id": "contoh-indo-1",
+      "categoryId": "bahasa-indonesia",
+      "title": "Kata dan kalimat (contoh)",
+      "grades": [
+        1,
+        2
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Kata yang diawali huruf B adalah ...",
+          "options": [
+            "Meja",
+            "Kursi",
+            "Buku",
+            "Lampu"
+          ],
+          "answerIndex": 2,
+          "explanation": "Buku diawali huruf B."
+        },
+        {
+          "id": "q2",
+          "prompt": "Lawan kata dari \"besar\" adalah ...",
+          "options": [
+            "Panjang",
+            "Kecil",
+            "Tinggi",
+            "Banyak"
+          ],
+          "answerIndex": 1,
+          "explanation": "Besar berlawanan dengan kecil."
+        },
+        {
+          "id": "q3",
+          "prompt": "Kalimat yang penulisannya benar adalah ...",
+          "options": [
+            "ibu pergi ke pasar",
+            "Ibu pergi ke pasar.",
+            "ibu Pergi ke Pasar",
+            "Ibu pergi ke pasar"
+          ],
+          "answerIndex": 1,
+          "explanation": "Kalimat diawali huruf kapital dan diakhiri tanda titik."
+        },
+        {
+          "id": "q4",
+          "prompt": "Kata \"meja\" terdiri dari berapa suku kata?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "answerIndex": 1,
+          "explanation": "Me-ja: ada 2 suku kata."
+        }
+      ]
+    },
+    {
+      "id": "contoh-ipas-1",
+      "categoryId": "ipas",
+      "title": "Makhluk hidup dan alam (contoh)",
+      "grades": [
+        3,
+        4
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Bagian tumbuhan yang menyerap air dari dalam tanah adalah ...",
+          "options": [
+            "Daun",
+            "Bunga",
+            "Akar",
+            "Buah"
+          ],
+          "answerIndex": 2,
+          "explanation": "Akar menyerap air dan zat hara dari tanah."
+        },
+        {
+          "id": "q2",
+          "prompt": "Hewan berikut yang berkembang biak dengan bertelur adalah ...",
+          "options": [
+            "Kucing",
+            "Sapi",
+            "Ayam",
+            "Kambing"
+          ],
+          "answerIndex": 2,
+          "explanation": "Ayam bertelur. Kucing, sapi, dan kambing melahirkan."
+        },
+        {
+          "id": "q3",
+          "prompt": "Air yang berubah menjadi es disebut peristiwa ...",
+          "options": [
+            "Menguap",
+            "Membeku",
+            "Mencair",
+            "Mengembun"
+          ],
+          "answerIndex": 1,
+          "explanation": "Zat cair berubah menjadi padat karena dingin disebut membeku."
+        },
+        {
+          "id": "q4",
+          "prompt": "Semua makhluk hidup membutuhkan ... untuk hidup.",
+          "options": [
+            "Mainan",
+            "Makanan dan air",
+            "Televisi",
+            "Uang"
+          ],
+          "answerIndex": 1,
+          "explanation": "Makhluk hidup butuh makanan, air, dan udara."
+        }
+      ]
+    },
+    {
+      "id": "contoh-pancasila-1",
+      "categoryId": "pancasila",
+      "title": "Mengenal Pancasila (contoh)",
+      "grades": [
+        2,
+        3
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Sila pertama Pancasila berbunyi ...",
+          "options": [
+            "Persatuan Indonesia",
+            "Ketuhanan Yang Maha Esa",
+            "Keadilan sosial bagi seluruh rakyat Indonesia",
+            "Kemanusiaan yang adil dan beradab"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sila pertama: Ketuhanan Yang Maha Esa."
+        },
+        {
+          "id": "q2",
+          "prompt": "Lambang sila ketiga, Persatuan Indonesia, adalah ...",
+          "options": [
+            "Pohon beringin",
+            "Padi dan kapas",
+            "Rantai",
+            "Kepala banteng"
+          ],
+          "answerIndex": 0,
+          "explanation": "Pohon beringin melambangkan persatuan Indonesia."
+        },
+        {
+          "id": "q3",
+          "prompt": "Kerja bakti membersihkan lingkungan adalah contoh sikap ...",
+          "options": [
+            "Egois",
+            "Gotong royong",
+            "Malas",
+            "Curang"
+          ],
+          "answerIndex": 1,
+          "explanation": "Bekerja bersama untuk kepentingan umum disebut gotong royong."
+        },
+        {
+          "id": "q4",
+          "prompt": "Pancasila memiliki berapa sila?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "answerIndex": 2,
+          "explanation": "Pancasila terdiri dari lima sila."
+        }
+      ]
+    },
+    {
+      "id": "contoh-tatasurya-1",
+      "categoryId": "tata-surya",
+      "title": "Tata Surya (contoh)",
+      "grades": [
+        4,
+        5
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Pusat tata surya kita adalah ...",
+          "options": [
+            "Bumi",
+            "Bulan",
+            "Mars",
+            "Matahari"
+          ],
+          "answerIndex": 3,
+          "explanation": "Semua planet beredar mengelilingi Matahari."
+        },
+        {
+          "id": "q2",
+          "prompt": "Planet yang paling dekat dengan Matahari adalah ...",
+          "options": [
+            "Merkurius",
+            "Venus",
+            "Bumi",
+            "Jupiter"
+          ],
+          "answerIndex": 0,
+          "explanation": "Merkurius adalah planet terdekat dari Matahari."
+        },
+        {
+          "id": "q3",
+          "prompt": "Satelit alami Bumi adalah ...",
+          "options": [
+            "Matahari",
+            "Bulan",
+            "Bintang",
+            "Komet"
+          ],
+          "answerIndex": 1,
+          "explanation": "Bulan mengelilingi Bumi sebagai satelit alami."
+        },
+        {
+          "id": "q4",
+          "prompt": "Berapa jumlah planet di tata surya?",
+          "options": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "answerIndex": 1,
+          "explanation": "Ada 8 planet, dari Merkurius sampai Neptunus."
+        }
+      ]
+    },
+    {
+      "id": "contoh-hewan-1",
+      "categoryId": "hewan-tumbuhan",
+      "title": "Hewan dan tumbuhan (contoh)",
+      "grades": [
+        3,
+        4
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Hewan pemakan tumbuhan disebut ...",
+          "options": [
+            "Karnivora",
+            "Herbivora",
+            "Omnivora",
+            "Insektivora"
+          ],
+          "answerIndex": 1,
+          "explanation": "Herbivora memakan tumbuhan, misalnya sapi dan kelinci."
+        },
+        {
+          "id": "q2",
+          "prompt": "Hewan yang dapat hidup di air dan di darat adalah ...",
+          "options": [
+            "Ikan",
+            "Katak",
+            "Ayam",
+            "Kucing"
+          ],
+          "answerIndex": 1,
+          "explanation": "Katak hidup di dua alam: air dan darat."
+        },
+        {
+          "id": "q3",
+          "prompt": "Manakah yang termasuk mamalia?",
+          "options": [
+            "Hiu",
+            "Lumba-lumba",
+            "Tuna",
+            "Penyu"
+          ],
+          "answerIndex": 1,
+          "explanation": "Lumba-lumba bernapas dengan paru-paru dan menyusui anaknya."
+        },
+        {
+          "id": "q4",
+          "prompt": "Bagian tumbuhan tempat sebagian besar fotosintesis terjadi adalah ...",
+          "options": [
+            "Akar",
+            "Batang",
+            "Daun",
+            "Biji"
+          ],
+          "answerIndex": 2,
+          "explanation": "Daun berklorofil dan membuat makanan dengan bantuan cahaya matahari."
         }
       ]
     },
@@ -22,16 +492,305 @@
       "id": "contoh-digital-1",
       "categoryId": "privasi-digital",
       "title": "Menjaga data pribadi (contoh)",
-      "grades": [3, 4],
+      "grades": [
+        3,
+        4
+      ],
       "difficulty": 1,
       "version": 1,
       "questions": [
         {
           "id": "q1",
           "prompt": "Orang asing di internet meminta alamat rumahmu. Apa yang sebaiknya kamu lakukan?",
-          "options": ["Memberikannya", "Tidak memberikan dan memberi tahu orang tua", "Memberikan setengahnya", "Membalas dengan alamat sekolah"],
+          "options": [
+            "Memberikannya",
+            "Tidak memberikan dan memberi tahu orang tua",
+            "Memberikan setengahnya",
+            "Membalas dengan alamat sekolah"
+          ],
           "answerIndex": 1,
           "explanation": "Alamat adalah data pribadi. Jangan dibagikan ke orang asing, dan ceritakan kepada orang tua atau guru."
+        },
+        {
+          "id": "q2",
+          "prompt": "Kata sandi yang paling kuat adalah ...",
+          "options": [
+            "123456",
+            "namamu",
+            "Campuran huruf, angka, dan simbol yang panjang",
+            "Tanggal lahirmu"
+          ],
+          "answerIndex": 2,
+          "explanation": "Kata sandi panjang dan bercampur sulit ditebak."
+        },
+        {
+          "id": "q3",
+          "prompt": "Siapa yang boleh tahu kata sandi akunmu selain kamu?",
+          "options": [
+            "Teman dekat",
+            "Orang tua atau wali yang kamu percaya",
+            "Siapa saja yang minta",
+            "Orang di kolom komentar"
+          ],
+          "answerIndex": 1,
+          "explanation": "Kata sandi itu rahasia. Hanya bagikan kepada orang tua atau wali."
+        }
+      ]
+    },
+    {
+      "id": "contoh-penipuan-1",
+      "categoryId": "penipuan-digital",
+      "title": "Mengenali penipuan (contoh)",
+      "grades": [
+        4,
+        5
+      ],
+      "difficulty": 2,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Pesan berbunyi \"Selamat, kamu menang hadiah! Klik tautan ini.\" Sebaiknya kamu ...",
+          "options": [
+            "Langsung klik",
+            "Tidak klik dan tunjukkan ke orang tua",
+            "Teruskan ke semua teman",
+            "Kirim data dirimu"
+          ],
+          "answerIndex": 1,
+          "explanation": "Hadiah mendadak dengan tautan sering kali penipuan."
+        },
+        {
+          "id": "q2",
+          "prompt": "Seseorang meminta kode OTP yang dikirim ke ponsel orang tuamu. Kamu ...",
+          "options": [
+            "Memberikannya",
+            "Tidak memberikan",
+            "Memberikan separuhnya",
+            "Memberikan bila dia sopan"
+          ],
+          "answerIndex": 1,
+          "explanation": "Kode OTP rahasia dan tidak boleh diberikan kepada siapa pun."
+        },
+        {
+          "id": "q3",
+          "prompt": "Teman daring yang baru dikenal mengajak bertemu sendirian. Kamu ...",
+          "options": [
+            "Datang diam-diam",
+            "Menolak dan memberi tahu orang tua",
+            "Datang bersama dia saja",
+            "Memberi alamat rumah"
+          ],
+          "answerIndex": 1,
+          "explanation": "Jangan bertemu orang yang hanya dikenal lewat internet tanpa orang tua."
+        }
+      ]
+    },
+    {
+      "id": "contoh-kebersihan-1",
+      "categoryId": "kebersihan-diri",
+      "title": "Hidup bersih (contoh)",
+      "grades": [
+        1,
+        2
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Kapan kita perlu mencuci tangan dengan sabun?",
+          "options": [
+            "Hanya saat hari Minggu",
+            "Sebelum makan dan sesudah dari toilet",
+            "Hanya saat tangan sangat kotor",
+            "Tidak perlu"
+          ],
+          "answerIndex": 1,
+          "explanation": "Cuci tangan sebelum makan dan sesudah dari toilet mencegah penyakit."
+        },
+        {
+          "id": "q2",
+          "prompt": "Menyikat gigi sebaiknya dilakukan ... sehari.",
+          "options": [
+            "1 kali",
+            "2 kali",
+            "Seminggu sekali",
+            "Setelah sakit saja"
+          ],
+          "answerIndex": 1,
+          "explanation": "Dianjurkan 2 kali sehari: setelah sarapan dan sebelum tidur."
+        },
+        {
+          "id": "q3",
+          "prompt": "Air untuk mencuci tangan sebaiknya ...",
+          "options": [
+            "Menggenang",
+            "Mengalir",
+            "Bekas cucian",
+            "Berwarna keruh"
+          ],
+          "answerIndex": 1,
+          "explanation": "Air mengalir membilas kuman dan sabun dengan baik."
+        }
+      ]
+    },
+    {
+      "id": "contoh-menabung-1",
+      "categoryId": "menabung",
+      "title": "Belajar menabung (contoh)",
+      "grades": [
+        2,
+        3
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Menabung berarti ...",
+          "options": [
+            "Menghabiskan semua uang",
+            "Menyisihkan sebagian uang untuk nanti",
+            "Meminjam uang",
+            "Membuang uang"
+          ],
+          "answerIndex": 1,
+          "explanation": "Menabung adalah menyisihkan sebagian uang untuk kebutuhan di masa depan."
+        },
+        {
+          "id": "q2",
+          "prompt": "Uang jajan Dito Rp5.000. Ia menabung Rp2.000. Sisa uangnya ...",
+          "options": [
+            "Rp2.000",
+            "Rp3.000",
+            "Rp4.000",
+            "Rp7.000"
+          ],
+          "answerIndex": 1,
+          "explanation": "5.000 − 2.000 = 3.000."
+        },
+        {
+          "id": "q3",
+          "prompt": "Tujuan menabung yang baik adalah ...",
+          "options": [
+            "Membeli sesuatu yang dibutuhkan nanti",
+            "Pamer ke teman",
+            "Menyembunyikan uang dari orang tua",
+            "Tidak punya tujuan"
+          ],
+          "answerIndex": 0,
+          "explanation": "Punya tujuan membuat menabung lebih semangat."
+        }
+      ]
+    },
+    {
+      "id": "contoh-pola-1",
+      "categoryId": "pola-urutan",
+      "title": "Pola dan urutan (contoh)",
+      "grades": [
+        1,
+        2
+      ],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "2, 4, 6, 8, ... Angka berikutnya adalah ...",
+          "options": [
+            "9",
+            "10",
+            "12",
+            "7"
+          ],
+          "answerIndex": 1,
+          "explanation": "Pola naik 2 setiap langkah: 8 + 2 = 10."
+        },
+        {
+          "id": "q2",
+          "prompt": "Merah, biru, merah, biru, ... Berikutnya adalah ...",
+          "options": [
+            "Biru",
+            "Kuning",
+            "Hijau",
+            "Merah"
+          ],
+          "answerIndex": 3,
+          "explanation": "Pola berulang merah lalu biru, jadi berikutnya merah."
+        },
+        {
+          "id": "q3",
+          "prompt": "1, 3, 5, 7, ... Angka berikutnya adalah ...",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "answerIndex": 1,
+          "explanation": "Pola bilangan ganjil: 7 + 2 = 9."
+        },
+        {
+          "id": "q4",
+          "prompt": "A, C, E, G, ... Huruf berikutnya adalah ...",
+          "options": [
+            "H",
+            "J",
+            "I",
+            "K"
+          ],
+          "answerIndex": 2,
+          "explanation": "Huruf melompat satu huruf: G, (H), I."
+        }
+      ]
+    },
+    {
+      "id": "contoh-logika-1",
+      "categoryId": "logika",
+      "title": "Berpikir logis (contoh)",
+      "grades": [
+        3,
+        4
+      ],
+      "difficulty": 2,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Semua kucing adalah hewan. Tom adalah kucing. Jadi Tom adalah ...",
+          "options": [
+            "Tumbuhan",
+            "Hewan",
+            "Benda",
+            "Manusia"
+          ],
+          "answerIndex": 1,
+          "explanation": "Tom kucing, kucing termasuk hewan, jadi Tom hewan."
+        },
+        {
+          "id": "q2",
+          "prompt": "Mana yang tidak sejenis: apel, jeruk, pisang, bayam?",
+          "options": [
+            "Apel",
+            "Jeruk",
+            "Pisang",
+            "Bayam"
+          ],
+          "answerIndex": 3,
+          "explanation": "Apel, jeruk, dan pisang adalah buah; bayam adalah sayur."
+        },
+        {
+          "id": "q3",
+          "prompt": "Jika hari ini Selasa, maka lusa adalah hari ...",
+          "options": [
+            "Rabu",
+            "Kamis",
+            "Jumat",
+            "Senin"
+          ],
+          "answerIndex": 1,
+          "explanation": "Besok Rabu, lusa Kamis."
         }
       ]
     }
