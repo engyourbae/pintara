@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Warna aksen per mode. Semua mode memakai komponen yang sama; hanya variabel ini yang berganti.
+   Kontras teks putih di atas --aksen minimal 4.5:1. */
+:root,
+[data-mode='student'] {
+  --aksen: #478f3a;
+  --aksen-tua: #376f2e;
+  --aksen-muda: #d9edd4;
+}
+[data-mode='teacher'] {
+  --aksen: #2f4a3a; /* papan tulis */
+  --aksen-tua: #22382b;
+  --aksen-muda: #e3ece5;
+}
+[data-mode='parent'] {
+  --aksen: #2f74a5;
+  --aksen-tua: #245c84;
+  --aksen-muda: #dceffb;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-krem font-sans text-tinta antialiased;
+  }
+  :focus-visible {
+    @apply outline outline-4 outline-offset-2 outline-langit-500;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Latar buku tulis bergaris tipis. */
+  .latar-kertas {
+    background-color: theme('colors.gading');
+    background-image: linear-gradient(to bottom, transparent 31px, rgba(74, 154, 208, 0.18) 32px);
+    background-size: 100% 32px;
+  }
+  /* Panel papan tulis. */
+  .papan-tulis {
+    @apply rounded-3xl bg-papan text-gading shadow-kertas;
+    outline: 2px dashed rgba(255, 253, 246, 0.35);
+    outline-offset: -10px;
+  }
+}
