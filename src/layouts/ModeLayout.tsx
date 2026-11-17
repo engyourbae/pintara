@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { Button, Icon, Logo } from '@/components/ui';
+import { Button, ButtonLink, Icon, Logo } from '@/components/ui';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
 import { cn } from '@/utils/cn';
@@ -62,6 +62,11 @@ export function ModeLayout({ role }: { role: Role }) {
             ))}
           </nav>
 
+          {(status === 'signedOut' || status === 'disabled') && (
+            <ButtonLink to="/masuk" variant="ghost" className="ml-auto h-11 px-3 md:ml-0">
+              Masuk
+            </ButtonLink>
+          )}
           {status === 'ready' && user && (
             <Button variant="ghost" className="ml-auto h-11 px-3 md:ml-0" onClick={() => void signOut()}>
               Keluar
