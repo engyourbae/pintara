@@ -21,6 +21,7 @@ import type { Role } from '@/types';
 const LoginPage = lazy(() => import('@/features/auth/LoginPage').then((m) => ({ default: m.LoginPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
 const FriendsPage = lazy(() => import('@/features/friends/FriendsPage').then((m) => ({ default: m.FriendsPage })));
+const AdminPage = lazy(() => import('@/features/admin/AdminPage').then((m) => ({ default: m.AdminPage })));
 const ChildAccounts = lazy(() => import('@/features/parent/ChildAccounts').then((m) => ({ default: m.ChildAccounts })));
 
 const ROLES: Role[] = ['student', 'teacher', 'parent'];
@@ -45,6 +46,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/ruang" element={<ChooseSpacePage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="/masuk" element={<LoginPage />} />
             <Route path="/daftar" element={<RegisterPage />} />
             <Route path="/desain" element={<DesignSystemPage />} />
