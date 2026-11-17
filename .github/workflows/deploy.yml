@@ -22,8 +22,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+      # Belum ada package-lock.json. Setelah `npm install` dijalankan lokal dan lockfile di-commit,
+      # kembalikan ke `cache: npm` dan `npm ci` agar build deterministik.
+      - run: npm install --no-audit --no-fund
       - run: npm run typecheck
       - run: npm run build
         env:
