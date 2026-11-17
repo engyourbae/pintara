@@ -39,7 +39,8 @@ export function LandingPage() {
             </a>
           ))}
         </nav>
-        <ButtonLink to="/masuk" variant="sekunder">
+        <ButtonLink to="/masuk" variant="aksi">
+          <Icon name="user" size={20} />
           Masuk
         </ButtonLink>
       </header>
