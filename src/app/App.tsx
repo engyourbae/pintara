@@ -9,6 +9,7 @@ import { DesignSystemPage } from '@/pages/DesignSystemPage';
 import { StudentHome, StudentProfile } from '@/features/student/StudentPages';
 import { LearnList, QuizPage } from '@/features/learning/LearnPages';
 import { GameMenu, KilatHitung } from '@/features/games/GamePages';
+import { SusunKata, TekaPola } from '@/features/games/WordPatternGames';
 import { TeacherClasses, TeacherHome, TeacherQuizzes, TeacherResults } from '@/features/teacher/TeacherPages';
 import { ParentHome, ParentProgress, ParentSettings } from '@/features/parent/ParentPages';
 import type { Role } from '@/types';
@@ -47,6 +48,8 @@ export function App() {
               <>
                 <Route path="belajar/:contentId" element={<QuizPage />} />
                 <Route path="game/kilat-hitung" element={<KilatHitung />} />
+                <Route path="game/susun-kata" element={<SusunKata />} />
+                <Route path="game/teka-pola" element={<TekaPola />} />
               </>
             )}
           </Route>
