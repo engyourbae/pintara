@@ -18,4 +18,4 @@ Baca `docs/keamanan.md` (langkah admin dan keterbatasan) sebelum dipakai.
 `docs/arsitektur.md`, `docs/design-system.md`, `docs/keamanan.md`, `docs/deployment.md`.
 
 ## Status
-Fase A–C selesai (arsitektur, struktur, design system) dan rules ditulis. Halaman masih kerangka. Belum ada login, game, atau PWA.
+Fase A–D selesai (arsitektur, struktur, design system, landing, layout dan navigasi per mode) dan rules ditulis. Halaman di dalam tiap mode masih kerangka (Fase E). Belum ada login, game, atau PWA.
