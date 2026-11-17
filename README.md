@@ -18,4 +18,4 @@ Baca `docs/keamanan.md` (langkah admin dan keterbatasan) sebelum dipakai.
 `docs/arsitektur.md`, `docs/design-system.md`, `docs/keamanan.md`, `docs/deployment.md`.
 
 ## Status
-Fase A–D selesai (arsitektur, struktur, design system, landing, layout dan navigasi per mode) dan rules ditulis. Halaman di dalam tiap mode masih kerangka (Fase E). Belum ada login, game, atau PWA.
+Fase A–D selesai. Fase E sebagian: mode siswa berfungsi dengan data contoh (belajar, kuis, game Kilat Hitung, profil; kemajuan di localStorage). Halaman guru dan orang tua baru tampilan contoh. Belum ada login, pertemanan, multiplayer, atau PWA offline.
