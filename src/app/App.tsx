@@ -4,6 +4,7 @@ import { MODE_BASE, NAV } from './navigation';
 import { ModeLayout } from '@/layouts/ModeLayout';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 import { LandingPage } from '@/pages/LandingPage';
+import { ChooseSpacePage } from '@/pages/ChooseSpacePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { DesignSystemPage } from '@/pages/DesignSystemPage';
 import { StudentHome, StudentProfile } from '@/features/student/StudentPages';
@@ -43,6 +44,7 @@ export function App() {
         <Suspense fallback={<p role="status" className="p-6 text-center font-display text-xl">Memuat…</p>}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/ruang" element={<ChooseSpacePage />} />
             <Route path="/masuk" element={<LoginPage />} />
             <Route path="/daftar" element={<RegisterPage />} />
             <Route path="/desain" element={<DesignSystemPage />} />
