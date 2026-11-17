@@ -1,0 +1,39 @@
+{
+  "_label": "DATA CONTOH: soal ilustrasi untuk menguji struktur, bukan materi resmi",
+  "contents": [
+    {
+      "id": "contoh-mat-1",
+      "categoryId": "matematika",
+      "title": "Penjumlahan sampai 10 (contoh)",
+      "grades": [1],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "3 + 4 = ...",
+          "options": ["6", "7", "8", "9"],
+          "answerIndex": 1,
+          "explanation": "Hitung maju 4 langkah dari 3: 4, 5, 6, 7. Jadi 3 + 4 = 7."
+        }
+      ]
+    },
+    {
+      "id": "contoh-digital-1",
+      "categoryId": "privasi-digital",
+      "title": "Menjaga data pribadi (contoh)",
+      "grades": [3, 4],
+      "difficulty": 1,
+      "version": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Orang asing di internet meminta alamat rumahmu. Apa yang sebaiknya kamu lakukan?",
+          "options": ["Memberikannya", "Tidak memberikan dan memberi tahu orang tua", "Memberikan setengahnya", "Membalas dengan alamat sekolah"],
+          "answerIndex": 1,
+          "explanation": "Alamat adalah data pribadi. Jangan dibagikan ke orang asing, dan ceritakan kepada orang tua atau guru."
+        }
+      ]
+    }
+  ]
+}
