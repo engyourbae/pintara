@@ -1,12 +1,14 @@
 import type { HTMLAttributes } from 'react';
 import { cn } from '@/utils/cn';
 
-type Tone = 'kertas' | 'papan' | 'catatan';
+type Tone = 'kertas' | 'papan' | 'catatan' | 'langit' | 'hijau';
 
 const TONE: Record<Tone, string> = {
-  kertas: 'rounded-3xl bg-gading shadow-kertas ring-2 ring-aksen-muda',
-  papan: 'papan-tulis',
-  catatan: 'rounded-3xl bg-kuning-100 shadow-kertas',
+  kertas: 'rounded-3xl bg-gading stiker',
+  papan: 'papan-tulis stiker',
+  catatan: 'rounded-3xl bg-kuning-100 stiker',
+  langit: 'rounded-3xl bg-langit-100 stiker',
+  hijau: 'rounded-3xl bg-hijau-100 stiker',
 };
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

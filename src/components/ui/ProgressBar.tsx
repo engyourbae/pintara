@@ -14,9 +14,9 @@ export function ProgressBar({ value, max = 100, label }: Props) {
       aria-valuemin={0}
       aria-valuemax={max}
       aria-valuenow={Math.round(value)}
-      className="h-4 w-full overflow-hidden rounded-full bg-white ring-2 ring-aksen-muda"
+      className="h-5 w-full overflow-hidden rounded-full border-2 border-tinta bg-white"
     >
-      <div className="h-full rounded-full bg-kuning-500 transition-[width]" style={{ width: `${pct}%` }} />
+      <div className="h-full rounded-full bg-kuning-500 transition-[width] duration-500 ease-out" style={{ width: `${pct}%` }} />
     </div>
   );
 }

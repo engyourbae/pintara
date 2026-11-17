@@ -3,4 +3,6 @@ export { Card } from './Card';
 export { Badge, SampleBadge } from './Badge';
 export { Icon, type IconName } from './Icon';
 export { ProgressBar } from './ProgressBar';
-export { Logo } from './Logo';
+export { Logo, LogoMark } from './Logo';
+export { Mascot, Sparkle } from './Mascot';
+export { Page, PageHeader, Stat } from './Page';
