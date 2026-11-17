@@ -5,7 +5,8 @@ import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { friendlyError, registerAdult } from '@/services/firebase/auth';
 import { cn } from '@/utils/cn';
-import { AuthShell, Field, FormError } from './parts';
+import { passwordOk } from '@/utils/password';
+import { AuthShell, Field, FormError, PasswordField } from './parts';
 
 type AdultRole = 'parent' | 'teacher';
 
@@ -22,7 +23,6 @@ export function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [again, setAgain] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
@@ -33,8 +33,8 @@ export function RegisterPage() {
   async function submit(e: FormEvent) {
     e.preventDefault();
     setError('');
-    if (password !== again) {
-      setError('Sandi dan pengulangannya tidak sama.');
+    if (!passwordOk(password)) {
+      setError('Sandi belum memenuhi semua syarat.');
       return;
     }
     setBusy(true);
@@ -100,26 +100,9 @@ export function RegisterPage() {
           required
           hint="Email tidak ditampilkan kepada pengguna lain."
         />
-        <Field
-          label="Sandi"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="new-password"
-          minLength={8}
-          required
-          hint="Minimal 8 karakter."
-        />
-        <Field
-          label="Ulangi sandi"
-          type="password"
-          value={again}
-          onChange={(e) => setAgain(e.target.value)}
-          autoComplete="new-password"
-          required
-        />
+        <PasswordField label="Sandi" value={password} onChange={setPassword} autoComplete="new-password" required checklist />
         <FormError message={error} />
-        <Button type="submit" size="lg" block disabled={busy}>
+        <Button type="submit" size="lg" block disabled={busy || !passwordOk(password)}>
           {busy ? 'Mendaftarkan…' : 'Daftar'}
         </Button>
       </form>

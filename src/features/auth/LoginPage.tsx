@@ -4,7 +4,7 @@ import { Button, ButtonLink, Card, Icon, Mascot } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { friendlyError, signInWithIdentifier } from '@/services/firebase/auth';
-import { AuthShell, Field, FormError } from './parts';
+import { AuthShell, Field, FormError, PasswordField } from './parts';
 
 export function LoginPage() {
   const { status, user, signOut } = useAuth();
@@ -79,14 +79,7 @@ export function LoginPage() {
           required
           hint="Anak: pakai nama pengguna dari orang tua. Orang tua dan guru: pakai email."
         />
-        <Field
-          label="Sandi atau PIN"
-          type="password"
-          value={secret}
-          onChange={(e) => setSecret(e.target.value)}
-          autoComplete="current-password"
-          required
-        />
+        <PasswordField label="Sandi atau PIN" value={secret} onChange={setSecret} autoComplete="current-password" required />
         <FormError message={error} />
         <Button type="submit" size="lg" block disabled={busy}>
           {busy ? 'Memeriksa…' : 'Masuk'}
