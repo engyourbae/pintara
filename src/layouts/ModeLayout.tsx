@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { Icon, Logo } from '@/components/ui';
+import { Button, Icon, Logo } from '@/components/ui';
+import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
 import { cn } from '@/utils/cn';
 import type { Role } from '@/types';
@@ -10,6 +11,7 @@ import type { Role } from '@/types';
  */
 export function ModeLayout({ role }: { role: Role }) {
   const base = MODE_BASE[role];
+  const { status, user, signOut } = useAuth();
 
   return (
     <div data-mode={role} className="flex min-h-screen flex-col pb-[84px] md:pb-0">
@@ -59,6 +61,12 @@ export function ModeLayout({ role }: { role: Role }) {
               </NavLink>
             ))}
           </nav>
+
+          {status === 'ready' && user && (
+            <Button variant="ghost" className="ml-auto h-11 px-3 md:ml-0" onClick={() => void signOut()}>
+              Keluar
+            </Button>
+          )}
         </div>
       </header>
 
