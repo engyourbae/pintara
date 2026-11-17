@@ -12,19 +12,21 @@ export function ModeLayout({ role }: { role: Role }) {
   const base = MODE_BASE[role];
 
   return (
-    <div data-mode={role} className="flex min-h-screen flex-col pb-[76px] md:pb-0">
-      <header className="sticky top-0 z-10 border-b-2 border-aksen-muda bg-gading">
-        <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-2">
+    <div data-mode={role} className="flex min-h-screen flex-col pb-[84px] md:pb-0">
+      <header className="sticky top-0 z-20 border-b-2 border-tinta bg-gading">
+        <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-4">
           <Link to="/" aria-label="PINTARA, kembali ke awal" className="rounded-2xl">
-            <Logo />
+            <Logo size={34} className="[&>span]:text-xl" />
           </Link>
-          <span className="hidden font-bold text-aksen-tua sm:inline">{MODE_LABEL[role]}</span>
+          <span className="hidden rounded-full border-2 border-tinta bg-aksen px-3 py-0.5 text-sm font-bold text-white sm:inline">
+            {MODE_LABEL[role]}
+          </span>
 
           <nav
             aria-label={`Menu ${MODE_LABEL[role]}`}
             className={cn(
-              'fixed inset-x-0 bottom-0 flex border-t-2 border-aksen-muda bg-gading',
-              'md:static md:ml-auto md:gap-1 md:border-0 md:bg-transparent',
+              'fixed inset-x-0 bottom-0 z-20 flex border-t-2 border-tinta bg-gading px-1 pb-[env(safe-area-inset-bottom)]',
+              'md:static md:ml-auto md:gap-1 md:border-0 md:bg-transparent md:px-0 md:pb-0',
             )}
           >
             {NAV[role].map((item) => (
@@ -34,14 +36,26 @@ export function ModeLayout({ role }: { role: Role }) {
                 end={item.path === ''}
                 className={({ isActive }) =>
                   cn(
-                    'flex min-h-[64px] flex-1 flex-col items-center justify-center gap-0.5 px-1 text-xs font-bold',
-                    'md:min-h-tap md:flex-none md:flex-row md:gap-2 md:rounded-2xl md:px-4 md:text-base',
-                    isActive ? 'bg-aksen-muda text-aksen-tua' : 'text-tinta hover:bg-aksen-muda/60',
+                    'flex h-[72px] min-w-0 flex-1 flex-col items-center justify-center gap-1 text-xs font-bold transition',
+                    'md:h-12 md:flex-none md:flex-row md:gap-2 md:rounded-2xl md:px-4 md:text-base',
+                    isActive ? 'text-aksen-tua md:bg-aksen md:text-white' : 'text-tinta/80 md:hover:bg-aksen-muda',
                   )
                 }
               >
-                <Icon name={item.icon} />
-                <span>{item.label}</span>
+                {({ isActive }) => (
+                  <>
+                    <span
+                      className={cn(
+                        'flex h-8 w-14 items-center justify-center rounded-full transition-all duration-200',
+                        'md:h-auto md:w-auto',
+                        isActive ? 'bg-aksen text-white md:bg-transparent' : '',
+                      )}
+                    >
+                      <Icon name={item.icon} size={22} />
+                    </span>
+                    <span className="max-w-full truncate">{item.label}</span>
+                  </>
+                )}
               </NavLink>
             ))}
           </nav>
