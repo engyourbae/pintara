@@ -43,3 +43,8 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 1. Uji F-1 (lihat langkah uji di balasan terakhir), perbaiki galat.
 2. Sinkronisasi progres siswa ke `learning_progress` (Fase F-2), antrean offline Dexie (Fase G).
 3. Pertemanan & undangan.
+
+## Catatan F-3
+- Config Firebase (publik) kini dibaca dari `.env.production` (di-commit); workflow tidak lagi memakai GitHub Variables untuk Firebase. Penyebab login "belum tersedia" di GitHub Pages: variabel kosong saat build.
+- Halaman `/ruang` (pilih ruang) + tombol "Ganti ruang" di header tiap mode.
+- Zoom dinonaktifkan (viewport + gesturestart). Catatan aksesibilitas: pengguna low-vision tidak bisa cubit-zoom.
