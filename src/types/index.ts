@@ -44,3 +44,25 @@ export interface LearningContent {
 export interface SampleFlag {
   isSample: true;
 }
+
+/** Akun yang sudah masuk. Diambil dari dokumen `users/{uid}`; role TIDAK pernah berasal dari pilihan di frontend. */
+export interface AppUser {
+  uid: string;
+  role: Role;
+  displayName: string;
+  /** Guru hanya sah bila true. Diubah manual lewat Firebase Console. */
+  teacherVerified: boolean;
+  /** Hanya untuk akun anak. */
+  parentUid?: string;
+  grade?: Grade;
+}
+
+/** Ringkasan akun anak untuk halaman orang tua. */
+export interface ChildSummary {
+  uid: string;
+  displayName: string;
+  username: string;
+  friendsEnabled: boolean;
+  multiplayerEnabled: boolean;
+  dailyLimitMinutes: number;
+}
