@@ -7,43 +7,39 @@ import { cn } from '@/utils/cn';
 
 const GAME = `${MODE_BASE.student}/game`;
 
+const GAMES = [
+  { to: `${GAME}/kilat-hitung`, title: 'Kilat Hitung', desc: '10 soal hitungan, jawab sebelum waktu habis.', icon: 'calc', bg: 'bg-kuning-500', keys: ['kilat-mudah', 'kilat-sedang', 'kilat-seru'] },
+  { to: `${GAME}/susun-kata`, title: 'Susun Kata', desc: 'Susun huruf acak menjadi kata dari petunjuk.', icon: 'pencil', bg: 'bg-hijau-300', keys: ['susun-kata'] },
+  { to: `${GAME}/teka-pola`, title: 'Teka Pola', desc: 'Tebak bentuk atau angka yang datang berikutnya.', icon: 'bulb', bg: 'bg-langit-300', keys: ['teka-pola'] },
+] as const;
+
 export function GameMenu() {
   const p = useProgress();
-  const best = Math.max(0, ...['mudah', 'sedang', 'seru'].map((l) => p.gameBest[`kilat-${l}`] ?? 0));
   return (
     <Page>
       <PageHeader title="Permainan" subtitle="Main sebentar, otak makin tajam." icon="game" />
-
-      <Link
-        to={`${GAME}/kilat-hitung`}
-        className="stiker flex items-center gap-4 rounded-3xl bg-kuning-100 p-4 transition active:translate-y-1 active:shadow-none"
-      >
-        <span className="stiker flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-kuning-500">
-          <Icon name="calc" size={34} />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block font-display text-xl font-semibold">Kilat Hitung</span>
-          <span className="block text-tinta/85">10 soal hitungan, jawab sebelum waktu habis.</span>
-          {best > 0 && <span className="mt-1 block text-sm font-bold text-aksen-tua">Skor terbaik: {best}</span>}
-        </span>
-        <Icon name="arrow" className="shrink-0" />
-      </Link>
-
-      <h2 className="text-xl">Segera hadir</h2>
-      <ul className="grid gap-3 sm:grid-cols-2">
-        {[
-          { t: 'Susun Kata', d: 'Menyusun huruf menjadi kata.' },
-          { t: 'Teka Pola', d: 'Menebak pola gambar dan angka.' },
-        ].map((g) => (
-          <li key={g.t} className="flex items-center gap-3 rounded-3xl border-2 border-dashed border-tinta/40 bg-gading/70 p-4">
-            <Icon name="lock" size={26} className="shrink-0 text-tinta/60" />
-            <div className="min-w-0 flex-1">
-              <p className="font-display text-lg font-semibold">{g.t}</p>
-              <p className="text-sm text-tinta/75">{g.d}</p>
-            </div>
-            <Badge tone="netral">Segera</Badge>
-          </li>
-        ))}
+      <ul className="grid gap-4">
+        {GAMES.map((g, i) => {
+          const best = Math.max(0, ...g.keys.map((k) => p.gameBest[k] ?? 0));
+          return (
+            <li key={g.to} className="animate-naik" style={{ animationDelay: `${i * 80}ms` }}>
+              <Link
+                to={g.to}
+                className="stiker flex items-center gap-4 rounded-3xl bg-gading p-4 transition active:translate-y-1 active:shadow-none"
+              >
+                <span className={cn('stiker flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl', g.bg)}>
+                  <Icon name={g.icon} size={34} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-xl font-semibold">{g.title}</span>
+                  <span className="block text-tinta/85">{g.desc}</span>
+                  {best > 0 && <span className="mt-1 block text-sm font-bold text-aksen-tua">Skor terbaik: {best}</span>}
+                </span>
+                <Icon name="arrow" className="shrink-0" />
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </Page>
   );
