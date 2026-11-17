@@ -1,0 +1,17 @@
+{
+  "name": "PINTARA — Belajar Bersama, Berkembang Bersama!",
+  "short_name": "PINTARA",
+  "description": "Platform belajar dan game edukasi untuk anak SD Indonesia.",
+  "lang": "id",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF6E9",
+  "theme_color": "#5BAA4B",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
