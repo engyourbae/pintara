@@ -11,11 +11,12 @@ npm run dev        # buka http://localhost:5173/#/  dan  #/desain
 `.env.local` sudah berisi konfigurasi web Firebase project `pintara-f966d`. Isi `VITE_FIREBASE_DATABASE_URL` setelah Realtime Database dibuat.
 
 ## Firebase rules
-Salin isi `firebase/firestore.rules` ke Firestore > Rules, dan `firebase/database.rules.json` ke Realtime Database > Rules, lalu **Publish**. Atau: `firebase deploy --only firestore:rules,database`.
+Salin isi `firebase/firebase.rules` ke Firestore > Rules, dan `firebase/database.rules.json` ke Realtime Database > Rules, lalu **Publish**. Atau: `firebase deploy --only firestore:rules,database`.
 Baca `docs/keamanan.md` (langkah admin dan keterbatasan) sebelum dipakai.
 
 ## Dokumen
 `docs/arsitektur.md`, `docs/design-system.md`, `docs/keamanan.md`, `docs/deployment.md`.
 
 ## Status
-Fase A–D selesai. Fase E sebagian: mode siswa berfungsi dengan data contoh (belajar, kuis, game Kilat Hitung, profil; kemajuan di localStorage). Halaman guru dan orang tua baru tampilan contoh. Belum ada login, pertemanan, multiplayer, atau PWA offline.
+Fase A–D selesai. Fase E sebagian: mode siswa berfungsi dengan data contoh (belajar, kuis, game Kilat Hitung, profil; kemajuan di localStorage). Fase F-1: masuk/daftar (orang tua, guru), pembuatan akun anak oleh orang tua, dan pembatasan tampilan per peran sudah dibuat tetapi BELUM diuji di Firebase nyata. Halaman guru masih data contoh. Belum ada sinkronisasi progres, pertemanan, multiplayer, atau PWA offline.
+Prasyarat: aktifkan Authentication > Sign-in method > Email/Password.
