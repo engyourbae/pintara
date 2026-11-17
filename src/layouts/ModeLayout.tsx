@@ -62,16 +62,23 @@ export function ModeLayout({ role }: { role: Role }) {
             ))}
           </nav>
 
-          {(status === 'signedOut' || status === 'disabled') && (
-            <ButtonLink to="/masuk" variant="ghost" className="ml-auto h-11 px-3 md:ml-0">
-              Masuk
+          <div className="ml-auto flex items-center gap-2 md:ml-0">
+            <ButtonLink to="/ruang" variant="sekunder" aria-label="Ganti ruang: anak, guru, atau orang tua" className="h-11 px-3">
+              <Icon name="home" size={22} />
+              <span className="hidden sm:inline">Ganti ruang</span>
             </ButtonLink>
-          )}
-          {status === 'ready' && user && (
-            <Button variant="ghost" className="ml-auto h-11 px-3 md:ml-0" onClick={() => void signOut()}>
-              Keluar
-            </Button>
-          )}
+            {(status === 'signedOut' || status === 'disabled') && (
+              <ButtonLink to="/masuk" variant="aksi" className="h-11 px-4">
+                <Icon name="user" size={20} />
+                Masuk
+              </ButtonLink>
+            )}
+            {status === 'ready' && user && (
+              <Button variant="sekunder" className="h-11 px-4" onClick={() => void signOut()}>
+                Keluar
+              </Button>
+            )}
+          </div>
         </div>
       </header>
 
