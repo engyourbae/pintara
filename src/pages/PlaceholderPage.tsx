@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { MODE_LABEL } from '@/app/navigation';
+import { ButtonLink, Card, Mascot, Page, PageHeader } from '@/components/ui';
+import { MODE_BASE, MODE_LABEL } from '@/app/navigation';
 import type { Role } from '@/types';
 
 interface Props {
@@ -8,18 +8,25 @@ interface Props {
   phase: 'E' | 'F';
 }
 
-/** Halaman sementara. Jujur menyatakan belum dibangun. */
+/** Halaman yang memang belum dibangun. Jujur soal itu, tapi tetap ramah. */
 export function PlaceholderPage({ role, title, phase }: Props) {
   return (
-    <main className="mx-auto max-w-2xl px-4 py-10">
-      <p className="text-sm font-semibold text-hijau-700">{MODE_LABEL[role]}</p>
-      <h1 className="mt-1 text-3xl font-bold">{title}</h1>
-      <p className="mt-4 rounded-2xl bg-kuning-100 p-4">
-        Halaman ini belum dibuat. Rencana pembangunan: Fase {phase}.
-      </p>
-      <Link to="/" className="mt-6 inline-flex min-h-tap items-center rounded-2xl bg-hijau-500 px-5 font-semibold text-white">
-        Kembali ke awal
-      </Link>
-    </main>
+    <Page>
+      <PageHeader title={title} subtitle={MODE_LABEL[role]} />
+      <Card tone="catatan" className="flex flex-col items-center gap-4 py-8 text-center">
+        <Mascot size={120} className="animate-melayang" />
+        <div>
+          <p className="font-display text-xl font-semibold">Segera hadir</p>
+          <p className="mt-1 text-tinta/85">
+            {phase === 'F'
+              ? 'Fitur ini butuh akun dan keamanan data, jadi dibuat setelah login siap.'
+              : 'Halaman ini sedang disiapkan.'}
+          </p>
+        </div>
+        <ButtonLink to={MODE_BASE[role]} variant="sekunder">
+          Kembali ke beranda
+        </ButtonLink>
+      </Card>
+    </Page>
   );
 }
