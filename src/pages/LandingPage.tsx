@@ -39,11 +39,9 @@ export function LandingPage() {
             </a>
           ))}
         </nav>
-        {isFirebaseConfigured && (
-          <ButtonLink to="/masuk" variant="sekunder">
-            Masuk
-          </ButtonLink>
-        )}
+        <ButtonLink to="/masuk" variant="sekunder">
+          Masuk
+        </ButtonLink>
       </header>
 
       <main className="mx-auto max-w-5xl space-y-16 px-4 pb-10 pt-4 sm:pt-8">
