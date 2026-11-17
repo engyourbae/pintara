@@ -19,13 +19,14 @@ import type { Role } from '@/types';
 /** Halaman akun dimuat saat dibutuhkan (membawa SDK Firebase), supaya mode tamu tetap ringan. */
 const LoginPage = lazy(() => import('@/features/auth/LoginPage').then((m) => ({ default: m.LoginPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
+const FriendsPage = lazy(() => import('@/features/friends/FriendsPage').then((m) => ({ default: m.FriendsPage })));
 const ChildAccounts = lazy(() => import('@/features/parent/ChildAccounts').then((m) => ({ default: m.ChildAccounts })));
 
 const ROLES: Role[] = ['student', 'teacher', 'parent'];
 
 /** Halaman yang sudah dibangun, per mode dan path menu. Yang belum ada jatuh ke PlaceholderPage. */
 const PAGES: Record<Role, Record<string, ReactElement>> = {
-  student: { '': <StudentHome />, belajar: <LearnList />, game: <GameMenu />, profil: <StudentProfile /> },
+  student: { '': <StudentHome />, belajar: <LearnList />, game: <GameMenu />, teman: <FriendsPage />, profil: <StudentProfile /> },
   teacher: { '': <TeacherHome />, kelas: <TeacherClasses />, kuis: <TeacherQuizzes />, hasil: <TeacherResults /> },
   parent: { '': <ParentHome />, perkembangan: <ParentProgress />, anak: <ChildAccounts />, pengaturan: <ParentSettings /> },
 };
