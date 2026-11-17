@@ -1,5 +1,6 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { MODE_BASE, NAV } from './navigation';
+import { ModeLayout } from '@/layouts/ModeLayout';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 import { LandingPage } from '@/pages/LandingPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -19,15 +20,18 @@ export function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/desain" element={<DesignSystemPage />} />
-        {ROLES.flatMap((role) =>
-          NAV[role].map((item) => (
-            <Route
-              key={`${role}:${item.path}`}
-              path={`${MODE_BASE[role]}${item.path ? `/${item.path}` : ''}`}
-              element={<PlaceholderPage role={role} title={item.label} phase={item.phase} />}
-            />
-          )),
-        )}
+        {ROLES.map((role) => (
+          <Route key={role} path={MODE_BASE[role]} element={<ModeLayout role={role} />}>
+            {NAV[role].map((item) => {
+              const page = <PlaceholderPage role={role} title={item.label} phase={item.phase} />;
+              return item.path === '' ? (
+                <Route key="beranda" index element={page} />
+              ) : (
+                <Route key={item.path} path={item.path} element={page} />
+              );
+            })}
+          </Route>
+        ))}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </HashRouter>
