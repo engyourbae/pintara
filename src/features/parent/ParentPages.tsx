@@ -71,7 +71,7 @@ export function ParentSettings() {
       <Card tone="langit" className="flex items-start gap-3">
         <Icon name="shield" size={26} className="mt-0.5 shrink-0" />
         <p>
-          Versi ini belum memakai akun. Nama dan kemajuan anak hanya tersimpan di perangkat ini dan tidak dikirim ke internet.
+          Kemajuan belajar di halaman Perkembangan masih berasal dari perangkat ini dan belum disinkronkan ke akun anak.
         </p>
       </Card>
       <Card className="space-y-3">
@@ -89,7 +89,7 @@ export function ParentSettings() {
       </Card>
       <Card tone="catatan" className="flex items-start gap-3">
         <Icon name="lock" size={24} className="mt-0.5 shrink-0" />
-        <p>Akun anak, izin pertemanan, dan batas waktu bermain akan tersedia setelah fitur masuk akun selesai.</p>
+        <p>Akun anak, izin pertemanan, dan batas waktu bermain diatur di menu Anak.</p>
       </Card>
     </Page>
   );
