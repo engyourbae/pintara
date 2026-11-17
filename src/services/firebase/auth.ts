@@ -23,6 +23,7 @@ import {
 import { firebaseOptions } from './config';
 import { getDb, getFirebaseAuth } from './client';
 import type { AppUser, ChildSummary, Grade } from '@/types';
+import { passwordOk } from '@/utils/password';
 
 /**
  * Layanan akun. Urutan penulisan MENGIKUTI aturan di firebase/firebase.rules
@@ -139,7 +140,9 @@ export async function registerAdult(input: AdultSignup): Promise<void> {
   if (displayName.length < 1 || displayName.length > 30) {
     throw new UserFacingError('Nama harus 1–30 karakter.');
   }
-  if (input.password.length < 8) throw new UserFacingError('Sandi minimal 8 karakter.');
+  if (!passwordOk(input.password)) {
+    throw new UserFacingError('Sandi harus 8+ karakter dengan huruf besar, huruf kecil, angka, dan simbol.');
+  }
 
   const auth = getFirebaseAuth();
   const db = getDb();
