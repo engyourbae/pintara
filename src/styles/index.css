@@ -27,6 +27,8 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    /* Cegah zoom ganda-ketuk; gulir tetap normal. */
+    touch-action: manipulation;
     scroll-behavior: smooth;
   }
   body {
