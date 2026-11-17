@@ -39,6 +39,7 @@ export const NAV: Record<Role, NavItem[]> = {
   parent: [
     { path: '', label: 'Beranda', icon: 'home', phase: 'E' },
     { path: 'perkembangan', label: 'Perkembangan', icon: 'chart', phase: 'E' },
+    { path: 'anak', label: 'Anak', icon: 'user', phase: 'F' },
     { path: 'pengaturan', label: 'Pengaturan', icon: 'settings', phase: 'E' },
   ],
 };
