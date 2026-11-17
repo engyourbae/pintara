@@ -17,7 +17,8 @@ React 18, TypeScript, Vite 5, Tailwind 3, React Router (HashRouter), Firebase (A
 | Firebase Firestore/RTDB + rules | Dibuat & di-publish pengguna; BELUM diuji emulator |
 | Login/daftar orang tua & guru, akun anak, guard peran (Fase F-1) | Kode ditulis; BELUM diuji (npm install tidak tersedia saat penulisan) |
 | Sinkronisasi progres ke akun | Belum |
-| Pertemanan, undangan, room, kelas langsung | Belum (rules sudah ada) |
+| Pertemanan (cari username, minta/terima/tolak, hapus, blokir, cermin RTDB) | Kode ditulis (F-2); BELUM diuji |
+| Presence, undangan bermain, room, kelas langsung, laporan | Belum (rules sudah ada) |
 | PWA / offline (service worker, IndexedDB) | Belum |
 | Deployment GitHub Pages | Belum diuji |
 
@@ -30,6 +31,7 @@ React 18, TypeScript, Vite 5, Tailwind 3, React Router (HashRouter), Firebase (A
 
 ## Berkas Fase F-1
 Baru: `src/services/firebase/auth.ts`, `src/hooks/useAuth.tsx`, `src/features/auth/{parts,RequireRole,LoginPage,RegisterPage}.tsx`, `src/features/parent/ChildAccounts.tsx`.
+Fase F-2 (Teman): `src/services/firebase/friends.ts`, `src/features/friends/FriendsPage.tsx`; `App.tsx` diubah (rute `teman`).
 Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/ModeLayout.tsx`, `src/pages/LandingPage.tsx`, `src/features/parent/ParentPages.tsx`, `firebase.json` (path rules), `README.md`.
 
 ## Masalah diketahui
