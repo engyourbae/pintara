@@ -1,5 +1,7 @@
 export { Button, ButtonLink, buttonClasses } from './Button';
 export { Card } from './Card';
+export { ChoiceGroup, CheckRow } from './Choice';
+export { ConfirmProvider, useConfirm, type ConfirmOptions } from './Confirm';
 export { Badge, SampleBadge } from './Badge';
 export { Icon, type IconName } from './Icon';
 export { ProgressBar } from './ProgressBar';
