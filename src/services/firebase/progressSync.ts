@@ -1,5 +1,6 @@
 import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore';
 import { sampleContents } from '@/data/sample';
+import { gameIdOfKey } from '@/data/missions';
 import { getProgress, progressActions, subscribeProgress } from '@/hooks/useProgress';
 import type { QuizBest } from '@/types';
 import { getDb } from './client';
@@ -89,6 +90,16 @@ async function pushClassResults(uid: string, pushed: Map<string, string>) {
         updatedAt: serverTimestamp(),
       });
       pushed.set(`${classId}:${quizId}`, sig);
+    }
+    // Game: dianggap "selesai" bila pernah dimainkan (skor > 0). Skor asli game tetap di perangkat.
+    const played = new Set(Object.entries(getProgress().gameBest).filter(([, v]) => v > 0).map(([k]) => gameIdOfKey(k)));
+    for (const gameId of played) {
+      const quizId = `game_${gameId}`;
+      if (pushed.get(`${classId}:${quizId}`) === 'ok') continue;
+      await setDoc(doc(db, 'classes', classId, 'results', `${quizId}_${uid}`), {
+        uid, quizId, score: 100, correct: 1, total: 1, updatedAt: serverTimestamp(),
+      });
+      pushed.set(`${classId}:${quizId}`, 'ok');
     }
   }
 }

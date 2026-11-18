@@ -1,6 +1,7 @@
 import {
-  collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where, writeBatch,
+  collection, deleteDoc, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where, writeBatch,
 } from 'firebase/firestore';
+import type { Mission } from '@/types';
 import type { ChildItem, ChildProgress, ChildSummary, ClassInfo, Grade, MemberRow, MemberStatus, MyMembership, ResultRow } from '@/types';
 import { getDb } from './client';
 
@@ -132,4 +133,60 @@ export async function loadChildProgress(child: ChildSummary): Promise<ChildProgr
     });
   });
   return { child, xp: prog.exists() && typeof prog.data().xp === 'number' ? prog.data().xp : 0, items: list };
+}
+
+// ───────── Misi kelas ─────────
+
+export async function listMissions(classId: string): Promise<Mission[]> {
+  const snap = await getDocs(collection(getDb(), 'classes', classId, 'quizzes'));
+  return snap.docs
+    .map((d) => {
+      const x = d.data();
+      const t = x.createdAt && typeof x.createdAt.toMillis === 'function' ? (x.createdAt.toMillis() as number) : 0;
+      return {
+        t,
+        m: {
+          id: d.id,
+          kind: x.kind === 'game' ? 'game' : 'quiz',
+          contentId: typeof x.contentId === 'string' ? x.contentId : '',
+          title: typeof x.title === 'string' ? x.title : 'Misi',
+          note: typeof x.note === 'string' ? x.note : '',
+        } as Mission,
+      };
+    })
+    .filter((r) => r.m.contentId)
+    .sort((a, b) => b.t - a.t)
+    .map((r) => r.m);
+}
+
+export async function addMission(classId: string, m: Omit<Mission, 'id'>): Promise<void> {
+  await setDoc(doc(collection(getDb(), 'classes', classId, 'quizzes')), {
+    title: m.title.slice(0, 100),
+    kind: m.kind,
+    contentId: m.contentId,
+    note: m.note.trim().slice(0, 200),
+    createdAt: serverTimestamp(),
+  });
+}
+
+export async function deleteMission(classId: string, id: string): Promise<void> {
+  await deleteDoc(doc(getDb(), 'classes', classId, 'quizzes', id));
+}
+
+// ───────── Kelas milik siswa ─────────
+
+export async function getClassForMember(classId: string): Promise<ClassInfo | null> {
+  const d = await getDoc(doc(getDb(), 'classes', classId));
+  return d.exists() ? toClass(d.id, d.data()) : null;
+}
+
+/** Hasil milik siswa sendiri di satu kelas (kunci hasil -> skor). */
+export async function myClassResults(classId: string, uid: string): Promise<Record<string, number>> {
+  const snap = await getDocs(query(collection(getDb(), 'classes', classId, 'results'), where('uid', '==', uid)));
+  const out: Record<string, number> = {};
+  snap.forEach((d) => {
+    const x = d.data();
+    if (typeof x.quizId === 'string' && typeof x.score === 'number') out[x.quizId] = x.score;
+  });
+  return out;
 }
