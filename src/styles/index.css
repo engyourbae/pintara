@@ -30,8 +30,11 @@
     /* Cegah zoom ganda-ketuk; gulir tetap normal. */
     touch-action: manipulation;
     scroll-behavior: smooth;
+    /* Matikan tarik-untuk-muat-ulang dan efek pantul di ujung halaman (terasa seperti aplikasi). */
+    overscroll-behavior: none;
   }
   body {
+    overscroll-behavior: none;
     @apply bg-krem font-sans text-tinta antialiased;
     /* Kertas bertitik halus, bukan gradien. */
     background-image: radial-gradient(rgba(42, 51, 40, 0.09) 1px, transparent 1px);
