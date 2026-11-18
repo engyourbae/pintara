@@ -54,3 +54,11 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Keduanya satu origin (github.io): penyimpanan & sesi login dipakai bersama. Isolasi penuh butuh subdomain sendiri.
 - Dev lokal: `http://localhost:5173/pintara/admin/` (atau sesuaikan VITE_BASE_PATH).
 - Service worker/PWA belum (Fase G); saat dibuat, scope admin harus `/admin/`.
+
+## Catatan F-11 (integrasi guru–murid–orang tua)
+- Kemajuan lokal kini per pemilik (`pintara:progress:v2:<uid|guest>`). `ProgressBridge` mengganti pemilik saat login/logout dan menjalankan `progressSync` (XP, hasil per kuis, hasil per kelas) ke Firestore. Hanya akun siswa yang disinkronkan.
+- Kelas nyata: `services/firebase/classes.ts` (buat kelas + kode dalam 1 batch, ganti nama/tingkat/arsip, gabung dengan kode, setujui/tolak/keluarkan). `class_members` kini memuat `displayName` (Rules diubah; WAJIB publish ulang).
+- Guru: Beranda/Kelas/Detail Kelas/Hasil memakai data nyata. "Coba" kuis memakai rute guru `/guru/kuis/:id` (pratinjau, tidak mencatat apa pun).
+- Orang tua: Beranda/Perkembangan membaca `learning_progress` anak.
+- Kelas langsung (`/guru/langsung`): acak nama, bagi kelompok, kuis tim; lokal di 1 perangkat.
+- Batas: belum diuji dengan Firebase nyata; sesi game tidak disinkronkan; nilai kelas hanya dari kuis yang dikerjakan online; `verified_teachers` RTDB tetap manual; avatar belum ditulis balik ke akun.
