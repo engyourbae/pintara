@@ -14,6 +14,15 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: { '@': path.resolve(__dirname, 'src') },
     },
+    // Dua aplikasi dari satu repo: utama (/) dan admin (/admin/). Masing-masing punya manifest & scope sendiri.
+    build: {
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          admin: path.resolve(__dirname, 'admin/index.html'),
+        },
+      },
+    },
     // Plugin PWA (vite-plugin-pwa) ditambahkan pada Fase G.
   };
 });
