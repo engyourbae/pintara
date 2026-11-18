@@ -99,3 +99,6 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Bank soal nyata di `src/data/bank/batches/*.json` (lihat `docs/BANK_SOAL.md`); `src/data/sample/index.ts` menggabungkan bank + sisa paket `contoh-*` (nama ekspor `sampleContents` dipertahankan). `isSampleContent` menentukan label `SampleBadge` di daftar belajar.
 - Tahap 1: 10 paket x 10 soal (100 soal). Belum ditinjau guru. Validator `validate-bank.mjs` dijalankan di `npm run typecheck` (otomatis di CI).
 - Tahap berikutnya ditambah bertahap; setelah bank memadai: sinkron skor game.
+
+## Catatan F20 (bank soal tahap 2)
+- `b02-sekolah-lanjutan.json`: 10 paket x 10 soal (total bank 200 soal, 20 paket). Paket contoh `contoh-mat-2` (perkalian) dan `contoh-mat-3` (pecahan) dihapus karena digantikan bank nyata. Belum ditinjau guru. Berikutnya: tahap 3 lalu sinkron skor game.
