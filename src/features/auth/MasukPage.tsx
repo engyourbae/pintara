@@ -20,7 +20,11 @@ export function MasukPage() {
   const navigate = useNavigate();
   const from = (useLocation().state as { from?: string } | null)?.from;
 
-  const [busy, setBusy] = useState<'' | 'google' | 'form' | 'guru-google' | 'guru-form'>('');
+  const [busy, setBusy] = useState<'' | 'google' | 'form' | 'baru-form' | 'guru-google' | 'guru-form'>('');
+  const [main, setMain] = useState<'masuk' | 'baru'>('masuk');
+  const [pName, setPName] = useState('');
+  const [pEmail, setPEmail] = useState('');
+  const [pPass, setPPass] = useState('');
   const [identifier, setIdentifier] = useState('');
   const [secret, setSecret] = useState('');
   const [error, setError] = useState('');
@@ -58,6 +62,24 @@ export function MasukPage() {
     setBusy('form');
     try {
       await signInWithIdentifier(identifier, secret);
+    } catch (err) {
+      setError(friendlyError(err));
+    } finally {
+      setBusy('');
+    }
+  }
+
+  async function submitParentNew(e: FormEvent) {
+    e.preventDefault();
+    setError('');
+    if (!passwordOk(pPass)) {
+      setError('Sandi belum memenuhi semua syarat.');
+      return;
+    }
+    setBusy('baru-form');
+    try {
+      await registerAdult({ role: 'parent', displayName: pName, email: pEmail, password: pPass });
+      await refresh();
     } catch (err) {
       setError(friendlyError(err));
     } finally {
@@ -183,32 +205,75 @@ export function MasukPage() {
       {profileCards}
 
       <section aria-label="Masuk orang tua dan murid" className="stiker space-y-4 rounded-3xl bg-gading p-5">
-        <GoogleButton big label="Masuk dengan Google" busy={busy === 'google'} onClick={() => void google('parent')} />
-        <p className="text-center text-sm text-tinta/80">Orang tua: baru pertama kali? Akun dibuat otomatis, tanpa sandi.</p>
-        <FormError message={error} />
-
-        <div className="flex items-center gap-3" aria-hidden>
-          <span className="h-0.5 flex-1 bg-tinta/20" />
-          <span className="text-sm font-bold text-tinta/70">atau murid</span>
-          <span className="h-0.5 flex-1 bg-tinta/20" />
+        <div role="radiogroup" aria-label="Masuk atau akun baru" className="grid grid-cols-2 gap-3">
+          {(['masuk', 'baru'] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              role="radio"
+              aria-checked={main === m}
+              onClick={() => { setMain(m); setError(''); }}
+              className={cn(
+                'h-14 rounded-2xl border-2 border-tinta px-3 font-display text-lg font-semibold transition active:translate-y-0.5',
+                main === m ? 'bg-aksen text-white shadow-stiker' : 'bg-white text-tinta',
+              )}
+            >
+              {m === 'masuk' ? 'Masuk' : 'Akun baru'}
+            </button>
+          ))}
         </div>
 
-        <form onSubmit={submitMain} className="space-y-3">
-          <Field
-            label="Nama pengguna atau email"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
-            autoComplete="username"
-            autoCapitalize="none"
-            spellCheck={false}
-            required
-            hint="Nama pengguna diberikan orang tuamu."
-          />
-          <PasswordField label="PIN atau sandi" value={secret} onChange={setSecret} autoComplete="current-password" required />
-          <Button type="submit" size="lg" block disabled={busy !== ''}>
-            {busy === 'form' ? 'Memeriksa…' : 'Masuk'}
-          </Button>
-        </form>
+        {main === 'masuk' ? (
+          <>
+            <GoogleButton big label="Masuk dengan Google" busy={busy === 'google'} onClick={() => void google('parent')} />
+            <p className="text-center text-sm text-tinta/80">Orang tua: masuk tanpa sandi dengan akun Google.</p>
+            <FormError message={error} />
+
+            <div className="flex items-center gap-3" aria-hidden>
+              <span className="h-0.5 flex-1 bg-tinta/20" />
+              <span className="text-sm font-bold text-tinta/70">atau murid</span>
+              <span className="h-0.5 flex-1 bg-tinta/20" />
+            </div>
+
+            <form onSubmit={submitMain} className="space-y-3">
+              <Field
+                label="Nama pengguna atau email"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                autoComplete="username"
+                autoCapitalize="none"
+                spellCheck={false}
+                required
+                hint="Nama pengguna diberikan orang tuamu."
+              />
+              <PasswordField label="PIN atau sandi" value={secret} onChange={setSecret} autoComplete="current-password" required />
+              <Button type="submit" size="lg" block disabled={busy !== ''}>
+                {busy === 'form' ? 'Memeriksa…' : 'Masuk'}
+              </Button>
+            </form>
+          </>
+        ) : (
+          <>
+            <p className="rounded-2xl bg-langit-100 px-4 py-3 text-sm">
+              Akun baru untuk <strong>orang tua atau wali</strong>. Murid tidak mendaftar sendiri: orang tua membuat akun anak setelah masuk, di menu Anak.
+            </p>
+            <GoogleButton big label="Daftar dengan Google" busy={busy === 'google'} onClick={() => void google('parent')} />
+            <div className="flex items-center gap-3" aria-hidden>
+              <span className="h-0.5 flex-1 bg-tinta/20" />
+              <span className="text-sm font-bold text-tinta/70">atau email</span>
+              <span className="h-0.5 flex-1 bg-tinta/20" />
+            </div>
+            <form onSubmit={submitParentNew} className="space-y-3">
+              <Field label="Nama" value={pName} onChange={(e) => setPName(e.target.value)} maxLength={30} autoComplete="name" required />
+              <Field label="Email" type="email" value={pEmail} onChange={(e) => setPEmail(e.target.value)} autoComplete="email" autoCapitalize="none" required hint="Email tidak ditampilkan kepada pengguna lain." />
+              <PasswordField label="Sandi" value={pPass} onChange={setPPass} autoComplete="new-password" required checklist />
+              <FormError message={error} />
+              <Button type="submit" size="lg" block disabled={busy !== '' || !passwordOk(pPass)}>
+                {busy === 'baru-form' ? 'Mendaftarkan…' : 'Daftar sebagai orang tua'}
+              </Button>
+            </form>
+          </>
+        )}
       </section>
 
       <Button variant="sekunder" size="lg" block onClick={() => setTeacherOpen(true)}>
