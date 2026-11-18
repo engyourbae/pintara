@@ -19,7 +19,7 @@ React 18, TypeScript, Vite 5, Tailwind 3, React Router (HashRouter), Firebase (A
 | Sinkronisasi progres ke akun | Belum |
 | Pertemanan (cari username, minta/terima/tolak, hapus, blokir, cermin RTDB) | Kode ditulis (F-2); BELUM diuji |
 | Presence, undangan bermain, room, kelas langsung, laporan | Belum (rules sudah ada) |
-| PWA / offline (service worker, IndexedDB) | Belum |
+| PWA / offline (service worker) | F18: selesai & diuji di Chromium (build nyata + reload offline). IndexedDB/Dexie: belum |
 | Deployment GitHub Pages | Belum diuji |
 
 ## Keputusan teknis
@@ -86,3 +86,11 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 
 ## Catatan F-17 (layar fokus)
 - `ModeLayout` menyembunyikan header dan bilah menu di layar aktivitas: siswa `belajar/:id`, `game/:id`, `kelas/:id`; guru `kuis/:id` (pratinjau). Keluar lewat tombol X/Kembali di halaman itu. Daftar (Belajar, Permainan) dan Beranda tetap memakai menu penuh.
+
+## Catatan F18 (Fase G: offline)
+- `vite.config.ts` plugin `serviceWorkerFile` menulis `dist/sw.js` saat build (tanpa vite-plugin-pwa): precache HTML, JS/CSS/lazy chunk aplikasi utama, font Latin, ikon. Admin & `version.json` tidak ditangani SW (selalu jaringan).
+- Strategi: navigasi = jaringan dulu, gagal -> `index.html` tersimpan; aset lain = cache dulu, lalu jaringan (disimpan). Cache bernama `pintara-<BUILD_ID>`; cache lama dihapus saat aktivasi.
+- Pembaruan: worker baru menunggu; `UpdatePrompt` (Perbarui) memanggil `applyWaitingUpdate()` (`src/services/offline/sw.ts`) -> SKIP_WAITING + muat ulang. Cek `version.json` tetap jadi cadangan.
+- `OfflineNotice` menampilkan penanda saat tanpa internet. Hanya didaftarkan di produksi (bukan dev).
+- Antrean sinkronisasi: kemajuan sudah local-first dan `progressSync` idempoten + berjalan lagi saat `online`, jadi Dexie belum dibutuhkan. Persistensi offline Firestore SDK sengaja BELUM diaktifkan (promise tulis menggantung saat offline dan mengganggu loop sinkronisasi).
+- Belum: sinkron skor game, data guru/orang tua offline (butuh jaringan), uji di perangkat/hosting nyata (BELUM DIKETAHUI).
