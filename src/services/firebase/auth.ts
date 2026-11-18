@@ -121,6 +121,7 @@ export async function fetchAppUser(uid: string): Promise<AppUser | null> {
     role,
     displayName: typeof d.displayName === 'string' ? d.displayName : '',
     teacherVerified: d.teacherVerified === true,
+    teacherRejected: d.teacherRejected === true,
     parentUid: typeof d.parentUid === 'string' ? d.parentUid : undefined,
     grade: toGrade(d.grade),
   };
