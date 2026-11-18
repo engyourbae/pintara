@@ -3,6 +3,8 @@ import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, Progre
 import { AVATARS, levelInfo, progressActions, totalStars, useProgress } from '@/hooks/useProgress';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleContents } from '@/data/sample';
+import { useAuth } from '@/hooks/useAuth';
+import { JoinClassCard } from './JoinClassCard';
 import { cn } from '@/utils/cn';
 
 const TIPS = [
@@ -12,8 +14,16 @@ const TIPS = [
   'Istirahat sejenak ya, minum air dan regangkan badan.',
 ];
 
+/** Nama tampilan: akun yang masuk memakai nama akunnya; mode tamu memakai nama lokal. */
+function useStudentName(local: string): { name: string; fromAccount: boolean } {
+  const { status, user } = useAuth();
+  const acc = status === 'ready' && user?.role === 'student' ? user.displayName : '';
+  return { name: acc || local, fromAccount: !!acc };
+}
+
 export function StudentHome() {
   const p = useProgress();
+  const { name } = useStudentName(p.name);
   const { level, into } = levelInfo(p.xp);
   const next = sampleContents.find((c) => (p.stars[c.id] ?? 0) < 3) ?? sampleContents[0];
   const tip = TIPS[new Date().getDate() % TIPS.length];
@@ -23,7 +33,7 @@ export function StudentHome() {
       <Card tone="hijau" className="flex items-center gap-4">
         <Mascot size={92} mood="hore" className="shrink-0 animate-goyang" />
         <div className="min-w-0 flex-1 space-y-2">
-          <h1 className="truncate text-2xl sm:text-3xl">Halo, {p.name || 'Teman'}!</h1>
+          <h1 className="truncate text-2xl sm:text-3xl">Halo, {name || 'Teman'}!</h1>
           <div className="flex flex-wrap gap-2">
             <Badge tone="kuning">Level {level}</Badge>
             <Badge tone="jingga">
@@ -53,6 +63,8 @@ export function StudentHome() {
         </ButtonLink>
       </div>
 
+      <JoinClassCard />
+
       <Card tone="catatan" className="flex items-start gap-3">
         <Icon name="bulb" size={26} className="mt-0.5 shrink-0" />
         <div>
@@ -67,6 +79,7 @@ export function StudentHome() {
 export function StudentProfile() {
   const confirm = useConfirm();
   const p = useProgress();
+  const { name: shownName, fromAccount } = useStudentName(p.name);
   const [name, setName] = useState(p.name);
   const { level } = levelInfo(p.xp);
   const avatar = AVATARS.find((a) => a.id === p.avatar) ?? AVATARS[0];
@@ -80,7 +93,7 @@ export function StudentProfile() {
           <Icon name={avatar.icon} size={40} />
         </span>
         <div className="min-w-0">
-          <p className="truncate font-display text-2xl font-semibold">{p.name || 'Teman'}</p>
+          <p className="truncate font-display text-2xl font-semibold">{shownName || 'Teman'}</p>
           <p className="text-tinta/80">
             Level {level} · {p.xp} XP · {totalStars(p)} bintang
           </p>
@@ -88,6 +101,7 @@ export function StudentProfile() {
       </Card>
 
       <Card className="space-y-4">
+        {!fromAccount && (
         <div>
           <label htmlFor="nama" className="block font-display text-lg font-semibold">
             Namamu
@@ -104,6 +118,7 @@ export function StudentProfile() {
             className="mt-1 h-12 w-full rounded-2xl border-2 border-tinta bg-white px-4 text-lg"
           />
         </div>
+        )}
         <fieldset>
           <legend className="font-display text-lg font-semibold">Pilih avatar</legend>
           <div className="mt-2 grid grid-cols-3 gap-3 sm:grid-cols-6">
@@ -129,7 +144,11 @@ export function StudentProfile() {
 
       <Card tone="langit" className="flex items-start gap-3">
         <Icon name="shield" size={26} className="mt-0.5 shrink-0" />
-        <p>Namamu dan kemajuanmu hanya tersimpan di perangkat ini. Belum ada akun dan tidak ada data yang dikirim ke internet.</p>
+        <p>
+          {fromAccount
+            ? 'Namamu mengikuti akunmu. Kemajuan belajarmu disalin ke akun agar guru dan orang tuamu bisa melihatnya.'
+            : 'Namamu dan kemajuanmu hanya tersimpan di perangkat ini. Belum masuk akun, jadi tidak ada data yang dikirim ke internet.'}
+        </p>
       </Card>
 
       <Button
