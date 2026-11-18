@@ -11,10 +11,10 @@ import { StudentHome, StudentProfile } from '@/features/student/StudentPages';
 import { LearnList, QuizPage } from '@/features/learning/LearnPages';
 import { GameMenu, KilatHitung } from '@/features/games/GamePages';
 import { SusunKata, TekaPola } from '@/features/games/WordPatternGames';
-import { TeacherClasses, TeacherHome, TeacherQuizzes, TeacherResults } from '@/features/teacher/TeacherPages';
-import { ParentHome, ParentProgress, ParentSettings } from '@/features/parent/ParentPages';
+import { ParentSettings } from '@/features/parent/ParentPages';
 import { ConfirmProvider } from '@/components/ui';
 import { AuthProvider } from '@/hooks/useAuth';
+import { ProgressBridge } from '@/features/auth/ProgressBridge';
 import { RequireRole } from '@/features/auth/RequireRole';
 import type { Role } from '@/types';
 
@@ -24,12 +24,22 @@ const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) 
 const FriendsPage = lazy(() => import('@/features/friends/FriendsPage').then((m) => ({ default: m.FriendsPage })));
 const ChildAccounts = lazy(() => import('@/features/parent/ChildAccounts').then((m) => ({ default: m.ChildAccounts })));
 
+// Halaman guru dan orang tua memakai data akun (Firestore), jadi dimuat saat dibutuhkan.
+const TeacherHome = lazy(() => import('@/features/teacher/TeacherPages').then((m) => ({ default: m.TeacherHome })));
+const TeacherClasses = lazy(() => import('@/features/teacher/TeacherPages').then((m) => ({ default: m.TeacherClasses })));
+const TeacherQuizzes = lazy(() => import('@/features/teacher/TeacherPages').then((m) => ({ default: m.TeacherQuizzes })));
+const TeacherResults = lazy(() => import('@/features/teacher/TeacherPages').then((m) => ({ default: m.TeacherResults })));
+const ClassDetail = lazy(() => import('@/features/teacher/ClassDetail').then((m) => ({ default: m.ClassDetail })));
+const ClassroomLive = lazy(() => import('@/features/classroom/ClassroomLive').then((m) => ({ default: m.ClassroomLive })));
+const ParentHome = lazy(() => import('@/features/parent/ChildProgress').then((m) => ({ default: m.ParentHome })));
+const ParentProgress = lazy(() => import('@/features/parent/ChildProgress').then((m) => ({ default: m.ParentProgress })));
+
 const ROLES: Role[] = ['student', 'teacher', 'parent'];
 
 /** Halaman yang sudah dibangun, per mode dan path menu. Yang belum ada jatuh ke PlaceholderPage. */
 const PAGES: Record<Role, Record<string, ReactElement>> = {
   student: { '': <StudentHome />, belajar: <LearnList />, game: <GameMenu />, teman: <FriendsPage />, profil: <StudentProfile /> },
-  teacher: { '': <TeacherHome />, kelas: <TeacherClasses />, kuis: <TeacherQuizzes />, hasil: <TeacherResults /> },
+  teacher: { '': <TeacherHome />, kelas: <TeacherClasses />, kuis: <TeacherQuizzes />, langsung: <ClassroomLive />, hasil: <TeacherResults /> },
   parent: { '': <ParentHome />, perkembangan: <ParentProgress />, anak: <ChildAccounts />, pengaturan: <ParentSettings /> },
 };
 
@@ -42,6 +52,7 @@ export function App() {
   return (
     <HashRouter>
       <AuthProvider>
+        <ProgressBridge />
         <ConfirmProvider>
         <Suspense fallback={<p role="status" className="p-6 text-center font-display text-xl">Memuat…</p>}>
           <Routes>
@@ -72,6 +83,12 @@ export function App() {
                     <Route key={item.path} path={item.path} element={page} />
                   );
                 })}
+                {role === 'teacher' && (
+                  <>
+                    <Route path="kelas/:classId" element={<ClassDetail />} />
+                    <Route path="kuis/:contentId" element={<QuizPage base={`${MODE_BASE.teacher}/kuis`} preview />} />
+                  </>
+                )}
                 {role === 'student' && (
                   <>
                     <Route path="belajar/:contentId" element={<QuizPage />} />

@@ -34,6 +34,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { path: '', label: 'Beranda', icon: 'home', phase: 'E' },
     { path: 'kelas', label: 'Kelas', icon: 'board', phase: 'E' },
     { path: 'kuis', label: 'Kuis', icon: 'pencil', phase: 'E' },
+    { path: 'langsung', label: 'Langsung', icon: 'play', phase: 'E' },
     { path: 'hasil', label: 'Hasil', icon: 'chart', phase: 'E' },
   ],
   parent: [
