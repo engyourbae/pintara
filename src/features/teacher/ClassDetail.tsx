@@ -5,13 +5,15 @@ import { Field, FormError } from '@/features/auth/parts';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleContents } from '@/data/sample';
 import { friendlyError } from '@/services/firebase/auth';
-import { listMembers, listResults, setMemberStatus, updateClass } from '@/services/firebase/classes';
+import { addMission, deleteMission, listMembers, listMissions, listResults, setMemberStatus, updateClass } from '@/services/firebase/classes';
+import { GAME_MISSIONS, resultKeyOf, resultTitle } from '@/data/missions';
 import { useAuth } from '@/hooks/useAuth';
 import { listMyClasses } from '@/services/firebase/classes';
 import type { Grade } from '@/types';
 import { useLoad } from './useTeacherData';
 
 const GRADES: Grade[] = [1, 2, 3, 4, 5, 6];
+type Kind = 'quiz' | 'game';
 
 export function ClassDetail() {
   const { classId = '' } = useParams();
@@ -20,6 +22,10 @@ export function ClassDetail() {
   const cls = useLoad(async () => (await listMyClasses(user?.uid ?? '')).find((c) => c.id === classId) ?? null, [classId, user?.uid]);
   const members = useLoad(() => listMembers(classId), [classId]);
   const results = useLoad(() => listResults(classId), [classId]);
+  const missions = useLoad(() => listMissions(classId), [classId]);
+  const [kind, setKind] = useState<Kind>('quiz');
+  const [pick, setPick] = useState('');
+  const [note, setNote] = useState('');
   const [name, setName] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -60,7 +66,7 @@ export function ClassDetail() {
     <Page>
       <PageHeader title={c.name} subtitle={`Kelas ${c.grade}${c.archived ? ' · diarsipkan' : ''}`} icon="board" />
       <Link to={`${MODE_BASE.teacher}/kelas`} className="inline-flex items-center gap-1 font-semibold underline">Semua kelas</Link>
-      <FormError message={error || members.error || results.error} />
+      <FormError message={error || members.error || results.error || missions.error} />
 
       <Card tone="catatan" className="space-y-2">
         <p className="font-display text-lg font-semibold">Kode gabung kelas</p>
@@ -89,6 +95,62 @@ export function ClassDetail() {
             }}
           >
             {c.archived ? 'Aktifkan kembali' : 'Arsipkan'}
+          </Button>
+        </div>
+      </Card>
+
+      <Card className="space-y-4">
+        <h2 className="text-xl">Misi kelas</h2>
+        <p className="text-sm text-tinta/80">Pilih kuis atau game yang harus dikerjakan murid. Misi muncul di halaman kelas murid.</p>
+        {(missions.data ?? []).length === 0 ? (
+          <p>Belum ada misi.</p>
+        ) : (
+          <ul className="space-y-2">
+            {(missions.data ?? []).map((m) => {
+              const done = new Set(res.filter((r) => r.quizId === resultKeyOf(m)).map((r) => r.uid));
+              const n = active.filter((a) => done.has(a.uid)).length;
+              return (
+                <li key={m.id} className="flex items-center justify-between gap-2 rounded-2xl border-2 border-tinta bg-white px-3 py-2">
+                  <div className="min-w-0">
+                    <p className="truncate font-semibold">{m.title}</p>
+                    <p className="text-sm text-tinta/75">{m.kind === 'quiz' ? 'Kuis' : 'Game'} · {n} dari {active.length} murid selesai</p>
+                  </div>
+                  <button
+                    type="button"
+                    aria-label={`Hapus misi ${m.title}`}
+                    disabled={busy}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border-2 border-tinta bg-gading"
+                    onClick={async () => {
+                      const ok = await confirm({ title: 'Hapus misi?', message: `Misi "${m.title}" hilang dari halaman murid. Hasil yang sudah ada tetap tersimpan.`, confirmLabel: 'Hapus', danger: true });
+                      if (ok) void act(() => deleteMission(c.id, m.id), missions.reload);
+                    }}
+                  >
+                    <Icon name="trash" size={18} />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <div className="space-y-3 rounded-2xl bg-kuning-100 p-3">
+          <ChoiceGroup<Kind> label="Tambah misi" value={kind} onChange={(k) => { setKind(k); setPick(''); }} options={[{ value: 'quiz', label: 'Kuis' }, { value: 'game', label: 'Game' }]} />
+          <ChoiceGroup
+            label={kind === 'quiz' ? 'Pilih kuis' : 'Pilih game'}
+            value={pick}
+            onChange={setPick}
+            options={kind === 'quiz' ? sampleContents.map((x) => ({ value: x.id, label: x.title.replace(' (contoh)', '') })) : GAME_MISSIONS.map((g) => ({ value: g.id, label: g.title }))}
+          />
+          <Field label="Pesan untuk murid (boleh kosong)" value={note} maxLength={200} onChange={(e) => setNote(e.target.value)} />
+          <Button
+            disabled={!pick || busy}
+            onClick={() =>
+              void act(
+                () => addMission(c.id, { kind, contentId: pick, title: resultTitle(kind === 'game' ? `game_${pick}` : pick), note }),
+                async () => { setPick(''); setNote(''); await missions.reload(); },
+              )
+            }
+          >
+            Beri misi
           </Button>
         </div>
       </Card>
@@ -146,7 +208,7 @@ export function ClassDetail() {
                   {mine.length > 0 && (
                     <ul className="flex flex-wrap gap-1.5 pt-1">
                       {mine.map((r) => (
-                        <li key={r.quizId}><Badge tone={r.score >= 67 ? 'hijau' : 'jingga'}>{(sampleContents.find((x) => x.id === r.quizId)?.title ?? r.quizId).replace(' (contoh)', '')}: {r.score}</Badge></li>
+                        <li key={r.quizId}><Badge tone={r.score >= 67 ? 'hijau' : 'jingga'}>{resultTitle(r.quizId)}: {r.score}</Badge></li>
                       ))}
                     </ul>
                   )}

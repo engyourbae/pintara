@@ -8,10 +8,11 @@ import { useAuth } from '@/hooks/useAuth';
 import { friendlyError } from '@/services/firebase/auth';
 import { createClass, listMembers, listMyClasses, listResults } from '@/services/firebase/classes';
 import type { Grade } from '@/types';
+import { resultTitle } from '@/data/missions';
 import { useLoad } from './useTeacherData';
 
 const GRADES: Grade[] = [1, 2, 3, 4, 5, 6];
-const titleOf = (id: string) => (sampleContents.find((c) => c.id === id)?.title ?? id).replace(' (contoh)', '');
+const titleOf = resultTitle;
 
 export function TeacherHome() {
   const { user } = useAuth();
