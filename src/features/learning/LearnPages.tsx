@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, SampleBadge, Sparkle } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { GROUPS, GROUP_BY_ID } from '@/data/groups';
-import { sampleCategories, sampleContents } from '@/data/sample';
+import { isSampleContent, sampleCategories, sampleContents } from '@/data/sample';
 import { progressActions, starsFor, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
 import type { CategoryGroup, LearningContent } from '@/types';
@@ -30,7 +30,7 @@ export function LearnList() {
 
   return (
     <Page>
-      <PageHeader title="Belajar" subtitle="Pilih paket kuis, kumpulkan bintang." icon="book" aside={<SampleBadge />} />
+      <PageHeader title="Belajar" subtitle="Pilih paket kuis, kumpulkan bintang." icon="book" aside={items.some(isSampleContent) ? <SampleBadge /> : undefined} />
 
       <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1" role="group" aria-label="Filter kelompok">
         {[{ id: 'semua' as const, label: 'Semua', icon: 'star' as const }, ...GROUPS].map((g) => (
