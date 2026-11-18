@@ -1,10 +1,20 @@
-import { Link, Navigate, NavLink, Outlet } from 'react-router-dom';
+import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { ButtonLink, Icon, Logo } from '@/components/ui';
 import { AccountMenu } from './AccountMenu';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
 import { cn } from '@/utils/cn';
 import type { Role } from '@/types';
+
+/**
+ * Layar fokus: saat sedang mengerjakan sesuatu (kuis, game, misi kelas, pratinjau kuis guru) header dan bilah
+ * menu disembunyikan supaya tampilan bersih dan tidak tersentuh tidak sengaja. Keluar lewat tombol di halaman itu.
+ */
+const FOCUS_SECTIONS: Record<Role, string[]> = {
+  student: ['belajar', 'game', 'kelas'],
+  teacher: ['kuis'],
+  parent: [],
+};
 
 /**
  * Kerangka bersama untuk semua mode. Karakter mode (warna) hanya lewat `data-mode`.
@@ -14,9 +24,20 @@ export function ModeLayout({ role }: { role: Role }) {
   const base = MODE_BASE[role];
   const { status, user } = useAuth();
   const signedIn = status === 'ready' && !!user;
+  const { pathname } = useLocation();
+  const rest = pathname.slice(base.length).split('/').filter(Boolean);
+  const focus = rest.length >= 2 && FOCUS_SECTIONS[role].includes(rest[0]);
 
   // Sudah masuk sebagai peran lain (mis. orang tua membuka /siswa): kembalikan ke ruangnya sendiri.
   if (signedIn && user && user.role !== role) return <Navigate to={MODE_BASE[user.role]} replace />;
+
+  if (focus) {
+    return (
+      <div data-mode={role} className="min-h-screen">
+        <Outlet />
+      </div>
+    );
+  }
 
   return (
     <div data-mode={role} className="flex min-h-screen flex-col pb-[84px] md:pb-0">
