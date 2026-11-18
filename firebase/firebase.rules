@@ -232,8 +232,9 @@ service cloud.firestore {
     match /class_members/{memberId} {
       allow read: if isUser(resource.data.uid) || isClassTeacher(resource.data.classId);
       allow create: if signedIn() && hasUserDoc() && myRole() == 'student'
-        && request.resource.data.keys().hasOnly(['classId', 'uid', 'code', 'status', 'joinedAt'])
-        && request.resource.data.keys().hasAll(['classId', 'uid', 'code', 'status', 'joinedAt'])
+        && request.resource.data.keys().hasOnly(['classId', 'uid', 'code', 'status', 'joinedAt', 'displayName'])
+        && request.resource.data.keys().hasAll(['classId', 'uid', 'code', 'status', 'joinedAt', 'displayName'])
+        && validName(request.resource.data.displayName)
         && request.resource.data.uid == request.auth.uid
         && memberId == request.resource.data.classId + '_' + request.resource.data.uid
         && request.resource.data.status == 'pending'
