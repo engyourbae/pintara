@@ -1,5 +1,6 @@
 import { Link, Navigate, NavLink, Outlet } from 'react-router-dom';
-import { Button, ButtonLink, Icon, Logo } from '@/components/ui';
+import { ButtonLink, Icon, Logo } from '@/components/ui';
+import { AccountMenu } from './AccountMenu';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
 import { cn } from '@/utils/cn';
@@ -11,7 +12,7 @@ import type { Role } from '@/types';
  */
 export function ModeLayout({ role }: { role: Role }) {
   const base = MODE_BASE[role];
-  const { status, user, signOut } = useAuth();
+  const { status, user } = useAuth();
   const signedIn = status === 'ready' && !!user;
 
   // Sudah masuk sebagai peran lain (mis. orang tua membuka /siswa): kembalikan ke ruangnya sendiri.
@@ -73,18 +74,13 @@ export function ModeLayout({ role }: { role: Role }) {
                 <span className="hidden sm:inline">Ganti ruang</span>
               </ButtonLink>
             )}
-            {signedIn && user && <span className="hidden max-w-[9rem] truncate font-display font-semibold lg:inline">{user.displayName}</span>}
             {(status === 'signedOut' || status === 'disabled') && (
               <ButtonLink to="/masuk" variant="aksi" className="h-11 px-4">
                 <Icon name="user" size={20} />
                 Masuk
               </ButtonLink>
             )}
-            {status === 'ready' && user && (
-              <Button variant="sekunder" className="h-11 px-4" onClick={() => void signOut()}>
-                Keluar
-              </Button>
-            )}
+            {signedIn && <AccountMenu />}
           </div>
         </div>
       </header>
