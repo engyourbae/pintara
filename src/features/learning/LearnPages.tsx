@@ -4,7 +4,7 @@ import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, Progre
 import { MODE_BASE } from '@/app/navigation';
 import { GROUPS, GROUP_BY_ID } from '@/data/groups';
 import { sampleCategories, sampleContents } from '@/data/sample';
-import { progressActions, useProgress } from '@/hooks/useProgress';
+import { progressActions, starsFor, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
 import type { CategoryGroup, LearningContent } from '@/types';
 
@@ -99,23 +99,30 @@ function shuffle<T>(arr: T[]): T[] {
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
-export function QuizPage() {
+interface QuizPageProps {
+  /** Path daftar kuis tempat tombol "keluar/kembali" mengarah. Bawaan: ruang siswa. */
+  base?: string;
+  /** Pratinjau guru: tidak mencatat XP/bintang/hasil apa pun. */
+  preview?: boolean;
+}
+
+export function QuizPage({ base = BELAJAR, preview = false }: QuizPageProps) {
   const { contentId } = useParams();
   const content = sampleContents.find((c) => c.id === contentId);
   if (!content) {
     return (
       <Page>
         <PageHeader title="Kuis tidak ditemukan" icon="book" />
-        <ButtonLink to={BELAJAR} variant="sekunder">
+        <ButtonLink to={base} variant="sekunder">
           Kembali ke daftar
         </ButtonLink>
       </Page>
     );
   }
-  return <Quiz key={content.id} content={content} />;
+  return <Quiz key={content.id} content={content} base={base} preview={preview} />;
 }
 
-function Quiz({ content }: { content: LearningContent }) {
+function Quiz({ content, base, preview }: { content: LearningContent; base: string; preview: boolean }) {
   const total = content.questions.length;
   // Urutan pilihan diacak sekali per sesi agar jawaban benar tidak selalu di tempat yang sama.
   const orders = useMemo(() => content.questions.map((q) => shuffle(q.options.map((_, i) => i))), [content]);
@@ -143,7 +150,11 @@ function Quiz({ content }: { content: LearningContent }) {
     }
     if (!recorded.current) {
       recorded.current = true;
-      setResult(progressActions.recordQuiz(content.id, correct, total));
+      setResult(
+        preview
+          ? { stars: starsFor(correct, total), gained: 0 }
+          : progressActions.recordQuiz(content.id, correct, total),
+      );
     }
   }
 
@@ -161,7 +172,8 @@ function Quiz({ content }: { content: LearningContent }) {
             ))}
           </div>
           <p className="text-lg">
-            Benar <strong>{correct}</strong> dari {total} soal · <strong>+{result.gained} XP</strong>
+            Benar <strong>{correct}</strong> dari {total} soal
+            {preview ? ' · pratinjau, tidak dicatat' : <> · <strong>+{result.gained} XP</strong></>}
           </p>
           <div className="grid w-full gap-3 sm:grid-cols-2">
             <Button
@@ -177,8 +189,8 @@ function Quiz({ content }: { content: LearningContent }) {
             >
               Ulangi
             </Button>
-            <ButtonLink to={BELAJAR} block>
-              Pelajaran lain
+            <ButtonLink to={base} block>
+              {preview ? 'Kembali ke daftar kuis' : 'Pelajaran lain'}
             </ButtonLink>
           </div>
         </Card>
@@ -188,9 +200,14 @@ function Quiz({ content }: { content: LearningContent }) {
 
   return (
     <Page className="max-w-2xl">
+      {preview && (
+        <p className="rounded-2xl border-2 border-tinta bg-kuning-100 px-3 py-2 text-sm font-bold">
+          Pratinjau guru: jawabanmu tidak mengubah data murid.
+        </p>
+      )}
       <div className="flex items-center gap-3">
         <Link
-          to={BELAJAR}
+          to={base}
           aria-label="Keluar dari kuis"
           className="stiker flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gading active:translate-y-1 active:shadow-none"
         >
