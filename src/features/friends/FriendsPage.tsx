@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, ButtonLink, Card, Icon, Page, PageHeader } from '@/components/ui';
+import { Button, ButtonLink, Card, Icon, Page, PageHeader, useConfirm } from '@/components/ui';
 import { Field, FormError } from '@/features/auth/parts';
 import { AVATARS } from '@/hooks/useProgress';
 import { useAuth } from '@/hooks/useAuth';
@@ -75,6 +75,7 @@ export function FriendsPage() {
 }
 
 function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
+  const confirm = useConfirm();
   const [allowed, setAllowed] = useState<boolean | null>(null);
   const [data, setData] = useState<FriendsData | null>(null);
   const [username, setUsername] = useState('');
@@ -198,17 +199,30 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
                     <Button
                       variant="sekunder"
                       disabled={busy}
-                      onClick={() => window.confirm(`Hapus ${p.username} dari teman?`) && void run(() => removeFriend(me, p.uid))}
+                      onClick={async () => {
+                        const ok = await confirm({
+                          title: `Hapus ${p.username}?`,
+                          message: 'Kalian tidak lagi berteman. Kalian bisa berteman lagi nanti.',
+                          confirmLabel: 'Hapus',
+                          danger: true,
+                        });
+                        if (ok) void run(() => removeFriend(me, p.uid));
+                      }}
                     >
                       Hapus
                     </Button>
                     <Button
                       variant="sekunder"
                       disabled={busy}
-                      onClick={() =>
-                        window.confirm(`Blokir ${p.username}? Dia tidak bisa mengirim permintaan atau mengajak bermain.`) &&
-                        void run(() => blockUser(me, p.uid))
-                      }
+                      onClick={async () => {
+                        const ok = await confirm({
+                          title: `Blokir ${p.username}?`,
+                          message: 'Dia tidak bisa mengirim permintaan atau mengajakmu bermain. Kamu bisa membuka blokir kapan saja.',
+                          confirmLabel: 'Blokir',
+                          danger: true,
+                        });
+                        if (ok) void run(() => blockUser(me, p.uid));
+                      }}
                     >
                       Blokir
                     </Button>
