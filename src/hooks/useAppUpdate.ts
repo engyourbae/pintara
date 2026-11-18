@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { hasWaitingUpdate, subscribeWaiting } from '@/services/offline/sw';
 
 const CHECK_EVERY_MS = 10 * 60 * 1000;
 
@@ -9,6 +10,9 @@ const CHECK_EVERY_MS = 10 * 60 * 1000;
  */
 export function useAppUpdate(): string | null {
   const [latest, setLatest] = useState<string | null>(null);
+  const [swWaiting, setSwWaiting] = useState(hasWaitingUpdate());
+
+  useEffect(() => subscribeWaiting(() => setSwWaiting(hasWaitingUpdate())), []);
 
   useEffect(() => {
     const current = typeof __BUILD_ID__ === 'string' ? __BUILD_ID__ : '';
@@ -42,5 +46,5 @@ export function useAppUpdate(): string | null {
     };
   }, []);
 
-  return latest;
+  return latest ?? (swWaiting ? 'sw' : null);
 }
