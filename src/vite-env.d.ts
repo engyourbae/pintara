@@ -14,3 +14,6 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/** ID build (diisi vite.config.ts). 'dev' tidak ada; hanya didefinisikan saat build/serve. */
+declare const __BUILD_ID__: string;
