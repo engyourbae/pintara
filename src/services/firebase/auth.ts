@@ -2,10 +2,12 @@ import { deleteApp, FirebaseError, initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   deleteUser,
+  GoogleAuthProvider,
   inMemoryPersistence,
   initializeAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   type User,
 } from 'firebase/auth';
@@ -76,6 +78,12 @@ export function friendlyError(e: unknown): string {
       case 'auth/network-request-failed':
       case 'unavailable':
         return 'Tidak ada koneksi internet. Coba lagi saat online.';
+      case 'auth/popup-blocked':
+        return 'Jendela masuk Google diblokir peramban. Izinkan pop-up untuk situs ini lalu coba lagi.';
+      case 'auth/unauthorized-domain':
+        return 'Alamat situs ini belum diizinkan untuk masuk dengan Google. Tambahkan di Firebase Console > Authentication > Settings > Authorized domains.';
+      case 'auth/account-exists-with-different-credential':
+        return 'Email ini sudah terdaftar dengan cara masuk lain. Masuk dengan email dan sandi.';
       case 'auth/operation-not-allowed':
         return 'Masuk dengan email/sandi belum diaktifkan di Firebase Console (Authentication > Sign-in method).';
       case 'permission-denied':
@@ -99,6 +107,38 @@ export function currentUid(): string | null {
 
 export async function signInWithIdentifier(identifier: string, secret: string): Promise<void> {
   await signInWithEmailAndPassword(getFirebaseAuth(), identifierToEmail(identifier), secret);
+}
+
+/**
+ * Masuk dengan akun Google (tanpa sandi). Bila akun belum punya profil, profil dibuat otomatis
+ * dengan peran `newRole` (orang tua, atau guru yang masih harus diverifikasi pengelola).
+ * Peran akun yang sudah ada tidak pernah diubah. Mengembalikan false bila pengguna menutup jendela Google.
+ */
+export async function signInWithGoogle(newRole: 'parent' | 'teacher'): Promise<boolean> {
+  const auth = getFirebaseAuth();
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
+  let uid: string;
+  let rawName: string;
+  try {
+    const cred = await signInWithPopup(auth, provider);
+    uid = cred.user.uid;
+    rawName = (cred.user.displayName || cred.user.email?.split('@')[0] || '').trim();
+  } catch (e) {
+    if (e instanceof FirebaseError && (e.code === 'auth/popup-closed-by-user' || e.code === 'auth/cancelled-popup-request')) return false;
+    throw e;
+  }
+  const db = getDb();
+  try {
+    if ((await getDoc(doc(db, 'users', uid))).exists()) return true;
+    const displayName = (rawName || (newRole === 'teacher' ? 'Guru' : 'Orang tua')).slice(0, 30);
+    await setDoc(doc(db, 'users', uid), { role: newRole, displayName, teacherVerified: false, createdAt: serverTimestamp() });
+    if (newRole === 'parent') await setDoc(doc(db, 'parent_accounts', uid), { createdAt: serverTimestamp() });
+  } catch (e) {
+    await signOut(auth).catch(() => undefined);
+    throw e;
+  }
+  return true;
 }
 
 export async function signOutUser(): Promise<void> {
