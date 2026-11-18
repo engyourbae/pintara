@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, Stat } from '@/components/ui';
+import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, Stat, useConfirm } from '@/components/ui';
 import { AVATARS, levelInfo, progressActions, totalStars, useProgress } from '@/hooks/useProgress';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleContents } from '@/data/sample';
@@ -65,6 +65,7 @@ export function StudentHome() {
 }
 
 export function StudentProfile() {
+  const confirm = useConfirm();
   const p = useProgress();
   const [name, setName] = useState(p.name);
   const { level } = levelInfo(p.xp);
@@ -133,8 +134,14 @@ export function StudentProfile() {
 
       <Button
         variant="sekunder"
-        onClick={() => {
-          if (window.confirm('Hapus semua kemajuan belajar di perangkat ini?')) {
+        onClick={async () => {
+          const ok = await confirm({
+            title: 'Hapus kemajuan?',
+            message: 'Nama, XP, bintang, dan skor game di perangkat ini akan dihapus dan tidak bisa dikembalikan.',
+            confirmLabel: 'Hapus',
+            danger: true,
+          });
+          if (ok) {
             progressActions.reset();
             setName('');
           }
