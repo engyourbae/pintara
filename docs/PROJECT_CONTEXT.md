@@ -69,3 +69,8 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Sesi tetap (persistensi bawaan Firebase). `/` dan `/ruang` langsung diarahkan ke ruang peran bila sudah masuk (`GuestOnly`); logo di ModeLayout menuju beranda ruangnya; "Ganti ruang" disembunyikan saat masuk; akun yang membuka ruang peran lain dikembalikan ke ruangnya.
 - Aplikasi admin tetap terpisah; `LoginPage` (dengan prop `home`) kini juga punya tombol Google.
 - Akun anak tidak bisa memakai Google (tidak punya email); tetap nama pengguna + PIN.
+
+## Catatan F-13 (misi kelas)
+- Guru memberi "misi" (kuis atau game) per kelas di Detail Kelas. Disimpan di `classes/{id}/quizzes` (Rules diperketat: field wajib, tanpa update). Murid membukanya di `/siswa/kelas/:classId` (dari kartu "Kelasku").
+- Status misi: kuis dari hasil terbaik (lokal + `results`); game dianggap selesai bila pernah dimainkan (skor>0), disinkronkan sebagai hasil `game_<id>` skor 100. Skor asli game tidak dikirim.
+- Belum ada: tenggat, kunci jawaban kuis buatan guru sendiri, notifikasi misi baru. WAJIB publish ulang Firestore Rules.
