@@ -3,12 +3,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, ButtonLink, Card, Icon, Mascot } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
-import { friendlyError, signInWithIdentifier } from '@/services/firebase/auth';
-import { AuthShell, Field, FormError, PasswordField } from './parts';
+import { friendlyError, signInWithGoogle, signInWithIdentifier } from '@/services/firebase/auth';
+import { AuthShell, Field, FormError, GoogleButton, PasswordField } from './parts';
 
 /** `home` dipakai aplikasi admin: tujuan setelah masuk, tanpa tautan daftar/tamu. */
 export function LoginPage({ home }: { home?: string } = {}) {
-  const { status, user, signOut } = useAuth();
+  const { status, user, signOut, refresh } = useAuth();
   const navigate = useNavigate();
   const from = (useLocation().state as { from?: string } | null)?.from;
   const [identifier, setIdentifier] = useState('');
@@ -23,6 +23,18 @@ export function LoginPage({ home }: { home?: string } = {}) {
       navigate(home ?? (from && from.startsWith(base) ? from : base), { replace: true });
     }
   }, [status, user, from, home, navigate]);
+
+  async function google() {
+    setError('');
+    setBusy(true);
+    try {
+      if (await signInWithGoogle('parent')) await refresh();
+    } catch (err) {
+      setError(friendlyError(err));
+    } finally {
+      setBusy(false);
+    }
+  }
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -69,6 +81,7 @@ export function LoginPage({ home }: { home?: string } = {}) {
       )}
       {status === 'error' && <FormError message="Profil akun belum bisa dimuat. Periksa koneksi dan Security Rules." />}
 
+      {home && <GoogleButton big label="Masuk dengan Google" busy={busy} onClick={() => void google()} />}
       <form onSubmit={submit} className="stiker space-y-4 rounded-3xl bg-gading p-5">
         <Field
           label="Nama pengguna atau email"
