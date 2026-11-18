@@ -1,11 +1,9 @@
-import { ref, remove, set } from 'firebase/database';
 import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
-import { getDb, getRtdb } from './client';
-import { UserFacingError } from './auth';
+import { getDb, getFirebaseAuth } from './client';
 
 /**
- * Layanan admin. Hak admin berasal dari dokumen `admins/{uid}` (dibuat manual di Console) dan
- * ditegakkan Security Rules; pengecekan di sini hanya agar tampilan tepat.
+ * Layanan admin. Hak admin berasal dari dokumen Firestore `admins/{uid}` atau `admins/{email}`
+ * (dibuat manual di Console) dan ditegakkan Security Rules; pengecekan di sini hanya agar tampilan tepat.
  */
 
 export type TeacherState = 'pending' | 'approved' | 'rejected';
@@ -18,7 +16,10 @@ export interface TeacherRow {
 }
 
 export async function isAdmin(uid: string): Promise<boolean> {
-  return (await getDoc(doc(getDb(), 'admins', uid))).exists();
+  const db = getDb();
+  if ((await getDoc(doc(db, 'admins', uid))).exists()) return true;
+  const email = getFirebaseAuth().currentUser?.email?.toLowerCase();
+  return email ? (await getDoc(doc(db, 'admins', email))).exists() : false;
 }
 
 export async function listTeachers(): Promise<TeacherRow[]> {
@@ -37,19 +38,10 @@ export async function listTeachers(): Promise<TeacherRow[]> {
     .sort((a, b) => (b.createdAt?.getTime() ?? 0) - (a.createdAt?.getTime() ?? 0));
 }
 
-/** Firestore dulu (sumber kebenaran), lalu Realtime Database (dipakai rules kelas langsung). */
-export async function setTeacherState(uid: string, state: 'approved' | 'rejected' | 'pending'): Promise<void> {
+/** Hanya Firestore. Node RTDB `verified_teachers` baru diperlukan saat kelas langsung dibangun. */
+export async function setTeacherState(uid: string, state: TeacherState): Promise<void> {
   await updateDoc(doc(getDb(), 'users', uid), {
     teacherVerified: state === 'approved',
     teacherRejected: state === 'rejected',
   });
-  try {
-    const node = ref(getRtdb(), `verified_teachers/${uid}`);
-    if (state === 'approved') await set(node, true);
-    else await remove(node);
-  } catch {
-    throw new UserFacingError(
-      'Status tersimpan di Firestore, tetapi gagal menulis Realtime Database. Periksa rules Realtime Database (node verified_teachers) lalu coba lagi.',
-    );
-  }
 }
