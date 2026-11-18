@@ -48,7 +48,7 @@ export async function createClass(teacherUid: string, name: string, grade: Grade
 }
 
 export async function updateClass(id: string, patch: { name?: string; grade?: Grade; archived?: boolean }): Promise<void> {
-  const clean: Record<string, unknown> = { ...patch };
+  const clean: { name?: string; grade?: Grade; archived?: boolean } = { ...patch };
   if (typeof patch.name === 'string') clean.name = patch.name.trim();
   await updateDoc(doc(getDb(), 'classes', id), clean);
 }
