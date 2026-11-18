@@ -122,3 +122,13 @@ export interface ChildProgress {
   xp: number;
   items: ChildItem[];
 }
+
+/** Misi kelas dari guru: mengerjakan satu paket kuis atau memainkan satu game. */
+export interface Mission {
+  id: string;
+  kind: 'quiz' | 'game';
+  /** Id paket kuis, atau id game (kilat-hitung | susun-kata | teka-pola). */
+  contentId: string;
+  title: string;
+  note: string;
+}
