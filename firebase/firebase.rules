@@ -28,9 +28,13 @@ service cloud.firestore {
       return signedIn() && userData(childUid).get('parentUid', '') == request.auth.uid;
     }
 
-    // Admin = punya dokumen admins/{uid}. Dokumen itu hanya bisa dibuat manual lewat Firebase Console.
+    // Admin = ada dokumen admins/{uid} ATAU admins/{email-akun}. Dokumen dibuat manual lewat Firebase Console,
+    // sehingga email admin tersimpan di Firestore, bukan di file rules/GitHub.
     function isAdmin() {
-      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+      return signedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        || ('email' in request.auth.token
+            && exists(/databases/$(database)/documents/admins/$(request.auth.token.email))));
     }
 
     function validName(s) { return s is string && s.size() >= 1 && s.size() <= 30; }
@@ -85,8 +89,9 @@ service cloud.firestore {
     }
 
     // Penanda admin. Hanya bisa dibaca pemiliknya; dibuat manual lewat Console (tidak ada penulisan dari klien).
-    match /admins/{uid} {
-      allow get: if isUser(uid);
+    match /admins/{adminId} {
+      allow get: if signedIn() && (request.auth.uid == adminId
+        || ('email' in request.auth.token && request.auth.token.email == adminId));
       allow list, write: if false;
     }
 
