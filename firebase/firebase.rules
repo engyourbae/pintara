@@ -28,6 +28,11 @@ service cloud.firestore {
       return signedIn() && userData(childUid).get('parentUid', '') == request.auth.uid;
     }
 
+    // Admin = punya dokumen admins/{uid}. Dokumen itu hanya bisa dibuat manual lewat Firebase Console.
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
     function validName(s) { return s is string && s.size() >= 1 && s.size() <= 30; }
 
     function pairId(a, b) { return a < b ? a + '_' + b : b + '_' + a; }
@@ -60,16 +65,29 @@ service cloud.firestore {
     }
 
     match /users/{uid} {
-      allow get: if isUser(uid) || (signedIn() && resource.data.get('parentUid', '') == request.auth.uid);
-      allow list: if false;
+      allow get: if isUser(uid) || isAdmin() || (signedIn() && resource.data.get('parentUid', '') == request.auth.uid);
+      // Hanya admin yang boleh melihat daftar akun (untuk menyetujui guru).
+      allow list: if isAdmin();
       allow create: if isUser(uid) && validNewUser(uid);
       // Role, teacherVerified, parentUid tidak dapat diubah oleh pengguna.
-      allow update: if isUser(uid)
+      allow update: if (isUser(uid)
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['displayName', 'grade'])
         && validName(request.resource.data.displayName)
         && (!('grade' in request.resource.data.keys())
-            || (request.resource.data.grade is int && request.resource.data.grade >= 1 && request.resource.data.grade <= 6));
+            || (request.resource.data.grade is int && request.resource.data.grade >= 1 && request.resource.data.grade <= 6)))
+        // Admin hanya boleh menyetujui/menolak GURU: mengubah teacherVerified dan teacherRejected saja.
+        || (isAdmin()
+          && resource.data.role == 'teacher'
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['teacherVerified', 'teacherRejected'])
+          && request.resource.data.teacherVerified is bool
+          && request.resource.data.teacherRejected is bool);
       allow delete: if isUser(uid) || (signedIn() && resource.data.get('parentUid', '') == request.auth.uid);
+    }
+
+    // Penanda admin. Hanya bisa dibaca pemiliknya; dibuat manual lewat Console (tidak ada penulisan dari klien).
+    match /admins/{uid} {
+      allow get: if isUser(uid);
+      allow list, write: if false;
     }
 
     // Pencarian teman: username -> uid. Hanya get (tidak bisa di-list). Unik karena create-only.
