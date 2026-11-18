@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { Badge, Button, Card, Icon, Logo } from '@/components/ui';
+import { Badge, Button, Card, Icon, Logo, useConfirm, type ConfirmOptions } from '@/components/ui';
 import { FormError } from '@/features/auth/parts';
 import { useAuth } from '@/hooks/useAuth';
 import { friendlyError } from '@/services/firebase/auth';
@@ -64,6 +64,7 @@ function Section({
 
 export function AdminPage() {
   const { status, user } = useAuth();
+  const confirm = useConfirm();
   const [allowed, setAllowed] = useState<boolean | null>(null);
   const [rows, setRows] = useState<TeacherRow[] | null>(null);
   const [error, setError] = useState('');
@@ -91,8 +92,8 @@ export function AdminPage() {
       });
   }, [status, user, reload]);
 
-  async function change(t: TeacherRow, state: TeacherState, confirmText?: string) {
-    if (confirmText && !window.confirm(confirmText)) return;
+  async function change(t: TeacherRow, state: TeacherState, ask?: ConfirmOptions) {
+    if (ask && !(await confirm(ask))) return;
     setBusy(true);
     setError('');
     try {
@@ -147,7 +148,7 @@ export function AdminPage() {
                   <Icon name="check" size={20} />
                   Setujui
                 </Button>
-                <Button variant="sekunder" disabled={busy} onClick={() => void change(t, 'rejected', `Tolak ${t.displayName}?`)}>
+                <Button variant="sekunder" disabled={busy} onClick={() => void change(t, 'rejected', { title: `Tolak ${t.displayName}?`, message: 'Guru ini tidak akan bisa memakai Ruang Guru. Bisa disetujui lagi nanti.', confirmLabel: 'Tolak', danger: true })}>
                   Tolak
                 </Button>
               </>
@@ -159,7 +160,7 @@ export function AdminPage() {
             rows={by('approved')}
             busy={busy}
             actions={(t) => (
-              <Button variant="sekunder" disabled={busy} onClick={() => void change(t, 'pending', `Cabut akses ${t.displayName}?`)}>
+              <Button variant="sekunder" disabled={busy} onClick={() => void change(t, 'pending', { title: `Cabut akses ${t.displayName}?`, message: 'Guru kembali ke daftar menunggu persetujuan.', confirmLabel: 'Cabut', danger: true })}>
                 Cabut
               </Button>
             )}
