@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { Badge, Button, Card } from '@/components/ui';
+import { MODE_BASE } from '@/app/navigation';
 import { Field, FormError } from '@/features/auth/parts';
 import { useAuth } from '@/hooks/useAuth';
 import { friendlyError } from '@/services/firebase/auth';
@@ -54,9 +56,18 @@ export function JoinClassCard() {
       {visible.length > 0 && (
         <ul className="space-y-2">
           {visible.map((m) => (
-            <li key={m.classId} className="flex items-center justify-between gap-2">
-              <span className="font-semibold">{m.status === 'active' ? (m.className ?? 'Kelas') : 'Kelas (menunggu guru)'}</span>
-              <Badge tone={m.status === 'active' ? 'hijau' : 'kuning'}>{m.status === 'active' ? 'Anggota' : 'Menunggu persetujuan'}</Badge>
+            <li key={m.classId}>
+              {m.status === 'active' ? (
+                <Link to={`${MODE_BASE.student}/kelas/${m.classId}`} className="stiker flex min-h-[56px] items-center justify-between gap-2 rounded-2xl bg-gading px-4 py-2 active:translate-y-1 active:shadow-none">
+                  <span className="font-display text-lg font-semibold">{m.className ?? 'Kelas'}</span>
+                  <Badge tone="hijau">Buka misi →</Badge>
+                </Link>
+              ) : (
+                <div className="flex items-center justify-between gap-2 px-1">
+                  <span className="font-semibold">Kelas (menunggu guru)</span>
+                  <Badge tone="kuning">Menunggu persetujuan</Badge>
+                </div>
+              )}
             </li>
           ))}
         </ul>
