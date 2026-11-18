@@ -2,9 +2,9 @@
 
 Status rules: **ditulis, belum diuji di emulator**. Uji dulu sebelum dipakai publik (lihat bagian Pengujian).
 
-## Admin (persetujuan guru lewat layar `#/admin`)
+## Admin (aplikasi terpisah: `/pintara/admin/`)
 Satu kali: daftar akun admin seperti biasa, lalu di Firestore buat koleksi `admins` dengan dokumen ber-ID = **email akun admin** (huruf kecil, salin persis) dan satu field apa saja (mis. `ok` = true). Email admin hanya ada di Firestore, tidak di repo. (ID berupa UID juga diterima.)
-Buka `#/admin`: guru baru muncul di "Menunggu persetujuan" dan bisa disetujui/ditolak/dicabut. Rules mencegah siapa pun membuat dokumen `admins` dari klien.
+Buka `https://<user>.github.io/<repo>/admin/` (aplikasi PINTARA Admin, dipasang terpisah dari aplikasi utama): guru baru muncul di "Menunggu persetujuan" dan bisa disetujui/ditolak/dicabut. Rules mencegah siapa pun membuat dokumen `admins` dari klien.
 Risiko: email pendaftaran belum diverifikasi; jangan hapus akun admin (email yang sama bisa didaftarkan orang lain). Perkuat dengan verifikasi email / Masuk dengan Google nanti.
 Catatan: layar admin hanya mengubah Firestore. Node RTDB `verified_teachers/{uid}` masih manual dan baru dibutuhkan saat kelas langsung dibangun.
 Rules Firestore harus di-publish ulang setelah pembaruan ini.

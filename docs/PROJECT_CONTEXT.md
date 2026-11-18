@@ -48,3 +48,9 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Config Firebase (publik) kini dibaca dari `.env.production` (di-commit); workflow tidak lagi memakai GitHub Variables untuk Firebase. Penyebab login "belum tersedia" di GitHub Pages: variabel kosong saat build.
 - Halaman `/ruang` (pilih ruang) + tombol "Ganti ruang" di header tiap mode.
 - Zoom dinonaktifkan (viewport + gesturestart). Catatan aksesibilitas: pengguna low-vision tidak bisa cubit-zoom.
+
+## Catatan F-10 (aplikasi admin terpisah)
+- Dua aplikasi dari satu repo (Vite multi-page): utama `/` dan admin `/admin/` (`admin/index.html`, `src/admin/main.tsx`, `public/admin/*` dengan manifest & ikon sendiri). Kode admin tidak ada di bundel aplikasi utama.
+- Keduanya satu origin (github.io): penyimpanan & sesi login dipakai bersama. Isolasi penuh butuh subdomain sendiri.
+- Dev lokal: `http://localhost:5173/pintara/admin/` (atau sesuaikan VITE_BASE_PATH).
+- Service worker/PWA belum (Fase G); saat dibuat, scope admin harus `/admin/`.
