@@ -52,6 +52,8 @@ export interface AppUser {
   displayName: string;
   /** Guru hanya sah bila true. Diubah manual lewat Firebase Console. */
   teacherVerified: boolean;
+  /** Guru yang ditolak admin. */
+  teacherRejected?: boolean;
   /** Hanya untuk akun anak. */
   parentUid?: string;
   grade?: Grade;
