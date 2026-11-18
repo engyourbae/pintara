@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, ButtonLink, Card, Icon, Mascot } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
