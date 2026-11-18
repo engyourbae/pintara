@@ -191,8 +191,16 @@ service cloud.firestore {
       // Kuis buatan guru. Soal TANPA kunci jawaban; kunci ada di quiz_keys (hanya guru).
       match /quizzes/{quizId} {
         allow read: if isClassTeacher(classId) || isActiveMember(classId);
-        allow create, update: if isClassTeacher(classId)
-          && request.resource.data.title is string && request.resource.data.title.size() <= 100;
+        // Dipakai sebagai "misi kelas": menunjuk paket kuis atau game yang harus dikerjakan murid.
+        allow create: if isClassTeacher(classId)
+          && request.resource.data.keys().hasOnly(['title', 'kind', 'contentId', 'note', 'createdAt'])
+          && request.resource.data.keys().hasAll(['title', 'kind', 'contentId', 'note', 'createdAt'])
+          && request.resource.data.title is string && request.resource.data.title.size() >= 1 && request.resource.data.title.size() <= 100
+          && request.resource.data.kind in ['quiz', 'game']
+          && request.resource.data.contentId is string && request.resource.data.contentId.size() >= 1 && request.resource.data.contentId.size() <= 60
+          && request.resource.data.note is string && request.resource.data.note.size() <= 200
+          && request.resource.data.createdAt == request.time;
+        allow update: if false;
         allow delete: if isClassTeacher(classId);
       }
       match /quiz_keys/{quizId} {
