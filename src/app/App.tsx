@@ -1,5 +1,5 @@
-import { lazy, Suspense, type ReactElement } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { lazy, Suspense, type ReactElement, type ReactNode } from 'react';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { MODE_BASE, NAV } from './navigation';
 import { ModeLayout } from '@/layouts/ModeLayout';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
@@ -13,13 +13,13 @@ import { GameMenu, KilatHitung } from '@/features/games/GamePages';
 import { SusunKata, TekaPola } from '@/features/games/WordPatternGames';
 import { ParentSettings } from '@/features/parent/ParentPages';
 import { ConfirmProvider } from '@/components/ui';
-import { AuthProvider } from '@/hooks/useAuth';
+import { AuthProvider, useAuth } from '@/hooks/useAuth';
 import { ProgressBridge } from '@/features/auth/ProgressBridge';
 import { RequireRole } from '@/features/auth/RequireRole';
 import type { Role } from '@/types';
 
 /** Halaman akun dimuat saat dibutuhkan (membawa SDK Firebase), supaya mode tamu tetap ringan. */
-const LoginPage = lazy(() => import('@/features/auth/LoginPage').then((m) => ({ default: m.LoginPage })));
+const MasukPage = lazy(() => import('@/features/auth/MasukPage').then((m) => ({ default: m.MasukPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
 const FriendsPage = lazy(() => import('@/features/friends/FriendsPage').then((m) => ({ default: m.FriendsPage })));
 const ChildAccounts = lazy(() => import('@/features/parent/ChildAccounts').then((m) => ({ default: m.ChildAccounts })));
@@ -43,6 +43,14 @@ const PAGES: Record<Role, Record<string, ReactElement>> = {
   parent: { '': <ParentHome />, perkembangan: <ParentProgress />, anak: <ChildAccounts />, pengaturan: <ParentSettings /> },
 };
 
+/** Halaman awal/pilih ruang hanya untuk yang belum masuk. Yang sudah masuk langsung ke ruangnya. */
+function GuestOnly({ children }: { children: ReactNode }) {
+  const { status, user } = useAuth();
+  if (status === 'loading') return <p role="status" className="p-6 text-center font-display text-xl">Memuat…</p>;
+  if (status === 'ready' && user) return <Navigate to={MODE_BASE[user.role]} replace />;
+  return <>{children}</>;
+}
+
 /**
  * HashRouter dipilih agar aman di GitHub Pages (tanpa fallback SPA) dan PWA.
  * Ruang guru dan orang tua dibatasi lewat <RequireRole> (peran dibaca dari Firestore). Ini hanya UX;
@@ -56,9 +64,9 @@ export function App() {
         <ConfirmProvider>
         <Suspense fallback={<p role="status" className="p-6 text-center font-display text-xl">Memuat…</p>}>
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/ruang" element={<ChooseSpacePage />} />
-            <Route path="/masuk" element={<LoginPage />} />
+            <Route path="/" element={<GuestOnly><LandingPage /></GuestOnly>} />
+            <Route path="/ruang" element={<GuestOnly><ChooseSpacePage /></GuestOnly>} />
+            <Route path="/masuk" element={<MasukPage />} />
             <Route path="/daftar" element={<RegisterPage />} />
             <Route path="/desain" element={<DesignSystemPage />} />
             {ROLES.map((role) => (
