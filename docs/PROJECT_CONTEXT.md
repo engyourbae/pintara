@@ -62,3 +62,10 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Orang tua: Beranda/Perkembangan membaca `learning_progress` anak.
 - Kelas langsung (`/guru/langsung`): acak nama, bagi kelompok, kuis tim; lokal di 1 perangkat.
 - Batas: belum diuji dengan Firebase nyata; sesi game tidak disinkronkan; nilai kelas hanya dari kuis yang dikerjakan online; `verified_teachers` RTDB tetap manual; avatar belum ditulis balik ke akun.
+
+## Catatan F-12 (halaman masuk 3-in-1)
+- `/masuk` kini `MasukPage`: besar = Google (orang tua; profil orang tua dibuat otomatis bila belum ada) + nama pengguna/PIN (murid) / email+sandi; kecil "Saya guru" = masuk/daftar guru (Google atau email; guru baru tetap menunggu verifikasi admin).
+- `signInWithGoogle(role)` di `services/firebase/auth.ts` memakai popup; tidak pernah mengubah peran akun yang sudah ada. Syarat Console: Authentication > Sign-in method > Google aktif, dan Settings > Authorized domains memuat `engyourbae.github.io`.
+- Sesi tetap (persistensi bawaan Firebase). `/` dan `/ruang` langsung diarahkan ke ruang peran bila sudah masuk (`GuestOnly`); logo di ModeLayout menuju beranda ruangnya; "Ganti ruang" disembunyikan saat masuk; akun yang membuka ruang peran lain dikembalikan ke ruangnya.
+- Aplikasi admin tetap terpisah; `LoginPage` (dengan prop `home`) kini juga punya tombol Google.
+- Akun anak tidak bisa memakai Google (tidak punya email); tetap nama pengguna + PIN.
