@@ -13,6 +13,7 @@ import { GameMenu, KilatHitung } from '@/features/games/GamePages';
 import { SusunKata, TekaPola } from '@/features/games/WordPatternGames';
 import { TeacherClasses, TeacherHome, TeacherQuizzes, TeacherResults } from '@/features/teacher/TeacherPages';
 import { ParentHome, ParentProgress, ParentSettings } from '@/features/parent/ParentPages';
+import { ConfirmProvider } from '@/components/ui';
 import { AuthProvider } from '@/hooks/useAuth';
 import { RequireRole } from '@/features/auth/RequireRole';
 import type { Role } from '@/types';
@@ -42,6 +43,7 @@ export function App() {
   return (
     <HashRouter>
       <AuthProvider>
+        <ConfirmProvider>
         <Suspense fallback={<p role="status" className="p-6 text-center font-display text-xl">Memuat…</p>}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -85,6 +87,7 @@ export function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
+        </ConfirmProvider>
       </AuthProvider>
     </HashRouter>
   );
