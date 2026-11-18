@@ -140,8 +140,8 @@ export function LandingPage() {
             <SampleBadge />
           </div>
           <p className="text-tinta/85">
-            {sampleCategories.length} kategori dalam {GROUPS.length} kelompok. Baru {sampleContents.length} paket kuis contoh yang bisa dicoba; isi
-            lengkap menyusul.
+            {sampleCategories.length} kategori dalam {GROUPS.length} kelompok. Sudah ada {sampleContents.length} paket kuis yang bisa dicoba; sebagian masih contoh dan isi
+            lengkap ditambah bertahap.
           </p>
           <div className="grid gap-4 md:grid-cols-2">
             {GROUPS.map((g) => (
