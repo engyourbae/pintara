@@ -68,3 +68,57 @@ export interface ChildSummary {
   multiplayerEnabled: boolean;
   dailyLimitMinutes: number;
 }
+
+/** Kemajuan terbaik satu paket kuis (disimpan per akun di perangkat, disinkronkan ke Firestore). */
+export interface QuizBest {
+  /** Persen 0-100 dari percobaan terbaik. */
+  score: number;
+  correct: number;
+  total: number;
+  attempts: number;
+}
+
+export type MemberStatus = 'pending' | 'active' | 'removed';
+
+export interface ClassInfo {
+  id: string;
+  name: string;
+  grade: Grade;
+  joinCode: string;
+  archived: boolean;
+}
+
+export interface MemberRow {
+  uid: string;
+  displayName: string;
+  status: MemberStatus;
+  groupId?: string;
+}
+
+export interface ResultRow {
+  uid: string;
+  quizId: string;
+  score: number;
+  correct: number;
+  total: number;
+}
+
+/** Keanggotaan kelas milik siswa. `className` hanya terbaca setelah guru menyetujui. */
+export interface MyMembership {
+  classId: string;
+  status: MemberStatus;
+  className?: string;
+}
+
+export interface ChildItem {
+  contentId: string;
+  bestScore: number;
+  attempts: number;
+  lastPlayedAt: Date | null;
+}
+
+export interface ChildProgress {
+  child: ChildSummary;
+  xp: number;
+  items: ChildItem[];
+}
