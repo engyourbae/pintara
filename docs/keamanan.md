@@ -3,11 +3,11 @@
 Status rules: **ditulis, belum diuji di emulator**. Uji dulu sebelum dipakai publik (lihat bagian Pengujian).
 
 ## Admin (persetujuan guru lewat layar `#/admin`)
-Satu kali, tandai akun admin (daftar dulu seperti biasa, lalu catat UID di Authentication > Users):
-1. Firestore: buat koleksi `admins`, dokumen ber-ID = UID admin, isi field apa saja (mis. `ok` = true).
-2. Realtime Database: buat `admins/<UID>` = `true`.
-Setelah itu buka `#/admin`, guru baru muncul di "Menunggu persetujuan" dan bisa disetujui/ditolak/dicabut. Rules mencegah siapa pun mengangkat dirinya jadi admin.
-Rules harus di-publish ulang (Firestore & Realtime Database) setelah pembaruan ini.
+Satu kali: daftar akun admin seperti biasa, lalu di Firestore buat koleksi `admins` dengan dokumen ber-ID = **email akun admin** (huruf kecil, salin persis) dan satu field apa saja (mis. `ok` = true). Email admin hanya ada di Firestore, tidak di repo. (ID berupa UID juga diterima.)
+Buka `#/admin`: guru baru muncul di "Menunggu persetujuan" dan bisa disetujui/ditolak/dicabut. Rules mencegah siapa pun membuat dokumen `admins` dari klien.
+Risiko: email pendaftaran belum diverifikasi; jangan hapus akun admin (email yang sama bisa didaftarkan orang lain). Perkuat dengan verifikasi email / Masuk dengan Google nanti.
+Catatan: layar admin hanya mengubah Firestore. Node RTDB `verified_teachers/{uid}` masih manual dan baru dibutuhkan saat kelas langsung dibangun.
+Rules Firestore harus di-publish ulang setelah pembaruan ini.
 
 ## Langkah admin manual (cara lama, tidak perlu lagi bila memakai layar admin)
 1. **Verifikasi guru.** Guru mendaftar sendiri dengan `teacherVerified: false`. Setelah Anda memverifikasi orangnya, lakukan DUA hal di Firebase Console:
