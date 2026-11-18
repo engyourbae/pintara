@@ -76,7 +76,7 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Belum ada: tenggat, kunci jawaban kuis buatan guru sendiri, notifikasi misi baru. WAJIB publish ulang Firestore Rules.
 
 ## Catatan F-14 (rapikan masuk & akun)
-- `/masuk`: semua tombol setinggi `Button size="lg"` (h-14). "Saya guru" mengganti seluruh tampilan ke panel guru (naik ke atas) dengan tombol Kembali.
+- `/masuk` (orang tua/murid) punya pilihan Masuk | Akun baru (orang tua: Google atau email+sandi; murid tidak mendaftar sendiri). Semua tombol setinggi `Button size="lg"` (h-14). "Saya guru" mengganti seluruh tampilan ke panel guru (naik ke atas) dengan tombol Kembali.
 - Tombol Keluar dipindah dari header ke `AccountMenu` (ikon akun) dan selalu memakai dialog konfirmasi (Batal / Ya, keluar).
 
 ## Catatan F-15 (tanpa tarik-muat-ulang & pemberitahuan update)
