@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { buttonClasses, Icon } from '@/components/ui';
 import { useAppUpdate } from '@/hooks/useAppUpdate';
+import { applyWaitingUpdate } from '@/services/offline/sw';
 
 /**
  * Spanduk "versi baru tersedia" dengan tombol Perbarui / Nanti. Aplikasi tidak pernah dimuat ulang otomatis,
@@ -12,6 +13,8 @@ export function UpdatePrompt() {
   if (!latest || later === latest) return null;
 
   function update() {
+    // Bila worker offline baru sudah menunggu, aktifkan lalu muat ulang; selain itu pakai cara versi (version.json).
+    if (applyWaitingUpdate()) return;
     // Parameter berbeda memaksa peramban mengambil index.html terbaru; hash (rute) tetap dipertahankan.
     window.location.replace(`${window.location.pathname}?v=${latest}${window.location.hash}`);
   }
