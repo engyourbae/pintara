@@ -6,14 +6,21 @@ import { useAuth } from '@/hooks/useAuth';
 import { friendlyError } from '@/services/firebase/auth';
 import { isAdmin, listTeachers, setTeacherState, type TeacherRow, type TeacherState } from '@/services/firebase/admin';
 
-function Shell({ children }: { children: ReactNode }) {
+function Shell({ children, onSignOut }: { children: ReactNode; onSignOut?: () => void }) {
   return (
     <div className="min-h-screen">
       <header className="mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
         <Link to="/" aria-label="PINTARA, beranda" className="rounded-2xl">
           <Logo />
         </Link>
-        <Badge tone="jingga">Pengelola</Badge>
+        <div className="flex items-center gap-2">
+          <Badge tone="jingga">Pengelola</Badge>
+          {onSignOut && (
+            <Button variant="sekunder" className="h-11 px-4" onClick={onSignOut}>
+              Keluar
+            </Button>
+          )}
+        </div>
       </header>
       <main className="mx-auto w-full max-w-3xl animate-naik space-y-5 px-4 pb-10 pt-2">{children}</main>
     </div>
@@ -63,7 +70,7 @@ function Section({
 }
 
 export function AdminPage() {
-  const { status, user } = useAuth();
+  const { status, user, signOut } = useAuth();
   const confirm = useConfirm();
   const [allowed, setAllowed] = useState<boolean | null>(null);
   const [rows, setRows] = useState<TeacherRow[] | null>(null);
@@ -111,9 +118,10 @@ export function AdminPage() {
   if (status === 'signedOut' || status === 'noProfile') return <Navigate to="/masuk" replace state={{ from: '/admin' }} />;
   if (allowed === null && !error) return <Shell><p role="status">Memeriksa hak pengelola…</p></Shell>;
 
+  const out = () => void signOut();
   if (!allowed) {
     return (
-      <Shell>
+      <Shell onSignOut={out}>
         <Card tone="catatan" className="space-y-2">
           <h1 className="text-2xl">Bukan akun pengelola</h1>
           <p>{error || 'Akun ini belum ditandai sebagai pengelola. Penandaan dilakukan satu kali lewat Firebase Console (lihat docs/keamanan.md).'}</p>
@@ -125,7 +133,7 @@ export function AdminPage() {
   const by = (s: TeacherState) => (rows ?? []).filter((r) => r.state === s);
 
   return (
-    <Shell>
+    <Shell onSignOut={out}>
       <div className="flex items-center justify-between gap-3">
         <h1 className="text-3xl">Persetujuan Guru</h1>
         <Button variant="sekunder" onClick={() => void reload()} disabled={busy}>
