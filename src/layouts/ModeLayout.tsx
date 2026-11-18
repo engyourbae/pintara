@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, Navigate, NavLink, Outlet } from 'react-router-dom';
 import { Button, ButtonLink, Icon, Logo } from '@/components/ui';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
@@ -12,12 +12,16 @@ import type { Role } from '@/types';
 export function ModeLayout({ role }: { role: Role }) {
   const base = MODE_BASE[role];
   const { status, user, signOut } = useAuth();
+  const signedIn = status === 'ready' && !!user;
+
+  // Sudah masuk sebagai peran lain (mis. orang tua membuka /siswa): kembalikan ke ruangnya sendiri.
+  if (signedIn && user && user.role !== role) return <Navigate to={MODE_BASE[user.role]} replace />;
 
   return (
     <div data-mode={role} className="flex min-h-screen flex-col pb-[84px] md:pb-0">
       <header className="sticky top-0 z-20 border-b-2 border-tinta bg-gading">
         <div className="mx-auto flex h-16 max-w-5xl items-center gap-3 px-4">
-          <Link to="/" aria-label="PINTARA, kembali ke awal" className="rounded-2xl">
+          <Link to={signedIn && user ? base : '/'} aria-label="PINTARA, beranda" className="rounded-2xl">
             <Logo size={34} className="[&>span]:text-xl" />
           </Link>
           <span className="hidden rounded-full border-2 border-tinta bg-aksen px-3 py-0.5 text-sm font-bold text-white sm:inline">
@@ -63,10 +67,13 @@ export function ModeLayout({ role }: { role: Role }) {
           </nav>
 
           <div className="ml-auto flex items-center gap-2 md:ml-0">
-            <ButtonLink to="/ruang" variant="sekunder" aria-label="Ganti ruang: anak, guru, atau orang tua" className="h-11 px-3">
-              <Icon name="home" size={22} />
-              <span className="hidden sm:inline">Ganti ruang</span>
-            </ButtonLink>
+            {!signedIn && (
+              <ButtonLink to="/ruang" variant="sekunder" aria-label="Ganti ruang: anak, guru, atau orang tua" className="h-11 px-3">
+                <Icon name="home" size={22} />
+                <span className="hidden sm:inline">Ganti ruang</span>
+              </ButtonLink>
+            )}
+            {signedIn && user && <span className="hidden max-w-[9rem] truncate font-display font-semibold lg:inline">{user.displayName}</span>}
             {(status === 'signedOut' || status === 'disabled') && (
               <ButtonLink to="/masuk" variant="aksi" className="h-11 px-4">
                 <Icon name="user" size={20} />
