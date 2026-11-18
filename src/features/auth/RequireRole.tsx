@@ -12,7 +12,7 @@ import type { Role } from '@/types';
  * seperti sebelumnya (hanya menampilkan data contoh).
  */
 export function RequireRole({ role, children }: { role: Role; children: ReactNode }) {
-  const { status, user, signOut } = useAuth();
+  const { status, user, signOut, refresh } = useAuth();
   const location = useLocation();
 
   if (status === 'disabled') return <>{children}</>;
@@ -50,14 +50,18 @@ export function RequireRole({ role, children }: { role: Role; children: ReactNod
       <AuthShell>
         <Card tone="catatan" className="flex flex-col items-center gap-3 text-center">
           <Mascot size={110} className="animate-melayang" />
-          <h1 className="text-2xl">Akun guru menunggu verifikasi</h1>
+          <h1 className="text-2xl">{user.teacherRejected ? 'Pendaftaran guru ditolak' : 'Akun guru menunggu verifikasi'}</h1>
           <p>
-            Demi keamanan anak, akun guru diaktifkan setelah diverifikasi oleh pengelola PINTARA. Kamu bisa kembali
-            lagi nanti.
+            {user.teacherRejected
+              ? 'Pengelola PINTARA belum dapat memverifikasi akun ini. Hubungi pengelola bila ini keliru.'
+              : 'Demi keamanan anak, akun guru diaktifkan setelah diverifikasi oleh pengelola PINTARA. Setelah disetujui, tekan Periksa status.'}
           </p>
-          <Button variant="sekunder" onClick={() => void signOut()}>
-            Keluar
-          </Button>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button onClick={() => void refresh()}>Periksa status</Button>
+            <Button variant="sekunder" onClick={() => void signOut()}>
+              Keluar
+            </Button>
+          </div>
         </Card>
       </AuthShell>
     );

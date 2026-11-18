@@ -19,7 +19,7 @@ export function LoginPage() {
   useEffect(() => {
     if (status === 'ready' && user) {
       const base = MODE_BASE[user.role];
-      navigate(from && from.startsWith(base) ? from : base, { replace: true });
+      navigate(from && (from.startsWith(base) || from === '/admin') ? from : base, { replace: true });
     }
   }, [status, user, from, navigate]);
 
