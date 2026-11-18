@@ -78,3 +78,8 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 ## Catatan F-14 (rapikan masuk & akun)
 - `/masuk`: semua tombol setinggi `Button size="lg"` (h-14). "Saya guru" mengganti seluruh tampilan ke panel guru (naik ke atas) dengan tombol Kembali.
 - Tombol Keluar dipindah dari header ke `AccountMenu` (ikon akun) dan selalu memakai dialog konfirmasi (Batal / Ya, keluar).
+
+## Catatan F-15 (tanpa tarik-muat-ulang & pemberitahuan update)
+- `overscroll-behavior: none` pada html/body: tarik-untuk-muat-ulang dimatikan.
+- Update tanpa service worker: build menulis `version.json` (ID build, dari `vite.config.ts`); `useAppUpdate` membandingkannya dengan `__BUILD_ID__` (saat dibuka, tiap 10 menit, saat kembali ke aplikasi/online). `UpdatePrompt` menampilkan Perbarui/Nanti; tidak pernah muat ulang otomatis. Dipasang di aplikasi utama dan admin.
+- Batas: ini deteksi versi baru, BUKAN cache offline. Service worker/offline tetap Fase G; saat ditambahkan, hubungkan tombol Perbarui ke `registration.waiting`.
