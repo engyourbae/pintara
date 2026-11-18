@@ -1,10 +1,14 @@
 import { useSyncExternalStore } from 'react';
+import type { QuizBest } from '@/types';
 
 /**
- * Kemajuan belajar mode tamu. Disimpan di perangkat (localStorage), tanpa Firebase.
- * Akan diganti penyimpanan IndexedDB + sinkronisasi saat login tersedia (Fase F/G).
+ * Kemajuan belajar. Disimpan di perangkat (localStorage), TERPISAH per pemilik:
+ * 'guest' untuk mode tamu, atau uid akun siswa yang sedang masuk. Untuk akun siswa,
+ * progressSync menyalin ke Firestore agar guru dan orang tua dapat melihatnya.
+ * Akan diganti IndexedDB + antrean sinkronisasi di Fase G.
  */
-const KEY = 'pintara:progress:v1';
+const PREFIX = 'pintara:progress:v2:';
+const OLD_KEY = 'pintara:progress:v1';
 
 export interface AvatarOption {
   id: string;
@@ -29,6 +33,8 @@ export interface Progress {
   correct: number;
   /** Bintang terbaik (0-3) per paket kuis. */
   stars: Record<string, number>;
+  /** Hasil terbaik dan jumlah percobaan per paket kuis. */
+  quizBest: Record<string, QuizBest>;
   /** Skor terbaik per game/tingkat. */
   gameBest: Record<string, number>;
   streak: number;
@@ -42,31 +48,38 @@ const EMPTY: Progress = {
   answered: 0,
   correct: 0,
   stars: {},
+  quizBest: {},
   gameBest: {},
   streak: 0,
   lastDay: '',
 };
 
-function load(): Progress {
+function load(owner: string): Progress {
   try {
-    const raw = localStorage.getItem(KEY);
-    return raw ? { ...EMPTY, ...JSON.parse(raw) } : EMPTY;
+    let raw = localStorage.getItem(PREFIX + owner);
+    if (!raw && owner === 'guest') raw = localStorage.getItem(OLD_KEY); // data tamu dari versi lama
+    return raw ? { ...EMPTY, ...JSON.parse(raw) } : { ...EMPTY };
   } catch {
-    return EMPTY;
+    return { ...EMPTY };
   }
 }
 
-let state: Progress = load();
+let owner = 'guest';
+let state: Progress = load(owner);
 const listeners = new Set<() => void>();
+
+function notify() {
+  listeners.forEach((l) => l());
+}
 
 function save(next: Progress) {
   state = next;
   try {
-    localStorage.setItem(KEY, JSON.stringify(next));
+    localStorage.setItem(PREFIX + owner, JSON.stringify(next));
   } catch {
     /* penyimpanan penuh/diblokir: aplikasi tetap jalan tanpa menyimpan */
   }
-  listeners.forEach((l) => l());
+  notify();
 }
 
 function dayString(d: Date): string {
@@ -88,11 +101,35 @@ export function starsFor(correct: number, total: number): number {
   return r >= 1 ? 3 : r >= 0.67 ? 2 : r > 0 ? 1 : 0;
 }
 
+/** Bintang dari persen skor (dipakai saat menggabungkan data dari server). */
+export const starsFromScore = (score: number): number => (score >= 100 ? 3 : score >= 67 ? 2 : score > 0 ? 1 : 0);
+
+export interface RemoteProgress {
+  xp: number;
+  items: Record<string, QuizBest>;
+  avatar?: string;
+}
+
 export const progressActions = {
   /** Mencatat hasil satu paket kuis. Mengembalikan bintang dan XP yang didapat. */
   recordQuiz(contentId: string, correct: number, total: number) {
     const stars = starsFor(correct, total);
     const gained = correct * 10 + (stars === 3 ? 10 : 0);
+    const prev = state.quizBest[contentId];
+    const score = total > 0 ? Math.round((correct * 100) / total) : 0;
+    const better = !prev || score >= prev.score;
+    const quizBest: Record<string, QuizBest> =
+      total > 0
+        ? {
+            ...state.quizBest,
+            [contentId]: {
+              score: better ? score : prev.score,
+              correct: better ? correct : prev.correct,
+              total: better ? total : prev.total,
+              attempts: (prev?.attempts ?? 0) + 1,
+            },
+          }
+        : state.quizBest;
     save({
       ...state,
       ...touchStreak(state),
@@ -100,6 +137,7 @@ export const progressActions = {
       answered: state.answered + total,
       correct: state.correct + correct,
       stars: { ...state.stars, [contentId]: Math.max(state.stars[contentId] ?? 0, stars) },
+      quizBest,
     });
     return { stars, gained };
   },
@@ -117,9 +155,44 @@ export const progressActions = {
   reset() {
     save({ ...EMPTY });
   },
+  /** Ganti pemilik data (tamu <-> akun siswa). Tiap pemilik punya data sendiri di perangkat. */
+  switchOwner(next: string) {
+    if (next === owner) return;
+    owner = next;
+    state = load(next);
+    notify();
+  },
+  /** Gabungkan data dari server ke lokal (ambil yang terbaik). Tidak menyimpan/memberi tahu bila tak ada perubahan. */
+  mergeRemote(r: RemoteProgress) {
+    const quizBest = { ...state.quizBest };
+    const stars = { ...state.stars };
+    let changed = false;
+    for (const [id, it] of Object.entries(r.items)) {
+      const cur = quizBest[id];
+      const merged: QuizBest = !cur ? it : { ...(it.score > cur.score ? it : cur), attempts: Math.max(cur.attempts, it.attempts) };
+      if (!cur || merged.score !== cur.score || merged.attempts !== cur.attempts) {
+        quizBest[id] = merged;
+        changed = true;
+      }
+      const s = starsFromScore(merged.score);
+      if ((stars[id] ?? 0) < s) {
+        stars[id] = s;
+        changed = true;
+      }
+    }
+    const xp = Math.max(state.xp, r.xp);
+    if (xp !== state.xp) changed = true;
+    const avatar = r.avatar && state.avatar === 'bintang' && r.avatar !== 'bintang' ? r.avatar : state.avatar;
+    if (avatar !== state.avatar) changed = true;
+    if (changed) save({ ...state, xp, quizBest, stars, avatar });
+  },
 };
 
-function subscribe(cb: () => void) {
+export function getProgress(): Progress {
+  return state;
+}
+
+export function subscribeProgress(cb: () => void) {
   listeners.add(cb);
   return () => {
     listeners.delete(cb);
@@ -127,7 +200,7 @@ function subscribe(cb: () => void) {
 }
 
 export function useProgress(): Progress {
-  return useSyncExternalStore(subscribe, () => state);
+  return useSyncExternalStore(subscribeProgress, () => state);
 }
 
 /** Level naik tiap 100 XP. */
