@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Icon, Page, PageHeader, ProgressBar, Stat } from '@/components/ui';
+import { Badge, Button, Card, Icon, Page, PageHeader, ProgressBar, Stat, useConfirm } from '@/components/ui';
 import { levelInfo, progressActions, totalStars, useProgress } from '@/hooks/useProgress';
 import { sampleContents } from '@/data/sample';
 
@@ -65,6 +65,7 @@ export function ParentProgress() {
 }
 
 export function ParentSettings() {
+  const confirm = useConfirm();
   return (
     <Page>
       <PageHeader title="Pengaturan" subtitle="Data dan privasi." icon="settings" />
@@ -79,8 +80,14 @@ export function ParentSettings() {
         <p>Menghapus nama, XP, bintang, dan skor game di perangkat ini. Tidak bisa dibatalkan.</p>
         <Button
           variant="sekunder"
-          onClick={() => {
-            if (window.confirm('Hapus semua data belajar di perangkat ini?')) progressActions.reset();
+          onClick={async () => {
+            const ok = await confirm({
+              title: 'Hapus data belajar?',
+              message: 'Nama, XP, bintang, dan skor game di perangkat ini akan dihapus dan tidak bisa dikembalikan.',
+              confirmLabel: 'Hapus',
+              danger: true,
+            });
+            if (ok) progressActions.reset();
           }}
         >
           <Icon name="trash" size={20} />

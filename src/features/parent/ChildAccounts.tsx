@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
-import { Badge, Button, Card, Icon, Page, PageHeader } from '@/components/ui';
+import { Badge, Button, CheckRow, Card, ChoiceGroup, Icon, Page, PageHeader } from '@/components/ui';
 import { Field, FormError } from '@/features/auth/parts';
 import { useAuth } from '@/hooks/useAuth';
 import {
@@ -86,23 +86,13 @@ function ChildCard({ child, parentUid, onSaved }: { child: ChildSummary; parentU
         onChange={(v) => void update({ multiplayerEnabled: v })}
       />
       <div>
-        <label htmlFor={`batas-${child.uid}`} className="font-semibold">
-          Batas waktu bermain per hari
-        </label>
-        <select
-          id={`batas-${child.uid}`}
+        <ChoiceGroup
+          label="Batas waktu bermain per hari"
           value={child.dailyLimitMinutes}
           disabled={saving}
-          onChange={(e) => void update({ dailyLimitMinutes: Number(e.target.value) })}
-          className="mt-1 h-12 w-full rounded-2xl border-2 border-tinta bg-white px-4 text-lg"
-        >
-          {!LIMITS.includes(child.dailyLimitMinutes) && <option value={child.dailyLimitMinutes}>{child.dailyLimitMinutes} menit</option>}
-          {LIMITS.map((m) => (
-            <option key={m} value={m}>
-              {m} menit
-            </option>
-          ))}
-        </select>
+          onChange={(m) => void update({ dailyLimitMinutes: m })}
+          options={(LIMITS.includes(child.dailyLimitMinutes) ? LIMITS : [child.dailyLimitMinutes, ...LIMITS]).map((m) => ({ value: m, label: `${m} mnt` }))}
+        />
         <p className="mt-1 text-sm text-tinta/75">Pencatatan batas waktu belum aktif; nilai ini disimpan untuk fitur berikutnya.</p>
       </div>
       <FormError message={error} />
@@ -184,24 +174,12 @@ export function ChildAccounts() {
       <form onSubmit={submit} className="stiker space-y-4 rounded-3xl bg-gading p-5">
         <h2 className="text-xl">Tambah akun anak</h2>
         <Field label="Nama panggilan" value={name} onChange={(e) => setName(e.target.value)} maxLength={30} required />
-        <div>
-          <label htmlFor="kelas-anak" className="block font-display text-lg font-semibold">
-            Kelas (boleh dikosongkan)
-          </label>
-          <select
-            id="kelas-anak"
-            value={grade}
-            onChange={(e) => setGrade(e.target.value === '' ? '' : (Number(e.target.value) as Grade))}
-            className="mt-1 h-12 w-full rounded-2xl border-2 border-tinta bg-white px-4 text-lg"
-          >
-            <option value="">Belum dipilih</option>
-            {GRADES.map((g) => (
-              <option key={g} value={g}>
-                Kelas {g}
-              </option>
-            ))}
-          </select>
-        </div>
+        <ChoiceGroup
+          label="Kelas (boleh dikosongkan)"
+          value={grade}
+          onChange={setGrade}
+          options={[{ value: '' as Grade | '', label: 'Belum' }, ...GRADES.map((g) => ({ value: g as Grade | '', label: String(g) }))]}
+        />
         <Field
           label="Nama pengguna"
           value={username}
@@ -222,15 +200,9 @@ export function ChildAccounts() {
           required
           hint="Catat PIN ini. PIN tidak bisa dilihat lagi setelah akun dibuat."
         />
-        <label className="flex items-start gap-3">
-          <input
-            type="checkbox"
-            checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
-            className="mt-1 h-6 w-6 shrink-0 accent-[#478f3a]"
-          />
-          <span>Saya orang tua atau wali anak ini dan mengizinkan anak memakai PINTARA.</span>
-        </label>
+        <CheckRow checked={consent} onChange={setConsent}>
+          Saya orang tua atau wali anak ini dan mengizinkan anak memakai PINTARA.
+        </CheckRow>
         <FormError message={error} />
         {created && (
           <p role="status" className="flex items-start gap-2 rounded-2xl border-2 border-tinta bg-hijau-100 px-4 py-3 font-semibold">
