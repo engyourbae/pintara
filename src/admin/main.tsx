@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ConfirmProvider } from '@/components/ui';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { UpdatePrompt } from '@/components/UpdatePrompt';
 import { AdminPage } from '@/features/admin/AdminPage';
 import { LoginPage } from '@/features/auth/LoginPage';
 import { AuthProvider } from '@/hooks/useAuth';
@@ -13,6 +14,7 @@ import '@/utils/noZoom';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
+      <UpdatePrompt />
       <HashRouter>
         <AuthProvider>
           <ConfirmProvider>
