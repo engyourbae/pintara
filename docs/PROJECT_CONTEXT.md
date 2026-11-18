@@ -83,3 +83,6 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - `overscroll-behavior: none` pada html/body: tarik-untuk-muat-ulang dimatikan.
 - Update tanpa service worker: build menulis `version.json` (ID build, dari `vite.config.ts`); `useAppUpdate` membandingkannya dengan `__BUILD_ID__` (saat dibuka, tiap 10 menit, saat kembali ke aplikasi/online). `UpdatePrompt` menampilkan Perbarui/Nanti; tidak pernah muat ulang otomatis. Dipasang di aplikasi utama dan admin.
 - Batas: ini deteksi versi baru, BUKAN cache offline. Service worker/offline tetap Fase G; saat ditambahkan, hubungkan tombol Perbarui ke `registration.waiting`.
+
+## Catatan F-17 (layar fokus)
+- `ModeLayout` menyembunyikan header dan bilah menu di layar aktivitas: siswa `belajar/:id`, `game/:id`, `kelas/:id`; guru `kuis/:id` (pratinjau). Keluar lewat tombol X/Kembali di halaman itu. Daftar (Belajar, Permainan) dan Beranda tetap memakai menu penuh.
