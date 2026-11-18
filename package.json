@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "npm run typecheck && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "validate:bank": "node scripts/validate-bank.mjs",
+    "typecheck": "node scripts/validate-bank.mjs && tsc --noEmit"
   },
   "dependencies": {
     "@fontsource-variable/fredoka": "^5.0.0",
