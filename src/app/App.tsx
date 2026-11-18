@@ -19,6 +19,7 @@ import { RequireRole } from '@/features/auth/RequireRole';
 import type { Role } from '@/types';
 
 /** Halaman akun dimuat saat dibutuhkan (membawa SDK Firebase), supaya mode tamu tetap ringan. */
+const StudentClass = lazy(() => import('@/features/student/StudentClass').then((m) => ({ default: m.StudentClass })));
 const MasukPage = lazy(() => import('@/features/auth/MasukPage').then((m) => ({ default: m.MasukPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
 const FriendsPage = lazy(() => import('@/features/friends/FriendsPage').then((m) => ({ default: m.FriendsPage })));
@@ -100,6 +101,7 @@ export function App() {
                 {role === 'student' && (
                   <>
                     <Route path="belajar/:contentId" element={<QuizPage />} />
+                    <Route path="kelas/:classId" element={<StudentClass />} />
                     <Route path="game/kilat-hitung" element={<KilatHitung />} />
                     <Route path="game/susun-kata" element={<SusunKata />} />
                     <Route path="game/teka-pola" element={<TekaPola />} />
