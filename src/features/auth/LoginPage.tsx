@@ -6,7 +6,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { friendlyError, signInWithIdentifier } from '@/services/firebase/auth';
 import { AuthShell, Field, FormError, PasswordField } from './parts';
 
-export function LoginPage() {
+/** `home` dipakai aplikasi admin: tujuan setelah masuk, tanpa tautan daftar/tamu. */
+export function LoginPage({ home }: { home?: string } = {}) {
   const { status, user, signOut } = useAuth();
   const navigate = useNavigate();
   const from = (useLocation().state as { from?: string } | null)?.from;
@@ -19,9 +20,9 @@ export function LoginPage() {
   useEffect(() => {
     if (status === 'ready' && user) {
       const base = MODE_BASE[user.role];
-      navigate(from && (from.startsWith(base) || from === '/admin') ? from : base, { replace: true });
+      navigate(home ?? (from && from.startsWith(base) ? from : base), { replace: true });
     }
-  }, [status, user, from, navigate]);
+  }, [status, user, from, home, navigate]);
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -86,22 +87,31 @@ export function LoginPage() {
         </Button>
       </form>
 
-      <Card tone="langit" className="flex items-start gap-3">
-        <Icon name="shield" size={24} className="mt-0.5 shrink-0" />
-        <p>Akun anak dibuat oleh orang tua atau wali. Anak tidak perlu email.</p>
-      </Card>
+      {home ? (
+        <Card tone="langit" className="flex items-start gap-3">
+          <Icon name="shield" size={24} className="mt-0.5 shrink-0" />
+          <p>Khusus pengelola PINTARA. Masuk dengan akun yang sudah ditandai sebagai pengelola.</p>
+        </Card>
+      ) : (
+        <>
+        <Card tone="langit" className="flex items-start gap-3">
+          <Icon name="shield" size={24} className="mt-0.5 shrink-0" />
+          <p>Akun anak dibuat oleh orang tua atau wali. Anak tidak perlu email.</p>
+        </Card>
 
-      <p className="text-center">
-        Orang tua atau guru baru?{' '}
-        <Link to="/daftar" className="font-bold text-langit-700 underline underline-offset-4">
-          Daftar
-        </Link>
-      </p>
-      <p className="text-center">
-        <Link to={MODE_BASE.student} className="font-bold text-langit-700 underline underline-offset-4">
-          Coba tanpa akun
-        </Link>
-      </p>
+        <p className="text-center">
+          Orang tua atau guru baru?{' '}
+          <Link to="/daftar" className="font-bold text-langit-700 underline underline-offset-4">
+            Daftar
+          </Link>
+        </p>
+        <p className="text-center">
+          <Link to={MODE_BASE.student} className="font-bold text-langit-700 underline underline-offset-4">
+            Coba tanpa akun
+          </Link>
+        </p>
+        </>
+      )}
     </AuthShell>
   );
 }
