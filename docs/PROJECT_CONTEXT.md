@@ -74,3 +74,7 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - Guru memberi "misi" (kuis atau game) per kelas di Detail Kelas. Disimpan di `classes/{id}/quizzes` (Rules diperketat: field wajib, tanpa update). Murid membukanya di `/siswa/kelas/:classId` (dari kartu "Kelasku").
 - Status misi: kuis dari hasil terbaik (lokal + `results`); game dianggap selesai bila pernah dimainkan (skor>0), disinkronkan sebagai hasil `game_<id>` skor 100. Skor asli game tidak dikirim.
 - Belum ada: tenggat, kunci jawaban kuis buatan guru sendiri, notifikasi misi baru. WAJIB publish ulang Firestore Rules.
+
+## Catatan F-14 (rapikan masuk & akun)
+- `/masuk`: semua tombol setinggi `Button size="lg"` (h-14). "Saya guru" mengganti seluruh tampilan ke panel guru (naik ke atas) dengan tombol Kembali.
+- Tombol Keluar dipindah dari header ke `AccountMenu` (ikon akun) dan selalu memakai dialog konfirmasi (Batal / Ya, keluar).
