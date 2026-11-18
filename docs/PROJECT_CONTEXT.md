@@ -94,3 +94,8 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - `OfflineNotice` menampilkan penanda saat tanpa internet. Hanya didaftarkan di produksi (bukan dev).
 - Antrean sinkronisasi: kemajuan sudah local-first dan `progressSync` idempoten + berjalan lagi saat `online`, jadi Dexie belum dibutuhkan. Persistensi offline Firestore SDK sengaja BELUM diaktifkan (promise tulis menggantung saat offline dan mengganggu loop sinkronisasi).
 - Belum: sinkron skor game, data guru/orang tua offline (butuh jaringan), uji di perangkat/hosting nyata (BELUM DIKETAHUI).
+
+## Catatan F19 (bank soal tahap 1)
+- Bank soal nyata di `src/data/bank/batches/*.json` (lihat `docs/BANK_SOAL.md`); `src/data/sample/index.ts` menggabungkan bank + sisa paket `contoh-*` (nama ekspor `sampleContents` dipertahankan). `isSampleContent` menentukan label `SampleBadge` di daftar belajar.
+- Tahap 1: 10 paket x 10 soal (100 soal). Belum ditinjau guru. Validator `scripts/validate-bank.mjs` dijalankan di `npm run typecheck` (otomatis di CI).
+- Tahap berikutnya ditambah bertahap; setelah bank memadai: sinkron skor game.
