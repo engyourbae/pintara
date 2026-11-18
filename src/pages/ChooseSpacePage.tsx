@@ -43,11 +43,6 @@ export function ChooseSpacePage() {
             </Card>
           ))}
         </div>
-        <p className="text-center text-sm">
-          <Link to="/admin" className="font-semibold text-tinta/70 underline underline-offset-4">
-            Pengelola
-          </Link>
-        </p>
       </main>
     </div>
   );
