@@ -20,12 +20,15 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 );
 
-// Hapus splash setelah aplikasi tampil (dua frame agar tidak berkedip).
+// Hapus splash setelah aplikasi tampil, tapi minimal ±0,6 dtk sejak halaman dibuka agar animasinya sempat terlihat.
+const MIN_SPLASH_MS = 600;
 requestAnimationFrame(() =>
   requestAnimationFrame(() => {
     const splash = document.getElementById('splash');
     if (!splash) return;
-    splash.classList.add('bye');
-    window.setTimeout(() => splash.remove(), 350);
+    window.setTimeout(() => {
+      splash.classList.add('bye');
+      window.setTimeout(() => splash.remove(), 350);
+    }, Math.max(0, MIN_SPLASH_MS - performance.now()));
   }),
 );
