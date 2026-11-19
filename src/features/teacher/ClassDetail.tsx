@@ -11,6 +11,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { listMyClasses } from '@/services/firebase/classes';
 import type { Grade } from '@/types';
 import { copyText, inviteUrl } from '@/utils/share';
+import { TeacherQuizPanel } from './TeacherQuizPanel';
 import { useLoad } from './useTeacherData';
 
 const GRADES: Grade[] = [1, 2, 3, 4, 5, 6];
@@ -184,6 +185,8 @@ export function ClassDetail() {
           </Button>
         </div>
       </Card>
+
+      <TeacherQuizPanel classId={c.id} members={active} />
 
       {pending.length > 0 && (
         <Card tone="langit" className="space-y-3">

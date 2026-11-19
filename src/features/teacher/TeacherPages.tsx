@@ -9,6 +9,7 @@ import { friendlyError } from '@/services/firebase/auth';
 import { createClass, listMembers, listMyClasses, listResults } from '@/services/firebase/classes';
 import type { Grade } from '@/types';
 import { resultTitle } from '@/data/missions';
+import { TeacherQuizPanel } from './TeacherQuizPanel';
 import { useLoad } from './useTeacherData';
 
 const GRADES: Grade[] = [1, 2, 3, 4, 5, 6];
@@ -112,10 +113,47 @@ export function TeacherClasses() {
   );
 }
 
+/** Kuis tulisan guru sendiri (soal + kunci jawaban yang hanya diketahui guru), dibuat per kelas. */
+function MyQuizzes() {
+  const { user } = useAuth();
+  const classes = useLoad(async () => (await listMyClasses(user?.uid ?? '')).filter((c) => !c.archived), [user?.uid]);
+  const [pick, setPick] = useState('');
+  const list = classes.data ?? [];
+  const cur = list.find((c) => c.id === pick) ?? list[0];
+  const members = useLoad(
+    async () => (cur ? (await listMembers(cur.id)).filter((m) => m.status === 'active') : []),
+    [cur?.id],
+  );
+  return (
+    <section aria-label="Kuis buatan saya" className="space-y-3">
+      <Card tone="catatan" className="space-y-1">
+        <h2 className="text-xl">Kuis buatan saya</h2>
+        <p className="text-sm text-tinta/80">Tulis soal dan kunci jawaban sendiri. Kunci hanya terlihat olehmu; murid hanya melihat soal.</p>
+      </Card>
+      <FormError message={classes.error} />
+      {classes.loading ? (
+        <p role="status">Memuat kelas…</p>
+      ) : !cur ? (
+        <Card>Buat kelas dulu di menu Kelas, lalu kamu bisa membuat kuis untuk kelas itu.</Card>
+      ) : (
+        <>
+          {list.length > 1 && (
+            <ChoiceGroup label="Untuk kelas" value={cur.id} options={list.map((c) => ({ value: c.id, label: c.name }))} onChange={setPick} />
+          )}
+          <TeacherQuizPanel key={cur.id} classId={cur.id} members={members.data ?? []} />
+        </>
+      )}
+    </section>
+  );
+}
+
 export function TeacherQuizzes() {
   return (
     <Page>
-      <PageHeader title="Kuis" subtitle="Paket kuis yang tersedia. Mencoba kuis tidak mengubah data murid." icon="pencil" />
+      <PageHeader title="Kuis" subtitle="Buat kuis sendiri untuk kelasmu, atau coba paket kuis yang tersedia." icon="pencil" />
+      <MyQuizzes />
+      <h2 className="mt-2 text-xl">Paket kuis tersedia</h2>
+      <p className="-mt-2 text-sm text-tinta/75">Mencoba paket tidak mengubah data murid.</p>
       <ul className="grid gap-3 sm:grid-cols-2">
         {sampleContents.map((c) => (
           <li key={c.id}>
