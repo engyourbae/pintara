@@ -6,6 +6,7 @@ import { GAME_MISSIONS, resultKeyOf } from '@/data/missions';
 import { useAuth } from '@/hooks/useAuth';
 import { useProgress } from '@/hooks/useProgress';
 import { getClassForMember, listMissions, myClassResults } from '@/services/firebase/classes';
+import { listTeacherQuizzes, myTeacherAnswered, tqResultKey } from '@/services/firebase/teacherQuizzes';
 import { useLoad } from '@/features/teacher/useTeacherData';
 
 /** Halaman kelas milik murid: daftar misi dari guru dan statusnya. */
@@ -14,12 +15,14 @@ export function StudentClass() {
   const { user } = useAuth();
   const p = useProgress();
   const data = useLoad(async () => {
-    const [cls, missions, results] = await Promise.all([
+    const [cls, missions, results, tquizzes, answered] = await Promise.all([
       getClassForMember(classId),
       listMissions(classId),
       myClassResults(classId, user?.uid ?? ''),
+      listTeacherQuizzes(classId).catch(() => []),
+      myTeacherAnswered(classId, user?.uid ?? '').catch(() => new Set<string>()),
     ]);
-    return { cls, missions, results };
+    return { cls, missions, results, tquizzes, answered };
   }, [classId, user?.uid]);
 
   const d = data.data;
@@ -32,7 +35,7 @@ export function StudentClass() {
         <p role="status">Memuat misi…</p>
       ) : !d?.cls ? (
         <Card tone="catatan">Kelas tidak ditemukan atau kamu belum menjadi anggota.</Card>
-      ) : d.missions.length === 0 ? (
+      ) : d.missions.length === 0 && d.tquizzes.length === 0 ? (
         <Card tone="catatan" className="space-y-2">
           <p className="font-display text-lg font-semibold">Belum ada misi.</p>
           <p>Gurumu belum memberi tugas. Sambil menunggu, kamu bisa belajar bebas.</p>
@@ -40,6 +43,35 @@ export function StudentClass() {
         </Card>
       ) : (
         <ul className="space-y-3">
+          {d.tquizzes.map((q) => {
+            const sent = d.answered.has(q.id);
+            const score = d.results[tqResultKey(q.id)];
+            return (
+              <li key={`tq-${q.id}`}>
+                <Card tone={sent ? 'hijau' : 'kertas'} className="space-y-2">
+                  <div className="flex items-start gap-3">
+                    <span className="stiker flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-kuning-300">
+                      <Icon name="pencil" size={26} />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-display text-lg font-semibold leading-snug">{q.title}</p>
+                      <p className="text-sm text-tinta/75">Kuis dari guru · {q.count} soal</p>
+                    </div>
+                    <Badge tone={sent ? 'hijau' : 'jingga'}>{score !== undefined ? `Nilai ${score}` : sent ? 'Terkirim' : 'Belum'}</Badge>
+                  </div>
+                  {q.note && <p className="rounded-xl bg-kuning-100 px-3 py-2 text-sm">Pesan guru: {q.note}</p>}
+                  {sent ? (
+                    <p className="text-sm">{score !== undefined ? 'Gurumu sudah membagikan nilainya.' : 'Jawabanmu sudah terkirim. Tunggu gurumu membagikan nilai.'}</p>
+                  ) : (
+                    <ButtonLink to={`${MODE_BASE.student}/kelas/${classId}/kuis/${q.id}`} block>
+                      <Icon name="play" size={20} />
+                      Kerjakan sekarang
+                    </ButtonLink>
+                  )}
+                </Card>
+              </li>
+            );
+          })}
           {d.missions.map((m) => {
             let done = d.results[resultKeyOf(m)] !== undefined;
             let score: number | null = d.results[resultKeyOf(m)] ?? null;
