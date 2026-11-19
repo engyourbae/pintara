@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Icon } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
+import { sampleContents } from '@/data/sample';
 import { useProgress } from '@/hooks/useProgress';
 import { friendlyError } from '@/services/firebase/auth';
 import { acceptInvite, cleanupMyDuel, declineInvite, multiplayerFlags, serverOffset, subscribeInvites, type DuelInvite } from '@/services/firebase/duel';
@@ -11,6 +12,8 @@ import {
 } from '@/services/firebase/friends';
 
 const POLL_MS = 90_000;
+/** Judul paket untuk kartu ajakan; bila paket belum ada di aplikasi ini, pakai teks umum. */
+const packTitle = (id: string) => (sampleContents.find((c) => c.id === id)?.title ?? 'paket kuis').replace(' (contoh)', '');
 const MAX_SHOWN = 2;
 
 type Item =
@@ -159,7 +162,7 @@ export function FloatingInvites() {
     >
       {shown.map((it) => {
         const isFriend = it.kind === 'friend';
-        const label = isFriend ? `${it.p.username} ingin berteman denganmu` : `${nameOf(it.inv)} mengajak main Duel Kilat Hitung`;
+        const label = isFriend ? `${it.p.username} ingin berteman denganmu` : `${nameOf(it.inv)} mengajak ${it.inv.packId ? `Duel Kuis: ${packTitle(it.inv.packId)}` : 'Duel Kilat Hitung'}`;
         const off = busy === it.key;
         return (
           <div
