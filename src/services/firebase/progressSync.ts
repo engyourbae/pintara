@@ -1,6 +1,6 @@
 import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore';
 import { sampleContents } from '@/data/sample';
-import { gameIdOfKey } from '@/data/missions';
+import { GAME_MISSIONS, gameIdOfKey } from '@/data/missions';
 import { getProgress, progressActions, subscribeProgress } from '@/hooks/useProgress';
 import type { QuizBest } from '@/types';
 import { getDb } from './client';
@@ -140,7 +140,9 @@ async function pushClassResults(uid: string, pushed: Map<string, string>, classI
       pushed.set(`${classId}:${quizId}`, sig);
     }
     // Game: dianggap "selesai" bila pernah dimainkan (skor > 0). Skor asli game tetap di perangkat.
-    const played = new Set(Object.entries(getProgress().gameBest).filter(([, v]) => v > 0).map(([k]) => gameIdOfKey(k)));
+    // Hanya game yang bisa jadi misi kelas (GAME_MISSIONS); game lain tidak menambah dokumen hasil kelas.
+    const missionIds = new Set<string>(GAME_MISSIONS.map((g) => g.id));
+    const played = new Set(Object.entries(getProgress().gameBest).filter(([, v]) => v > 0).map(([k]) => gameIdOfKey(k)).filter((id) => missionIds.has(id)));
     for (const gameId of played) {
       const quizId = `game_${gameId}`;
       if (pushed.get(`${classId}:${quizId}`) === 'ok') continue;
