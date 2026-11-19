@@ -2,6 +2,7 @@ import { lazy, Suspense, type ReactElement, type ReactNode } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { MODE_BASE, NAV } from './navigation';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { SplashGate } from '@/components/SplashGate';
 import { ModeLayout } from '@/layouts/ModeLayout';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 import { LandingPage } from '@/pages/LandingPage';
@@ -65,6 +66,7 @@ export function App() {
     <HashRouter>
       <AuthProvider>
         <ProgressBridge />
+        <SplashGate />
         <ConfirmProvider>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
