@@ -1,6 +1,7 @@
 import { lazy, Suspense, type ReactElement, type ReactNode } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { MODE_BASE, NAV } from './navigation';
+import { LoadingScreen } from '@/components/LoadingScreen';
 import { ModeLayout } from '@/layouts/ModeLayout';
 import { PlaceholderPage } from '@/pages/PlaceholderPage';
 import { LandingPage } from '@/pages/LandingPage';
@@ -20,6 +21,8 @@ import type { Role } from '@/types';
 
 /** Halaman akun dimuat saat dibutuhkan (membawa SDK Firebase), supaya mode tamu tetap ringan. */
 const StudentClass = lazy(() => import('@/features/student/StudentClass').then((m) => ({ default: m.StudentClass })));
+const InvitePage = lazy(() => import('@/features/student/InvitePage').then((m) => ({ default: m.InvitePage })));
+const DuelPage = lazy(() => import('@/features/games/DuelPage').then((m) => ({ default: m.DuelPage })));
 const MasukPage = lazy(() => import('@/features/auth/MasukPage').then((m) => ({ default: m.MasukPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
 const FriendsPage = lazy(() => import('@/features/friends/FriendsPage').then((m) => ({ default: m.FriendsPage })));
@@ -63,12 +66,13 @@ export function App() {
       <AuthProvider>
         <ProgressBridge />
         <ConfirmProvider>
-        <Suspense fallback={<p role="status" className="p-6 text-center font-display text-xl">Memuat…</p>}>
+        <Suspense fallback={<LoadingScreen />}>
           <Routes>
             <Route path="/" element={<GuestOnly><LandingPage /></GuestOnly>} />
             <Route path="/ruang" element={<GuestOnly><ChooseSpacePage /></GuestOnly>} />
             <Route path="/masuk" element={<MasukPage />} />
             <Route path="/daftar" element={<RegisterPage />} />
+            <Route path="/gabung/:code" element={<InvitePage />} />
             <Route path="/desain" element={<DesignSystemPage />} />
             {ROLES.map((role) => (
               <Route
@@ -103,6 +107,7 @@ export function App() {
                     <Route path="belajar/:contentId" element={<QuizPage />} />
                     <Route path="kelas/:classId" element={<StudentClass />} />
                     <Route path="game/kilat-hitung" element={<KilatHitung />} />
+                    <Route path="game/duel/:roomId" element={<DuelPage />} />
                     <Route path="game/susun-kata" element={<SusunKata />} />
                     <Route path="game/teka-pola" element={<TekaPola />} />
                   </>
