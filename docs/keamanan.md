@@ -58,3 +58,7 @@ Tanpa server, hal berikut **tidak bisa dijamin**:
 - Penilaian dilakukan di app guru (kunci dibaca guru). Nilai ke murid hanya lewat guru menulis `results/tq_{id}_{uid}`; murid tidak pernah membaca kunci.
 - Rules membatasi: jumlah soal 1-20, bidang dokumen, panjang jawaban = jumlah soal, id dokumen jawaban = `{kuis}_{uid}`. **Tidak ditegakkan Rules:** panjang teks soal/pilihan dan jumlah pilihan (hanya klien); nilai tiap elemen `answers`. Status: **BELUM TERUJI** (emulator tidak tersedia; hanya keseimbangan kurung dicek).
 - Hapus kuis oleh guru ikut menghapus kunci, jawaban, dan nilai terkait supaya data tidak menumpuk.
+
+## Duel dari paket kuis (F28b)
+- Rules RTDB menambah validasi `meta.kind` (`hitung|paket`), `meta.packId` (`^[a-z0-9-]{1,60}$`), `meta.ver` (angka), `meta.order` (maks 10 bilangan bulat 0–99; paket wajib punya ketiganya), dan `packId` pada notifikasi. **BELUM TERUJI** (emulator tidak tersedia); hanya sintaks JSON diperiksa.
+- Batas jujur (sama dengan duel hitung, lebih jelas untuk paket): kunci jawaban ada di bundel aplikasi, bukan di database. Klien yang dimodifikasi bisa mengetahui jawaban benar atau mengirim jawaban apa pun; Rules tidak bisa memeriksa kebenaran jawaban maupun waktu. Izin orang tua tetap hanya dicek di klien. Ruang tetap sementara (dihapus setelah selesai), tanpa riwayat duel.
