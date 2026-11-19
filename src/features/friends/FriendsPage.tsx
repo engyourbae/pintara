@@ -2,13 +2,13 @@ import { useCallback, useEffect, useState, type FormEvent, type ReactNode } from
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, ButtonLink, Card, Icon, Page, PageHeader, useConfirm } from '@/components/ui';
 import { Field, FormError } from '@/features/auth/parts';
-import { GameInvites } from './GameInvites';
 import { AVATARS, useProgress } from '@/hooks/useProgress';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE } from '@/app/navigation';
 import { friendlyError } from '@/services/firebase/auth';
 import { inviteFriend, multiplayerFlags } from '@/services/firebase/duel';
 import {
+  FRIENDS_CHANGED,
   acceptRequest,
   blockUser,
   cancelRequest,
@@ -110,6 +110,15 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
       });
   }, [parentUid, me, reload]);
 
+  // Kartu mengambang menerima/menolak permintaan: muat ulang daftar di halaman ini.
+  useEffect(() => {
+    const onChange = (e: Event) => {
+      if ((e as CustomEvent).detail === 'floating') void reload();
+    };
+    window.addEventListener(FRIENDS_CHANGED, onChange);
+    return () => window.removeEventListener(FRIENDS_CHANGED, onChange);
+  }, [reload]);
+
   useEffect(() => {
     multiplayerFlags(parentUid, me)
       .then((f) => setMpAllowed(f.friends && f.multiplayer))
@@ -144,6 +153,7 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
       await action();
       if (done) setInfo(done);
       await reload();
+      window.dispatchEvent(new CustomEvent(FRIENDS_CHANGED, { detail: 'page' }));
     } catch (e) {
       setError(friendlyError(e));
     } finally {
@@ -197,8 +207,6 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
           Kirim permintaan
         </Button>
       </form>
-
-      <GameInvites />
 
       {data === null ? (
         <p role="status">Memuat daftar…</p>
