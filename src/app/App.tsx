@@ -24,6 +24,9 @@ import type { Role } from '@/types';
 const StudentClass = lazy(() => import('@/features/student/StudentClass').then((m) => ({ default: m.StudentClass })));
 const TeacherQuizPlay = lazy(() => import('@/features/student/TeacherQuizPlay').then((m) => ({ default: m.TeacherQuizPlay })));
 const InvitePage = lazy(() => import('@/features/student/InvitePage').then((m) => ({ default: m.InvitePage })));
+const KuisKilatPaket = lazy(() => import('@/features/games/BankGames').then((m) => ({ default: m.KuisKilatPaket })));
+const BenarSalahKilat = lazy(() => import('@/features/games/BankGames').then((m) => ({ default: m.BenarSalahKilat })));
+const PasanganMemori = lazy(() => import('@/features/games/MemoryGame').then((m) => ({ default: m.PasanganMemori })));
 const DuelPage = lazy(() => import('@/features/games/DuelPage').then((m) => ({ default: m.DuelPage })));
 const MasukPage = lazy(() => import('@/features/auth/MasukPage').then((m) => ({ default: m.MasukPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
@@ -114,6 +117,9 @@ export function App() {
                     <Route path="game/duel/:roomId" element={<DuelPage />} />
                     <Route path="game/susun-kata" element={<SusunKata />} />
                     <Route path="game/teka-pola" element={<TekaPola />} />
+                    <Route path="game/kuis-kilat" element={<KuisKilatPaket />} />
+                    <Route path="game/benar-salah" element={<BenarSalahKilat />} />
+                    <Route path="game/pasangan-memori" element={<PasanganMemori />} />
                   </>
                 )}
               </Route>
