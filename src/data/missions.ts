@@ -18,6 +18,7 @@ export function gameIdOfKey(key: string): string {
 
 /** Judul ramah untuk kunci hasil (kuis atau game). */
 export function resultTitle(key: string): string {
+  if (key.startsWith('tq_')) return 'Kuis guru';
   if (key.startsWith('game_')) return GAME_MISSIONS.find((g) => g.id === key.slice(5))?.title ?? key;
   return (sampleContents.find((c) => c.id === key)?.title ?? key).replace(' (contoh)', '');
 }
