@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { ButtonLink, Icon, Logo } from '@/components/ui';
 import { AccountMenu } from './AccountMenu';
@@ -5,6 +6,9 @@ import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
 import { cn } from '@/utils/cn';
 import type { Role } from '@/types';
+
+// Dimuat lazy supaya SDK Firebase tidak masuk bundel awal.
+const FloatingInvites = lazy(() => import('@/features/friends/FloatingInvites').then((m) => ({ default: m.FloatingInvites })));
 
 /**
  * Layar fokus: saat sedang mengerjakan sesuatu (kuis, game, misi kelas, pratinjau kuis guru) header dan bilah
@@ -28,6 +32,13 @@ export function ModeLayout({ role }: { role: Role }) {
   const rest = pathname.slice(base.length).split('/').filter(Boolean);
   const focus = rest.length >= 2 && FOCUS_SECTIONS[role].includes(rest[0]);
 
+  const floating =
+    role === 'student' && signedIn ? (
+      <Suspense fallback={null}>
+        <FloatingInvites />
+      </Suspense>
+    ) : null;
+
   // Sudah masuk sebagai peran lain (mis. orang tua membuka /siswa): kembalikan ke ruangnya sendiri.
   if (signedIn && user && user.role !== role) return <Navigate to={MODE_BASE[user.role]} replace />;
 
@@ -35,6 +46,7 @@ export function ModeLayout({ role }: { role: Role }) {
     return (
       <div data-mode={role} className="min-h-screen">
         <Outlet />
+        {floating}
       </div>
     );
   }
@@ -109,6 +121,7 @@ export function ModeLayout({ role }: { role: Role }) {
       <div className="flex-1">
         <Outlet />
       </div>
+      {floating}
     </div>
   );
 }
