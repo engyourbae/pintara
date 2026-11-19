@@ -10,7 +10,15 @@ import { getDb, getRtdb } from './client';
  */
 export const DUEL_GAME_ID = 'kilat-duel';
 export const DUEL_TOTAL = 10;
-export const DUEL_LIMIT = 12; // detik per soal
+export const DUEL_LIMIT = 12; // detik per soal (duel hitung)
+export const DUEL_PACK_LIMIT = 20; // detik per soal (duel dari paket kuis: soal teks perlu waktu baca)
+export type DuelKind = 'hitung' | 'paket';
+/** Paket kuis untuk duel: hanya id, versi, dan urutan indeks soal yang disimpan. Kunci jawaban TIDAK ada di database. */
+export interface DuelPack {
+  packId: string;
+  version: number;
+  order: number[];
+}
 
 export interface DuelPlayer {
   name: string;
@@ -26,6 +34,8 @@ export interface DuelAnswer {
 }
 export type DuelPhase = 'lobby' | 'question' | 'reveal' | 'finished';
 export interface DuelRoom {
+  kind: DuelKind;
+  pack: DuelPack | null;
   hostUid: string;
   status: 'lobby' | 'playing' | 'finished';
   players: Record<string, DuelPlayer>;
@@ -41,6 +51,8 @@ export interface DuelInvite {
   from: string;
   roomId: string;
   expiresAt: number;
+  /** Ada bila ajakan untuk duel dari paket kuis. */
+  packId?: string;
 }
 
 /** Selisih jam server dan jam perangkat (ms). Dipakai agar hitung mundur sama di kedua pemain. */
@@ -69,7 +81,7 @@ export function subscribeInvites(me: string, cb: (list: DuelInvite[]) => void): 
       const list: DuelInvite[] = [];
       for (const [id, v] of Object.entries(val)) {
         if (v && v.type === 'game_invite' && v.gameId === DUEL_GAME_ID && typeof v.from === 'string' && typeof v.roomId === 'string' && typeof v.expiresAt === 'number') {
-          list.push({ id, from: v.from, roomId: v.roomId, expiresAt: v.expiresAt });
+          list.push({ id, from: v.from, roomId: v.roomId, expiresAt: v.expiresAt, ...(typeof v.packId === 'string' ? { packId: v.packId } : {}) });
         }
       }
       cb(list.sort((a, b) => b.expiresAt - a.expiresAt));
@@ -79,7 +91,7 @@ export function subscribeInvites(me: string, cb: (list: DuelInvite[]) => void): 
 }
 
 /** Buat ruang, izinkan satu teman, masukkan diri sebagai pemain, lalu kirim undangan. Mengembalikan id ruang. */
-export async function inviteFriend(me: string, myName: string, myAvatar: string, friendUid: string): Promise<string> {
+export async function inviteFriend(me: string, myName: string, myAvatar: string, friendUid: string, pack?: DuelPack): Promise<string> {
   const rtdb = getRtdb();
   const roomId = push(ref(rtdb, 'rooms')).key;
   const nid = push(ref(rtdb, `notifications/${friendUid}`)).key;
@@ -87,7 +99,9 @@ export async function inviteFriend(me: string, myName: string, myAvatar: string,
   const base = `rooms/${roomId}`;
   await cleanupMyDuel(me).catch(() => undefined); // buang ruang lama milikku (maks. satu ruang per tuan rumah)
   // Urutan berurutan (bukan satu update) karena aturan "allowed" dan "players" membaca meta yang sudah ada.
-  await set(ref(rtdb, `${base}/meta`), { hostUid: me, gameId: DUEL_GAME_ID, type: 'friend', status: 'lobby', maxPlayers: 2, createdAt: Date.now() });
+  const meta: Record<string, unknown> = { hostUid: me, gameId: DUEL_GAME_ID, type: 'friend', status: 'lobby', maxPlayers: 2, createdAt: Date.now(), kind: pack ? 'paket' : 'hitung' };
+  if (pack) Object.assign(meta, { packId: pack.packId, ver: pack.version, order: pack.order });
+  await set(ref(rtdb, `${base}/meta`), meta);
   await set(ref(rtdb, `duel_active/${me}`), roomId); // penunjuk agar ruang yang ditinggalkan bisa dibersihkan nanti
   await set(ref(rtdb, `${base}/allowed/${friendUid}`), true);
   await set(ref(rtdb, `${base}/players/${me}`), { name: myName.slice(0, 30) || 'Pemain', avatarId: myAvatar.slice(0, 30) || 'bintang', ready: true });
@@ -100,6 +114,7 @@ export async function inviteFriend(me: string, myName: string, myAvatar: string,
       gameId: DUEL_GAME_ID,
       createdAt: serverTimestamp(),
       expiresAt: Date.now() + offset + 240000, // aturan: maksimal 5 menit dari waktu server
+      ...(pack ? { packId: pack.packId } : {}),
     });
   } catch {
     void deleteRoom(roomId, me).catch(() => undefined);
@@ -124,7 +139,12 @@ function toRoom(v: Raw): DuelRoom {
   const qraw: Raw = v.questions ?? {};
   const araw: Raw = v.answers ?? {};
   const state: Raw = v.state ?? {};
+  const orderRaw: unknown[] = Array.isArray(v.meta?.order) ? v.meta.order : Object.values(v.meta?.order ?? {});
+  const order = orderRaw.map(Number).filter((n) => Number.isInteger(n) && n >= 0);
+  const isPack = v.meta?.kind === 'paket' && typeof v.meta?.packId === 'string' && order.length === DUEL_TOTAL;
   return {
+    kind: isPack ? 'paket' : 'hitung',
+    pack: isPack ? { packId: String(v.meta.packId), version: Number(v.meta.ver) || 0, order } : null,
     hostUid: String(v.meta?.hostUid ?? ''),
     status: v.meta?.status === 'playing' || v.meta?.status === 'finished' ? v.meta.status : 'lobby',
     players: (v.players ?? {}) as Record<string, DuelPlayer>,
@@ -149,10 +169,11 @@ export function subscribeRoom(roomId: string, cb: (room: DuelRoom | null) => voi
   );
 }
 
-export async function hostStart(roomId: string, questions: DuelQuestion[]): Promise<void> {
+/** `questions` null = duel paket: soal berasal dari paket di bundel kedua klien, tidak ditulis ke database. */
+export async function hostStart(roomId: string, questions: DuelQuestion[] | null): Promise<void> {
   const rtdb = getRtdb();
   const base = `rooms/${roomId}`;
-  await Promise.all(questions.map((q, i) => set(ref(rtdb, `${base}/questions/${i}`), q)));
+  if (questions) await Promise.all(questions.map((q, i) => set(ref(rtdb, `${base}/questions/${i}`), q)));
   await update(ref(rtdb, `${base}/meta`), { status: 'playing' });
   await set(ref(rtdb, `${base}/state`), { phase: 'question', index: 0, startedAt: serverTimestamp() });
 }
