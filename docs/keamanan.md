@@ -48,3 +48,7 @@ Tanpa server, hal berikut **tidak bisa dijamin**:
 - Duel memakai Rules RTDB yang sudah ada (`rooms`, `notifications`, `friends`, `blocked`): undangan hanya antar teman yang saling berteman dan belum memblokir; ruang hanya terbaca host, pemain, dan teman yang diizinkan; jawaban ditulis sekali (`!data.exists()`).
 - **Tidak ditegakkan Rules (batas jujur):** izin orang tua untuk main bersama (flag di Firestore) hanya dicek klien; skor/jawaban dari klien yang dimodifikasi tidak bisa dicegah sepenuhnya; data ruang tidak bisa dihapus klien.
 - Salinan profil offline (`pintara:auth-user:v1`) hanya berisi uid, peran, nama tampilan, status verifikasi guru; tidak ada token/sandi. Peran di sana hanya untuk tampilan; Rules tetap membaca `users/{uid}.role`.
+
+## Data hemat (F23)
+- RTDB: ruang duel dan undangan bersifat sementara; Rules mengizinkan host/pemain menghapus seluruh ruang (`rooms/$roomId` hanya untuk hapus), dan `duel_active/$uid` hanya milik pemilik.
+- Firestore: `learning_progress/{uid}/snapshot/main` hanya boleh ditulis pemilik, dengan kunci tetap dan batas nilai; dapat dibaca orang tua dan dihapus pemilik/orang tua.
