@@ -30,15 +30,32 @@
     /* Cegah zoom ganda-ketuk; gulir tetap normal. */
     touch-action: manipulation;
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
     /* Matikan tarik-untuk-muat-ulang dan efek pantul di ujung halaman (terasa seperti aplikasi). */
     overscroll-behavior: none;
   }
   body {
     overscroll-behavior: none;
+    /* Terasa seperti aplikasi: tahan lama tidak memilih teks / memunculkan menu peramban. Kolom isian tetap bisa dipilih. */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
     @apply bg-krem font-sans text-tinta antialiased;
     /* Kertas bertitik halus, bukan gradien. */
     background-image: radial-gradient(rgba(42, 51, 40, 0.09) 1px, transparent 1px);
     background-size: 22px 22px;
+  }
+  input,
+  textarea,
+  [contenteditable='true'],
+  .boleh-pilih {
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  img,
+  a {
+    -webkit-user-drag: none;
   }
   h1,
   h2,
