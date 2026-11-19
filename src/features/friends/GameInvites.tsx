@@ -4,7 +4,7 @@ import { Button, Card } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useProgress } from '@/hooks/useProgress';
-import { acceptInvite, declineInvite, multiplayerFlags, serverOffset, subscribeInvites, type DuelInvite } from '@/services/firebase/duel';
+import { acceptInvite, cleanupMyDuel, declineInvite, multiplayerFlags, serverOffset, subscribeInvites, type DuelInvite } from '@/services/firebase/duel';
 import { ensureMirror, profileOf, type PublicProfile } from '@/services/firebase/friends';
 
 /** Kotak undangan main dari teman. Tidak tampil bila tidak ada undangan atau orang tua belum mengizinkan. */
@@ -31,7 +31,10 @@ export function GameInvites() {
         if (cancelled) return;
         const ok = f.friends && f.multiplayer;
         setEnabled(ok);
-        if (ok) void ensureMirror(uid).catch(() => undefined); // rules undangan butuh cermin teman di RTDB
+        if (ok) {
+          void ensureMirror(uid).catch(() => undefined); // rules undangan butuh cermin teman di RTDB
+          void cleanupMyDuel(uid).catch(() => undefined); // buang ruang duel lama yang ditinggalkan
+        }
       })
       .catch(() => setEnabled(false));
     return () => {
@@ -46,6 +49,12 @@ export function GameInvites() {
   }, [uid, enabled]);
 
   const live = invites.filter((i) => i.expiresAt > Date.now() + offset);
+
+  // Undangan kedaluwarsa dihapus agar tidak menumpuk.
+  useEffect(() => {
+    if (!uid) return;
+    invites.filter((i) => i.expiresAt <= Date.now() + offset).forEach((i) => void declineInvite(uid, i.id).catch(() => undefined));
+  }, [invites, offset, uid]);
 
   useEffect(() => {
     live.forEach((inv) => {
