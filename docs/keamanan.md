@@ -52,3 +52,9 @@ Tanpa server, hal berikut **tidak bisa dijamin**:
 ## Data hemat (F23)
 - RTDB: ruang duel dan undangan bersifat sementara; Rules mengizinkan host/pemain menghapus seluruh ruang (`rooms/$roomId` hanya untuk hapus), dan `duel_active/$uid` hanya milik pemilik.
 - Firestore: `learning_progress/{uid}/snapshot/main` hanya boleh ditulis pemilik, dengan kunci tetap dan batas nilai; dapat dibaca orang tua dan dihapus pemilik/orang tua.
+
+## Kuis buatan guru (F25)
+- Koleksi baru di bawah `classes/{id}`: `teacher_quizzes` (soal tanpa kunci; dibaca guru kelas dan murid aktif), `quiz_keys/{id}` (kunci; hanya guru kelas, Rules lama dipakai ulang), `quiz_answers/{id}_{uid}` (jawaban mentah murid; sekali kirim, tanpa update; dibaca guru dan pemilik; guru boleh hapus untuk kesempatan ulang).
+- Penilaian dilakukan di app guru (kunci dibaca guru). Nilai ke murid hanya lewat guru menulis `results/tq_{id}_{uid}`; murid tidak pernah membaca kunci.
+- Rules membatasi: jumlah soal 1-20, bidang dokumen, panjang jawaban = jumlah soal, id dokumen jawaban = `{kuis}_{uid}`. **Tidak ditegakkan Rules:** panjang teks soal/pilihan dan jumlah pilihan (hanya klien); nilai tiap elemen `answers`. Status: **BELUM TERUJI** (emulator tidak tersedia; hanya keseimbangan kurung dicek).
+- Hapus kuis oleh guru ikut menghapus kunci, jawaban, dan nilai terkait supaya data tidak menumpuk.

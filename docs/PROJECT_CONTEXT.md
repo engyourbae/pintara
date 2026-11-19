@@ -140,3 +140,9 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 ## Perbaikan layar memuat macet (fix-loading3)
 - Gejala: splash tertahan selamanya. Penyebab yang ditutup: (1) `getDoc` profil bisa menggantung tanpa galat di jaringan yang memblokir WebChannel → `getDb()` kini memakai `experimentalAutoDetectLongPolling`; (2) `useAuth`: batas 8 dtk untuk `fetchAppUser` dan watchdog 10 dtk (status `loading` → salinan profil bila ada, jika tidak `error`), plus coba segarkan tiap 20 dtk selama memakai salinan; (3) `SplashGate`: splash dihapus paksa setelah 14 dtk; (4) `ErrorBoundary` menghapus splash agar pesan galat terlihat (sebelumnya galat render/chunk gagal tertutup splash).
 - Penyebab pasti di perangkat pemilik BELUM DIKETAHUI; belum teruji di ponsel.
+
+## Catatan F26
+- Setiap paket (38 paket) sekarang 30 soal, versi 2. Hanya data JSON dan docs yang berubah; tidak ada kode atau Rules. `progressSync` hanya menyimpan nomor versi bersama hasil terbaik, jadi hasil lama tetap aman.
+
+## Catatan F25b
+- Kuis buatan guru kini juga muncul di menu **Kuis** guru (bagian "Kuis buatan saya", pilih kelas bila punya lebih dari satu), bukan hanya di dalam halaman detail kelas. `TeacherPages.tsx` (`MyQuizzes`).
