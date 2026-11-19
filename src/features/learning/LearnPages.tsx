@@ -5,6 +5,8 @@ import { MODE_BASE } from '@/app/navigation';
 import { GROUPS, GROUP_BY_ID } from '@/data/groups';
 import { isSampleContent, sampleCategories, sampleContents } from '@/data/sample';
 import { progressActions, starsFor, useProgress } from '@/hooks/useProgress';
+import { PackDuelPicker } from '@/features/friends/PackDuelPicker';
+import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/utils/cn';
 import type { CategoryGroup, LearningContent } from '@/types';
 
@@ -131,6 +133,10 @@ function Quiz({ content, base, preview }: { content: LearningContent; base: stri
   const [correct, setCorrect] = useState(0);
   const [result, setResult] = useState<{ stars: number; gained: number } | null>(null);
   const recorded = useRef(false);
+  const { status, user } = useAuth();
+  const [duelOpen, setDuelOpen] = useState(false);
+  // Duel hanya untuk akun anak (bukan pratinjau guru, bukan tamu).
+  const canDuel = !preview && status === 'ready' && user?.role === 'student' && !!user.parentUid && total >= 10;
 
   const q = content.questions[index];
   const answered = picked !== null;
@@ -157,6 +163,8 @@ function Quiz({ content, base, preview }: { content: LearningContent; base: stri
       );
     }
   }
+
+  if (duelOpen) return <PackDuelPicker content={content} onClose={() => setDuelOpen(false)} />;
 
   if (result) {
     return (
@@ -193,6 +201,12 @@ function Quiz({ content, base, preview }: { content: LearningContent; base: stri
               {preview ? 'Kembali ke daftar kuis' : 'Pelajaran lain'}
             </ButtonLink>
           </div>
+          {canDuel && (
+            <Button variant="aksi" block onClick={() => setDuelOpen(true)}>
+              <Icon name="game" size={22} />
+              Duel dengan teman
+            </Button>
+          )}
         </Card>
       </Page>
     );
@@ -220,6 +234,13 @@ function Quiz({ content, base, preview }: { content: LearningContent; base: stri
           {index + 1}/{total}
         </span>
       </div>
+
+      {canDuel && index === 0 && !answered && (
+        <Button variant="sekunder" block onClick={() => setDuelOpen(true)}>
+          <Icon name="game" size={22} />
+          Duel dengan teman
+        </Button>
+      )}
 
       <Card key={index} className="animate-naik space-y-1">
         <p className="text-sm font-bold text-aksen-tua">{content.title.replace(' (contoh)', '')}</p>
