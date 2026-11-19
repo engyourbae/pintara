@@ -34,6 +34,16 @@ export interface FriendsData {
   blocked: PublicProfile[];
 }
 
+/** Penanda perubahan daftar teman antar komponen (detail: 'floating' atau 'page' = pengirimnya). */
+export const FRIENDS_CHANGED = 'pintara:friends-changed';
+
+/** Permintaan pertemanan masuk yang masih menunggu. Ringan: satu query + profil singkat. */
+export async function listIncomingRequests(me: string): Promise<PublicProfile[]> {
+  const snap = await getDocs(query(collection(getDb(), 'friend_requests'), where('toUid', '==', me)));
+  const uids = snap.docs.filter((d) => d.data().status === 'pending').map((d) => d.data().fromUid as string);
+  return Promise.all(uids.map(profileOf));
+}
+
 const pairKey = (a: string, b: string) => (a < b ? `${a}_${b}` : `${b}_${a}`);
 const quiet = () => undefined;
 
