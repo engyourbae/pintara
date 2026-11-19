@@ -42,3 +42,9 @@ Tanpa server, hal berikut **tidak bisa dijamin**:
 - Jalankan `firebase emulators:start` lalu uji skenario penolakan: ubah role sendiri, baca profil orang lain via list, buat `friendships` tanpa request, undang non-teman, jawab dua kali, tulis `class_live` tanpa verifikasi.
 - Atau pakai **Rules Playground** di tab Rules Firestore dan RTDB.
 - Konsol akan menolak publish bila ada kesalahan sintaks; baca pesannya dan kirim ke saya untuk diperbaiki.
+
+
+## Duel teman & sesi offline (F22)
+- Duel memakai Rules RTDB yang sudah ada (`rooms`, `notifications`, `friends`, `blocked`): undangan hanya antar teman yang saling berteman dan belum memblokir; ruang hanya terbaca host, pemain, dan teman yang diizinkan; jawaban ditulis sekali (`!data.exists()`).
+- **Tidak ditegakkan Rules (batas jujur):** izin orang tua untuk main bersama (flag di Firestore) hanya dicek klien; skor/jawaban dari klien yang dimodifikasi tidak bisa dicegah sepenuhnya; data ruang tidak bisa dihapus klien.
+- Salinan profil offline (`pintara:auth-user:v1`) hanya berisi uid, peran, nama tampilan, status verifikasi guru; tidak ada token/sandi. Peran di sana hanya untuk tampilan; Rules tetap membaca `users/{uid}.role`.
