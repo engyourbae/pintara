@@ -56,6 +56,7 @@
           "createdAt": { ".validate": "newData.val() == now" },
           "expiresAt": { ".validate": "newData.isNumber() && newData.val() > now && newData.val() <= now + 300000" },
           "read": { ".validate": "newData.isBoolean()" },
+          "packId": { ".validate": "newData.isString() && newData.val().matches(/^[a-z0-9-]{1,60}$/)" },
           "$other": { ".validate": false }
         }
       }
@@ -88,13 +89,20 @@
 
         "meta": {
           ".write": "auth != null && ((!data.exists() && newData.child('hostUid').val() == auth.uid) || data.child('hostUid').val() == auth.uid)",
-          ".validate": "newData.hasChildren(['hostUid', 'gameId', 'type', 'status', 'maxPlayers', 'createdAt'])",
+          ".validate": "newData.hasChildren(['hostUid', 'gameId', 'type', 'status', 'maxPlayers', 'createdAt']) && (newData.child('kind').val() != 'paket' || (newData.child('packId').exists() && newData.child('order').exists() && newData.child('ver').exists()))",
           "hostUid": { ".validate": "newData.val() == auth.uid" },
           "gameId": { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 40" },
           "type": { ".validate": "newData.val() == 'friend' || newData.val() == 'code'" },
           "status": { ".validate": "newData.val() == 'lobby' || newData.val() == 'playing' || newData.val() == 'finished'" },
           "maxPlayers": { ".validate": "newData.isNumber() && newData.val() >= 2 && newData.val() <= 10" },
           "createdAt": { ".validate": "newData.isNumber()" },
+          "kind": { ".validate": "newData.val() == 'hitung' || newData.val() == 'paket'" },
+          "packId": { ".validate": "newData.isString() && newData.val().matches(/^[a-z0-9-]{1,60}$/)" },
+          "ver": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000" },
+          "order": {
+            ".validate": "newData.hasChildren() && !newData.hasChild('10')",
+            "$i": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 100 && newData.val() % 1 == 0" }
+          },
           "$other": { ".validate": false }
         },
 
