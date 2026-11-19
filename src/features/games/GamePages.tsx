@@ -1,46 +1,109 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar } from '@/components/ui';
+import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, type IconName } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { progressActions, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
+import { dailyPack } from './daily';
+import { starsOfBest } from './scoring';
 
 const GAME = `${MODE_BASE.student}/game`;
 
-const GAMES = [
-  { to: `${GAME}/kilat-hitung`, title: 'Kilat Hitung', desc: '10 soal hitungan, jawab sebelum waktu habis.', icon: 'calc', bg: 'bg-kuning-500', keys: ['kilat-mudah', 'kilat-sedang', 'kilat-seru'] },
-  { to: `${GAME}/susun-kata`, title: 'Susun Kata', desc: 'Susun huruf acak menjadi kata dari petunjuk.', icon: 'pencil', bg: 'bg-hijau-300', keys: ['susun-kata'] },
-  { to: `${GAME}/teka-pola`, title: 'Teka Pola', desc: 'Tebak bentuk atau angka yang datang berikutnya.', icon: 'bulb', bg: 'bg-langit-300', keys: ['teka-pola'] },
-] as const;
+interface GameInfo {
+  to: string;
+  title: string;
+  desc: string;
+  icon: IconName;
+  bg: string;
+  keys: string[];
+  cat: string;
+  isNew?: boolean;
+}
+
+const GAMES: GameInfo[] = [
+  { to: `${GAME}/kilat-hitung`, title: 'Kilat Hitung', desc: '10 soal hitungan, jawab sebelum waktu habis.', icon: 'calc', bg: 'bg-kuning-500', keys: ['kilat-mudah', 'kilat-sedang', 'kilat-seru'], cat: 'Hitung & Logika' },
+  { to: `${GAME}/teka-pola`, title: 'Teka Pola', desc: 'Tebak bentuk atau angka yang datang berikutnya.', icon: 'bulb', bg: 'bg-langit-300', keys: ['teka-pola'], cat: 'Hitung & Logika' },
+  { to: `${GAME}/susun-kata`, title: 'Susun Kata', desc: 'Susun huruf acak menjadi kata dari petunjuk.', icon: 'pencil', bg: 'bg-hijau-300', keys: ['susun-kata'], cat: 'Kata & Pengetahuan' },
+  { to: `${GAME}/kuis-kilat`, title: 'Kuis Kilat', desc: '10 soal acak dari paket pilihanmu. Jawab cepat, raih beruntun.', icon: 'book', bg: 'bg-hijau-100', keys: ['kuis-kilat'], cat: 'Kata & Pengetahuan', isNew: true },
+  { to: `${GAME}/benar-salah`, title: 'Benar atau Salah Kilat', desc: '30 detik, 3 nyawa. Tebak jawabannya benar atau salah.', icon: 'check', bg: 'bg-jingga-300', keys: ['benar-salah'], cat: 'Kata & Pengetahuan', isNew: true },
+  { to: `${GAME}/pasangan-memori`, title: 'Pasangan Memori', desc: 'Cari kartu yang berpasangan dengan langkah paling sedikit.', icon: 'chip', bg: 'bg-langit-100', keys: ['memori-4', 'memori-6', 'memori-8'], cat: 'Ingatan', isNew: true },
+];
+const CATS = [...new Set(GAMES.map((g) => g.cat))];
+
+function Stars3({ count }: { count: number }) {
+  return (
+    <span className="inline-flex gap-0.5" role="img" aria-label={`${count} dari 3 bintang`}>
+      {[0, 1, 2].map((i) => (
+        <Icon key={i} name="star" size={16} className={i < count ? 'fill-kuning-500' : 'text-tinta/25'} />
+      ))}
+    </span>
+  );
+}
 
 export function GameMenu() {
   const p = useProgress();
+  const daily = dailyPack();
   return (
     <Page>
       <PageHeader title="Permainan" subtitle="Main sebentar, otak makin tajam." icon="game" />
-      <ul className="grid gap-4">
-        {GAMES.map((g, i) => {
-          const best = Math.max(0, ...g.keys.map((k) => p.gameBest[k] ?? 0));
-          return (
-            <li key={g.to} className="animate-naik" style={{ animationDelay: `${i * 80}ms` }}>
-              <Link
-                to={g.to}
-                className="stiker flex items-center gap-4 rounded-3xl bg-gading p-4 transition active:translate-y-1 active:shadow-none"
-              >
-                <span className={cn('stiker flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl', g.bg)}>
-                  <Icon name={g.icon} size={34} />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display text-xl font-semibold">{g.title}</span>
-                  <span className="block text-tinta/85">{g.desc}</span>
-                  {best > 0 && <span className="mt-1 block text-sm font-bold text-aksen-tua">Skor terbaik: {best}</span>}
-                </span>
-                <Icon name="arrow" className="shrink-0" />
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      {daily && (
+        <Link
+          to={`${GAME}/kuis-kilat?paket=${daily.id}&harian=1`}
+          className="stiker flex items-center gap-4 rounded-3xl bg-kuning-100 p-4 transition active:translate-y-1 active:shadow-none"
+        >
+          <span className="stiker flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-kuning-500">
+            <Icon name="flame" size={30} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-display text-xl font-semibold">Tantangan hari ini</span>
+            <span className="block text-tinta/85">Kuis Kilat: {daily.title.replace(' (contoh)', '')}. Soalnya sama untuk semua murid hari ini.</span>
+            <span className="mt-1 block text-sm text-tinta/70">Belum ada hadiah khusus.</span>
+          </span>
+          <Icon name="arrow" className="shrink-0" />
+        </Link>
+      )}
+      {CATS.map((cat) => (
+        <section key={cat} className="space-y-3">
+          <h2 className="font-display text-xl font-semibold">{cat}</h2>
+          <ul className="grid gap-4">
+            {GAMES.filter((g) => g.cat === cat).map((g, i) => {
+              const best = Math.max(0, ...g.keys.map((k) => p.gameBest[k] ?? 0));
+              const bestKey = g.keys.reduce((a, k) => ((p.gameBest[k] ?? 0) >= (p.gameBest[a] ?? 0) ? k : a), g.keys[0]);
+              const stars = g.isNew ? Math.max(...g.keys.map((k) => starsOfBest(k, p.gameBest[k] ?? 0))) : 0;
+              return (
+                <li key={g.to} className="animate-naik" style={{ animationDelay: `${i * 80}ms` }}>
+                  <Link
+                    to={g.to}
+                    className="stiker flex items-center gap-4 rounded-3xl bg-gading p-4 transition active:translate-y-1 active:shadow-none"
+                  >
+                    <span className={cn('stiker flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl', g.bg)}>
+                      <Icon name={g.icon} size={34} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="flex flex-wrap items-center gap-2">
+                        <span className="font-display text-xl font-semibold">{g.title}</span>
+                        {g.isNew && <Badge tone="jingga">Baru</Badge>}
+                      </span>
+                      <span className="block text-tinta/85">{g.desc}</span>
+                      {best > 0 && (
+                        <span className="mt-1 flex items-center gap-2 text-sm font-bold text-aksen-tua">
+                          {g.isNew ? <Stars3 count={stars} /> : `Skor terbaik: ${best}`}
+                          {g.isNew && !bestKey.startsWith('memori-') && <span>Skor {best}</span>}
+                        </span>
+                      )}
+                    </span>
+                    <Icon name="arrow" className="shrink-0" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+      <Card tone="langit" className="flex items-start gap-3">
+        <Icon name="users" size={24} className="mt-0.5 shrink-0" />
+        <p>Mau adu cepat dengan teman? Pilih kuis di menu Belajar lalu tekan "Duel dengan teman", atau ajak teman di menu Teman (perlu izin orang tua).</p>
+      </Card>
     </Page>
   );
 }
