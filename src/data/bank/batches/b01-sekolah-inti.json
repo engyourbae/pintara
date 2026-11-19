@@ -7,7 +7,7 @@
    1
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -128,6 +128,246 @@
     ],
     "answerIndex": 0,
     "explanation": "12 + 8 = 20. Yang lain: 18, 18, 18."
+   },
+   {
+    "id": "q11",
+    "prompt": "6 + 7 = ...",
+    "options": [
+     "15",
+     "14",
+     "11",
+     "13"
+    ],
+    "answerIndex": 3,
+    "explanation": "6 + 7 = 13."
+   },
+   {
+    "id": "q12",
+    "prompt": "9 + 10 = ...",
+    "options": [
+     "17",
+     "20",
+     "21",
+     "19"
+    ],
+    "answerIndex": 3,
+    "explanation": "9 + 10 = 19."
+   },
+   {
+    "id": "q13",
+    "prompt": "6 + 2 = ...",
+    "options": [
+     "5",
+     "10",
+     "9",
+     "8"
+    ],
+    "answerIndex": 3,
+    "explanation": "6 + 2 = 8."
+   },
+   {
+    "id": "q14",
+    "prompt": "4 + 7 = ...",
+    "options": [
+     "8",
+     "10",
+     "11",
+     "9"
+    ],
+    "answerIndex": 2,
+    "explanation": "4 + 7 = 11."
+   },
+   {
+    "id": "q15",
+    "prompt": "Di taman ada 6 kupu-kupu merah dan 14 kupu-kupu kuning. Jumlah semua kupu-kupu ...",
+    "options": [
+     "19 ekor",
+     "17 ekor",
+     "22 ekor",
+     "20 ekor"
+    ],
+    "answerIndex": 3,
+    "explanation": "6 + 14 = 20."
+   },
+   {
+    "id": "q16",
+    "prompt": "Rak buku berisi 8 buku cerita dan 4 buku bergambar. Jumlah semua buku ...",
+    "options": [
+     "12 buah",
+     "11 buah",
+     "9 buah",
+     "14 buah"
+    ],
+    "answerIndex": 0,
+    "explanation": "8 + 4 = 12."
+   },
+   {
+    "id": "q17",
+    "prompt": "Rak buku berisi 7 buku cerita dan 10 buku bergambar. Jumlah semua buku ...",
+    "options": [
+     "16 buah",
+     "17 buah",
+     "20 buah",
+     "15 buah"
+    ],
+    "answerIndex": 1,
+    "explanation": "7 + 10 = 17."
+   },
+   {
+    "id": "q18",
+    "prompt": "5 + ... = 17. Bilangan yang hilang adalah ...",
+    "options": [
+     "13",
+     "15",
+     "14",
+     "12"
+    ],
+    "answerIndex": 3,
+    "explanation": "17 − 5 = 12, jadi bilangannya 12."
+   },
+   {
+    "id": "q19",
+    "prompt": "2 + ... = 6. Bilangan yang hilang adalah ...",
+    "options": [
+     "3",
+     "7",
+     "4",
+     "1"
+    ],
+    "answerIndex": 2,
+    "explanation": "6 − 2 = 4, jadi bilangannya 4."
+   },
+   {
+    "id": "q20",
+    "prompt": "6 + 10 = ...",
+    "options": [
+     "16",
+     "15",
+     "18",
+     "13"
+    ],
+    "answerIndex": 0,
+    "explanation": "6 + 10 = 16."
+   },
+   {
+    "id": "q21",
+    "prompt": "12 + 2 = ...",
+    "options": [
+     "11",
+     "14",
+     "12",
+     "17"
+    ],
+    "answerIndex": 1,
+    "explanation": "12 + 2 = 14."
+   },
+   {
+    "id": "q22",
+    "prompt": "7 + 8 = ...",
+    "options": [
+     "13",
+     "17",
+     "15",
+     "14"
+    ],
+    "answerIndex": 2,
+    "explanation": "7 + 8 = 15."
+   },
+   {
+    "id": "q23",
+    "prompt": "2 + 2 = ...",
+    "options": [
+     "7",
+     "1",
+     "6",
+     "4"
+    ],
+    "answerIndex": 3,
+    "explanation": "2 + 2 = 4."
+   },
+   {
+    "id": "q24",
+    "prompt": "9 + 3 = ...",
+    "options": [
+     "12",
+     "10",
+     "15",
+     "13"
+    ],
+    "answerIndex": 0,
+    "explanation": "9 + 3 = 12."
+   },
+   {
+    "id": "q25",
+    "prompt": "Rak buku berisi 5 buku cerita dan 5 buku bergambar. Jumlah semua buku ...",
+    "options": [
+     "8 buah",
+     "13 buah",
+     "10 buah",
+     "12 buah"
+    ],
+    "answerIndex": 2,
+    "explanation": "5 + 5 = 10."
+   },
+   {
+    "id": "q26",
+    "prompt": "Rak buku berisi 12 buku cerita dan 8 buku bergambar. Jumlah semua buku ...",
+    "options": [
+     "20 buah",
+     "21 buah",
+     "23 buah",
+     "19 buah"
+    ],
+    "answerIndex": 0,
+    "explanation": "12 + 8 = 20."
+   },
+   {
+    "id": "q27",
+    "prompt": "Rak buku berisi 10 buku cerita dan 9 buku bergambar. Jumlah semua buku ...",
+    "options": [
+     "18 buah",
+     "17 buah",
+     "20 buah",
+     "19 buah"
+    ],
+    "answerIndex": 3,
+    "explanation": "10 + 9 = 19."
+   },
+   {
+    "id": "q28",
+    "prompt": "2 + ... = 20. Bilangan yang hilang adalah ...",
+    "options": [
+     "20",
+     "18",
+     "16",
+     "17"
+    ],
+    "answerIndex": 1,
+    "explanation": "20 − 2 = 18, jadi bilangannya 18."
+   },
+   {
+    "id": "q29",
+    "prompt": "2 + ... = 7. Bilangan yang hilang adalah ...",
+    "options": [
+     "5",
+     "7",
+     "3",
+     "8"
+    ],
+    "answerIndex": 0,
+    "explanation": "7 − 2 = 5, jadi bilangannya 5."
+   },
+   {
+    "id": "q30",
+    "prompt": "8 + 4 = ...",
+    "options": [
+     "15",
+     "9",
+     "11",
+     "12"
+    ],
+    "answerIndex": 3,
+    "explanation": "8 + 4 = 12."
    }
   ]
  },
@@ -139,7 +379,7 @@
    2
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -260,6 +500,246 @@
     ],
     "answerIndex": 3,
     "explanation": "Untuk mencari bilangan awal, tambahkan: 30 + 26 = 56."
+   },
+   {
+    "id": "q11",
+    "prompt": "93 − 16 = ...",
+    "options": [
+     "79",
+     "77",
+     "87",
+     "75"
+    ],
+    "answerIndex": 1,
+    "explanation": "93 − 16 = 77."
+   },
+   {
+    "id": "q12",
+    "prompt": "57 − 41 = ...",
+    "options": [
+     "6",
+     "16",
+     "14",
+     "15"
+    ],
+    "answerIndex": 1,
+    "explanation": "57 − 41 = 16."
+   },
+   {
+    "id": "q13",
+    "prompt": "80 − 69 = ...",
+    "options": [
+     "11",
+     "1",
+     "13",
+     "21"
+    ],
+    "answerIndex": 0,
+    "explanation": "80 − 69 = 11."
+   },
+   {
+    "id": "q14",
+    "prompt": "96 − 35 = ...",
+    "options": [
+     "59",
+     "61",
+     "51",
+     "71"
+    ],
+    "answerIndex": 1,
+    "explanation": "96 − 35 = 61."
+   },
+   {
+    "id": "q15",
+    "prompt": "85 − 35 = ...",
+    "options": [
+     "48",
+     "50",
+     "40",
+     "49"
+    ],
+    "answerIndex": 1,
+    "explanation": "85 − 35 = 50."
+   },
+   {
+    "id": "q16",
+    "prompt": "Pedagang membawa 67 jeruk dan terjual 43 jeruk. Jeruk yang tersisa ...",
+    "options": [
+     "24 jeruk",
+     "23 jeruk",
+     "14 jeruk",
+     "25 jeruk"
+    ],
+    "answerIndex": 0,
+    "explanation": "67 − 43 = 24."
+   },
+   {
+    "id": "q17",
+    "prompt": "Lapangan diisi 85 anak, lalu 57 anak pulang. Anak yang masih di lapangan ...",
+    "options": [
+     "28 anak",
+     "26 anak",
+     "30 anak",
+     "38 anak"
+    ],
+    "answerIndex": 0,
+    "explanation": "85 − 57 = 28."
+   },
+   {
+    "id": "q18",
+    "prompt": "Lapangan diisi 95 anak, lalu 70 anak pulang. Anak yang masih di lapangan ...",
+    "options": [
+     "27 anak",
+     "25 anak",
+     "26 anak",
+     "35 anak"
+    ],
+    "answerIndex": 1,
+    "explanation": "95 − 70 = 25."
+   },
+   {
+    "id": "q19",
+    "prompt": "... − 18 = 36. Bilangan yang hilang adalah ...",
+    "options": [
+     "64",
+     "55",
+     "54",
+     "44"
+    ],
+    "answerIndex": 2,
+    "explanation": "36 + 18 = 54, jadi bilangannya 54."
+   },
+   {
+    "id": "q20",
+    "prompt": "... − 37 = 21. Bilangan yang hilang adalah ...",
+    "options": [
+     "60",
+     "56",
+     "48",
+     "58"
+    ],
+    "answerIndex": 3,
+    "explanation": "21 + 37 = 58, jadi bilangannya 58."
+   },
+   {
+    "id": "q21",
+    "prompt": "49 − 21 = ...",
+    "options": [
+     "38",
+     "28",
+     "27",
+     "30"
+    ],
+    "answerIndex": 1,
+    "explanation": "49 − 21 = 28."
+   },
+   {
+    "id": "q22",
+    "prompt": "56 − 45 = ...",
+    "options": [
+     "11",
+     "21",
+     "1",
+     "13"
+    ],
+    "answerIndex": 0,
+    "explanation": "56 − 45 = 11."
+   },
+   {
+    "id": "q23",
+    "prompt": "79 − 58 = ...",
+    "options": [
+     "22",
+     "23",
+     "21",
+     "11"
+    ],
+    "answerIndex": 2,
+    "explanation": "79 − 58 = 21."
+   },
+   {
+    "id": "q24",
+    "prompt": "86 − 62 = ...",
+    "options": [
+     "26",
+     "14",
+     "22",
+     "24"
+    ],
+    "answerIndex": 3,
+    "explanation": "86 − 62 = 24."
+   },
+   {
+    "id": "q25",
+    "prompt": "66 − 39 = ...",
+    "options": [
+     "29",
+     "25",
+     "37",
+     "27"
+    ],
+    "answerIndex": 3,
+    "explanation": "66 − 39 = 27."
+   },
+   {
+    "id": "q26",
+    "prompt": "Lapangan diisi 88 anak, lalu 34 anak pulang. Anak yang masih di lapangan ...",
+    "options": [
+     "55 anak",
+     "44 anak",
+     "54 anak",
+     "64 anak"
+    ],
+    "answerIndex": 2,
+    "explanation": "88 − 34 = 54."
+   },
+   {
+    "id": "q27",
+    "prompt": "Lapangan diisi 54 anak, lalu 15 anak pulang. Anak yang masih di lapangan ...",
+    "options": [
+     "39 anak",
+     "38 anak",
+     "40 anak",
+     "49 anak"
+    ],
+    "answerIndex": 0,
+    "explanation": "54 − 15 = 39."
+   },
+   {
+    "id": "q28",
+    "prompt": "Lapangan diisi 97 anak, lalu 73 anak pulang. Anak yang masih di lapangan ...",
+    "options": [
+     "25 anak",
+     "24 anak",
+     "23 anak",
+     "26 anak"
+    ],
+    "answerIndex": 1,
+    "explanation": "97 − 73 = 24."
+   },
+   {
+    "id": "q29",
+    "prompt": "... − 35 = 17. Bilangan yang hilang adalah ...",
+    "options": [
+     "62",
+     "52",
+     "50",
+     "42"
+    ],
+    "answerIndex": 1,
+    "explanation": "17 + 35 = 52, jadi bilangannya 52."
+   },
+   {
+    "id": "q30",
+    "prompt": "... − 31 = 33. Bilangan yang hilang adalah ...",
+    "options": [
+     "54",
+     "66",
+     "64",
+     "63"
+    ],
+    "answerIndex": 2,
+    "explanation": "33 + 31 = 64, jadi bilangannya 64."
    }
   ]
  },
@@ -271,7 +751,7 @@
    3
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -392,6 +872,246 @@
     ],
     "answerIndex": 0,
     "explanation": "7 × 7 = 49."
+   },
+   {
+    "id": "q11",
+    "prompt": "8 × 4 = ...",
+    "options": [
+     "22",
+     "31",
+     "24",
+     "32"
+    ],
+    "answerIndex": 3,
+    "explanation": "8 × 4 = 32."
+   },
+   {
+    "id": "q12",
+    "prompt": "7 × 7 = ...",
+    "options": [
+     "48",
+     "49",
+     "59",
+     "39"
+    ],
+    "answerIndex": 1,
+    "explanation": "7 × 7 = 49."
+   },
+   {
+    "id": "q13",
+    "prompt": "10 × 11 = ...",
+    "options": [
+     "100",
+     "109",
+     "111",
+     "110"
+    ],
+    "answerIndex": 3,
+    "explanation": "10 × 11 = 110."
+   },
+   {
+    "id": "q14",
+    "prompt": "108 ÷ 12 = ...",
+    "options": [
+     "6",
+     "10",
+     "9",
+     "7"
+    ],
+    "answerIndex": 2,
+    "explanation": "9 × 12 = 108, jadi 108 ÷ 12 = 9."
+   },
+   {
+    "id": "q15",
+    "prompt": "27 ÷ 3 = ...",
+    "options": [
+     "8",
+     "11",
+     "12",
+     "9"
+    ],
+    "answerIndex": 3,
+    "explanation": "9 × 3 = 27, jadi 27 ÷ 3 = 9."
+   },
+   {
+    "id": "q16",
+    "prompt": "96 ÷ 8 = ...",
+    "options": [
+     "11",
+     "12",
+     "9",
+     "10"
+    ],
+    "answerIndex": 1,
+    "explanation": "12 × 8 = 96, jadi 96 ÷ 8 = 12."
+   },
+   {
+    "id": "q17",
+    "prompt": "Setiap tas berisi 12 buku. Ada 6 tas. Jumlah buku seluruhnya ...",
+    "options": [
+     "82 buku",
+     "84 buku",
+     "72 buku",
+     "62 buku"
+    ],
+    "answerIndex": 2,
+    "explanation": "6 × 12 = 72."
+   },
+   {
+    "id": "q18",
+    "prompt": "Setiap tas berisi 12 buku. Ada 8 tas. Jumlah buku seluruhnya ...",
+    "options": [
+     "108 buku",
+     "96 buku",
+     "88 buku",
+     "106 buku"
+    ],
+    "answerIndex": 1,
+    "explanation": "8 × 12 = 96."
+   },
+   {
+    "id": "q19",
+    "prompt": "42 kue dibagi sama banyak ke 6 piring. Setiap piring berisi ... kue.",
+    "options": [
+     "7",
+     "5",
+     "9",
+     "6"
+    ],
+    "answerIndex": 0,
+    "explanation": "42 ÷ 6 = 7."
+   },
+   {
+    "id": "q20",
+    "prompt": "9 × ... = 99. Bilangan yang hilang adalah ...",
+    "options": [
+     "12",
+     "14",
+     "9",
+     "11"
+    ],
+    "answerIndex": 3,
+    "explanation": "99 ÷ 9 = 11."
+   },
+   {
+    "id": "q21",
+    "prompt": "6 × 10 = ...",
+    "options": [
+     "66",
+     "59",
+     "50",
+     "60"
+    ],
+    "answerIndex": 3,
+    "explanation": "6 × 10 = 60."
+   },
+   {
+    "id": "q22",
+    "prompt": "8 × 12 = ...",
+    "options": [
+     "86",
+     "96",
+     "97",
+     "108"
+    ],
+    "answerIndex": 1,
+    "explanation": "8 × 12 = 96."
+   },
+   {
+    "id": "q23",
+    "prompt": "5 × 3 = ...",
+    "options": [
+     "5",
+     "20",
+     "15",
+     "18"
+    ],
+    "answerIndex": 2,
+    "explanation": "5 × 3 = 15."
+   },
+   {
+    "id": "q24",
+    "prompt": "132 ÷ 12 = ...",
+    "options": [
+     "11",
+     "13",
+     "14",
+     "12"
+    ],
+    "answerIndex": 0,
+    "explanation": "11 × 12 = 132, jadi 132 ÷ 12 = 11."
+   },
+   {
+    "id": "q25",
+    "prompt": "33 ÷ 11 = ...",
+    "options": [
+     "1",
+     "4",
+     "6",
+     "3"
+    ],
+    "answerIndex": 3,
+    "explanation": "3 × 11 = 33, jadi 33 ÷ 11 = 3."
+   },
+   {
+    "id": "q26",
+    "prompt": "27 ÷ 9 = ...",
+    "options": [
+     "2",
+     "5",
+     "3",
+     "6"
+    ],
+    "answerIndex": 2,
+    "explanation": "3 × 9 = 27, jadi 27 ÷ 9 = 3."
+   },
+   {
+    "id": "q27",
+    "prompt": "Setiap meja dipakai 5 anak. Ada 6 meja. Jumlah anak ...",
+    "options": [
+     "30 anak",
+     "36 anak",
+     "25 anak",
+     "20 anak"
+    ],
+    "answerIndex": 0,
+    "explanation": "6 × 5 = 30."
+   },
+   {
+    "id": "q28",
+    "prompt": "Setiap meja dipakai 4 anak. Ada 3 meja. Jumlah anak ...",
+    "options": [
+     "16 anak",
+     "12 anak",
+     "8 anak",
+     "15 anak"
+    ],
+    "answerIndex": 1,
+    "explanation": "3 × 4 = 12."
+   },
+   {
+    "id": "q29",
+    "prompt": "40 kue dibagi sama banyak ke 5 piring. Setiap piring berisi ... kue.",
+    "options": [
+     "7",
+     "10",
+     "8",
+     "11"
+    ],
+    "answerIndex": 2,
+    "explanation": "40 ÷ 5 = 8."
+   },
+   {
+    "id": "q30",
+    "prompt": "4 × ... = 20. Bilangan yang hilang adalah ...",
+    "options": [
+     "2",
+     "8",
+     "4",
+     "5"
+    ],
+    "answerIndex": 3,
+    "explanation": "20 ÷ 4 = 5."
    }
   ]
  },
@@ -404,7 +1124,7 @@
    5
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -525,6 +1245,246 @@
     ],
     "answerIndex": 2,
     "explanation": "Luas lantai 6 × 4 = 24 m², tiap ubin 1 m², jadi 24 ubin."
+   },
+   {
+    "id": "q11",
+    "prompt": "Persegi panjang dengan panjang 10 cm dan lebar 5 cm. Luasnya ...",
+    "options": [
+     "50 cm²",
+     "40 cm²",
+     "80 cm²",
+     "60 cm²"
+    ],
+    "answerIndex": 0,
+    "explanation": "Luas = p × l = 10 × 5 = 50."
+   },
+   {
+    "id": "q12",
+    "prompt": "Persegi panjang dengan panjang 16 cm dan lebar 14 cm. Luasnya ...",
+    "options": [
+     "234 cm²",
+     "284 cm²",
+     "238 cm²",
+     "224 cm²"
+    ],
+    "answerIndex": 3,
+    "explanation": "Luas = p × l = 16 × 14 = 224."
+   },
+   {
+    "id": "q13",
+    "prompt": "Persegi panjang dengan panjang 7 cm dan lebar 3 cm. Kelilingnya ...",
+    "options": [
+     "20 cm",
+     "10 cm",
+     "24 cm",
+     "16 cm"
+    ],
+    "answerIndex": 0,
+    "explanation": "Keliling = 2 × (p + l) = 2 × (7 + 3) = 20."
+   },
+   {
+    "id": "q14",
+    "prompt": "Persegi panjang dengan panjang 14 cm dan lebar 10 cm. Kelilingnya ...",
+    "options": [
+     "48 cm",
+     "44 cm",
+     "58 cm",
+     "72 cm"
+    ],
+    "answerIndex": 0,
+    "explanation": "Keliling = 2 × (p + l) = 2 × (14 + 10) = 48."
+   },
+   {
+    "id": "q15",
+    "prompt": "Persegi dengan panjang sisi 9 cm. Luasnya ...",
+    "options": [
+     "99 cm²",
+     "45 cm²",
+     "81 cm²",
+     "63 cm²"
+    ],
+    "answerIndex": 2,
+    "explanation": "Luas = s × s = 9 × 9 = 81."
+   },
+   {
+    "id": "q16",
+    "prompt": "Persegi dengan panjang sisi 6 cm. Kelilingnya ...",
+    "options": [
+     "30 cm",
+     "36 cm",
+     "28 cm",
+     "24 cm"
+    ],
+    "answerIndex": 3,
+    "explanation": "Keliling = 4 × s = 4 × 6 = 24."
+   },
+   {
+    "id": "q17",
+    "prompt": "Segitiga dengan alas 10 cm dan tinggi 7 cm. Luasnya ...",
+    "options": [
+     "36 cm²",
+     "70 cm²",
+     "35 cm²",
+     "42 cm²"
+    ],
+    "answerIndex": 2,
+    "explanation": "Luas = ½ × alas × tinggi = ½ × 10 × 7 = 35."
+   },
+   {
+    "id": "q18",
+    "prompt": "Segitiga dengan alas 6 cm dan tinggi 8 cm. Luasnya ...",
+    "options": [
+     "24 cm²",
+     "26 cm²",
+     "18 cm²",
+     "48 cm²"
+    ],
+    "answerIndex": 0,
+    "explanation": "Luas = ½ × alas × tinggi = ½ × 6 × 8 = 24."
+   },
+   {
+    "id": "q19",
+    "prompt": "Luas persegi panjang 96 cm² dan lebarnya 8 cm. Panjangnya ...",
+    "options": [
+     "4 cm",
+     "12 cm",
+     "20 cm",
+     "13 cm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Panjang = luas : lebar = 96 : 8 = 12."
+   },
+   {
+    "id": "q20",
+    "prompt": "Kebun berbentuk persegi panjang 18 m × 14 m. Dibutuhkan kawat sepanjang ... untuk memagari sekelilingnya.",
+    "options": [
+     "32 m",
+     "62 m",
+     "66 m",
+     "64 m"
+    ],
+    "answerIndex": 3,
+    "explanation": "Keliling = 2 × (18 + 14) = 64."
+   },
+   {
+    "id": "q21",
+    "prompt": "Persegi panjang dengan panjang 6 cm dan lebar 3 cm. Luasnya ...",
+    "options": [
+     "24 cm²",
+     "36 cm²",
+     "19 cm²",
+     "18 cm²"
+    ],
+    "answerIndex": 3,
+    "explanation": "Luas = p × l = 6 × 3 = 18."
+   },
+   {
+    "id": "q22",
+    "prompt": "Persegi panjang dengan panjang 17 cm dan lebar 10 cm. Luasnya ...",
+    "options": [
+     "170 cm²",
+     "224 cm²",
+     "116 cm²",
+     "153 cm²"
+    ],
+    "answerIndex": 0,
+    "explanation": "Luas = p × l = 17 × 10 = 170."
+   },
+   {
+    "id": "q23",
+    "prompt": "Persegi panjang dengan panjang 16 cm dan lebar 3 cm. Kelilingnya ...",
+    "options": [
+     "34 cm",
+     "38 cm",
+     "48 cm",
+     "40 cm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Keliling = 2 × (p + l) = 2 × (16 + 3) = 38."
+   },
+   {
+    "id": "q24",
+    "prompt": "Persegi panjang dengan panjang 20 cm dan lebar 17 cm. Kelilingnya ...",
+    "options": [
+     "37 cm",
+     "111 cm",
+     "74 cm",
+     "84 cm"
+    ],
+    "answerIndex": 2,
+    "explanation": "Keliling = 2 × (p + l) = 2 × (20 + 17) = 74."
+   },
+   {
+    "id": "q25",
+    "prompt": "Persegi dengan panjang sisi 13 cm. Luasnya ...",
+    "options": [
+     "156 cm²",
+     "182 cm²",
+     "195 cm²",
+     "169 cm²"
+    ],
+    "answerIndex": 3,
+    "explanation": "Luas = s × s = 13 × 13 = 169."
+   },
+   {
+    "id": "q26",
+    "prompt": "Persegi dengan panjang sisi 10 cm. Kelilingnya ...",
+    "options": [
+     "44 cm",
+     "40 cm",
+     "50 cm",
+     "36 cm"
+    ],
+    "answerIndex": 1,
+    "explanation": "Keliling = 4 × s = 4 × 10 = 40."
+   },
+   {
+    "id": "q27",
+    "prompt": "Segitiga dengan alas 14 cm dan tinggi 5 cm. Luasnya ...",
+    "options": [
+     "35 cm²",
+     "33 cm²",
+     "40 cm²",
+     "36 cm²"
+    ],
+    "answerIndex": 0,
+    "explanation": "Luas = ½ × alas × tinggi = ½ × 14 × 5 = 35."
+   },
+   {
+    "id": "q28",
+    "prompt": "Segitiga dengan alas 8 cm dan tinggi 12 cm. Luasnya ...",
+    "options": [
+     "60 cm²",
+     "46 cm²",
+     "48 cm²",
+     "56 cm²"
+    ],
+    "answerIndex": 2,
+    "explanation": "Luas = ½ × alas × tinggi = ½ × 8 × 12 = 48."
+   },
+   {
+    "id": "q29",
+    "prompt": "Luas persegi panjang 60 cm² dan lebarnya 6 cm. Panjangnya ...",
+    "options": [
+     "10 cm",
+     "4 cm",
+     "12 cm",
+     "8 cm"
+    ],
+    "answerIndex": 0,
+    "explanation": "Panjang = luas : lebar = 60 : 6 = 10."
+   },
+   {
+    "id": "q30",
+    "prompt": "Kebun berbentuk persegi panjang 15 m × 11 m. Dibutuhkan kawat sepanjang ... untuk memagari sekelilingnya.",
+    "options": [
+     "78 m",
+     "56 m",
+     "42 m",
+     "52 m"
+    ],
+    "answerIndex": 3,
+    "explanation": "Keliling = 2 × (15 + 11) = 52."
    }
   ]
  },
@@ -537,7 +1497,7 @@
    3
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -658,6 +1618,246 @@
     ],
     "answerIndex": 2,
     "explanation": "Nama sungai dan nama daerah diawali huruf kapital."
+   },
+   {
+    "id": "q11",
+    "prompt": "Penulisan nama hari yang benar adalah ...",
+    "options": [
+     "senin",
+     "sEnin",
+     "Senin",
+     "SENin"
+    ],
+    "answerIndex": 2,
+    "explanation": "Nama hari diawali huruf kapital."
+   },
+   {
+    "id": "q12",
+    "prompt": "Penulisan nama kota yang benar adalah ...",
+    "options": [
+     "Surabaya",
+     "surabaya",
+     "SurabayA",
+     "surabAya"
+    ],
+    "answerIndex": 0,
+    "explanation": "Nama kota diawali huruf kapital."
+   },
+   {
+    "id": "q13",
+    "prompt": "Kalimat yang penulisannya benar adalah ...",
+    "options": [
+     "Kami pergi ke Yogyakarta.",
+     "Kami pergi ke yogyakarta.",
+     "kami pergi ke Yogyakarta.",
+     "kami pergi ke yogyakarta."
+    ],
+    "answerIndex": 0,
+    "explanation": "Awal kalimat dan nama kota memakai huruf kapital."
+   },
+   {
+    "id": "q14",
+    "prompt": "Kalimat yang penulisannya benar adalah ...",
+    "options": [
+     "ulang tahunku pada bulan agustus.",
+     "Ulang tahunku pada bulan Agustus.",
+     "ulang tahunku pada bulan Agustus.",
+     "Ulang tahunku pada bulan agustus."
+    ],
+    "answerIndex": 1,
+    "explanation": "Nama bulan diawali huruf kapital."
+   },
+   {
+    "id": "q15",
+    "prompt": "Tanda baca yang tepat: \"Wah, indah sekali_\"",
+    "options": [
+     ".",
+     ",",
+     "!",
+     "?"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kalimat seruan diakhiri tanda seru."
+   },
+   {
+    "id": "q16",
+    "prompt": "Tanda baca yang tepat: \"Kapan kamu pulang_\"",
+    "options": [
+     ".",
+     "!",
+     ",",
+     "?"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kalimat tanya diakhiri tanda tanya."
+   },
+   {
+    "id": "q17",
+    "prompt": "Tanda baca yang tepat: \"Ibu membeli apel_ jeruk, dan salak.\"",
+    "options": [
+     "!",
+     ",",
+     ".",
+     "?"
+    ],
+    "answerIndex": 1,
+    "explanation": "Rincian dipisahkan tanda koma."
+   },
+   {
+    "id": "q18",
+    "prompt": "Penulisan nama orang yang benar adalah ...",
+    "options": [
+     "Siti aminah",
+     "siti Aminah",
+     "siti aminah",
+     "Siti Aminah"
+    ],
+    "answerIndex": 3,
+    "explanation": "Setiap kata pada nama orang diawali huruf kapital."
+   },
+   {
+    "id": "q19",
+    "prompt": "Penulisan nama sungai yang benar adalah ...",
+    "options": [
+     "sungai Musi",
+     "Sungai musi",
+     "Sungai Musi",
+     "sungai musi"
+    ],
+    "answerIndex": 2,
+    "explanation": "Nama sungai ditulis dengan huruf kapital."
+   },
+   {
+    "id": "q20",
+    "prompt": "Tanda tanya dipakai pada akhir kalimat ...",
+    "options": [
+     "tanya",
+     "perintah",
+     "seruan",
+     "berita"
+    ],
+    "answerIndex": 0,
+    "explanation": "Tanda tanya menunjukkan kalimat pertanyaan."
+   },
+   {
+    "id": "q21",
+    "prompt": "Tanda seru dipakai pada akhir kalimat ...",
+    "options": [
+     "berita biasa",
+     "seruan atau perintah yang kuat",
+     "yang sangat panjang",
+     "tanya"
+    ],
+    "answerIndex": 1,
+    "explanation": "Tanda seru menunjukkan perasaan atau perintah kuat."
+   },
+   {
+    "id": "q22",
+    "prompt": "Titik dipakai pada akhir kalimat ...",
+    "options": [
+     "seruan",
+     "tanya",
+     "berita (pernyataan)",
+     "rincian"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kalimat berita diakhiri titik."
+   },
+   {
+    "id": "q23",
+    "prompt": "Kalimat tanya yang penulisannya benar adalah ...",
+    "options": [
+     "Apakah kamu sudah makan!",
+     "Apakah kamu sudah makan.",
+     "apakah kamu sudah makan?",
+     "Apakah kamu sudah makan?"
+    ],
+    "answerIndex": 3,
+    "explanation": "Awali dengan kapital dan akhiri tanda tanya."
+   },
+   {
+    "id": "q24",
+    "prompt": "Kalimat yang penulisannya benar adalah ...",
+    "options": [
+     "Dina membeli pensil, buku, dan penggaris.",
+     "dina membeli pensil, buku, dan penggaris.",
+     "Dina membeli pensil buku dan penggaris.",
+     "Dina membeli pensil, buku, dan penggaris"
+    ],
+    "answerIndex": 0,
+    "explanation": "Rincian dipisah koma dan kalimat diakhiri titik."
+   },
+   {
+    "id": "q25",
+    "prompt": "Penulisan nama negara yang benar adalah ...",
+    "options": [
+     "INdonesia",
+     "indonesia",
+     "Indonesia",
+     "indoNesia"
+    ],
+    "answerIndex": 2,
+    "explanation": "Nama negara diawali huruf kapital."
+   },
+   {
+    "id": "q26",
+    "prompt": "Perbaikan yang benar dari \"kemarin aku bertemu budi.\" adalah ...",
+    "options": [
+     "Kemarin aku bertemu Budi.",
+     "Kemarin aku bertemu budi.",
+     "kemarin aku bertemu budi",
+     "kemarin aku bertemu Budi."
+    ],
+    "answerIndex": 0,
+    "explanation": "Awal kalimat dan nama orang memakai huruf kapital."
+   },
+   {
+    "id": "q27",
+    "prompt": "Kalimat yang penulisannya benar adalah ...",
+    "options": [
+     "kami berlibur ke Pulau Bali.",
+     "kami berlibur ke pulau bali.",
+     "Kami berlibur ke pulau bali.",
+     "Kami berlibur ke Pulau Bali."
+    ],
+    "answerIndex": 3,
+    "explanation": "Nama pulau diawali huruf kapital."
+   },
+   {
+    "id": "q28",
+    "prompt": "Kalimat yang memakai tanda baca tepat adalah ...",
+    "options": [
+     "Berapa umurmu,",
+     "Berapa umurmu?",
+     "Berapa umurmu!",
+     "Berapa umurmu."
+    ],
+    "answerIndex": 1,
+    "explanation": "Pertanyaan diakhiri tanda tanya."
+   },
+   {
+    "id": "q29",
+    "prompt": "Tanda baca yang tepat: \"Hore, kita menang_\"",
+    "options": [
+     "!",
+     ",",
+     ".",
+     "?"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kalimat seruan diakhiri tanda seru."
+   },
+   {
+    "id": "q30",
+    "prompt": "Kalimat yang penulisannya benar adalah ...",
+    "options": [
+     "Tolong ambilkan bukuku bu.",
+     "tolong ambilkan bukuku, bu.",
+     "tolong ambilkan bukuku, Bu.",
+     "Tolong ambilkan bukuku, Bu."
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata sapaan Bu ditulis kapital dan dipisah koma."
    }
   ]
  },
@@ -670,7 +1870,7 @@
    4
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -791,6 +1991,246 @@
     ],
     "answerIndex": 0,
     "explanation": "Bapak dan ayah memiliki arti yang sama."
+   },
+   {
+    "id": "q11",
+    "prompt": "Sinonim dari \"cantik\" adalah ...",
+    "options": [
+     "buruk",
+     "kotor",
+     "jelek",
+     "elok"
+    ],
+    "answerIndex": 3,
+    "explanation": "Cantik dan elok sama artinya."
+   },
+   {
+    "id": "q12",
+    "prompt": "Sinonim dari \"murid\" adalah ...",
+    "options": [
+     "kepala sekolah",
+     "guru",
+     "orang tua",
+     "siswa"
+    ],
+    "answerIndex": 3,
+    "explanation": "Murid dan siswa memiliki arti sama."
+   },
+   {
+    "id": "q13",
+    "prompt": "Sinonim dari \"bohong\" adalah ...",
+    "options": [
+     "tulus",
+     "benar",
+     "jujur",
+     "dusta"
+    ],
+    "answerIndex": 3,
+    "explanation": "Bohong dan dusta bersinonim."
+   },
+   {
+    "id": "q14",
+    "prompt": "Sinonim dari \"sehat\" adalah ...",
+    "options": [
+     "bugar",
+     "sakit",
+     "lesu",
+     "demam"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sehat dan bugar sama artinya."
+   },
+   {
+    "id": "q15",
+    "prompt": "Sinonim dari \"kecil\" adalah ...",
+    "options": [
+     "tinggi",
+     "mungil",
+     "raksasa",
+     "lebar"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kecil dan mungil bersinonim."
+   },
+   {
+    "id": "q16",
+    "prompt": "Sinonim dari \"takut\" adalah ...",
+    "options": [
+     "berani",
+     "riang",
+     "senang",
+     "gentar"
+    ],
+    "answerIndex": 3,
+    "explanation": "Takut dan gentar bersinonim."
+   },
+   {
+    "id": "q17",
+    "prompt": "Sinonim dari \"marah\" adalah ...",
+    "options": [
+     "murka",
+     "senang",
+     "tenang",
+     "ramah"
+    ],
+    "answerIndex": 0,
+    "explanation": "Marah dan murka bersinonim."
+   },
+   {
+    "id": "q18",
+    "prompt": "Sinonim dari \"bagus\" adalah ...",
+    "options": [
+     "jelek",
+     "baik",
+     "rusak",
+     "buruk"
+    ],
+    "answerIndex": 1,
+    "explanation": "Bagus dan baik dapat bersinonim."
+   },
+   {
+    "id": "q19",
+    "prompt": "Antonim dari \"besar\" adalah ...",
+    "options": [
+     "tinggi",
+     "panjang",
+     "kecil",
+     "lebar"
+    ],
+    "answerIndex": 2,
+    "explanation": "Besar lawan katanya kecil."
+   },
+   {
+    "id": "q20",
+    "prompt": "Antonim dari \"panjang\" adalah ...",
+    "options": [
+     "tinggi",
+     "tipis",
+     "lebar",
+     "pendek"
+    ],
+    "answerIndex": 3,
+    "explanation": "Panjang lawan katanya pendek."
+   },
+   {
+    "id": "q21",
+    "prompt": "Antonim dari \"panas\" adalah ...",
+    "options": [
+     "terik",
+     "dingin",
+     "mendidih",
+     "hangat"
+    ],
+    "answerIndex": 1,
+    "explanation": "Panas lawan katanya dingin."
+   },
+   {
+    "id": "q22",
+    "prompt": "Antonim dari \"kaya\" adalah ...",
+    "options": [
+     "miskin",
+     "dermawan",
+     "pintar",
+     "rajin"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kaya lawan katanya miskin."
+   },
+   {
+    "id": "q23",
+    "prompt": "Antonim dari \"senang\" adalah ...",
+    "options": [
+     "gembira",
+     "riang",
+     "sedih",
+     "bahagia"
+    ],
+    "answerIndex": 2,
+    "explanation": "Senang lawan katanya sedih."
+   },
+   {
+    "id": "q24",
+    "prompt": "Antonim dari \"siang\" adalah ...",
+    "options": [
+     "sore",
+     "petang",
+     "pagi",
+     "malam"
+    ],
+    "answerIndex": 3,
+    "explanation": "Siang lawan katanya malam."
+   },
+   {
+    "id": "q25",
+    "prompt": "Antonim dari \"bersih\" adalah ...",
+    "options": [
+     "jernih",
+     "harum",
+     "rapi",
+     "kotor"
+    ],
+    "answerIndex": 3,
+    "explanation": "Bersih lawan katanya kotor."
+   },
+   {
+    "id": "q26",
+    "prompt": "Antonim dari \"ramai\" adalah ...",
+    "options": [
+     "bising",
+     "padat",
+     "sepi",
+     "riuh"
+    ],
+    "answerIndex": 2,
+    "explanation": "Ramai lawan katanya sepi."
+   },
+   {
+    "id": "q27",
+    "prompt": "Antonim dari \"kuat\" adalah ...",
+    "options": [
+     "lemah",
+     "gagah",
+     "perkasa",
+     "tangguh"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kuat lawan katanya lemah."
+   },
+   {
+    "id": "q28",
+    "prompt": "Antonim dari \"berat\" adalah ...",
+    "options": [
+     "padat",
+     "ringan",
+     "tebal",
+     "besar"
+    ],
+    "answerIndex": 1,
+    "explanation": "Berat lawan katanya ringan."
+   },
+   {
+    "id": "q29",
+    "prompt": "Antonim dari \"mudah\" adalah ...",
+    "options": [
+     "gampang",
+     "sulit",
+     "ringan",
+     "sederhana"
+    ],
+    "answerIndex": 1,
+    "explanation": "Mudah lawan katanya sulit."
+   },
+   {
+    "id": "q30",
+    "prompt": "Pasangan kata yang berlawanan arti adalah ...",
+    "options": [
+     "pandai – pintar",
+     "besar – raya",
+     "rajin – malas",
+     "cantik – elok"
+    ],
+    "answerIndex": 2,
+    "explanation": "Rajin dan malas berlawanan."
    }
   ]
  },
@@ -802,7 +2242,7 @@
    4
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -923,6 +2363,246 @@
     ],
     "answerIndex": 0,
     "explanation": "Panel surya menghasilkan listrik dari cahaya matahari."
+   },
+   {
+    "id": "q11",
+    "prompt": "Energi yang membuat kita merasa hangat saat dekat api adalah energi ...",
+    "options": [
+     "kimia",
+     "panas",
+     "gerak",
+     "bunyi"
+    ],
+    "answerIndex": 1,
+    "explanation": "Api menghasilkan energi panas."
+   },
+   {
+    "id": "q12",
+    "prompt": "Suara musik dari radio adalah contoh energi ...",
+    "options": [
+     "bunyi",
+     "panas",
+     "kimia",
+     "cahaya"
+    ],
+    "answerIndex": 0,
+    "explanation": "Radio mengubah energi listrik menjadi bunyi."
+   },
+   {
+    "id": "q13",
+    "prompt": "Baterai menyimpan energi ...",
+    "options": [
+     "angin",
+     "kimia",
+     "bunyi",
+     "panas"
+    ],
+    "answerIndex": 1,
+    "explanation": "Baterai menyimpan energi kimia yang diubah menjadi listrik."
+   },
+   {
+    "id": "q14",
+    "prompt": "Bahan bakar minyak bumi terbentuk dari ...",
+    "options": [
+     "sisa makhluk hidup purba yang tertimbun jutaan tahun",
+     "air hujan",
+     "batu biasa",
+     "pasir pantai"
+    ],
+    "answerIndex": 0,
+    "explanation": "Minyak bumi adalah bahan bakar fosil."
+   },
+   {
+    "id": "q15",
+    "prompt": "Contoh bahan bakar fosil adalah ...",
+    "options": [
+     "cahaya matahari",
+     "angin",
+     "kayu muda",
+     "batu bara"
+    ],
+    "answerIndex": 3,
+    "explanation": "Batu bara termasuk bahan bakar fosil."
+   },
+   {
+    "id": "q16",
+    "prompt": "Sumber energi yang tidak akan habis dalam waktu dekat adalah ...",
+    "options": [
+     "gas alam",
+     "cahaya matahari",
+     "batu bara",
+     "minyak bumi"
+    ],
+    "answerIndex": 1,
+    "explanation": "Matahari terus bersinar sehingga termasuk energi terbarukan."
+   },
+   {
+    "id": "q17",
+    "prompt": "Pembangkit listrik tenaga air memanfaatkan ...",
+    "options": [
+     "aliran air",
+     "batu bara",
+     "asap",
+     "bensin"
+    ],
+    "answerIndex": 0,
+    "explanation": "Air yang mengalir memutar turbin."
+   },
+   {
+    "id": "q18",
+    "prompt": "Pembangkit listrik tenaga angin memakai ...",
+    "options": [
+     "batu",
+     "kincir angin",
+     "minyak tanah",
+     "bensin"
+    ],
+    "answerIndex": 1,
+    "explanation": "Angin memutar baling-baling kincir."
+   },
+   {
+    "id": "q19",
+    "prompt": "Energi panas bumi berasal dari ...",
+    "options": [
+     "angin laut",
+     "cahaya lampu",
+     "panas di dalam bumi",
+     "ombak"
+    ],
+    "answerIndex": 2,
+    "explanation": "Panas bumi berasal dari magma dan uap dalam tanah."
+   },
+   {
+    "id": "q20",
+    "prompt": "Kompor gas mengubah energi kimia gas menjadi energi ...",
+    "options": [
+     "bunyi",
+     "gerak saja",
+     "listrik",
+     "panas"
+    ],
+    "answerIndex": 3,
+    "explanation": "Gas yang terbakar menghasilkan panas."
+   },
+   {
+    "id": "q21",
+    "prompt": "Televisi mengubah energi listrik menjadi cahaya dan ...",
+    "options": [
+     "angin",
+     "batu",
+     "kayu",
+     "bunyi"
+    ],
+    "answerIndex": 3,
+    "explanation": "Televisi menghasilkan gambar dan suara."
+   },
+   {
+    "id": "q22",
+    "prompt": "Kendaraan bermotor memakai bahan bakar ...",
+    "options": [
+     "bensin atau solar",
+     "air kolam",
+     "kertas",
+     "batu"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bensin dan solar berasal dari minyak bumi."
+   },
+   {
+    "id": "q23",
+    "prompt": "Cara menghemat energi listrik adalah ...",
+    "options": [
+     "membiarkan TV menyala",
+     "membuka kulkas lama-lama",
+     "mematikan lampu yang tidak dipakai",
+     "menyalakan semua lampu"
+    ],
+    "answerIndex": 2,
+    "explanation": "Listrik yang tidak terpakai terbuang sia-sia."
+   },
+   {
+    "id": "q24",
+    "prompt": "Panel surya cocok dipasang di tempat yang ...",
+    "options": [
+     "tertutup rapat",
+     "terkena sinar matahari",
+     "gelap",
+     "di dalam laci"
+    ],
+    "answerIndex": 1,
+    "explanation": "Panel surya butuh cahaya matahari."
+   },
+   {
+    "id": "q25",
+    "prompt": "Biogas dibuat dari ...",
+    "options": [
+     "plastik",
+     "batu",
+     "kotoran ternak dan sisa organik",
+     "besi"
+    ],
+    "answerIndex": 2,
+    "explanation": "Sampah organik yang membusuk menghasilkan gas."
+   },
+   {
+    "id": "q26",
+    "prompt": "Energi yang dipakai tubuh untuk bergerak berasal dari ...",
+    "options": [
+     "makanan",
+     "kertas",
+     "pasir",
+     "batu"
+    ],
+    "answerIndex": 0,
+    "explanation": "Makanan menyimpan energi kimia."
+   },
+   {
+    "id": "q27",
+    "prompt": "Penggunaan bahan bakar fosil berlebihan dapat menyebabkan ...",
+    "options": [
+     "udara makin segar",
+     "pencemaran udara",
+     "pohon tumbuh sendiri",
+     "hujan emas"
+    ],
+    "answerIndex": 1,
+    "explanation": "Pembakaran bahan bakar fosil menghasilkan asap."
+   },
+   {
+    "id": "q28",
+    "prompt": "Benda yang mengubah energi listrik menjadi gerak adalah ...",
+    "options": [
+     "baterai",
+     "lampu minyak",
+     "lilin",
+     "kipas angin"
+    ],
+    "answerIndex": 3,
+    "explanation": "Listrik memutar baling-baling kipas."
+   },
+   {
+    "id": "q29",
+    "prompt": "Lilin yang menyala menghasilkan cahaya dan ...",
+    "options": [
+     "angin",
+     "listrik",
+     "bunyi keras",
+     "panas"
+    ],
+    "answerIndex": 3,
+    "explanation": "Lilin terbakar menghasilkan cahaya dan panas."
+   },
+   {
+    "id": "q30",
+    "prompt": "Sumber energi alternatif sebaiknya dikembangkan karena ...",
+    "options": [
+     "bahan bakar fosil bisa habis",
+     "energi tidak diperlukan",
+     "listrik tidak berguna",
+     "bahan bakar fosil melimpah selamanya"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sumber alternatif membantu menjaga ketersediaan energi."
    }
   ]
  },
@@ -935,7 +2615,7 @@
    5
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -1056,6 +2736,246 @@
     ],
     "answerIndex": 1,
     "explanation": "Panas dan angin membuat air pada pakaian menguap ke udara."
+   },
+   {
+    "id": "q11",
+    "prompt": "Penguapan air disebut juga ...",
+    "options": [
+     "infiltrasi",
+     "presipitasi",
+     "kondensasi",
+     "evaporasi"
+    ],
+    "answerIndex": 3,
+    "explanation": "Evaporasi adalah berubahnya air menjadi uap."
+   },
+   {
+    "id": "q12",
+    "prompt": "Uap air berubah menjadi titik air saat mendingin. Proses ini disebut ...",
+    "options": [
+     "infiltrasi",
+     "erosi",
+     "evaporasi",
+     "kondensasi"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kondensasi membentuk awan."
+   },
+   {
+    "id": "q13",
+    "prompt": "Jatuhnya air hujan atau salju ke bumi disebut ...",
+    "options": [
+     "presipitasi",
+     "transpirasi",
+     "evaporasi",
+     "kondensasi"
+    ],
+    "answerIndex": 0,
+    "explanation": "Presipitasi adalah turunnya air dari atmosfer."
+   },
+   {
+    "id": "q14",
+    "prompt": "Wujud air saat membeku adalah ...",
+    "options": [
+     "cair",
+     "padat",
+     "gas",
+     "plasma"
+    ],
+    "answerIndex": 1,
+    "explanation": "Air yang membeku menjadi es."
+   },
+   {
+    "id": "q15",
+    "prompt": "Wujud air saat menguap adalah ...",
+    "options": [
+     "gas",
+     "cair",
+     "salju",
+     "padat"
+    ],
+    "answerIndex": 0,
+    "explanation": "Uap air adalah air berwujud gas."
+   },
+   {
+    "id": "q16",
+    "prompt": "Air mendidih pada suhu sekitar ...",
+    "options": [
+     "50 °C",
+     "10 °C",
+     "101 °C",
+     "100 °C"
+    ],
+    "answerIndex": 3,
+    "explanation": "Air mendidih pada 100 derajat Celsius."
+   },
+   {
+    "id": "q17",
+    "prompt": "Air membeku pada suhu sekitar ...",
+    "options": [
+     "50 °C",
+     "0 °C",
+     "100 °C",
+     "25 °C"
+    ],
+    "answerIndex": 1,
+    "explanation": "Air membeku pada 0 derajat Celsius."
+   },
+   {
+    "id": "q18",
+    "prompt": "Embun pagi terbentuk karena uap air ...",
+    "options": [
+     "membeku menjadi batu",
+     "menjadi asap",
+     "terbakar",
+     "mendingin menjadi titik air"
+    ],
+    "answerIndex": 3,
+    "explanation": "Udara malam yang dingin mengembunkan uap air."
+   },
+   {
+    "id": "q19",
+    "prompt": "Tumbuhan melepaskan uap air lewat daun. Proses ini disebut ...",
+    "options": [
+     "sublimasi",
+     "erosi",
+     "transpirasi",
+     "infiltrasi"
+    ],
+    "answerIndex": 2,
+    "explanation": "Transpirasi adalah penguapan air dari tumbuhan."
+   },
+   {
+    "id": "q20",
+    "prompt": "Sumur menampung air yang berasal dari ...",
+    "options": [
+     "air tanah",
+     "air asin",
+     "asap",
+     "awan langsung"
+    ],
+    "answerIndex": 0,
+    "explanation": "Air tanah berasal dari resapan air hujan."
+   },
+   {
+    "id": "q21",
+    "prompt": "Daerah resapan air berguna untuk ...",
+    "options": [
+     "menghambat air bersih",
+     "menambah sampah",
+     "menyerap air hujan dan mencegah banjir",
+     "menambah polusi"
+    ],
+    "answerIndex": 2,
+    "explanation": "Tanah yang menyerap air mengurangi banjir."
+   },
+   {
+    "id": "q22",
+    "prompt": "Sampah di sungai dapat menyebabkan ...",
+    "options": [
+     "banjir",
+     "air lebih jernih",
+     "sungai kering",
+     "hujan berhenti"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sampah menyumbat aliran sungai."
+   },
+   {
+    "id": "q23",
+    "prompt": "Air hujan yang jatuh di pegunungan akan mengalir ke ...",
+    "options": [
+     "kutub utara",
+     "awan",
+     "angkasa",
+     "sungai lalu laut"
+    ],
+    "answerIndex": 3,
+    "explanation": "Air mengalir dari tempat tinggi ke rendah."
+   },
+   {
+    "id": "q24",
+    "prompt": "Matahari berperan dalam siklus air dengan ...",
+    "options": [
+     "menyerap air",
+     "memanaskan air sehingga menguap",
+     "membekukan air",
+     "menghentikan hujan"
+    ],
+    "answerIndex": 1,
+    "explanation": "Panas Matahari menggerakkan penguapan."
+   },
+   {
+    "id": "q25",
+    "prompt": "Cara menghemat air bersih adalah ...",
+    "options": [
+     "membuang air bersih",
+     "menutup keran saat menyikat gigi",
+     "mandi berjam-jam",
+     "membiarkan keran mengalir"
+    ],
+    "answerIndex": 1,
+    "explanation": "Menutup keran mencegah air terbuang."
+   },
+   {
+    "id": "q26",
+    "prompt": "Awan gelap biasanya menandakan akan turun ...",
+    "options": [
+     "hujan",
+     "gempa",
+     "pelangi saja",
+     "salju emas"
+    ],
+    "answerIndex": 0,
+    "explanation": "Awan tebal penuh titik air dapat menjadi hujan."
+   },
+   {
+    "id": "q27",
+    "prompt": "Waduk dibuat untuk ...",
+    "options": [
+     "menutup sungai selamanya",
+     "menampung sampah",
+     "menghambat hujan",
+     "menampung air"
+    ],
+    "answerIndex": 3,
+    "explanation": "Waduk menyimpan air untuk irigasi dan listrik."
+   },
+   {
+    "id": "q28",
+    "prompt": "Air laut terasa ...",
+    "options": [
+     "pahit sekali",
+     "asam",
+     "asin",
+     "manis"
+    ],
+    "answerIndex": 2,
+    "explanation": "Air laut mengandung banyak garam."
+   },
+   {
+    "id": "q29",
+    "prompt": "Es batu yang dibiarkan di ruangan akan ...",
+    "options": [
+     "menjadi batu",
+     "mencair",
+     "menguap seketika",
+     "menjadi gas langsung"
+    ],
+    "answerIndex": 1,
+    "explanation": "Es mencair karena menerima panas."
+   },
+   {
+    "id": "q30",
+    "prompt": "Air bersih yang layak minum harus ...",
+    "options": [
+     "keruh",
+     "berbau",
+     "berwarna",
+     "tidak berbau, tidak berwarna, dan dimasak"
+    ],
+    "answerIndex": 3,
+    "explanation": "Air minum perlu jernih dan dimasak hingga matang."
    }
   ]
  },
@@ -1069,7 +2989,7 @@
    4
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -1190,6 +3110,246 @@
     ],
     "answerIndex": 3,
     "explanation": "Pancasila adalah dasar negara Indonesia."
+   },
+   {
+    "id": "q11",
+    "prompt": "Bunyi sila kedua Pancasila adalah ...",
+    "options": [
+     "Ketuhanan Yang Maha Esa",
+     "Persatuan Indonesia",
+     "Kemanusiaan yang adil dan beradab",
+     "Keadilan sosial bagi seluruh rakyat Indonesia"
+    ],
+    "answerIndex": 2,
+    "explanation": "Sila kedua tentang kemanusiaan yang adil dan beradab."
+   },
+   {
+    "id": "q12",
+    "prompt": "Bunyi sila kelima Pancasila adalah ...",
+    "options": [
+     "Kemanusiaan yang adil dan beradab",
+     "Persatuan Indonesia",
+     "Keadilan sosial bagi seluruh rakyat Indonesia",
+     "Ketuhanan Yang Maha Esa"
+    ],
+    "answerIndex": 2,
+    "explanation": "Sila kelima tentang keadilan sosial."
+   },
+   {
+    "id": "q13",
+    "prompt": "Lambang negara Indonesia adalah ...",
+    "options": [
+     "Harimau",
+     "Gajah",
+     "Garuda Pancasila",
+     "Elang Jawa"
+    ],
+    "answerIndex": 2,
+    "explanation": "Garuda Pancasila adalah lambang negara."
+   },
+   {
+    "id": "q14",
+    "prompt": "Semboyan yang ada di kaki Garuda Pancasila adalah ...",
+    "options": [
+     "Tut Wuri Handayani",
+     "Maju Terus",
+     "Merdeka atau Mati",
+     "Bhinneka Tunggal Ika"
+    ],
+    "answerIndex": 3,
+    "explanation": "Bhinneka Tunggal Ika berarti berbeda-beda tetapi tetap satu."
+   },
+   {
+    "id": "q15",
+    "prompt": "Banyak sila dalam Pancasila adalah ...",
+    "options": [
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "answerIndex": 2,
+    "explanation": "Pancasila terdiri atas lima sila."
+   },
+   {
+    "id": "q16",
+    "prompt": "Warna merah pada bendera Indonesia melambangkan ...",
+    "options": [
+     "kesedihan",
+     "kesucian",
+     "kedamaian",
+     "keberanian"
+    ],
+    "answerIndex": 3,
+    "explanation": "Merah berarti berani."
+   },
+   {
+    "id": "q17",
+    "prompt": "Warna putih pada bendera Indonesia melambangkan ...",
+    "options": [
+     "kemarahan",
+     "kesucian",
+     "kekayaan",
+     "keberanian"
+    ],
+    "answerIndex": 1,
+    "explanation": "Putih berarti suci."
+   },
+   {
+    "id": "q18",
+    "prompt": "Contoh sikap sesuai sila pertama adalah ...",
+    "options": [
+     "mengganggu yang beribadah",
+     "memaksa agama kepada teman",
+     "beribadah sesuai agama masing-masing",
+     "tidak menghormati agama lain"
+    ],
+    "answerIndex": 2,
+    "explanation": "Sila pertama mengajarkan ketakwaan dan toleransi."
+   },
+   {
+    "id": "q19",
+    "prompt": "Contoh sikap sesuai sila kedua adalah ...",
+    "options": [
+     "menolong teman yang kesusahan",
+     "berkelahi",
+     "mengejek teman",
+     "menyakiti hewan"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sila kedua mengajarkan kemanusiaan dan sikap adil."
+   },
+   {
+    "id": "q20",
+    "prompt": "Contoh sikap sesuai sila ketiga adalah ...",
+    "options": [
+     "bertengkar karena beda suku",
+     "tidak mau bekerja sama",
+     "memilih-milih teman",
+     "bergotong royong membersihkan kelas"
+    ],
+    "answerIndex": 3,
+    "explanation": "Sila ketiga mengajarkan persatuan."
+   },
+   {
+    "id": "q21",
+    "prompt": "Contoh sikap sesuai sila keempat adalah ...",
+    "options": [
+     "memaksakan pendapat",
+     "pergi saat rapat",
+     "marah bila kalah",
+     "menghargai hasil musyawarah"
+    ],
+    "answerIndex": 3,
+    "explanation": "Sila keempat mengajarkan musyawarah."
+   },
+   {
+    "id": "q22",
+    "prompt": "Contoh sikap sesuai sila kelima adalah ...",
+    "options": [
+     "berlaku adil kepada semua teman",
+     "mengambil milik teman",
+     "tidak mau berbagi",
+     "membeda-bedakan teman"
+    ],
+    "answerIndex": 0,
+    "explanation": "Sila kelima mengajarkan keadilan."
+   },
+   {
+    "id": "q23",
+    "prompt": "Hari Lahir Pancasila diperingati setiap tanggal ...",
+    "options": [
+     "28 Oktober",
+     "1 Juni",
+     "2 Mei",
+     "17 Agustus"
+    ],
+    "answerIndex": 1,
+    "explanation": "Hari Lahir Pancasila jatuh pada 1 Juni."
+   },
+   {
+    "id": "q24",
+    "prompt": "Hari Kemerdekaan Indonesia diperingati setiap tanggal ...",
+    "options": [
+     "10 November",
+     "1 Juni",
+     "17 Agustus",
+     "20 Mei"
+    ],
+    "answerIndex": 2,
+    "explanation": "Indonesia merdeka pada 17 Agustus 1945."
+   },
+   {
+    "id": "q25",
+    "prompt": "Bendera negara Indonesia disebut ...",
+    "options": [
+     "Sang Saka Merah Putih",
+     "Garuda Pancasila",
+     "Indonesia Raya",
+     "Bhinneka"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bendera kebangsaan adalah Sang Saka Merah Putih."
+   },
+   {
+    "id": "q26",
+    "prompt": "Lagu kebangsaan Indonesia adalah ...",
+    "options": [
+     "Rayuan Pulau Kelapa",
+     "Indonesia Raya",
+     "Halo-Halo Bandung",
+     "Garuda Pancasila"
+    ],
+    "answerIndex": 1,
+    "explanation": "Indonesia Raya diciptakan W.R. Supratman."
+   },
+   {
+    "id": "q27",
+    "prompt": "Ketika lagu Indonesia Raya dinyanyikan saat upacara, kita ...",
+    "options": [
+     "duduk santai",
+     "bermain",
+     "berbicara dengan teman",
+     "berdiri tegak dan menghormat"
+    ],
+    "answerIndex": 3,
+    "explanation": "Sikap hormat menunjukkan rasa cinta tanah air."
+   },
+   {
+    "id": "q28",
+    "prompt": "Gotong royong membersihkan lingkungan sesuai dengan sila ...",
+    "options": [
+     "keempat",
+     "kedua saja",
+     "ketiga",
+     "pertama"
+    ],
+    "answerIndex": 2,
+    "explanation": "Gotong royong menunjukkan persatuan."
+   },
+   {
+    "id": "q29",
+    "prompt": "Sikap saling menghormati antarpemeluk agama sesuai dengan sila ...",
+    "options": [
+     "keempat",
+     "kelima",
+     "pertama",
+     "ketiga"
+    ],
+    "answerIndex": 2,
+    "explanation": "Toleransi beragama sesuai sila pertama."
+   },
+   {
+    "id": "q30",
+    "prompt": "Burung pada lambang negara Indonesia adalah ...",
+    "options": [
+     "elang botak",
+     "merpati",
+     "kakatua",
+     "garuda"
+    ],
+    "answerIndex": 3,
+    "explanation": "Garuda adalah burung mitologi sebagai lambang negara."
    }
   ]
  },
@@ -1202,7 +3362,7 @@
    4
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -1323,6 +3483,246 @@
     ],
     "answerIndex": 0,
     "explanation": "Thank you = terima kasih."
+   },
+   {
+    "id": "q11",
+    "prompt": "\"Yellow\" artinya ...",
+    "options": [
+     "hitam",
+     "biru",
+     "putih",
+     "kuning"
+    ],
+    "answerIndex": 3,
+    "explanation": "Yellow = kuning."
+   },
+   {
+    "id": "q12",
+    "prompt": "\"Blue\" artinya ...",
+    "options": [
+     "merah",
+     "hijau",
+     "ungu",
+     "biru"
+    ],
+    "answerIndex": 3,
+    "explanation": "Blue = biru."
+   },
+   {
+    "id": "q13",
+    "prompt": "\"Black\" artinya ...",
+    "options": [
+     "abu-abu",
+     "putih",
+     "cokelat",
+     "hitam"
+    ],
+    "answerIndex": 3,
+    "explanation": "Black = hitam."
+   },
+   {
+    "id": "q14",
+    "prompt": "\"White\" artinya ...",
+    "options": [
+     "kuning",
+     "putih",
+     "hitam",
+     "merah"
+    ],
+    "answerIndex": 1,
+    "explanation": "White = putih."
+   },
+   {
+    "id": "q15",
+    "prompt": "Bahasa Inggris dari \"oranye\" adalah ...",
+    "options": [
+     "green",
+     "gray",
+     "pink",
+     "orange"
+    ],
+    "answerIndex": 3,
+    "explanation": "Oranye = orange."
+   },
+   {
+    "id": "q16",
+    "prompt": "\"Three\" artinya angka ...",
+    "options": [
+     "8",
+     "2",
+     "3",
+     "5"
+    ],
+    "answerIndex": 2,
+    "explanation": "Three = 3."
+   },
+   {
+    "id": "q17",
+    "prompt": "\"Ten\" artinya angka ...",
+    "options": [
+     "5",
+     "20",
+     "10",
+     "7"
+    ],
+    "answerIndex": 2,
+    "explanation": "Ten = 10."
+   },
+   {
+    "id": "q18",
+    "prompt": "Angka 5 dalam bahasa Inggris adalah ...",
+    "options": [
+     "five",
+     "nine",
+     "six",
+     "four"
+    ],
+    "answerIndex": 0,
+    "explanation": "Five = 5."
+   },
+   {
+    "id": "q19",
+    "prompt": "Angka 20 dalam bahasa Inggris adalah ...",
+    "options": [
+     "two",
+     "twenty",
+     "twelve",
+     "ten"
+    ],
+    "answerIndex": 1,
+    "explanation": "Twenty = 20."
+   },
+   {
+    "id": "q20",
+    "prompt": "\"Pen\" artinya ...",
+    "options": [
+     "pensil",
+     "buku",
+     "penggaris",
+     "pulpen"
+    ],
+    "answerIndex": 3,
+    "explanation": "Pen = pulpen."
+   },
+   {
+    "id": "q21",
+    "prompt": "\"Table\" artinya ...",
+    "options": [
+     "lemari",
+     "kursi",
+     "pintu",
+     "meja"
+    ],
+    "answerIndex": 3,
+    "explanation": "Table = meja."
+   },
+   {
+    "id": "q22",
+    "prompt": "\"Chair\" artinya ...",
+    "options": [
+     "kursi",
+     "tas",
+     "jendela",
+     "meja"
+    ],
+    "answerIndex": 0,
+    "explanation": "Chair = kursi."
+   },
+   {
+    "id": "q23",
+    "prompt": "\"Bag\" artinya ...",
+    "options": [
+     "buku",
+     "tas",
+     "sepatu",
+     "topi"
+    ],
+    "answerIndex": 1,
+    "explanation": "Bag = tas."
+   },
+   {
+    "id": "q24",
+    "prompt": "\"Door\" artinya ...",
+    "options": [
+     "jendela",
+     "dinding",
+     "pintu",
+     "atap"
+    ],
+    "answerIndex": 2,
+    "explanation": "Door = pintu."
+   },
+   {
+    "id": "q25",
+    "prompt": "\"Good night\" diucapkan ketika ...",
+    "options": [
+     "akan tidur",
+     "makan siang",
+     "berangkat sekolah",
+     "bangun tidur"
+    ],
+    "answerIndex": 0,
+    "explanation": "Good night untuk menyapa sebelum tidur."
+   },
+   {
+    "id": "q26",
+    "prompt": "\"Good afternoon\" diucapkan pada ...",
+    "options": [
+     "malam",
+     "pagi buta",
+     "siang atau sore",
+     "tengah malam"
+    ],
+    "answerIndex": 2,
+    "explanation": "Good afternoon untuk sapaan siang hari."
+   },
+   {
+    "id": "q27",
+    "prompt": "Jawaban yang tepat untuk \"How are you?\" adalah ...",
+    "options": [
+     "My name is Budi.",
+     "Goodbye.",
+     "Good night.",
+     "I am fine, thank you."
+    ],
+    "answerIndex": 3,
+    "explanation": "How are you? menanyakan kabar."
+   },
+   {
+    "id": "q28",
+    "prompt": "Jawaban yang tepat untuk \"What is your name?\" adalah ...",
+    "options": [
+     "Good morning.",
+     "My name is Dina.",
+     "Thank you.",
+     "I am fine."
+    ],
+    "answerIndex": 1,
+    "explanation": "My name is ... dipakai untuk menyebut nama."
+   },
+   {
+    "id": "q29",
+    "prompt": "\"Goodbye\" artinya ...",
+    "options": [
+     "selamat tinggal",
+     "terima kasih",
+     "permisi",
+     "selamat pagi"
+    ],
+    "answerIndex": 0,
+    "explanation": "Goodbye dipakai saat berpisah."
+   },
+   {
+    "id": "q30",
+    "prompt": "\"Please\" artinya ...",
+    "options": [
+     "terima kasih",
+     "maaf",
+     "selamat",
+     "tolong atau silakan"
+    ],
+    "answerIndex": 3,
+    "explanation": "Please dipakai untuk meminta dengan sopan."
    }
   ]
  }

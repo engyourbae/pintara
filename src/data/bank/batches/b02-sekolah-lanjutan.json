@@ -7,7 +7,7 @@
    1
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -128,6 +128,246 @@
     ],
     "answerIndex": 0,
     "explanation": "Tambahkan: 9 + 7 = 16."
+   },
+   {
+    "id": "q11",
+    "prompt": "16 − 13 = ...",
+    "options": [
+     "6",
+     "4",
+     "5",
+     "3"
+    ],
+    "answerIndex": 3,
+    "explanation": "16 − 13 = 3."
+   },
+   {
+    "id": "q12",
+    "prompt": "9 − 8 = ...",
+    "options": [
+     "4",
+     "2",
+     "3",
+     "1"
+    ],
+    "answerIndex": 3,
+    "explanation": "9 − 8 = 1."
+   },
+   {
+    "id": "q13",
+    "prompt": "20 − 10 = ...",
+    "options": [
+     "10",
+     "9",
+     "7",
+     "11"
+    ],
+    "answerIndex": 0,
+    "explanation": "20 − 10 = 10."
+   },
+   {
+    "id": "q14",
+    "prompt": "12 − 8 = ...",
+    "options": [
+     "3",
+     "5",
+     "2",
+     "4"
+    ],
+    "answerIndex": 3,
+    "explanation": "12 − 8 = 4."
+   },
+   {
+    "id": "q15",
+    "prompt": "18 − 5 = ...",
+    "options": [
+     "11",
+     "16",
+     "13",
+     "14"
+    ],
+    "answerIndex": 2,
+    "explanation": "18 − 5 = 13."
+   },
+   {
+    "id": "q16",
+    "prompt": "Ada 13 burung di pohon. Sebanyak 11 burung terbang pergi. Burung yang tersisa ...",
+    "options": [
+     "3 ekor",
+     "2 ekor",
+     "1 ekor",
+     "4 ekor"
+    ],
+    "answerIndex": 1,
+    "explanation": "13 − 11 = 2."
+   },
+   {
+    "id": "q17",
+    "prompt": "Di kelas ada 19 kursi dan 4 kursi sedang dipakai. Kursi yang kosong ...",
+    "options": [
+     "16 kursi",
+     "13 kursi",
+     "15 kursi",
+     "18 kursi"
+    ],
+    "answerIndex": 2,
+    "explanation": "19 − 4 = 15."
+   },
+   {
+    "id": "q18",
+    "prompt": "Di kelas ada 11 kursi dan 8 kursi sedang dipakai. Kursi yang kosong ...",
+    "options": [
+     "4 kursi",
+     "3 kursi",
+     "2 kursi",
+     "6 kursi"
+    ],
+    "answerIndex": 1,
+    "explanation": "11 − 8 = 3."
+   },
+   {
+    "id": "q19",
+    "prompt": "19 − ... = 2. Bilangan yang hilang adalah ...",
+    "options": [
+     "18",
+     "19",
+     "20",
+     "17"
+    ],
+    "answerIndex": 3,
+    "explanation": "19 − 2 = 17, jadi bilangannya 17."
+   },
+   {
+    "id": "q20",
+    "prompt": "11 − ... = 8. Bilangan yang hilang adalah ...",
+    "options": [
+     "3",
+     "6",
+     "2",
+     "5"
+    ],
+    "answerIndex": 0,
+    "explanation": "11 − 8 = 3, jadi bilangannya 3."
+   },
+   {
+    "id": "q21",
+    "prompt": "9 − 2 = ...",
+    "options": [
+     "4",
+     "9",
+     "7",
+     "6"
+    ],
+    "answerIndex": 2,
+    "explanation": "9 − 2 = 7."
+   },
+   {
+    "id": "q22",
+    "prompt": "11 − 10 = ...",
+    "options": [
+     "2",
+     "4",
+     "3",
+     "1"
+    ],
+    "answerIndex": 3,
+    "explanation": "11 − 10 = 1."
+   },
+   {
+    "id": "q23",
+    "prompt": "11 − 5 = ...",
+    "options": [
+     "5",
+     "6",
+     "7",
+     "8"
+    ],
+    "answerIndex": 1,
+    "explanation": "11 − 5 = 6."
+   },
+   {
+    "id": "q24",
+    "prompt": "19 − 8 = ...",
+    "options": [
+     "11",
+     "14",
+     "13",
+     "8"
+    ],
+    "answerIndex": 0,
+    "explanation": "19 − 8 = 11."
+   },
+   {
+    "id": "q25",
+    "prompt": "Di kelas ada 20 kursi dan 13 kursi sedang dipakai. Kursi yang kosong ...",
+    "options": [
+     "7 kursi",
+     "9 kursi",
+     "10 kursi",
+     "8 kursi"
+    ],
+    "answerIndex": 0,
+    "explanation": "20 − 13 = 7."
+   },
+   {
+    "id": "q26",
+    "prompt": "Di kelas ada 20 kursi dan 9 kursi sedang dipakai. Kursi yang kosong ...",
+    "options": [
+     "9 kursi",
+     "11 kursi",
+     "8 kursi",
+     "12 kursi"
+    ],
+    "answerIndex": 1,
+    "explanation": "20 − 9 = 11."
+   },
+   {
+    "id": "q27",
+    "prompt": "Di kelas ada 14 kursi dan 11 kursi sedang dipakai. Kursi yang kosong ...",
+    "options": [
+     "4 kursi",
+     "2 kursi",
+     "3 kursi",
+     "6 kursi"
+    ],
+    "answerIndex": 2,
+    "explanation": "14 − 11 = 3."
+   },
+   {
+    "id": "q28",
+    "prompt": "13 − ... = 9. Bilangan yang hilang adalah ...",
+    "options": [
+     "7",
+     "5",
+     "2",
+     "4"
+    ],
+    "answerIndex": 3,
+    "explanation": "13 − 9 = 4, jadi bilangannya 4."
+   },
+   {
+    "id": "q29",
+    "prompt": "17 − ... = 8. Bilangan yang hilang adalah ...",
+    "options": [
+     "10",
+     "9",
+     "11",
+     "8"
+    ],
+    "answerIndex": 1,
+    "explanation": "17 − 8 = 9, jadi bilangannya 9."
+   },
+   {
+    "id": "q30",
+    "prompt": "20 − 5 = ...",
+    "options": [
+     "15",
+     "18",
+     "14",
+     "16"
+    ],
+    "answerIndex": 0,
+    "explanation": "20 − 5 = 15."
    }
   ]
  },
@@ -139,7 +379,7 @@
    2
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -260,6 +500,246 @@
     ],
     "answerIndex": 0,
     "explanation": "Kurangkan: 71 − 28 = 43."
+   },
+   {
+    "id": "q11",
+    "prompt": "45 + 21 = ...",
+    "options": [
+     "67",
+     "65",
+     "66",
+     "68"
+    ],
+    "answerIndex": 2,
+    "explanation": "45 + 21 = 66."
+   },
+   {
+    "id": "q12",
+    "prompt": "22 + 50 = ...",
+    "options": [
+     "73",
+     "62",
+     "71",
+     "72"
+    ],
+    "answerIndex": 3,
+    "explanation": "22 + 50 = 72."
+   },
+   {
+    "id": "q13",
+    "prompt": "57 + 15 = ...",
+    "options": [
+     "71",
+     "62",
+     "73",
+     "72"
+    ],
+    "answerIndex": 3,
+    "explanation": "57 + 15 = 72."
+   },
+   {
+    "id": "q14",
+    "prompt": "59 + 38 = ...",
+    "options": [
+     "96",
+     "87",
+     "97",
+     "95"
+    ],
+    "answerIndex": 2,
+    "explanation": "59 + 38 = 97."
+   },
+   {
+    "id": "q15",
+    "prompt": "49 + 20 = ...",
+    "options": [
+     "69",
+     "79",
+     "71",
+     "59"
+    ],
+    "answerIndex": 0,
+    "explanation": "49 + 20 = 69."
+   },
+   {
+    "id": "q16",
+    "prompt": "Cici mengumpulkan 42 stiker, lalu menerima 37 stiker lagi. Jumlah stikernya ...",
+    "options": [
+     "80 stiker",
+     "77 stiker",
+     "79 stiker",
+     "89 stiker"
+    ],
+    "answerIndex": 2,
+    "explanation": "42 + 37 = 79."
+   },
+   {
+    "id": "q17",
+    "prompt": "Kebun A punya 48 pohon dan kebun B punya 16 pohon. Jumlah pohon ...",
+    "options": [
+     "54 pohon",
+     "63 pohon",
+     "66 pohon",
+     "64 pohon"
+    ],
+    "answerIndex": 3,
+    "explanation": "48 + 16 = 64."
+   },
+   {
+    "id": "q18",
+    "prompt": "Kebun A punya 58 pohon dan kebun B punya 16 pohon. Jumlah pohon ...",
+    "options": [
+     "76 pohon",
+     "73 pohon",
+     "74 pohon",
+     "64 pohon"
+    ],
+    "answerIndex": 2,
+    "explanation": "58 + 16 = 74."
+   },
+   {
+    "id": "q19",
+    "prompt": "16 + ... = 43. Bilangan yang hilang adalah ...",
+    "options": [
+     "28",
+     "26",
+     "37",
+     "27"
+    ],
+    "answerIndex": 3,
+    "explanation": "43 − 16 = 27, jadi bilangannya 27."
+   },
+   {
+    "id": "q20",
+    "prompt": "40 + ... = 94. Bilangan yang hilang adalah ...",
+    "options": [
+     "54",
+     "64",
+     "52",
+     "44"
+    ],
+    "answerIndex": 0,
+    "explanation": "94 − 40 = 54, jadi bilangannya 54."
+   },
+   {
+    "id": "q21",
+    "prompt": "58 + 39 = ...",
+    "options": [
+     "99",
+     "107",
+     "97",
+     "95"
+    ],
+    "answerIndex": 2,
+    "explanation": "58 + 39 = 97."
+   },
+   {
+    "id": "q22",
+    "prompt": "38 + 33 = ...",
+    "options": [
+     "70",
+     "69",
+     "61",
+     "71"
+    ],
+    "answerIndex": 3,
+    "explanation": "38 + 33 = 71."
+   },
+   {
+    "id": "q23",
+    "prompt": "44 + 51 = ...",
+    "options": [
+     "95",
+     "97",
+     "96",
+     "105"
+    ],
+    "answerIndex": 0,
+    "explanation": "44 + 51 = 95."
+   },
+   {
+    "id": "q24",
+    "prompt": "49 + 35 = ...",
+    "options": [
+     "85",
+     "84",
+     "86",
+     "83"
+    ],
+    "answerIndex": 1,
+    "explanation": "49 + 35 = 84."
+   },
+   {
+    "id": "q25",
+    "prompt": "31 + 18 = ...",
+    "options": [
+     "59",
+     "49",
+     "51",
+     "50"
+    ],
+    "answerIndex": 1,
+    "explanation": "31 + 18 = 49."
+   },
+   {
+    "id": "q26",
+    "prompt": "Kebun A punya 37 pohon dan kebun B punya 36 pohon. Jumlah pohon ...",
+    "options": [
+     "71 pohon",
+     "74 pohon",
+     "73 pohon",
+     "83 pohon"
+    ],
+    "answerIndex": 2,
+    "explanation": "37 + 36 = 73."
+   },
+   {
+    "id": "q27",
+    "prompt": "Kebun A punya 22 pohon dan kebun B punya 76 pohon. Jumlah pohon ...",
+    "options": [
+     "98 pohon",
+     "88 pohon",
+     "100 pohon",
+     "96 pohon"
+    ],
+    "answerIndex": 0,
+    "explanation": "22 + 76 = 98."
+   },
+   {
+    "id": "q28",
+    "prompt": "Kebun A punya 34 pohon dan kebun B punya 61 pohon. Jumlah pohon ...",
+    "options": [
+     "96 pohon",
+     "97 pohon",
+     "85 pohon",
+     "95 pohon"
+    ],
+    "answerIndex": 3,
+    "explanation": "34 + 61 = 95."
+   },
+   {
+    "id": "q29",
+    "prompt": "34 + ... = 75. Bilangan yang hilang adalah ...",
+    "options": [
+     "39",
+     "51",
+     "41",
+     "31"
+    ],
+    "answerIndex": 2,
+    "explanation": "75 − 34 = 41, jadi bilangannya 41."
+   },
+   {
+    "id": "q30",
+    "prompt": "26 + ... = 71. Bilangan yang hilang adalah ...",
+    "options": [
+     "46",
+     "55",
+     "47",
+     "45"
+    ],
+    "answerIndex": 3,
+    "explanation": "71 − 26 = 45, jadi bilangannya 45."
    }
   ]
  },
@@ -272,7 +752,7 @@
    4
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -393,6 +873,246 @@
     ],
     "answerIndex": 3,
     "explanation": "Angka di bawah garis (4) adalah penyebut, yaitu banyak bagian sama besar seluruhnya."
+   },
+   {
+    "id": "q11",
+    "prompt": "2/8 + 4/8 = ...",
+    "options": [
+     "5/8",
+     "6/16",
+     "6/8",
+     "7/8"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyebut sama, jadi pembilang dijumlah: 2 + 4 = 6."
+   },
+   {
+    "id": "q12",
+    "prompt": "1/4 + 1/4 = ...",
+    "options": [
+     "2/4",
+     "3/4",
+     "1/4",
+     "2/8"
+    ],
+    "answerIndex": 0,
+    "explanation": "Penyebut sama, jadi pembilang dijumlah: 1 + 1 = 2."
+   },
+   {
+    "id": "q13",
+    "prompt": "3/10 + 6/10 = ...",
+    "options": [
+     "9/10",
+     "10/10",
+     "8/10",
+     "9/20"
+    ],
+    "answerIndex": 0,
+    "explanation": "Penyebut sama, jadi pembilang dijumlah: 3 + 6 = 9."
+   },
+   {
+    "id": "q14",
+    "prompt": "7/8 − 6/8 = ...",
+    "options": [
+     "2/8",
+     "1/7",
+     "1/8",
+     "13/8"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyebut sama, jadi pembilang dikurang: 7 − 6 = 1."
+   },
+   {
+    "id": "q15",
+    "prompt": "4/6 − 3/6 = ...",
+    "options": [
+     "1/5",
+     "1/6",
+     "7/6",
+     "2/6"
+    ],
+    "answerIndex": 1,
+    "explanation": "Penyebut sama, jadi pembilang dikurang: 4 − 3 = 1."
+   },
+   {
+    "id": "q16",
+    "prompt": "Sebuah pita dibagi 6 bagian sama panjang. Diambil 2 bagian. Pecahan yang diambil ...",
+    "options": [
+     "2/6",
+     "2/7",
+     "6/2",
+     "3/6"
+    ],
+    "answerIndex": 0,
+    "explanation": "2 bagian dari 6 bagian ditulis 2/6."
+   },
+   {
+    "id": "q17",
+    "prompt": "Roti dipotong 8 bagian sama besar. Cici makan 7 bagian. Pecahan yang dimakan ...",
+    "options": [
+     "8/8",
+     "8/7",
+     "7/8",
+     "7/9"
+    ],
+    "answerIndex": 2,
+    "explanation": "7 bagian dari 8 bagian ditulis 7/8."
+   },
+   {
+    "id": "q18",
+    "prompt": "Pecahan terbesar di antara 1/4 dan 3/4 adalah ...",
+    "options": [
+     "1/4",
+     "2/4",
+     "3/4",
+     "1/5"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyebut sama, pembilang yang lebih besar (3) menunjukkan pecahan lebih besar."
+   },
+   {
+    "id": "q19",
+    "prompt": "Pada pecahan 7/10, angka 7 disebut ...",
+    "options": [
+     "penyebut",
+     "pembilang",
+     "hasil bagi",
+     "bilangan bulat"
+    ],
+    "answerIndex": 1,
+    "explanation": "Angka di atas garis pecahan disebut pembilang."
+   },
+   {
+    "id": "q20",
+    "prompt": "2/4 + 1/4 = ...",
+    "options": [
+     "3/4",
+     "2/4",
+     "4/4",
+     "3/8"
+    ],
+    "answerIndex": 0,
+    "explanation": "Penyebut sama, jadi pembilang dijumlah: 2 + 1 = 3."
+   },
+   {
+    "id": "q21",
+    "prompt": "2/5 + 1/5 = ...",
+    "options": [
+     "3/10",
+     "2/5",
+     "4/5",
+     "3/5"
+    ],
+    "answerIndex": 3,
+    "explanation": "Penyebut sama, jadi pembilang dijumlah: 2 + 1 = 3."
+   },
+   {
+    "id": "q22",
+    "prompt": "3/10 − 2/10 = ...",
+    "options": [
+     "1/9",
+     "5/10",
+     "1/10",
+     "2/10"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyebut sama, jadi pembilang dikurang: 3 − 2 = 1."
+   },
+   {
+    "id": "q23",
+    "prompt": "3/4 − 2/4 = ...",
+    "options": [
+     "1/4",
+     "2/4",
+     "1/3",
+     "5/4"
+    ],
+    "answerIndex": 0,
+    "explanation": "Penyebut sama, jadi pembilang dikurang: 3 − 2 = 1."
+   },
+   {
+    "id": "q24",
+    "prompt": "Sebuah pita dibagi 6 bagian sama panjang. Diambil 1 bagian. Pecahan yang diambil ...",
+    "options": [
+     "6/1",
+     "1/6",
+     "1/7",
+     "2/6"
+    ],
+    "answerIndex": 1,
+    "explanation": "1 bagian dari 6 bagian ditulis 1/6."
+   },
+   {
+    "id": "q25",
+    "prompt": "Roti dipotong 6 bagian sama besar. Raka makan 4 bagian. Pecahan yang dimakan ...",
+    "options": [
+     "5/6",
+     "4/7",
+     "6/4",
+     "4/6"
+    ],
+    "answerIndex": 3,
+    "explanation": "4 bagian dari 6 bagian ditulis 4/6."
+   },
+   {
+    "id": "q26",
+    "prompt": "Pecahan terbesar di antara 3/5 dan 4/5 adalah ...",
+    "options": [
+     "3/5",
+     "1/10",
+     "4/5",
+     "2/5"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyebut sama, pembilang yang lebih besar (4) menunjukkan pecahan lebih besar."
+   },
+   {
+    "id": "q27",
+    "prompt": "Pecahan yang senilai dengan 1/5 adalah ...",
+    "options": [
+     "2/10",
+     "3/7",
+     "1/10",
+     "2/7"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kalikan pembilang dan penyebut dengan 2: 1×2 / 5×2 = 2/10."
+   },
+   {
+    "id": "q28",
+    "prompt": "Pada pecahan 8/10, angka 8 disebut ...",
+    "options": [
+     "penyebut",
+     "pembilang",
+     "hasil bagi",
+     "bilangan bulat"
+    ],
+    "answerIndex": 1,
+    "explanation": "Angka di atas garis pecahan disebut pembilang."
+   },
+   {
+    "id": "q29",
+    "prompt": "1/10 + 5/10 = ...",
+    "options": [
+     "6/20",
+     "5/10",
+     "6/10",
+     "7/10"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyebut sama, jadi pembilang dijumlah: 1 + 5 = 6."
+   },
+   {
+    "id": "q30",
+    "prompt": "3/6 − 1/6 = ...",
+    "options": [
+     "2/6",
+     "4/6",
+     "2/5",
+     "3/6"
+    ],
+    "answerIndex": 0,
+    "explanation": "Penyebut sama, jadi pembilang dikurang: 3 − 1 = 2."
    }
   ]
  },
@@ -404,7 +1124,7 @@
    5
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -525,6 +1245,246 @@
     ],
     "answerIndex": 1,
     "explanation": "18/20 = 90/100 = 90%."
+   },
+   {
+    "id": "q11",
+    "prompt": "10% dari 60 adalah ...",
+    "options": [
+     "7",
+     "12",
+     "6",
+     "16"
+    ],
+    "answerIndex": 2,
+    "explanation": "10% dari 60 = 10/100 × 60 = 6."
+   },
+   {
+    "id": "q12",
+    "prompt": "40% dari 60 adalah ...",
+    "options": [
+     "34",
+     "4",
+     "19",
+     "24"
+    ],
+    "answerIndex": 3,
+    "explanation": "40% dari 60 = 40/100 × 60 = 24."
+   },
+   {
+    "id": "q13",
+    "prompt": "25% dari 60 adalah ...",
+    "options": [
+     "5",
+     "21",
+     "20",
+     "15"
+    ],
+    "answerIndex": 3,
+    "explanation": "25% dari 60 = 25/100 × 60 = 15."
+   },
+   {
+    "id": "q14",
+    "prompt": "Pecahan desimal 0,2 sama dengan ... persen.",
+    "options": [
+     "25%",
+     "5%",
+     "20%",
+     "30%"
+    ],
+    "answerIndex": 2,
+    "explanation": "0,2 × 100% = 20%."
+   },
+   {
+    "id": "q15",
+    "prompt": "Pecahan desimal 0,8 sama dengan ... persen.",
+    "options": [
+     "90%",
+     "95%",
+     "85%",
+     "80%"
+    ],
+    "answerIndex": 3,
+    "explanation": "0,8 × 100% = 80%."
+   },
+   {
+    "id": "q16",
+    "prompt": "Pecahan 2/5 sama dengan ... persen.",
+    "options": [
+     "40%",
+     "30%",
+     "20%",
+     "35%"
+    ],
+    "answerIndex": 0,
+    "explanation": "2/5 = 40/100 = 40%."
+   },
+   {
+    "id": "q17",
+    "prompt": "1,8 + 1,6 = ...",
+    "options": [
+     "3,5",
+     "4,4",
+     "3,4",
+     "3,3"
+    ],
+    "answerIndex": 2,
+    "explanation": "1,8 + 1,6 = 3,4."
+   },
+   {
+    "id": "q18",
+    "prompt": "3,4 + 8,3 = ...",
+    "options": [
+     "12,7",
+     "11,8",
+     "11,7",
+     "11,6"
+    ],
+    "answerIndex": 2,
+    "explanation": "3,4 + 8,3 = 11,7."
+   },
+   {
+    "id": "q19",
+    "prompt": "Sepatu berharga Rp60.000 diskon 50%. Potongan harganya ...",
+    "options": [
+     "Rp30.000",
+     "Rp35.000",
+     "Rp60.000",
+     "Rp40.000"
+    ],
+    "answerIndex": 0,
+    "explanation": "Potongan = 50% × 60.000 = 30.000."
+   },
+   {
+    "id": "q20",
+    "prompt": "Eka menjawab benar 9 dari 10 soal. Nilai dalam persen ...",
+    "options": [
+     "105%",
+     "100%",
+     "80%",
+     "90%"
+    ],
+    "answerIndex": 3,
+    "explanation": "9/10 × 100% = 90%."
+   },
+   {
+    "id": "q21",
+    "prompt": "60% dari 160 adalah ...",
+    "options": [
+     "91",
+     "96",
+     "80",
+     "101"
+    ],
+    "answerIndex": 1,
+    "explanation": "60% dari 160 = 60/100 × 160 = 96."
+   },
+   {
+    "id": "q22",
+    "prompt": "20% dari 80 adalah ...",
+    "options": [
+     "24",
+     "8",
+     "16",
+     "11"
+    ],
+    "answerIndex": 2,
+    "explanation": "20% dari 80 = 20/100 × 80 = 16."
+   },
+   {
+    "id": "q23",
+    "prompt": "60% dari 80 adalah ...",
+    "options": [
+     "48",
+     "38",
+     "58",
+     "28"
+    ],
+    "answerIndex": 0,
+    "explanation": "60% dari 80 = 60/100 × 80 = 48."
+   },
+   {
+    "id": "q24",
+    "prompt": "Pecahan desimal 0,6 sama dengan ... persen.",
+    "options": [
+     "75%",
+     "70%",
+     "65%",
+     "60%"
+    ],
+    "answerIndex": 3,
+    "explanation": "0,6 × 100% = 60%."
+   },
+   {
+    "id": "q25",
+    "prompt": "Pecahan desimal 0,75 sama dengan ... persen.",
+    "options": [
+     "75%",
+     "70%",
+     "90%",
+     "85%"
+    ],
+    "answerIndex": 0,
+    "explanation": "0,75 × 100% = 75%."
+   },
+   {
+    "id": "q26",
+    "prompt": "Pecahan 3/5 sama dengan ... persen.",
+    "options": [
+     "40%",
+     "45%",
+     "80%",
+     "60%"
+    ],
+    "answerIndex": 3,
+    "explanation": "3/5 = 60/100 = 60%."
+   },
+   {
+    "id": "q27",
+    "prompt": "4,6 + 6,5 = ...",
+    "options": [
+     "12,1",
+     "11,2",
+     "11,1",
+     "11,0"
+    ],
+    "answerIndex": 2,
+    "explanation": "4,6 + 6,5 = 11,1."
+   },
+   {
+    "id": "q28",
+    "prompt": "6,3 + 1,6 = ...",
+    "options": [
+     "8,0",
+     "7,9",
+     "8,9",
+     "7,8"
+    ],
+    "answerIndex": 1,
+    "explanation": "6,3 + 1,6 = 7,9."
+   },
+   {
+    "id": "q29",
+    "prompt": "Sepatu berharga Rp200.000 diskon 10%. Potongan harganya ...",
+    "options": [
+     "Rp40.000",
+     "Rp20.000",
+     "Rp180.000",
+     "Rp25.000"
+    ],
+    "answerIndex": 1,
+    "explanation": "Potongan = 10% × 200.000 = 20.000."
+   },
+   {
+    "id": "q30",
+    "prompt": "Ani menjawab benar 36 dari 40 soal. Nilai dalam persen ...",
+    "options": [
+     "85%",
+     "105%",
+     "100%",
+     "90%"
+    ],
+    "answerIndex": 3,
+    "explanation": "36/40 × 100% = 90%."
    }
   ]
  },
@@ -536,7 +1496,7 @@
    6
   ],
   "difficulty": 3,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -657,6 +1617,246 @@
     ],
     "answerIndex": 0,
     "explanation": "5 dan 7 sama-sama prima, jadi KPK = 5 × 7 = 35."
+   },
+   {
+    "id": "q11",
+    "prompt": "KPK dari 8 dan 12 adalah ...",
+    "options": [
+     "20",
+     "24",
+     "28",
+     "36"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kelipatan persekutuan terkecil dari 8 dan 12 adalah 24."
+   },
+   {
+    "id": "q12",
+    "prompt": "KPK dari 9 dan 15 adalah ...",
+    "options": [
+     "48",
+     "35",
+     "42",
+     "45"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kelipatan persekutuan terkecil dari 9 dan 15 adalah 45."
+   },
+   {
+    "id": "q13",
+    "prompt": "KPK dari 10 dan 25 adalah ...",
+    "options": [
+     "55",
+     "50",
+     "45",
+     "60"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kelipatan persekutuan terkecil dari 10 dan 25 adalah 50."
+   },
+   {
+    "id": "q14",
+    "prompt": "KPK dari 14 dan 21 adalah ...",
+    "options": [
+     "49",
+     "21",
+     "63",
+     "42"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kelipatan persekutuan terkecil dari 14 dan 21 adalah 42."
+   },
+   {
+    "id": "q15",
+    "prompt": "FPB dari 18 dan 24 adalah ...",
+    "options": [
+     "7",
+     "6",
+     "12",
+     "5"
+    ],
+    "answerIndex": 1,
+    "explanation": "Faktor persekutuan terbesar dari 18 dan 24 adalah 6."
+   },
+   {
+    "id": "q16",
+    "prompt": "FPB dari 15 dan 20 adalah ...",
+    "options": [
+     "6",
+     "10",
+     "4",
+     "5"
+    ],
+    "answerIndex": 3,
+    "explanation": "Faktor persekutuan terbesar dari 15 dan 20 adalah 5."
+   },
+   {
+    "id": "q17",
+    "prompt": "FPB dari 12 dan 16 adalah ...",
+    "options": [
+     "3",
+     "5",
+     "4",
+     "8"
+    ],
+    "answerIndex": 2,
+    "explanation": "Faktor persekutuan terbesar dari 12 dan 16 adalah 4."
+   },
+   {
+    "id": "q18",
+    "prompt": "FPB dari 6 dan 9 adalah ...",
+    "options": [
+     "4",
+     "3",
+     "6",
+     "2"
+    ],
+    "answerIndex": 1,
+    "explanation": "Faktor persekutuan terbesar dari 6 dan 9 adalah 3."
+   },
+   {
+    "id": "q19",
+    "prompt": "Lampu A menyala tiap 6 detik dan lampu B tiap 10 detik. Keduanya menyala bersama lagi setelah ... detik.",
+    "options": [
+     "32",
+     "20",
+     "24",
+     "30"
+    ],
+    "answerIndex": 3,
+    "explanation": "Waktu bertemu lagi adalah KPK 6 dan 10 = 30."
+   },
+   {
+    "id": "q20",
+    "prompt": "Ada 18 apel dan 30 jeruk dibagi sama banyak ke beberapa keranjang dengan jumlah keranjang sebanyak-banyaknya. Banyak keranjang ...",
+    "options": [
+     "6",
+     "5",
+     "8",
+     "4"
+    ],
+    "answerIndex": 0,
+    "explanation": "Banyak keranjang terbanyak adalah FPB 18 dan 30 = 6."
+   },
+   {
+    "id": "q21",
+    "prompt": "KPK dari 16 dan 20 adalah ...",
+    "options": [
+     "90",
+     "80",
+     "96",
+     "64"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kelipatan persekutuan terkecil dari 16 dan 20 adalah 80."
+   },
+   {
+    "id": "q22",
+    "prompt": "KPK dari 28 dan 42 adalah ...",
+    "options": [
+     "84",
+     "56",
+     "126",
+     "42"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kelipatan persekutuan terkecil dari 28 dan 42 adalah 84."
+   },
+   {
+    "id": "q23",
+    "prompt": "KPK dari 36 dan 48 adalah ...",
+    "options": [
+     "132",
+     "154",
+     "134",
+     "144"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kelipatan persekutuan terkecil dari 36 dan 48 adalah 144."
+   },
+   {
+    "id": "q24",
+    "prompt": "KPK dari 21 dan 35 adalah ...",
+    "options": [
+     "84",
+     "126",
+     "105",
+     "115"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kelipatan persekutuan terkecil dari 21 dan 35 adalah 105."
+   },
+   {
+    "id": "q25",
+    "prompt": "FPB dari 50 dan 75 adalah ...",
+    "options": [
+     "26",
+     "24",
+     "50",
+     "25"
+    ],
+    "answerIndex": 3,
+    "explanation": "Faktor persekutuan terbesar dari 50 dan 75 adalah 25."
+   },
+   {
+    "id": "q26",
+    "prompt": "FPB dari 32 dan 48 adalah ...",
+    "options": [
+     "16",
+     "17",
+     "32",
+     "15"
+    ],
+    "answerIndex": 0,
+    "explanation": "Faktor persekutuan terbesar dari 32 dan 48 adalah 16."
+   },
+   {
+    "id": "q27",
+    "prompt": "FPB dari 18 dan 27 adalah ...",
+    "options": [
+     "8",
+     "9",
+     "10",
+     "18"
+    ],
+    "answerIndex": 1,
+    "explanation": "Faktor persekutuan terbesar dari 18 dan 27 adalah 9."
+   },
+   {
+    "id": "q28",
+    "prompt": "FPB dari 40 dan 60 adalah ...",
+    "options": [
+     "19",
+     "21",
+     "20",
+     "40"
+    ],
+    "answerIndex": 2,
+    "explanation": "Faktor persekutuan terbesar dari 40 dan 60 adalah 20."
+   },
+   {
+    "id": "q29",
+    "prompt": "Lampu A menyala tiap 9 detik dan lampu B tiap 12 detik. Keduanya menyala bersama lagi setelah ... detik.",
+    "options": [
+     "27",
+     "39",
+     "36",
+     "26"
+    ],
+    "answerIndex": 2,
+    "explanation": "Waktu bertemu lagi adalah KPK 9 dan 12 = 36."
+   },
+   {
+    "id": "q30",
+    "prompt": "Ada 27 apel dan 36 jeruk dibagi sama banyak ke beberapa keranjang dengan jumlah keranjang sebanyak-banyaknya. Banyak keranjang ...",
+    "options": [
+     "13",
+     "8",
+     "12",
+     "9"
+    ],
+    "answerIndex": 3,
+    "explanation": "Banyak keranjang terbanyak adalah FPB 27 dan 36 = 9."
    }
   ]
  },
@@ -669,7 +1869,7 @@
    5
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -790,6 +1990,246 @@
     ],
     "answerIndex": 1,
     "explanation": "Penulisan baku: teknik."
+   },
+   {
+    "id": "q11",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "apotek",
+     "apoteek",
+     "apotik",
+     "appotek"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya apotek."
+   },
+   {
+    "id": "q12",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "analisis",
+     "analisa",
+     "analysis",
+     "analiis"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya analisis."
+   },
+   {
+    "id": "q13",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "jadwal",
+     "jaddwal",
+     "jadual",
+     "jadwall"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya jadwal."
+   },
+   {
+    "id": "q14",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "kwalites",
+     "kualites",
+     "kwalitas",
+     "kualitas"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata bakunya kualitas."
+   },
+   {
+    "id": "q15",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "risikoo",
+     "rissiko",
+     "resiko",
+     "risiko"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata bakunya risiko."
+   },
+   {
+    "id": "q16",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "nasihat",
+     "nasehat",
+     "nasiat",
+     "nasihad"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya nasihat."
+   },
+   {
+    "id": "q17",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "obejk",
+     "objeck",
+     "objek",
+     "obyek"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kata bakunya objek."
+   },
+   {
+    "id": "q18",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "prakstik",
+     "praktik",
+     "praktikk",
+     "praktek"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kata bakunya praktik."
+   },
+   {
+    "id": "q19",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "silakan",
+     "silaken",
+     "sillakan",
+     "silahkan"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya silakan."
+   },
+   {
+    "id": "q20",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "sistim",
+     "systim",
+     "sisitem",
+     "sistem"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata bakunya sistem."
+   },
+   {
+    "id": "q21",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "isin",
+     "ijzin",
+     "ijin",
+     "izin"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata bakunya izin."
+   },
+   {
+    "id": "q22",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "antri",
+     "antre",
+     "antrie",
+     "anter"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kata bakunya antre."
+   },
+   {
+    "id": "q23",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "kwitansi",
+     "kwitanci",
+     "kuitansi",
+     "kuitanci"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kata bakunya kuitansi."
+   },
+   {
+    "id": "q24",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "aktif",
+     "akktif",
+     "aktip",
+     "aktiv"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya aktif."
+   },
+   {
+    "id": "q25",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "tehnik",
+     "tekhnik",
+     "tekknik",
+     "teknik"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata bakunya teknik."
+   },
+   {
+    "id": "q26",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "standaar",
+     "setandar",
+     "standar",
+     "standard"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kata bakunya standar."
+   },
+   {
+    "id": "q27",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "frekuensi",
+     "frekwensi",
+     "frekuensy",
+     "frekuenzi"
+    ],
+    "answerIndex": 0,
+    "explanation": "Kata bakunya frekuensi."
+   },
+   {
+    "id": "q28",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "atlit",
+     "atlet",
+     "atlitt",
+     "atleet"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kata bakunya atlet."
+   },
+   {
+    "id": "q29",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "metoda",
+     "meetode",
+     "metode",
+     "metodde"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kata bakunya metode."
+   },
+   {
+    "id": "q30",
+    "prompt": "Kata baku yang benar adalah ...",
+    "options": [
+     "Jumaat",
+     "Jummat",
+     "Jum'at",
+     "Jumat"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kata bakunya Jumat."
    }
   ]
  },
@@ -803,7 +2243,7 @@
    6
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -924,6 +2364,246 @@
     ],
     "answerIndex": 2,
     "explanation": "Pada paragraf induktif, kalimat utama ada di akhir: banjir besar melanda desa."
+   },
+   {
+    "id": "q11",
+    "prompt": "Olahraga bermanfaat bagi tubuh. Jantung menjadi kuat dan otot lebih lentur. Gagasan pokok paragraf itu adalah ...",
+    "options": [
+     "olahraga hanya dilakukan pagi hari",
+     "olahraga bermanfaat bagi tubuh",
+     "jantung berhenti berdetak",
+     "otot dilatih tiap malam"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat pertama merangkum isi paragraf."
+   },
+   {
+    "id": "q12",
+    "prompt": "Sampah plastik sulit terurai. Plastik bisa bertahan puluhan tahun di tanah. Karena itu kita harus mengurangi pemakaiannya. Gagasan pokoknya ...",
+    "options": [
+     "plastik mudah dimakan hewan",
+     "plastik cepat hancur",
+     "plastik murah",
+     "sampah plastik sulit terurai"
+    ],
+    "answerIndex": 3,
+    "explanation": "Seluruh kalimat membahas sulitnya plastik terurai."
+   },
+   {
+    "id": "q13",
+    "prompt": "Kucing adalah hewan peliharaan yang bersih. Ia rajin menjilati bulunya. Kucing juga buang kotoran di tempat tertentu. Gagasan pokoknya ...",
+    "options": [
+     "kucing berbulu panjang",
+     "kucing adalah hewan yang bersih",
+     "kucing tidur seharian",
+     "kucing suka makan ikan"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat lain menjelaskan kebersihan kucing."
+   },
+   {
+    "id": "q14",
+    "prompt": "Membaca membuka jendela dunia. Dari buku kita belajar banyak hal baru. Wawasan pun bertambah. Gagasan pokoknya ...",
+    "options": [
+     "kita tidak perlu belajar",
+     "membaca menambah pengetahuan",
+     "membaca hanya di perpustakaan",
+     "buku mahal"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat penjelas menerangkan manfaat membaca."
+   },
+   {
+    "id": "q15",
+    "prompt": "Hutan sangat penting bagi kehidupan. Pohon menghasilkan oksigen dan menyerap air hujan. Hutan juga rumah bagi banyak hewan. Gagasan pokoknya ...",
+    "options": [
+     "hutan tempat wisata",
+     "hutan harus ditebang",
+     "hutan banyak nyamuk",
+     "hutan penting bagi kehidupan"
+    ],
+    "answerIndex": 3,
+    "explanation": "Semua kalimat menjelaskan pentingnya hutan."
+   },
+   {
+    "id": "q16",
+    "prompt": "Air bersih harus kita jaga. Air yang tercemar menyebabkan penyakit. Karena itu jangan membuang sampah ke sungai. Gagasan pokoknya ...",
+    "options": [
+     "sungai selalu keruh",
+     "penyakit tidak berbahaya",
+     "sampah harus ditimbun di sungai",
+     "air bersih harus dijaga"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kalimat pertama menyatakan hal utama."
+   },
+   {
+    "id": "q17",
+    "prompt": "Sarapan penting bagi anak sekolah. Dengan sarapan, tubuh memiliki tenaga untuk belajar. Anak pun lebih fokus. Gagasan pokoknya ...",
+    "options": [
+     "sarapan hanya nasi goreng",
+     "sarapan penting bagi anak sekolah",
+     "anak tidak perlu makan",
+     "belajar tidak butuh tenaga"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat lain menerangkan manfaat sarapan."
+   },
+   {
+    "id": "q18",
+    "prompt": "Bersepeda baik untuk kesehatan dan lingkungan. Tubuh menjadi bugar. Sepeda tidak menghasilkan asap. Gagasan pokoknya ...",
+    "options": [
+     "bersepeda hanya untuk anak",
+     "bersepeda baik untuk kesehatan dan lingkungan",
+     "asap berguna",
+     "sepeda harganya mahal"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat pertama merangkum paragraf."
+   },
+   {
+    "id": "q19",
+    "prompt": "Musim hujan membawa banyak manfaat dan risiko. Air untuk pertanian tersedia. Namun banjir mengancam permukiman. Gagasan pokoknya ...",
+    "options": [
+     "hujan hanya turun malam hari",
+     "banjir tidak pernah terjadi",
+     "petani tidak butuh air",
+     "musim hujan membawa manfaat dan risiko"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kalimat pertama merangkum isi paragraf."
+   },
+   {
+    "id": "q20",
+    "prompt": "Piket kelas melatih tanggung jawab. Setiap anak mendapat giliran membersihkan kelas. Kelas menjadi bersih dan nyaman. Gagasan pokoknya ...",
+    "options": [
+     "kelas selalu kotor",
+     "piket tidak berguna",
+     "piket kelas melatih tanggung jawab",
+     "piket dilakukan guru"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kalimat penjelas menerangkan alasan piket."
+   },
+   {
+    "id": "q21",
+    "prompt": "Kalimat utama berisi ...",
+    "options": [
+     "kalimat penutup",
+     "gagasan pokok paragraf",
+     "judul cerita",
+     "contoh saja"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat utama memuat inti paragraf."
+   },
+   {
+    "id": "q22",
+    "prompt": "Kalimat penjelas berfungsi ...",
+    "options": [
+     "mengubah topik",
+     "menggantikan judul",
+     "menjelaskan gagasan pokok",
+     "menghapus kalimat utama"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kalimat penjelas menguatkan kalimat utama."
+   },
+   {
+    "id": "q23",
+    "prompt": "Dalam satu paragraf yang baik terdapat ... gagasan pokok.",
+    "options": [
+     "banyak",
+     "tiga",
+     "dua",
+     "satu"
+    ],
+    "answerIndex": 3,
+    "explanation": "Satu paragraf membahas satu gagasan pokok."
+   },
+   {
+    "id": "q24",
+    "prompt": "Judul sebuah teks sebaiknya ...",
+    "options": [
+     "sesuai dengan isi teks",
+     "sangat panjang",
+     "tidak berhubungan",
+     "diganti angka"
+    ],
+    "answerIndex": 0,
+    "explanation": "Judul mencerminkan isi teks."
+   },
+   {
+    "id": "q25",
+    "prompt": "Tokoh dalam cerita adalah ...",
+    "options": [
+     "waktu cerita",
+     "tempat cerita",
+     "pelaku dalam cerita",
+     "amanat"
+    ],
+    "answerIndex": 2,
+    "explanation": "Tokoh adalah pelaku yang terlibat dalam cerita."
+   },
+   {
+    "id": "q26",
+    "prompt": "Latar dalam cerita menunjukkan ...",
+    "options": [
+     "tempat, waktu, dan suasana",
+     "judul",
+     "penulis",
+     "pelaku"
+    ],
+    "answerIndex": 0,
+    "explanation": "Latar meliputi tempat, waktu, dan suasana."
+   },
+   {
+    "id": "q27",
+    "prompt": "Pesan yang ingin disampaikan penulis dalam cerita disebut ...",
+    "options": [
+     "judul",
+     "tokoh",
+     "latar",
+     "amanat"
+    ],
+    "answerIndex": 3,
+    "explanation": "Amanat adalah pesan moral cerita."
+   },
+   {
+    "id": "q28",
+    "prompt": "Pelangi muncul setelah hujan reda. Cahaya Matahari terurai oleh titik air menjadi banyak warna. Gagasan pokok paragraf ini adalah ...",
+    "options": [
+     "pelangi tidak berwarna",
+     "pelangi muncul karena cahaya terurai oleh titik air",
+     "pelangi terbuat dari awan",
+     "pelangi hanya muncul malam hari"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kalimat penjelas menerangkan proses terjadinya pelangi."
+   },
+   {
+    "id": "q29",
+    "prompt": "Sekumpulan kalimat yang saling berhubungan dan membahas satu gagasan disebut ...",
+    "options": [
+     "paragraf",
+     "huruf",
+     "kata",
+     "suku kata"
+    ],
+    "answerIndex": 0,
+    "explanation": "Paragraf memuat satu gagasan pokok dan penjelasnya."
+   },
+   {
+    "id": "q30",
+    "prompt": "Belajar kelompok menyenangkan. Kita bisa saling membantu memahami pelajaran. Teman yang belum paham dapat bertanya. Gagasan pokoknya ...",
+    "options": [
+     "teman tidak boleh bertanya",
+     "belajar sendiri lebih baik",
+     "belajar hanya di rumah",
+     "belajar kelompok menyenangkan"
+    ],
+    "answerIndex": 3,
+    "explanation": "Kalimat lain menjelaskan keuntungan belajar kelompok."
    }
   ]
  },
@@ -935,7 +2615,7 @@
    3
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -1056,6 +2736,246 @@
     ],
     "answerIndex": 3,
     "explanation": "Bunga membantu tumbuhan berkembang biak."
+   },
+   {
+    "id": "q11",
+    "prompt": "Bagian tumbuhan yang berfungsi menyerap air adalah ...",
+    "options": [
+     "akar",
+     "bunga",
+     "biji",
+     "daun"
+    ],
+    "answerIndex": 0,
+    "explanation": "Akar menyerap air dan zat hara."
+   },
+   {
+    "id": "q12",
+    "prompt": "Bagian tumbuhan yang mengangkut air ke daun adalah ...",
+    "options": [
+     "batang",
+     "biji",
+     "bunga",
+     "buah"
+    ],
+    "answerIndex": 0,
+    "explanation": "Batang mengangkut air dan zat makanan."
+   },
+   {
+    "id": "q13",
+    "prompt": "Biji terdapat di dalam ...",
+    "options": [
+     "buah",
+     "batang",
+     "daun",
+     "akar"
+    ],
+    "answerIndex": 0,
+    "explanation": "Biji biasanya berada di dalam buah."
+   },
+   {
+    "id": "q14",
+    "prompt": "Akar tunggang dimiliki oleh tumbuhan ...",
+    "options": [
+     "padi",
+     "mangga",
+     "jagung",
+     "rumput"
+    ],
+    "answerIndex": 1,
+    "explanation": "Mangga berakar tunggang."
+   },
+   {
+    "id": "q15",
+    "prompt": "Akar serabut dimiliki oleh tumbuhan ...",
+    "options": [
+     "kacang tanah",
+     "mangga",
+     "padi",
+     "jambu"
+    ],
+    "answerIndex": 2,
+    "explanation": "Padi berakar serabut."
+   },
+   {
+    "id": "q16",
+    "prompt": "Bagian bunga yang berwarna-warni dan menarik serangga adalah ...",
+    "options": [
+     "akar",
+     "biji",
+     "batang",
+     "mahkota"
+    ],
+    "answerIndex": 3,
+    "explanation": "Mahkota bunga menarik serangga."
+   },
+   {
+    "id": "q17",
+    "prompt": "Bagian bunga yang menghasilkan serbuk sari adalah ...",
+    "options": [
+     "benang sari",
+     "kelopak",
+     "tangkai",
+     "putik"
+    ],
+    "answerIndex": 0,
+    "explanation": "Benang sari menghasilkan serbuk sari."
+   },
+   {
+    "id": "q18",
+    "prompt": "Bagian bunga yang akan menjadi buah adalah ...",
+    "options": [
+     "benang sari",
+     "bakal buah pada putik",
+     "kelopak",
+     "mahkota"
+    ],
+    "answerIndex": 1,
+    "explanation": "Bakal buah berkembang menjadi buah."
+   },
+   {
+    "id": "q19",
+    "prompt": "Berpindahnya serbuk sari ke kepala putik disebut ...",
+    "options": [
+     "pencernaan",
+     "penguapan",
+     "penyerbukan",
+     "fotosintesis"
+    ],
+    "answerIndex": 2,
+    "explanation": "Penyerbukan dibantu angin, lebah, dan kupu-kupu."
+   },
+   {
+    "id": "q20",
+    "prompt": "Hewan yang membantu penyerbukan bunga adalah ...",
+    "options": [
+     "ayam",
+     "kerbau",
+     "ikan",
+     "lebah"
+    ],
+    "answerIndex": 3,
+    "explanation": "Lebah memindahkan serbuk sari saat mencari madu."
+   },
+   {
+    "id": "q21",
+    "prompt": "Tumbuhan membutuhkan ... untuk hidup.",
+    "options": [
+     "plastik",
+     "air, cahaya, udara, dan tanah",
+     "api",
+     "batu dan pasir saja"
+    ],
+    "answerIndex": 1,
+    "explanation": "Keempatnya dibutuhkan tumbuhan."
+   },
+   {
+    "id": "q22",
+    "prompt": "Singkong dapat diperbanyak dengan ...",
+    "options": [
+     "stek batang",
+     "biji kecil",
+     "bunga",
+     "buah"
+    ],
+    "answerIndex": 0,
+    "explanation": "Batang singkong ditanam dapat tumbuh baru."
+   },
+   {
+    "id": "q23",
+    "prompt": "Pisang berkembang biak dengan ...",
+    "options": [
+     "biji",
+     "stek daun",
+     "tunas",
+     "cangkok bunga"
+    ],
+    "answerIndex": 2,
+    "explanation": "Tunas muncul di dekat pangkal batang."
+   },
+   {
+    "id": "q24",
+    "prompt": "Cangkok biasanya dilakukan pada tumbuhan ...",
+    "options": [
+     "lumut",
+     "alga",
+     "rumput",
+     "berbatang berkayu seperti jambu"
+    ],
+    "answerIndex": 3,
+    "explanation": "Cangkok membuat akar tumbuh pada batang."
+   },
+   {
+    "id": "q25",
+    "prompt": "Batang pohon yang keras dan berkayu disebut batang ...",
+    "options": [
+     "menjalar",
+     "rumput",
+     "basah",
+     "berkayu"
+    ],
+    "answerIndex": 3,
+    "explanation": "Pohon besar berbatang berkayu."
+   },
+   {
+    "id": "q26",
+    "prompt": "Contoh tumbuhan berbatang basah adalah ...",
+    "options": [
+     "kelapa",
+     "jati",
+     "bayam",
+     "mangga"
+    ],
+    "answerIndex": 2,
+    "explanation": "Bayam berbatang lunak dan berair."
+   },
+   {
+    "id": "q27",
+    "prompt": "Tumbuhan yang kekurangan cahaya Matahari biasanya ...",
+    "options": [
+     "pucat dan tumbuh tidak sehat",
+     "tumbuh sangat subur",
+     "menjadi besar sekali",
+     "berbunga terus"
+    ],
+    "answerIndex": 0,
+    "explanation": "Cahaya dibutuhkan untuk fotosintesis."
+   },
+   {
+    "id": "q28",
+    "prompt": "Biji yang ditanam dan disiram akan ...",
+    "options": [
+     "membusuk saja",
+     "berkecambah",
+     "menguap",
+     "menjadi batu"
+    ],
+    "answerIndex": 1,
+    "explanation": "Biji tumbuh menjadi kecambah dengan air dan suhu cukup."
+   },
+   {
+    "id": "q29",
+    "prompt": "Bagian bunga yang melindungi kuncup bunga adalah ...",
+    "options": [
+     "akar",
+     "kelopak",
+     "biji",
+     "buah"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kelopak membungkus dan melindungi kuncup."
+   },
+   {
+    "id": "q30",
+    "prompt": "Tumbuhan yang bijinya berkeping dua adalah ...",
+    "options": [
+     "rumput",
+     "padi",
+     "kacang tanah",
+     "jagung"
+    ],
+    "answerIndex": 2,
+    "explanation": "Kacang tanah termasuk tumbuhan berkeping dua."
    }
   ]
  },
@@ -1067,7 +2987,7 @@
    5
   ],
   "difficulty": 2,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -1188,6 +3108,246 @@
     ],
     "answerIndex": 2,
     "explanation": "Makan teratur, mengunyah baik, dan mencuci tangan menjaga pencernaan."
+   },
+   {
+    "id": "q11",
+    "prompt": "Pencernaan makanan dimulai di ...",
+    "options": [
+     "usus besar",
+     "mulut",
+     "lambung",
+     "dubur"
+    ],
+    "answerIndex": 1,
+    "explanation": "Makanan dikunyah dan dilumatkan di mulut."
+   },
+   {
+    "id": "q12",
+    "prompt": "Air liur berfungsi ...",
+    "options": [
+     "memotong makanan",
+     "melunakkan makanan",
+     "menyerap sari makanan",
+     "membuang sisa makanan"
+    ],
+    "answerIndex": 1,
+    "explanation": "Air liur membantu mencerna makanan."
+   },
+   {
+    "id": "q13",
+    "prompt": "Gigi seri berfungsi untuk ...",
+    "options": [
+     "bernapas",
+     "menggiling makanan",
+     "memotong makanan",
+     "menyerap air"
+    ],
+    "answerIndex": 2,
+    "explanation": "Gigi seri berada di depan untuk memotong."
+   },
+   {
+    "id": "q14",
+    "prompt": "Gigi geraham berfungsi untuk ...",
+    "options": [
+     "menelan",
+     "menggiling makanan",
+     "merobek makanan",
+     "memotong makanan"
+    ],
+    "answerIndex": 1,
+    "explanation": "Geraham lebar untuk menghaluskan."
+   },
+   {
+    "id": "q15",
+    "prompt": "Gigi taring berfungsi untuk ...",
+    "options": [
+     "menyerap",
+     "merobek makanan",
+     "meniup",
+     "menggiling"
+    ],
+    "answerIndex": 1,
+    "explanation": "Taring runcing untuk merobek."
+   },
+   {
+    "id": "q16",
+    "prompt": "Makanan dicerna dengan asam lambung di ...",
+    "options": [
+     "lambung",
+     "mulut",
+     "usus besar",
+     "kerongkongan"
+    ],
+    "answerIndex": 0,
+    "explanation": "Lambung mencerna dengan bantuan asam."
+   },
+   {
+    "id": "q17",
+    "prompt": "Penyerapan sari makanan terjadi di ...",
+    "options": [
+     "lambung saja",
+     "kerongkongan",
+     "usus halus",
+     "mulut"
+    ],
+    "answerIndex": 2,
+    "explanation": "Sari makanan diserap usus halus ke darah."
+   },
+   {
+    "id": "q18",
+    "prompt": "Sisa makanan yang tidak terserap dibuang melalui ...",
+    "options": [
+     "hidung",
+     "dubur",
+     "telinga",
+     "mulut"
+    ],
+    "answerIndex": 1,
+    "explanation": "Sisa makanan keluar lewat dubur."
+   },
+   {
+    "id": "q19",
+    "prompt": "Usus besar berfungsi menyerap ... dari sisa makanan.",
+    "options": [
+     "tulang",
+     "garam saja",
+     "air",
+     "vitamin"
+    ],
+    "answerIndex": 2,
+    "explanation": "Usus besar menyerap air dan membentuk tinja."
+   },
+   {
+    "id": "q20",
+    "prompt": "Banyak gigi tetap orang dewasa adalah ...",
+    "options": [
+     "32",
+     "20",
+     "40",
+     "28"
+    ],
+    "answerIndex": 0,
+    "explanation": "Orang dewasa memiliki 32 gigi."
+   },
+   {
+    "id": "q21",
+    "prompt": "Banyak gigi susu anak-anak adalah ...",
+    "options": [
+     "28",
+     "24",
+     "32",
+     "20"
+    ],
+    "answerIndex": 3,
+    "explanation": "Gigi susu berjumlah 20."
+   },
+   {
+    "id": "q22",
+    "prompt": "Sumber karbohidrat adalah ...",
+    "options": [
+     "ikan",
+     "nasi",
+     "telur",
+     "susu"
+    ],
+    "answerIndex": 1,
+    "explanation": "Nasi sumber energi."
+   },
+   {
+    "id": "q23",
+    "prompt": "Sumber protein adalah ...",
+    "options": [
+     "nasi",
+     "minyak",
+     "telur",
+     "gula"
+    ],
+    "answerIndex": 2,
+    "explanation": "Protein membangun tubuh."
+   },
+   {
+    "id": "q24",
+    "prompt": "Makanan berserat seperti sayur membantu ...",
+    "options": [
+     "melancarkan pencernaan",
+     "menghentikan lapar",
+     "membuat sakit",
+     "merusak gigi"
+    ],
+    "answerIndex": 0,
+    "explanation": "Serat mencegah sembelit."
+   },
+   {
+    "id": "q25",
+    "prompt": "Makanan bergizi seimbang meliputi ...",
+    "options": [
+     "permen saja",
+     "gorengan saja",
+     "minuman manis saja",
+     "nasi, lauk, sayur, buah, dan susu"
+    ],
+    "answerIndex": 3,
+    "explanation": "Gizi seimbang melengkapi kebutuhan tubuh."
+   },
+   {
+    "id": "q26",
+    "prompt": "Penyebab gangguan lambung (maag) antara lain ...",
+    "options": [
+     "tidur cukup",
+     "minum air putih",
+     "telat makan",
+     "makan teratur"
+    ],
+    "answerIndex": 2,
+    "explanation": "Lambung kosong lama membuat perih."
+   },
+   {
+    "id": "q27",
+    "prompt": "Mengunyah makanan hingga halus bertujuan ...",
+    "options": [
+     "memudahkan pencernaan",
+     "membuat gigi rusak",
+     "menghemat waktu",
+     "menambah lapar"
+    ],
+    "answerIndex": 0,
+    "explanation": "Makanan halus mudah dicerna."
+   },
+   {
+    "id": "q28",
+    "prompt": "Sebelum makan, kita mencuci tangan agar ...",
+    "options": [
+     "makanan lebih manis",
+     "kuman tidak masuk ke tubuh",
+     "lapar hilang",
+     "tangan cepat kering"
+    ],
+    "answerIndex": 1,
+    "explanation": "Tangan bersih mencegah penyakit pencernaan."
+   },
+   {
+    "id": "q29",
+    "prompt": "Urutan saluran pencernaan yang benar adalah ...",
+    "options": [
+     "usus besar, lambung, mulut, usus halus",
+     "usus halus, mulut, lambung, kerongkongan",
+     "mulut, kerongkongan, lambung, usus halus, usus besar",
+     "lambung, mulut, usus, kerongkongan"
+    ],
+    "answerIndex": 2,
+    "explanation": "Makanan melewati organ secara berurutan."
+   },
+   {
+    "id": "q30",
+    "prompt": "Makanan yang tidak sehat jika dimakan berlebihan adalah ...",
+    "options": [
+     "buah",
+     "air putih",
+     "sayur",
+     "makanan terlalu manis dan berminyak"
+    ],
+    "answerIndex": 3,
+    "explanation": "Gula dan minyak berlebihan mengganggu kesehatan."
    }
   ]
  },
@@ -1200,7 +3360,7 @@
    5
   ],
   "difficulty": 1,
-  "version": 1,
+  "version": 2,
   "questions": [
    {
     "id": "q1",
@@ -1321,6 +3481,246 @@
     ],
     "answerIndex": 1,
     "explanation": "Kutub utara dan selatan saling menarik."
+   },
+   {
+    "id": "q11",
+    "prompt": "Menarik laci termasuk gaya ...",
+    "options": [
+     "magnet",
+     "dorong",
+     "gesek",
+     "tarik"
+    ],
+    "answerIndex": 3,
+    "explanation": "Laci ditarik ke arah kita."
+   },
+   {
+    "id": "q12",
+    "prompt": "Mendorong meja termasuk gaya ...",
+    "options": [
+     "gravitasi",
+     "pegas",
+     "tarik",
+     "dorong"
+    ],
+    "answerIndex": 3,
+    "explanation": "Meja didorong menjauh dari kita."
+   },
+   {
+    "id": "q13",
+    "prompt": "Benda jatuh ke bawah karena gaya ...",
+    "options": [
+     "gravitasi",
+     "angin",
+     "magnet",
+     "dorong"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bumi menarik benda ke arahnya."
+   },
+   {
+    "id": "q14",
+    "prompt": "Ban kendaraan dibuat bergerigi agar ...",
+    "options": [
+     "gesekan dengan jalan besar",
+     "mobil terbang",
+     "berat berkurang",
+     "gesekan hilang"
+    ],
+    "answerIndex": 0,
+    "explanation": "Gesekan besar mencegah selip."
+   },
+   {
+    "id": "q15",
+    "prompt": "Gaya yang menghambat gerak benda yang bersentuhan disebut gaya ...",
+    "options": [
+     "listrik",
+     "pegas",
+     "gesek",
+     "magnet"
+    ],
+    "answerIndex": 2,
+    "explanation": "Gesek terjadi saat dua permukaan bersentuhan."
+   },
+   {
+    "id": "q16",
+    "prompt": "Magnet menarik benda dari ...",
+    "options": [
+     "kayu",
+     "kain",
+     "plastik",
+     "besi"
+    ],
+    "answerIndex": 3,
+    "explanation": "Besi adalah benda magnetis."
+   },
+   {
+    "id": "q17",
+    "prompt": "Satuan gaya adalah ...",
+    "options": [
+     "meter",
+     "kilogram",
+     "newton",
+     "liter"
+    ],
+    "answerIndex": 2,
+    "explanation": "Newton adalah satuan gaya."
+   },
+   {
+    "id": "q18",
+    "prompt": "Bola menggelinding lalu berhenti karena ada gaya ...",
+    "options": [
+     "gesek",
+     "magnet",
+     "tarik",
+     "listrik"
+    ],
+    "answerIndex": 0,
+    "explanation": "Gesekan dengan lantai memperlambat bola."
+   },
+   {
+    "id": "q19",
+    "prompt": "Menendang bola termasuk gaya ...",
+    "options": [
+     "tarik saja",
+     "dorong",
+     "magnet",
+     "gravitasi saja"
+    ],
+    "answerIndex": 1,
+    "explanation": "Kaki mendorong bola."
+   },
+   {
+    "id": "q20",
+    "prompt": "Lantai yang licin memiliki gaya gesek yang ...",
+    "options": [
+     "tak terbatas",
+     "selalu sama",
+     "besar",
+     "kecil"
+    ],
+    "answerIndex": 3,
+    "explanation": "Permukaan licin gesekannya kecil."
+   },
+   {
+    "id": "q21",
+    "prompt": "Rem sepeda memanfaatkan gaya ...",
+    "options": [
+     "angin",
+     "magnet",
+     "listrik",
+     "gesek"
+    ],
+    "answerIndex": 3,
+    "explanation": "Rem menggesek roda agar berhenti."
+   },
+   {
+    "id": "q22",
+    "prompt": "Karet gelang yang ditarik lalu dilepas kembali ke bentuk semula karena gaya ...",
+    "options": [
+     "pegas atau elastis",
+     "gravitasi",
+     "gesek",
+     "magnet"
+    ],
+    "answerIndex": 0,
+    "explanation": "Benda elastis kembali ke bentuk asal."
+   },
+   {
+    "id": "q23",
+    "prompt": "Gaya gesek yang merugikan terjadi pada ...",
+    "options": [
+     "ban motor",
+     "mesin yang aus",
+     "sol sepatu",
+     "rem sepeda"
+    ],
+    "answerIndex": 1,
+    "explanation": "Gesekan menimbulkan panas dan aus."
+   },
+   {
+    "id": "q24",
+    "prompt": "Gaya gesek yang menguntungkan adalah ...",
+    "options": [
+     "lantai berminyak",
+     "permukaan es",
+     "sol sepatu yang tidak licin",
+     "oli pada mesin"
+    ],
+    "answerIndex": 2,
+    "explanation": "Gesekan membuat kita tidak mudah tergelincir."
+   },
+   {
+    "id": "q25",
+    "prompt": "Benda berat sulit dipindahkan karena ...",
+    "options": [
+     "gaya magnetnya hilang",
+     "tidak ada gesekan",
+     "bendanya ringan",
+     "gaya gravitasinya besar"
+    ],
+    "answerIndex": 3,
+    "explanation": "Benda berat ditarik lebih kuat oleh bumi."
+   },
+   {
+    "id": "q26",
+    "prompt": "Pelumas pada rantai sepeda berguna untuk ...",
+    "options": [
+     "merusak rantai",
+     "mengurangi gesekan",
+     "menambah gesekan",
+     "menambah berat"
+    ],
+    "answerIndex": 1,
+    "explanation": "Oli membuat gerak lebih lancar."
+   },
+   {
+    "id": "q27",
+    "prompt": "Angin kencang dapat menumbangkan pohon karena memberi gaya ...",
+    "options": [
+     "dorong",
+     "magnet",
+     "listrik",
+     "pegas"
+    ],
+    "answerIndex": 0,
+    "explanation": "Angin mendorong pohon."
+   },
+   {
+    "id": "q28",
+    "prompt": "Alat untuk mengukur gaya adalah ...",
+    "options": [
+     "penggaris",
+     "jam",
+     "neraca pegas",
+     "termometer"
+    ],
+    "answerIndex": 2,
+    "explanation": "Neraca pegas mengukur besar gaya."
+   },
+   {
+    "id": "q29",
+    "prompt": "Bola yang dilempar ke atas akan jatuh kembali karena ...",
+    "options": [
+     "gravitasi bumi",
+     "angin saja",
+     "gaya magnet",
+     "gaya listrik"
+    ],
+    "answerIndex": 0,
+    "explanation": "Bumi menarik benda ke bawah."
+   },
+   {
+    "id": "q30",
+    "prompt": "Gaya magnet dapat bekerja ...",
+    "options": [
+     "hanya di air",
+     "hanya bila bersentuhan",
+     "hanya di udara",
+     "tanpa bersentuhan"
+    ],
+    "answerIndex": 3,
+    "explanation": "Magnet dapat menarik besi dari jarak tertentu."
    }
   ]
  }
