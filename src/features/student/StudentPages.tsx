@@ -4,6 +4,7 @@ import { AVATARS, levelInfo, progressActions, totalStars, useProgress } from '@/
 import { MODE_BASE } from '@/app/navigation';
 import { sampleContents } from '@/data/sample';
 import { useAuth } from '@/hooks/useAuth';
+import { GameInvites } from '@/features/friends/GameInvites';
 import { JoinClassCard } from './JoinClassCard';
 import { cn } from '@/utils/cn';
 
@@ -62,6 +63,8 @@ export function StudentHome() {
           Main game
         </ButtonLink>
       </div>
+
+      <GameInvites />
 
       <JoinClassCard />
 

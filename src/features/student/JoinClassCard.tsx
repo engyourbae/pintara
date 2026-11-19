@@ -7,13 +7,15 @@ import { useAuth } from '@/hooks/useAuth';
 import { friendlyError } from '@/services/firebase/auth';
 import { joinClass, myMemberships } from '@/services/firebase/classes';
 import type { MyMembership } from '@/types';
+import { clearInvite, peekInvite } from '@/utils/share';
 
 /** Siswa yang sudah masuk dapat bergabung ke kelas dengan kode dari guru. Guru harus menyetujui. */
 export function JoinClassCard() {
   const { status, user } = useAuth();
   const uid = status === 'ready' && user?.role === 'student' ? user.uid : '';
   const [list, setList] = useState<MyMembership[] | null>(null);
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState(peekInvite);
+  const [invited] = useState(() => peekInvite() !== '');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
@@ -37,6 +39,7 @@ export function JoinClassCard() {
     setError('');
     try {
       await joinClass(uid, user?.displayName ?? '', code);
+      clearInvite();
       setCode('');
       await reload();
     } catch (err) {
@@ -73,7 +76,7 @@ export function JoinClassCard() {
         </ul>
       )}
       <form onSubmit={submit} className="space-y-2">
-        <Field label="Kode kelas dari guru" value={code} maxLength={8} autoCapitalize="characters" autoComplete="off" placeholder="mis. K7M2QX" onChange={(e) => setCode(e.target.value.toUpperCase())} />
+        <Field label="Kode kelas dari guru" hint={invited ? 'Kode dari tautan undangan sudah terisi.' : undefined} value={code} maxLength={8} autoCapitalize="characters" autoComplete="off" placeholder="mis. K7M2QX" onChange={(e) => setCode(e.target.value.toUpperCase())} />
         <FormError message={error} />
         <Button type="submit" disabled={busy || code.trim().length < 6}>{busy ? 'Mengirim…' : 'Gabung kelas'}</Button>
       </form>
