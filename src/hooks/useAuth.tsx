@@ -36,6 +36,28 @@ function readCache(uid: string): AppUser | null {
     return null;
   }
 }
+/** Salinan profil siapa pun (dipakai bila pemeriksaan sesi macet; Rules tetap menjaga data). */
+function readAnyCache(): AppUser | null {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    const u = raw ? (JSON.parse(raw) as AppUser) : null;
+    return u && typeof u.uid === 'string' && (u.role === 'student' || u.role === 'parent' || u.role === 'teacher') ? u : null;
+  } catch {
+    return null;
+  }
+}
+/** Batas tunggu agar pemeriksaan akun tidak menggantung selamanya di jaringan yang tersendat. */
+const LOAD_TIMEOUT_MS = 8000;
+const WATCHDOG_MS = 10000;
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const id = window.setTimeout(() => reject({ code: 'deadline-exceeded' }), ms);
+    p.then(
+      (v) => { window.clearTimeout(id); resolve(v); },
+      (e) => { window.clearTimeout(id); reject(e); },
+    );
+  });
+}
 function writeCache(user: AppUser | null) {
   try {
     if (user) localStorage.setItem(CACHE_KEY, JSON.stringify(user));
@@ -83,7 +105,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     try {
       const svc = await loadService();
-      const user = await svc.fetchAppUser(uid);
+      const user = await withTimeout(svc.fetchAppUser(uid), LOAD_TIMEOUT_MS);
       if (n !== seq.current) return;
       writeCache(user);
       fromCache.current = false;
@@ -118,6 +140,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const svc = await loadService();
     await load(svc.currentUid());
   }, [load]);
+
+  // Jaga-jaga: bila status tetap "loading" (SDK/IndexedDB macet), pakai salinan profil atau tampilkan galat, jangan menggantung.
+  useEffect(() => {
+    if (!isFirebaseConfigured || state.status !== 'loading') return;
+    const id = window.setTimeout(() => {
+      const cached = readAnyCache();
+      fromCache.current = cached !== null;
+      setState(cached ? { status: 'ready', user: cached } : { status: 'error', user: null });
+    }, WATCHDOG_MS);
+    return () => window.clearTimeout(id);
+  }, [state.status]);
+
+  // Memakai salinan profil padahal online: coba segarkan berkala sampai berhasil.
+  useEffect(() => {
+    if (!fromCache.current) return;
+    const id = window.setInterval(() => {
+      if (fromCache.current && navigator.onLine) void refresh().catch(() => undefined);
+    }, 20000);
+    return () => window.clearInterval(id);
+  }, [state, refresh]);
 
   // Kembali online: segarkan profil bila sebelumnya memakai salinan.
   useEffect(() => {
