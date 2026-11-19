@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, ButtonLink, Card, Icon, Mascot, Page, ProgressBar, useConfirm } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { useAuth } from '@/hooks/useAuth';
+import { sampleContents } from '@/data/sample';
 import { AVATARS, progressActions } from '@/hooks/useProgress';
 import {
   DUEL_LIMIT,
+  DUEL_PACK_LIMIT,
   DUEL_TOTAL,
   deleteRoom,
   finishRoom,
@@ -21,7 +23,7 @@ import {
   type DuelRoom,
 } from '@/services/firebase/duel';
 import { cn } from '@/utils/cn';
-import { correctIndex, makeDuelQuestions, scoreAll } from './duelCore';
+import { correctIndex, makeDuelQuestions, packQuestions, scoreAll } from './duelCore';
 
 const TEMAN = `${MODE_BASE.student}/teman`;
 const STALE_MS = 45000;
@@ -121,18 +123,23 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
   const isHost = room?.hostUid === me;
   const phase = room?.phase ?? 'lobby';
   const index = room?.index ?? 0;
-  const q = room?.questions[index] ?? null;
+  const isPack = room?.kind === 'paket';
+  const limit = isPack ? DUEL_PACK_LIMIT : DUEL_LIMIT;
+  const content = useMemo(() => (room?.pack ? sampleContents.find((c) => c.id === room.pack?.packId) : undefined), [room?.pack]);
+  const pk = useMemo(() => (room?.pack && content && content.version === room.pack.version ? packQuestions(content, room.pack.order) : null), [room?.pack, content]);
+  const questions = isPack ? (pk?.questions ?? []) : (room?.questions ?? []);
+  const q = questions[index] ?? null;
   const myAns = room?.answers[index]?.[me];
   const oppAns = oppUid ? room?.answers[index]?.[oppUid] : undefined;
   const answeredCount = Object.keys(room?.answers[index] ?? {}).length;
-  const timeLeft = room && phase === 'question' ? Math.max(0, DUEL_LIMIT - (now + offset - room.startedAt) / 1000) : DUEL_LIMIT;
+  const timeLeft = room && phase === 'question' ? Math.max(0, limit - (now + offset - room.startedAt) / 1000) : limit;
 
   // Tuan rumah menggerakkan alur: soal -> pembahasan -> soal berikutnya -> selesai.
   useEffect(() => {
     if (!room || !isHost || room.status !== 'playing') return;
     if (room.phase === 'question') {
       const all = answeredCount >= uids.length && uids.length > 0;
-      const wait = all ? 600 : Math.max(0, room.startedAt + DUEL_LIMIT * 1000 - (Date.now() + offset)) + 300;
+      const wait = all ? 600 : Math.max(0, room.startedAt + limit * 1000 - (Date.now() + offset)) + 300;
       const id = window.setTimeout(() => void setPhase(roomId, 'reveal', room.index, room.startedAt).catch(() => undefined), wait);
       return () => window.clearTimeout(id);
     }
@@ -144,7 +151,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
       return () => window.clearTimeout(id);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room?.phase, room?.status, room?.index, room?.startedAt, answeredCount, uids.length, isHost, offset]);
+  }, [room?.phase, room?.status, room?.index, room?.startedAt, answeredCount, uids.length, isHost, offset, limit]);
 
   // Deteksi lawan terputus: tidak ada perubahan apa pun terlalu lama.
   useEffect(() => {
@@ -156,7 +163,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
   useEffect(() => {
     if (!room || room.phase !== 'finished' || recorded.current) return;
     recorded.current = true;
-    const s = scoreAll(Object.keys(room.players), room.questions, room.answers, DUEL_TOTAL - 1);
+    const s = scoreAll(Object.keys(room.players), questions, room.answers, DUEL_TOTAL - 1, pk?.correct);
     const mine = s[me] ?? { score: 0, correct: 0 };
     const theirs = oppUid ? s[oppUid] : undefined;
     const won = !!theirs && mine.score > theirs.score;
@@ -190,7 +197,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
     setError('');
     setStarting(true);
     try {
-      await hostStart(roomId, makeDuelQuestions());
+      await hostStart(roomId, room?.kind === 'paket' ? null : makeDuelQuestions());
     } catch {
       setError('Belum bisa memulai. Coba lagi.');
     } finally {
@@ -228,6 +235,16 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
       </Notice>
     );
   }
+  if (isPack && !pk) {
+    return (
+      <Notice
+        title={content ? 'Versi soalnya berbeda' : 'Paket soal belum ada di aplikasimu'}
+        text="Perbarui PINTARA dulu (tombol Perbarui), lalu buka undangannya lagi. Temanmu bisa mengajak ulang."
+      >
+        <ButtonLink to={TEMAN} variant="sekunder">Kembali</ButtonLink>
+      </Notice>
+    );
+  }
   if (room.status === 'finished' && room.phase !== 'finished') {
     return (
       <Notice title="Ruang ditutup" text="Duel ini dibatalkan atau sudah selesai.">
@@ -249,7 +266,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
       {room.phase === 'question' || room.phase === 'reveal' ? (
         <>
           <div className="min-w-0 flex-1">
-            <ProgressBar value={room.phase === 'question' ? timeLeft : 0} max={DUEL_LIMIT} label="Sisa waktu" />
+            <ProgressBar value={room.phase === 'question' ? timeLeft : 0} max={limit} label="Sisa waktu" />
           </div>
           <span className="flex items-center gap-1 font-display text-lg font-semibold">
             <Icon name="clock" size={20} />
@@ -257,7 +274,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
           </span>
         </>
       ) : (
-        <h1 className="font-display text-2xl font-semibold">Duel Kilat Hitung</h1>
+        <h1 className="min-w-0 truncate font-display text-2xl font-semibold">{isPack ? 'Duel Kuis' : 'Duel Kilat Hitung'}</h1>
       )}
     </div>
   );
@@ -276,13 +293,17 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
           </div>
           {isHost ? (
             <>
-              <p>10 soal hitungan, adu cepat. Benar = 100 poin, yang lebih cepat dapat bonus +20.</p>
+              <p>
+                {isPack ? `10 soal dari "${(content?.title ?? '').replace(' (contoh)', '')}", adu cepat.` : '10 soal hitungan, adu cepat.'} Benar = 100 poin, yang lebih cepat dapat bonus +20.
+              </p>
               <Button size="lg" block disabled={!opp || starting} onClick={() => void start()}>
                 {opp ? 'Mulai duel' : 'Menunggu teman bergabung…'}
               </Button>
             </>
           ) : (
-            <p>Menunggu {opp?.name ?? 'temanmu'} memulai duel…</p>
+            <p>
+              {isPack && content ? `Duel kuis "${content.title.replace(' (contoh)', '')}". ` : ''}Menunggu {opp?.name ?? 'temanmu'} memulai duel…
+            </p>
           )}
           {error && <p role="alert" className="font-bold text-merah-600">{error}</p>}
         </Card>
@@ -290,7 +311,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
     );
   }
 
-  const scores = scoreAll(uids, room.questions, room.answers, room.phase === 'question' ? index - 1 : room.phase === 'reveal' ? index : DUEL_TOTAL - 1);
+  const scores = scoreAll(uids, questions, room.answers, room.phase === 'question' ? index - 1 : room.phase === 'reveal' ? index : DUEL_TOTAL - 1, pk?.correct);
   const mine = scores[me] ?? { score: 0, correct: 0 };
   const theirs = oppUid ? (scores[oppUid] ?? { score: 0, correct: 0 }) : { score: 0, correct: 0 };
 
@@ -320,7 +341,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
   // Soal / pembahasan
   if (!q) return <LoadingScreen label="Menyiapkan soal…" />;
   const reveal = room.phase === 'reveal';
-  const ci = correctIndex(q);
+  const ci = pk ? pk.correct[index] : correctIndex(q);
   const mineRight = myAns?.choice === ci;
   const oppRight = oppAns?.choice === ci;
   const bonus = mineRight && oppRight && myAns && oppAns && myAns.at !== oppAns.at ? (myAns.at < oppAns.at ? 'mine' : 'opp') : null;
@@ -338,12 +359,18 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
         </span>
       </div>
 
-      <Card key={index} className="animate-pop py-10 text-center">
-        <p className="font-display text-6xl font-semibold">{q.prompt}</p>
-        <p className="mt-1 text-tinta/70">= ?</p>
+      <Card key={index} className={cn('animate-pop text-center', isPack ? 'py-6' : 'py-10')}>
+        {isPack ? (
+          <p className="text-2xl font-semibold leading-snug">{q.prompt}</p>
+        ) : (
+          <>
+            <p className="font-display text-6xl font-semibold">{q.prompt}</p>
+            <p className="mt-1 text-tinta/70">= ?</p>
+          </>
+        )}
       </Card>
 
-      <ul className="grid grid-cols-2 gap-3">
+      <ul className={cn('grid gap-3', isPack ? 'grid-cols-1' : 'grid-cols-2')}>
         {q.options.map((o, i) => {
           const chosen = myAns?.choice === i;
           const right = i === ci;
@@ -354,7 +381,8 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
                 disabled={!!myAns || reveal || timeLeft <= 0}
                 onClick={() => pick(i)}
                 className={cn(
-                  'flex h-20 w-full items-center justify-center rounded-2xl border-2 border-tinta font-display text-3xl font-semibold transition',
+                  'flex w-full items-center rounded-2xl border-2 border-tinta font-display font-semibold transition',
+                  isPack ? 'min-h-[64px] gap-3 px-3 py-2 text-left text-lg' : 'h-20 justify-center text-3xl',
                   !myAns && !reveal && 'bg-gading shadow-stiker active:translate-y-1 active:shadow-none',
                   !reveal && chosen && 'bg-langit-100 shadow-stiker',
                   !reveal && myAns && !chosen && 'bg-gading opacity-60',
@@ -363,6 +391,9 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
                   reveal && !right && !chosen && 'bg-gading opacity-50',
                 )}
               >
+                {isPack && (
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-tinta bg-white text-base">{'ABCDE'[i]}</span>
+                )}
                 {o}
               </button>
             </li>

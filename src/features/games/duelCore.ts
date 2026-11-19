@@ -1,4 +1,5 @@
-import { DUEL_TOTAL, type DuelAnswer, type DuelQuestion } from '@/services/firebase/duel';
+import { DUEL_TOTAL, type DuelAnswer, type DuelPack, type DuelQuestion } from '@/services/firebase/duel';
+import type { LearningContent } from '@/types';
 
 const rand = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 1));
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
@@ -48,6 +49,27 @@ export function makeDuelQuestions(): DuelQuestion[] {
   });
 }
 
+/** 10 indeks soal acak (berbeda) dari satu paket untuk duel. Null bila soalnya kurang dari 10. */
+export function makePackOrder(total: number): number[] | null {
+  if (total < DUEL_TOTAL) return null;
+  return shuffle(Array.from({ length: total }, (_, i) => i)).slice(0, DUEL_TOTAL);
+}
+
+/** Id paket yang boleh dipakai di Rules (`^[a-z0-9-]{1,60}$`). */
+export const isDuelPackId = (id: string) => /^[a-z0-9-]{1,60}$/.test(id);
+
+export function makePackInvite(content: LearningContent): DuelPack | null {
+  const order = makePackOrder(content.questions.length);
+  return order && isDuelPackId(content.id) ? { packId: content.id, version: content.version, order } : null;
+}
+
+/** Soal duel dari paket (urutan pilihan tetap sama di kedua klien) dan indeks jawaban benar per soal. */
+export function packQuestions(content: LearningContent, order: number[]): { questions: DuelQuestion[]; correct: number[] } | null {
+  const qs = order.map((i) => content.questions[i]);
+  if (qs.some((q) => !q)) return null;
+  return { questions: qs.map((q) => ({ prompt: q.prompt, options: q.options })), correct: qs.map((q) => q.answerIndex) };
+}
+
 export interface DuelScore {
   score: number;
   correct: number;
@@ -55,15 +77,15 @@ export interface DuelScore {
 
 /**
  * Skor dari jawaban yang tercatat: benar = 100. Bila kedua pemain benar, yang lebih cepat (cap waktu server) dapat +20.
- * `upTo` = indeks soal terakhir yang dihitung (inklusif).
+ * `upTo` = indeks soal terakhir yang dihitung (inklusif). `correct` = indeks benar per soal (duel paket); tanpa itu dihitung dari soal hitungan.
  */
-export function scoreAll(uids: string[], questions: (DuelQuestion | null)[], answers: Record<string, DuelAnswer>[], upTo: number): Record<string, DuelScore> {
+export function scoreAll(uids: string[], questions: (DuelQuestion | null)[], answers: Record<string, DuelAnswer>[], upTo: number, correct?: number[]): Record<string, DuelScore> {
   const out: Record<string, DuelScore> = Object.fromEntries(uids.map((u) => [u, { score: 0, correct: 0 }]));
   for (let i = 0; i <= upTo && i < questions.length; i++) {
     const q = questions[i];
     if (!q) continue;
-    const ci = correctIndex(q);
-    if (ci < 0) continue;
+    const ci = correct ? correct[i] : correctIndex(q);
+    if (ci === undefined || ci < 0) continue;
     const right = uids.filter((u) => answers[i]?.[u]?.choice === ci);
     right.forEach((u) => {
       out[u].score += 100;
