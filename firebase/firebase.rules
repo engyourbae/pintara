@@ -207,6 +207,39 @@ service cloud.firestore {
         allow read, write: if isClassTeacher(classId);
       }
 
+      // Kuis tulisan guru (F25). Soal tanpa kunci; kunci di quiz_keys/{id} (hanya guru).
+      // Isi tiap soal (panjang teks, jumlah pilihan) hanya dibatasi di klien; Rules membatasi jumlah soal dan bidang.
+      match /teacher_quizzes/{quizId} {
+        allow read: if isClassTeacher(classId) || isActiveMember(classId);
+        allow create: if isClassTeacher(classId)
+          && request.resource.data.keys().hasOnly(['title', 'note', 'count', 'questions', 'createdAt'])
+          && request.resource.data.keys().hasAll(['title', 'note', 'count', 'questions', 'createdAt'])
+          && request.resource.data.title is string && request.resource.data.title.size() >= 1 && request.resource.data.title.size() <= 100
+          && request.resource.data.note is string && request.resource.data.note.size() <= 200
+          && request.resource.data.count is int && request.resource.data.count >= 1 && request.resource.data.count <= 20
+          && request.resource.data.questions is list && request.resource.data.questions.size() == request.resource.data.count
+          && request.resource.data.createdAt == request.time;
+        allow update: if false;
+        allow delete: if isClassTeacher(classId);
+      }
+
+      // Jawaban murid untuk kuis guru: satu dokumen per murid per kuis, sekali kirim (tanpa update).
+      // Guru memberi kesempatan ulang dengan menghapusnya. Benar/salah dihitung guru dari quiz_keys.
+      match /quiz_answers/{answerId} {
+        allow read: if isClassTeacher(classId) || (isActiveMember(classId) && resource.data.uid == request.auth.uid);
+        allow create: if isActiveMember(classId)
+          && request.resource.data.keys().hasOnly(['uid', 'quizId', 'answers', 'submittedAt'])
+          && request.resource.data.keys().hasAll(['uid', 'quizId', 'answers', 'submittedAt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.quizId is string
+          && answerId == request.resource.data.quizId + '_' + request.auth.uid
+          && request.resource.data.answers is list
+          && request.resource.data.answers.size() == get(/databases/$(database)/documents/classes/$(classId)/teacher_quizzes/$(request.resource.data.quizId)).data.count
+          && request.resource.data.submittedAt == request.time;
+        allow update: if false;
+        allow delete: if isClassTeacher(classId);
+      }
+
       // Hasil latihan siswa. Ditulis siswa sendiri (atau guru dari kuis langsung) dan dapat diulang.
       match /results/{resultId} {
         allow read: if isClassTeacher(classId) || (isActiveMember(classId) && resource.data.uid == request.auth.uid);
