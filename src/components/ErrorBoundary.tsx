@@ -17,6 +17,8 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     console.error('PINTARA error:', error, info.componentStack);
+    // Splash di index.html menutupi seluruh layar; buang agar pesan galat dan tombol Muat ulang terlihat.
+    document.getElementById('splash')?.remove();
   }
 
   render() {
