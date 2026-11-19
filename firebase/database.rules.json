@@ -73,8 +73,17 @@
       }
     },
 
+    "duel_active": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        ".validate": "newData.isString() && newData.val().length >= 10 && newData.val().length <= 40"
+      }
+    },
+
     "rooms": {
       "$roomId": {
+        ".write": "auth != null && !newData.exists() && (data.child('meta').child('hostUid').val() == auth.uid || data.child('players').child(auth.uid).exists())",
         ".read": "auth != null && (data.child('meta').child('hostUid').val() == auth.uid || data.child('players').child(auth.uid).exists() || data.child('allowed').child(auth.uid).exists())",
 
         "meta": {

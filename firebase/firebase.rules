@@ -290,6 +290,13 @@ service cloud.firestore {
         allow delete: if isUser(uid) || isParentOf(uid);
       }
 
+      // Ringkasan kecil satu dokumen (rangkaian hari, skor game terbaik, hitungan) agar bisa dipulihkan setelah data peramban dihapus.
+      match /snapshot/{docId} {
+        allow read: if isUser(uid) || isParentOf(uid);
+        allow create, update: if isUser(uid) && docId == 'main' && validSnapshot(request.resource.data);
+        allow delete: if isUser(uid) || isParentOf(uid);
+      }
+
       match /badges/{badgeId} {
         allow read: if isUser(uid) || isParentOf(uid);
         allow create: if isUser(uid)
@@ -298,6 +305,17 @@ service cloud.firestore {
           && request.resource.data.earnedAt == request.time;
         allow delete: if isUser(uid) || isParentOf(uid);
       }
+    }
+
+    function validSnapshot(d) {
+      return d.keys().hasOnly(['streak', 'lastDay', 'answered', 'correct', 'games', 'updatedAt'])
+        && d.keys().hasAll(['streak', 'lastDay', 'answered', 'correct', 'games', 'updatedAt'])
+        && d.streak is int && d.streak >= 0 && d.streak <= 100000
+        && d.lastDay is string && d.lastDay.size() <= 10
+        && d.answered is int && d.answered >= 0 && d.answered <= 100000000
+        && d.correct is int && d.correct >= 0 && d.correct <= 100000000
+        && d.games is map && d.games.size() <= 40
+        && d.updatedAt == request.time;
     }
 
     function validItem(d) {
