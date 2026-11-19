@@ -23,3 +23,10 @@ Paket `contoh-*` lama dihapus setelah topiknya tercakup bank nyata. Hapus paket 
 ## Catatan kualitas (JUJUR)
 Soal tahap 1 ditulis AI dan **belum ditinjau guru**. Jawaban aritmetika sudah dicek otomatis saat pembuatan, tetapi kesesuaian dengan Kurikulum Merdeka, tingkat kesulitan, dan ejaan perlu ditinjau guru sebelum dipakai anak sungguhan. Bila ada soal keliru, perbaiki di berkas JSON dan naikkan `version`.
 Ke depan bila soal > ± 500: pecah muat-malas per kategori (sekarang semua ikut paket utama; 100 soal ≈ 28 KB mentah).
+
+
+## F26: semua paket jadi 30 soal
+- Semua 30 paket bank (b01-b03) dan 8 paket `contoh-*` yang tersisa (Tata Surya, Hewan & Tumbuhan, Privasi Digital, Penipuan Digital, Kebersihan, Menabung, Pola, Logika) kini berisi 30 soal. Total 1.140 soal (bank 900 + contoh 240). Versi tiap paket naik jadi 2; id paket tidak berubah.
+- Soal hitungan (matematika k1-k6, pola, uang) dibuat dengan skrip yang menghitung jawaban dan pengecoh; soal teks ditulis AI. **Belum ditinjau guru.**
+- Paket `contoh-*` tetap berlabel contoh (id tidak boleh diganti); ganti dengan paket bank nyata secara bertahap.
+- Batas Rules (maks 100 soal/paket) masih jauh.

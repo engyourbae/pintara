@@ -143,6 +143,3 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 
 ## Catatan F26
 - Setiap paket (38 paket) sekarang 30 soal, versi 2. Hanya data JSON dan docs yang berubah; tidak ada kode atau Rules. `progressSync` hanya menyimpan nomor versi bersama hasil terbaik, jadi hasil lama tetap aman.
-
-## Catatan F25b
-- Kuis buatan guru kini juga muncul di menu **Kuis** guru (bagian "Kuis buatan saya", pilih kelas bila punya lebih dari satu), bukan hanya di dalam halaman detail kelas. `TeacherPages.tsx` (`MyQuizzes`).
