@@ -10,6 +10,7 @@ import { GAME_MISSIONS, resultKeyOf, resultTitle } from '@/data/missions';
 import { useAuth } from '@/hooks/useAuth';
 import { listMyClasses } from '@/services/firebase/classes';
 import type { Grade } from '@/types';
+import { copyText, inviteUrl } from '@/utils/share';
 import { useLoad } from './useTeacherData';
 
 const GRADES: Grade[] = [1, 2, 3, 4, 5, 6];
@@ -29,6 +30,7 @@ export function ClassDetail() {
   const [name, setName] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [copied, setCopied] = useState<'kode' | 'tautan' | null>(null);
 
   async function act(fn: () => Promise<void>, after: () => Promise<void>) {
     setBusy(true);
@@ -41,6 +43,29 @@ export function ClassDetail() {
     } finally {
       setBusy(false);
     }
+  }
+
+  async function copy(kind: 'kode' | 'tautan', text: string) {
+    if (await copyText(text)) {
+      setCopied(kind);
+      window.setTimeout(() => setCopied(null), 2000);
+    } else {
+      setError('Tidak bisa menyalin otomatis. Catat kodenya dan bagikan manual.');
+    }
+  }
+
+  async function share(code: string, className: string) {
+    const url = inviteUrl(code);
+    const text = `Ayo gabung kelas "${className}" di PINTARA. Kode kelas: ${code}`;
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: 'Undangan kelas PINTARA', text, url });
+        return;
+      } catch (e) {
+        if (e instanceof DOMException && e.name === 'AbortError') return;
+      }
+    }
+    await copy('tautan', `${text}\n${url}`);
   }
 
   const c = cls.data;
@@ -71,7 +96,12 @@ export function ClassDetail() {
       <Card tone="catatan" className="space-y-2">
         <p className="font-display text-lg font-semibold">Kode gabung kelas</p>
         <p className="font-display text-4xl font-bold tracking-[0.3em]" aria-label={`Kode ${c.joinCode.split('').join(' ')}`}>{c.joinCode}</p>
-        <p className="text-sm">Siswa memasukkan kode ini di menu Beranda akun mereka. Kamu tetap harus menyetujui tiap siswa.</p>
+        <div className="flex flex-wrap gap-2">
+          <Button variant="sekunder" onClick={() => void copy('kode', c.joinCode)}>{copied === 'kode' ? 'Kode tersalin ✓' : 'Salin kode'}</Button>
+          <Button variant="sekunder" onClick={() => void copy('tautan', inviteUrl(c.joinCode))}>{copied === 'tautan' ? 'Tautan tersalin ✓' : 'Salin tautan'}</Button>
+          <Button onClick={() => void share(c.joinCode, c.name)}>Bagikan undangan</Button>
+        </div>
+        <p className="text-sm">Siswa mengetik kode di Beranda akun mereka, atau membuka tautan undangan (kode terisi otomatis). Kamu tetap harus menyetujui tiap siswa. Bila tautan tersebar, arsipkan kelas agar tidak ada yang bisa bergabung.</p>
       </Card>
 
       <Card className="space-y-3">
