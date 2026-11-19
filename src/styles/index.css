@@ -95,3 +95,27 @@
     @apply border-2 border-tinta shadow-stiker;
   }
 }
+
+/* Layar memuat: tetap bergerak. Bila pengguna memilih "kurangi animasi", diganti denyut halus (tanpa gerak). */
+@keyframes muat-float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+@keyframes muat-dot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes muat-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.muat-logo { animation: muat-float 1.6s ease-in-out infinite; }
+.muat-dot { animation: muat-dot 0.9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .muat-logo,
+  .muat-dot {
+    animation-name: muat-pulse !important;
+    animation-duration: 1.4s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
