@@ -121,3 +121,8 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 
 ## Catatan perbaikan layar memuat
 - Aturan global `prefers-reduced-motion` di `index.css` mematikan semua animasi (ponsel dengan "hapus animasi"/hemat baterai), sehingga splash/loading terlihat diam. Kini layar memuat memakai kelas `.muat-logo`/`.muat-dot` (melayang; bila kurangi-animasi aktif diganti denyut halus) dan splash `index.html` punya varian denyut yang sama. Splash tampil minimal ±0,6 dtk sejak halaman dibuka (`MIN_SPLASH_MS` di `main.tsx`).
+
+## Catatan layar memuat v2 (burung Pinta)
+- `LoadingOwl` (SVG): Pinta melompat, sayap mengepak, pensil bergoyang, huruf/angka beterbangan, 3 bintang menyala bergantian. CSS `.lo-*` ada di `src/styles/index.css` DAN salinannya di `index.html` (splash); ubah keduanya bersamaan.
+- Kedip mata (juga `animate-kedip` di `tailwind.config.js`): jeda 2 dtk -> kedip 1x -> jeda 2 dtk -> kedip 2x -> ulang (siklus 4,6 dtk). Tetap jalan walau "kurangi animasi" aktif (gerak besar diganti denyut).
+- Splash tidak lagi hilang saat React pertama tampil: `SplashGate` menunggu status akun selesai (min. 0,9 dtk). Splash punya pesan bergantian; >10 dtk pesan "sabar", >20 dtk tombol "Muat ulang" (jalan sendiri walau JS macet). `LoadingScreen` memakai perilaku yang sama.
