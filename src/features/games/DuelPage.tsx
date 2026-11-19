@@ -6,9 +6,9 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { useAuth } from '@/hooks/useAuth';
 import { AVATARS, progressActions } from '@/hooks/useProgress';
 import {
-  closeRoom,
   DUEL_LIMIT,
   DUEL_TOTAL,
+  deleteRoom,
   finishRoom,
   hostStart,
   multiplayerFlags,
@@ -16,7 +16,7 @@ import {
   serverOffset,
   setPhase,
   subscribeRoom,
-  writeResult,
+  type DuelPhase,
   type DuelPlayer,
   type DuelRoom,
 } from '@/services/firebase/duel';
@@ -82,6 +82,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
   const [error, setError] = useState('');
   const [starting, setStarting] = useState(false);
   const recorded = useRef(false);
+  const phaseRef = useRef<DuelPhase>('lobby');
   const lastChange = useRef(Date.now());
 
   useEffect(() => {
@@ -93,7 +94,19 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
   useEffect(() => {
     if (!allowedOk) return;
     void serverOffset().then(setOffset);
-    return subscribeRoom(roomId, setRoom, () => setFailed(true));
+    return subscribeRoom(
+      roomId,
+      (r) =>
+        setRoom((prev) => {
+          // Ruang dihapus setelah selesai: tetap tampilkan hasil terakhir yang sudah kita punya.
+          const next = r === null && prev && prev.phase === 'finished' ? prev : r;
+          phaseRef.current = next?.phase ?? 'lobby';
+          return next;
+        }),
+      () => {
+        if (phaseRef.current !== 'finished') setFailed(true);
+      },
+    );
   }, [allowedOk, roomId]);
 
   useEffect(() => {
@@ -148,9 +161,15 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
     const theirs = oppUid ? s[oppUid] : undefined;
     const won = !!theirs && mine.score > theirs.score;
     progressActions.recordGame('duel-kilat', mine.score, mine.correct * 3 + (won ? 5 : 0));
-    void writeResult(roomId, me, mine.score, mine.correct).catch(() => undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room?.phase]);
+
+  // Tuan rumah menghapus ruang beberapa detik setelah selesai (data tidak menumpuk).
+  useEffect(() => {
+    if (!isHost || room?.phase !== 'finished') return;
+    const id = window.setTimeout(() => void deleteRoom(roomId, me), 8000);
+    return () => window.clearTimeout(id);
+  }, [isHost, room?.phase, roomId, me]);
 
   async function leave() {
     const live = !!room && room.phase !== 'finished' && room.status !== 'finished';
@@ -163,7 +182,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
       });
       if (!ok) return;
     }
-    if (isHost && room && room.status !== 'finished') void closeRoom(roomId).catch(() => undefined);
+    if (room && (isHost || room.phase === 'finished')) void deleteRoom(roomId, me);
     nav(TEMAN);
   }
 
