@@ -14,7 +14,7 @@ Satu berkas = satu tahap: `src/data/bank/batches/bNN-<tema>.json`, berisi larik 
 |---|---|---|
 | 1 `b01-sekolah-inti` | 10 paket x 10 soal: Matematika k1-5, B. Indonesia k2-4, IPAS k4-5, Pancasila k2-4, B. Inggris k3-4 | Selesai |
 | 2 `b02-sekolah-lanjutan` | 10 paket x 10 soal: Matematika k1-6 (pengurangan, penjumlahan 100, pecahan, desimal/persen, KPK-FPB), B. Indonesia k4-6 (kata baku, gagasan pokok), IPAS k3-5 (tumbuhan, pencernaan, gaya) | Selesai |
-| 3 | Melengkapi mapel sekolah: Matematika k4/k6 (bangun ruang, data), B. Indonesia k1-3, IPAS k1-2 dan k6, Pancasila k5-6, B. Inggris | Rencana |
+| 3 `b03-sekolah-pelengkap` | 10 paket x 10 soal: Matematika k4-5 (data, modus) dan k5-6 (volume kubus/balok), B. Indonesia k1 (huruf, suku kata) dan k2-3 (jenis kata), IPAS k1-2 (panca indra) dan k6 (listrik), Pancasila k5 (musyawarah) dan k6 (hak-kewajiban), B. Inggris (hewan, tubuh, hari, bulan). Paket `contoh-mat-1`, `contoh-indo-1`, `contoh-ipas-1`, `contoh-pancasila-1` dihapus | Selesai |
 | 4 | Pengetahuan umum (tata surya, hewan, sejarah, geografi) | Rencana |
 | 5 | Keterampilan hidup + berpikir (logika, pola) | Rencana |
 | 6 | Literasi digital (privasi, penipuan, informasi palsu) | Rencana |

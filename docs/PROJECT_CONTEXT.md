@@ -126,3 +126,7 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 - `LoadingOwl` (SVG): Pinta melompat, sayap mengepak, pensil bergoyang, huruf/angka beterbangan, 3 bintang menyala bergantian. CSS `.lo-*` ada di `src/styles/index.css` DAN salinannya di `index.html` (splash); ubah keduanya bersamaan.
 - Kedip mata (juga `animate-kedip` di `tailwind.config.js`): jeda 2 dtk -> kedip 1x -> jeda 2 dtk -> kedip 2x -> ulang (siklus 4,6 dtk). Tetap jalan walau "kurangi animasi" aktif (gerak besar diganti denyut).
 - Splash tidak lagi hilang saat React pertama tampil: `SplashGate` menunggu status akun selesai (min. 0,9 dtk). Splash punya pesan bergantian; >10 dtk pesan "sabar", >20 dtk tombol "Muat ulang" (jalan sendiri walau JS macet). `LoadingScreen` memakai perilaku yang sama.
+
+
+## Catatan F24
+- Bank soal tahap 3 (`b03-sekolah-pelengkap`, 100 soal; total 300 soal / 30 paket). Ditulis AI, belum ditinjau guru. 4 paket `contoh-*` yang tergantikan dihapus dari `contents.json`. Tidak ada perubahan kode atau Rules.
