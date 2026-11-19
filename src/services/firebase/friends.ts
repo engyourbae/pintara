@@ -37,7 +37,7 @@ export interface FriendsData {
 const pairKey = (a: string, b: string) => (a < b ? `${a}_${b}` : `${b}_${a}`);
 const quiet = () => undefined;
 
-async function profileOf(uid: string): Promise<PublicProfile> {
+export async function profileOf(uid: string): Promise<PublicProfile> {
   const snap = await getDoc(doc(getDb(), 'user_profiles', uid)).catch(() => null);
   const d = snap?.exists() ? snap.data() : null;
   return {
@@ -65,6 +65,19 @@ async function syncMirror(me: string, friendUids: string[], blockedUids: string[
   };
   await sync('friends', friendUids);
   await sync('blocked', blockedUids);
+}
+
+/** Pastikan cermin teman/blokir di RTDB mutakhir (dibutuhkan rules undangan main). Ringan: tanpa memuat profil. */
+export async function ensureMirror(me: string): Promise<void> {
+  const db = getDb();
+  const [fs, bl] = await Promise.all([
+    getDocs(query(collection(db, 'friendships'), where('uids', 'array-contains', me))),
+    getDocs(query(collection(db, 'blocked_users'), where('blockerUid', '==', me))),
+  ]);
+  const friendUids = fs.docs
+    .map((d) => (Array.isArray(d.data().uids) ? (d.data().uids as string[]).find((u) => u !== me) : undefined))
+    .filter((u): u is string => typeof u === 'string');
+  await syncMirror(me, friendUids, bl.docs.map((d) => d.data().blockedUid as string));
 }
 
 export async function loadFriends(me: string): Promise<FriendsData> {
