@@ -1,6 +1,6 @@
 import { getApp, getApps, initializeApp, type FirebaseApp } from 'firebase/app';
 import { getAuth, type Auth } from 'firebase/auth';
-import { getFirestore, type Firestore } from 'firebase/firestore';
+import { getFirestore, initializeFirestore, type Firestore } from 'firebase/firestore';
 import { getDatabase, type Database } from 'firebase/database';
 import { firebaseOptions, isFirebaseConfigured } from './config';
 
@@ -16,5 +16,19 @@ function requireApp(): FirebaseApp {
 }
 
 export const getFirebaseAuth = (): Auth => getAuth(requireApp());
-export const getDb = (): Firestore => getFirestore(requireApp());
+let dbInstance: Firestore | null = null;
+/**
+ * Firestore dengan deteksi otomatis koneksi: bila jaringan/perangkat memblokir WebChannel (streaming),
+ * SDK beralih ke long-polling. Tanpa ini, sebagian jaringan seluler membuat permintaan menggantung tanpa galat.
+ */
+export const getDb = (): Firestore => {
+  if (dbInstance) return dbInstance;
+  const app = requireApp();
+  try {
+    dbInstance = initializeFirestore(app, { experimentalAutoDetectLongPolling: true });
+  } catch {
+    dbInstance = getFirestore(app);
+  }
+  return dbInstance;
+};
 export const getRtdb = (): Database => getDatabase(requireApp());
