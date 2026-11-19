@@ -19,3 +19,13 @@ createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </StrictMode>,
 );
+
+// Hapus splash setelah aplikasi tampil (dua frame agar tidak berkedip).
+requestAnimationFrame(() =>
+  requestAnimationFrame(() => {
+    const splash = document.getElementById('splash');
+    if (!splash) return;
+    splash.classList.add('bye');
+    window.setTimeout(() => splash.remove(), 350);
+  }),
+);
