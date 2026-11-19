@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Button, Card, Mascot } from '@/components/ui';
+import { LoadingScreen } from '@/components/LoadingScreen';
 import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { AuthShell } from './parts';
@@ -17,15 +18,7 @@ export function RequireRole({ role, children }: { role: Role; children: ReactNod
 
   if (status === 'disabled') return <>{children}</>;
 
-  if (status === 'loading') {
-    return (
-      <AuthShell>
-        <p role="status" className="text-center font-display text-xl">
-          Memeriksa akun…
-        </p>
-      </AuthShell>
-    );
-  }
+  if (status === 'loading') return <LoadingScreen label="Memeriksa akun…" />;
 
   if (status === 'signedOut' || status === 'noProfile') {
     return <Navigate to="/masuk" replace state={{ from: location.pathname }} />;
