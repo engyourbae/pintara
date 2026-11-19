@@ -108,6 +108,12 @@ export interface RemoteProgress {
   xp: number;
   items: Record<string, QuizBest>;
   avatar?: string;
+  /** Ringkasan kecil (opsional): skor game terbaik, rangkaian hari, hitungan jawaban. */
+  games?: Record<string, number>;
+  streak?: number;
+  lastDay?: string;
+  answered?: number;
+  correct?: number;
 }
 
 export const progressActions = {
@@ -184,7 +190,25 @@ export const progressActions = {
     if (xp !== state.xp) changed = true;
     const avatar = r.avatar && state.avatar === 'bintang' && r.avatar !== 'bintang' ? r.avatar : state.avatar;
     if (avatar !== state.avatar) changed = true;
-    if (changed) save({ ...state, xp, quizBest, stars, avatar });
+    const gameBest = { ...state.gameBest };
+    for (const [k, v] of Object.entries(r.games ?? {})) {
+      if (typeof v === 'number' && v > (gameBest[k] ?? 0)) {
+        gameBest[k] = v;
+        changed = true;
+      }
+    }
+    // Hari aktif terbaru menang (setelah data peramban terhapus, lokal kosong).
+    let streak = state.streak;
+    let lastDay = state.lastDay;
+    if (r.lastDay && r.lastDay > state.lastDay) {
+      streak = r.streak ?? state.streak;
+      lastDay = r.lastDay;
+      changed = true;
+    }
+    const answered = Math.max(state.answered, r.answered ?? 0);
+    const correct = Math.max(state.correct, r.correct ?? 0);
+    if (answered !== state.answered || correct !== state.correct) changed = true;
+    if (changed) save({ ...state, xp, quizBest, stars, avatar, gameBest, streak, lastDay, answered, correct });
   },
 };
 
