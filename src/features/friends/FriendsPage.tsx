@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState, type FormEvent, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, ButtonLink, Card, Icon, Page, PageHeader, useConfirm } from '@/components/ui';
 import { Field, FormError } from '@/features/auth/parts';
-import { AVATARS } from '@/hooks/useProgress';
+import { GameInvites } from './GameInvites';
+import { AVATARS, useProgress } from '@/hooks/useProgress';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE } from '@/app/navigation';
 import { friendlyError } from '@/services/firebase/auth';
+import { inviteFriend, multiplayerFlags } from '@/services/firebase/duel';
 import {
   acceptRequest,
   blockUser,
@@ -18,6 +20,7 @@ import {
   unblockUser,
   type FriendsData,
   type PublicProfile,
+  ensureMirror,
 } from '@/services/firebase/friends';
 import { cn } from '@/utils/cn';
 
@@ -35,7 +38,7 @@ function Row({ p, children }: { p: PublicProfile; children: ReactNode }) {
     <li className="flex flex-wrap items-center gap-3">
       <Avatar id={p.avatarId} />
       <span className="min-w-0 flex-1 truncate font-bold">{p.username}</span>
-      <div className="flex gap-2">{children}</div>
+      <div className="flex flex-wrap gap-2">{children}</div>
     </li>
   );
 }
@@ -76,6 +79,10 @@ export function FriendsPage() {
 
 function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
   const confirm = useConfirm();
+  const nav = useNavigate();
+  const { user } = useAuth();
+  const progress = useProgress();
+  const [mpAllowed, setMpAllowed] = useState(false);
   const [allowed, setAllowed] = useState<boolean | null>(null);
   const [data, setData] = useState<FriendsData | null>(null);
   const [username, setUsername] = useState('');
@@ -102,6 +109,31 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
         setAllowed(false);
       });
   }, [parentUid, me, reload]);
+
+  useEffect(() => {
+    multiplayerFlags(parentUid, me)
+      .then((f) => setMpAllowed(f.friends && f.multiplayer))
+      .catch(() => setMpAllowed(false));
+  }, [parentUid, me]);
+
+  async function invite(p: PublicProfile) {
+    setError('');
+    setInfo('');
+    setBusy(true);
+    try {
+      await ensureMirror(me).catch(() => undefined);
+      const roomId = await inviteFriend(me, user?.displayName ?? '', progress.avatar, p.uid);
+      nav(`${MODE_BASE.student}/game/duel/${roomId}`);
+    } catch (e) {
+      setError(
+        e instanceof Error && e.message === 'INVITE_DENIED'
+          ? 'Belum bisa mengajak. Minta temanmu membuka aplikasi PINTARA dulu, lalu coba lagi.'
+          : friendlyError(e),
+      );
+    } finally {
+      setBusy(false);
+    }
+  }
 
   /** Jalankan satu aksi, tampilkan galat ramah, lalu muat ulang daftar. */
   async function run(action: () => Promise<unknown>, done = '') {
@@ -166,6 +198,8 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
         </Button>
       </form>
 
+      <GameInvites />
+
       {data === null ? (
         <p role="status">Memuat daftar…</p>
       ) : (
@@ -196,6 +230,11 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
               <ul className="space-y-3">
                 {data.friends.map((p) => (
                   <Row key={p.uid} p={p}>
+                    {mpAllowed && (
+                      <Button disabled={busy} onClick={() => void invite(p)}>
+                        Undang main
+                      </Button>
+                    )}
                     <Button
                       variant="sekunder"
                       disabled={busy}
@@ -230,7 +269,7 @@ function FriendsInner({ me, parentUid }: { me: string; parentUid: string }) {
                 ))}
               </ul>
             )}
-            <p className="text-sm text-tinta/75">Ajak bermain dan status online belum tersedia.</p>
+            <p className="text-sm text-tinta/75">{mpAllowed ? 'Status online belum tersedia.' : 'Main bersama belum diizinkan orang tuamu. Status online belum tersedia.'}</p>
           </Card>
 
           {data.outgoing.length > 0 && (
