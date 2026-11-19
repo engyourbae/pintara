@@ -1,4 +1,4 @@
-import { onValue, push, ref, remove, serverTimestamp, set, update, type Unsubscribe } from 'firebase/database';
+import { get, onValue, push, ref, remove, serverTimestamp, set, update, type Unsubscribe } from 'firebase/database';
 import { doc, getDoc } from 'firebase/firestore';
 import { getDb, getRtdb } from './client';
 
@@ -85,8 +85,10 @@ export async function inviteFriend(me: string, myName: string, myAvatar: string,
   const nid = push(ref(rtdb, `notifications/${friendUid}`)).key;
   if (!roomId || !nid) throw new Error('ROOM_ID');
   const base = `rooms/${roomId}`;
+  await cleanupMyDuel(me).catch(() => undefined); // buang ruang lama milikku (maks. satu ruang per tuan rumah)
   // Urutan berurutan (bukan satu update) karena aturan "allowed" dan "players" membaca meta yang sudah ada.
   await set(ref(rtdb, `${base}/meta`), { hostUid: me, gameId: DUEL_GAME_ID, type: 'friend', status: 'lobby', maxPlayers: 2, createdAt: Date.now() });
+  await set(ref(rtdb, `duel_active/${me}`), roomId); // penunjuk agar ruang yang ditinggalkan bisa dibersihkan nanti
   await set(ref(rtdb, `${base}/allowed/${friendUid}`), true);
   await set(ref(rtdb, `${base}/players/${me}`), { name: myName.slice(0, 30) || 'Pemain', avatarId: myAvatar.slice(0, 30) || 'bintang', ready: true });
   const offset = await serverOffset();
@@ -100,7 +102,7 @@ export async function inviteFriend(me: string, myName: string, myAvatar: string,
       expiresAt: Date.now() + offset + 240000, // aturan: maksimal 5 menit dari waktu server
     });
   } catch {
-    void update(ref(rtdb, `${base}/meta`), { status: 'finished' }).catch(() => undefined);
+    void deleteRoom(roomId, me).catch(() => undefined);
     throw new Error('INVITE_DENIED');
   }
   return roomId;
@@ -170,6 +172,29 @@ export function sendAnswer(roomId: string, index: number, me: string, choice: nu
   return set(ref(getRtdb(), `rooms/${roomId}/answers/${index}/${me}`), { choice, at: serverTimestamp() });
 }
 
-export function writeResult(roomId: string, me: string, score: number, correct: number): Promise<void> {
-  return set(ref(getRtdb(), `rooms/${roomId}/results/${me}`), { score, correct, total: DUEL_TOTAL, finished: true });
+/**
+ * Ruang hanya "numpang lewat": dihapus seluruhnya (oleh tuan rumah atau pemain) begitu duel selesai/ditutup.
+ * Tidak ada riwayat duel yang disimpan; hanya skor terbaik lokal + XP yang ikut sinkronisasi progres.
+ */
+export async function deleteRoom(roomId: string, me: string): Promise<void> {
+  const rtdb = getRtdb();
+  await remove(ref(rtdb, `rooms/${roomId}`)).catch(() => undefined);
+  const pointer = ref(rtdb, `duel_active/${me}`);
+  const cur = await get(pointer).catch(() => null);
+  if (cur && cur.val() === roomId) await remove(pointer).catch(() => undefined);
+}
+
+const STALE_ROOM_MS = 30 * 60 * 1000;
+
+/** Bersihkan ruang lama yang ditinggalkan (aplikasi ditutup di tengah duel). Dipanggil saat aplikasi dibuka. */
+export async function cleanupMyDuel(me: string): Promise<void> {
+  const rtdb = getRtdb();
+  const pointer = ref(rtdb, `duel_active/${me}`);
+  const id = (await get(pointer)).val();
+  if (typeof id !== 'string') return;
+  const meta = (await get(ref(rtdb, `rooms/${id}/meta`)).catch(() => null))?.val() as { status?: string; createdAt?: number } | null | undefined;
+  const old = !meta || meta.status === 'finished' || Date.now() - (meta.createdAt ?? 0) > STALE_ROOM_MS;
+  if (!old) return;
+  await remove(ref(rtdb, `rooms/${id}`)).catch(() => undefined);
+  await remove(pointer);
 }
