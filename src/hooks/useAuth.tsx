@@ -22,6 +22,35 @@ interface AuthValue {
 
 const AuthContext = createContext<AuthValue | null>(null);
 
+/**
+ * Salinan profil terakhir (hanya uid, peran, nama; bukan rahasia) agar tetap masuk saat offline.
+ * Ini murni UX: keamanan data tetap dijaga Security Rules. Dihapus saat keluar akun.
+ */
+const CACHE_KEY = 'pintara:auth-user:v1';
+function readCache(uid: string): AppUser | null {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    const u = raw ? (JSON.parse(raw) as AppUser) : null;
+    return u && u.uid === uid && typeof u.role === 'string' ? u : null;
+  } catch {
+    return null;
+  }
+}
+function writeCache(user: AppUser | null) {
+  try {
+    if (user) localStorage.setItem(CACHE_KEY, JSON.stringify(user));
+    else localStorage.removeItem(CACHE_KEY);
+  } catch {
+    // penyimpanan tidak tersedia: abaikan
+  }
+}
+/** Galat karena tidak ada koneksi (bukan karena Rules menolak). */
+function isOfflineError(e: unknown): boolean {
+  if (typeof navigator !== 'undefined' && !navigator.onLine) return true;
+  const code = e && typeof e === 'object' && 'code' in e ? String((e as { code: unknown }).code) : '';
+  return code === 'unavailable' || code === 'deadline-exceeded' || code.endsWith('/network-request-failed');
+}
+
 /** Modul Firebase dimuat saat dibutuhkan agar mode tamu tidak menunggu unduhan SDK. */
 const loadService = () => import('@/services/firebase/auth');
 
@@ -32,21 +61,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
   /** Hanya hasil pemuatan terbaru yang dipakai (hindari hasil lama menimpa yang baru). */
   const seq = useRef(0);
+  /** True bila profil sekarang berasal dari salinan (offline); dimuat ulang saat online lagi. */
+  const fromCache = useRef(false);
 
   const load = useCallback(async (uid: string | null) => {
     const n = ++seq.current;
     if (!uid) {
+      writeCache(null);
+      fromCache.current = false;
       setState({ status: 'signedOut', user: null });
       return;
+    }
+    // Offline dan ada salinan profil: langsung masuk tanpa menunggu waktu habis.
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+      const cached = readCache(uid);
+      if (cached) {
+        fromCache.current = true;
+        setState({ status: 'ready', user: cached });
+        return;
+      }
     }
     try {
       const svc = await loadService();
       const user = await svc.fetchAppUser(uid);
       if (n !== seq.current) return;
+      writeCache(user);
+      fromCache.current = false;
       setState(user ? { status: 'ready', user } : { status: 'noProfile', user: null });
-    } catch {
+    } catch (e) {
       if (n !== seq.current) return;
-      setState({ status: 'error', user: null });
+      const cached = isOfflineError(e) ? readCache(uid) : null;
+      fromCache.current = cached !== null;
+      setState(cached ? { status: 'ready', user: cached } : { status: 'error', user: null });
     }
   }, []);
 
@@ -72,6 +118,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const svc = await loadService();
     await load(svc.currentUid());
   }, [load]);
+
+  // Kembali online: segarkan profil bila sebelumnya memakai salinan.
+  useEffect(() => {
+    const onOnline = () => {
+      if (fromCache.current) void refresh().catch(() => undefined);
+    };
+    window.addEventListener('online', onOnline);
+    return () => window.removeEventListener('online', onOnline);
+  }, [refresh]);
 
   const signOut = useCallback(async () => {
     const svc = await loadService();
