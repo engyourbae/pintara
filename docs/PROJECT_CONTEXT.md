@@ -130,3 +130,13 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 
 ## Catatan F24
 - Bank soal tahap 3 (`b03-sekolah-pelengkap`, 100 soal; total 300 soal / 30 paket). Ditulis AI, belum ditinjau guru. 4 paket `contoh-*` yang tergantikan dihapus dari `contents.json`. Tidak ada perubahan kode atau Rules.
+
+## Catatan F25 (kuis buatan guru)
+- Baru: `src/services/firebase/teacherQuizzes.ts`, `src/features/teacher/TeacherQuizPanel.tsx` (buat kuis, lihat benar/salah per murid per soal, bagikan nilai, kesempatan ulang, hapus), `src/features/student/TeacherQuizPlay.tsx` (rute `/siswa/kelas/:classId/kuis/:quizId`, layar fokus dengan tombol keluar).
+- Diubah: `ClassDetail.tsx` (panel kuis), `StudentClass.tsx` (daftar kuis guru + status), `App.tsx` (rute), `src/data/missions.ts` (`resultTitle` untuk kunci `tq_`), `firebase/firebase.rules` (WAJIB publish ulang), docs.
+- Alur: guru membuat kuis (soal ke `teacher_quizzes`, kunci ke `quiz_keys`) → murid mengirim jawaban sekali → guru melihat benar/salah (dihitung di app guru) → guru "Bagikan nilai" menulis `results/tq_{id}_{uid}` → murid melihat nilai di halaman kelas. Belum ada: edit kuis (hapus lalu buat ulang), batas waktu, kunci diperlihatkan ke murid setelah selesai.
+- Belum teruji: build/tsc (sandbox tanpa node_modules), Rules baru, alur dengan akun nyata.
+
+## Perbaikan layar memuat macet (fix-loading3)
+- Gejala: splash tertahan selamanya. Penyebab yang ditutup: (1) `getDoc` profil bisa menggantung tanpa galat di jaringan yang memblokir WebChannel → `getDb()` kini memakai `experimentalAutoDetectLongPolling`; (2) `useAuth`: batas 8 dtk untuk `fetchAppUser` dan watchdog 10 dtk (status `loading` → salinan profil bila ada, jika tidak `error`), plus coba segarkan tiap 20 dtk selama memakai salinan; (3) `SplashGate`: splash dihapus paksa setelah 14 dtk; (4) `ErrorBoundary` menghapus splash agar pesan galat terlihat (sebelumnya galat render/chunk gagal tertutup splash).
+- Penyebab pasti di perangkat pemilik BELUM DIKETAHUI; belum teruji di ponsel.
