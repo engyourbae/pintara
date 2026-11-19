@@ -143,3 +143,12 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 
 ## Catatan F26
 - Setiap paket (38 paket) sekarang 30 soal, versi 2. Hanya data JSON dan docs yang berubah; tidak ada kode atau Rules. `progressSync` hanya menyimpan nomor versi bersama hasil terbaik, jadi hasil lama tetap aman.
+
+## Catatan F25b
+- Kuis buatan guru kini juga muncul di menu **Kuis** guru (bagian "Kuis buatan saya", pilih kelas bila punya lebih dari satu), bukan hanya di dalam halaman detail kelas. `TeacherPages.tsx` (`MyQuizzes`).
+
+## Catatan F27 (undangan mengambang)
+- Baru: `src/features/friends/FloatingInvites.tsx` (dimuat lazy dari `ModeLayout` untuk peran siswa, termasuk layar fokus; disembunyikan di rute `/game/duel/`). Menampilkan permintaan berteman dan ajakan Duel dengan tombol Terima/Tolak (+ "Nanti"), maksimal 2 kartu.
+- Dihapus: `GameInvites.tsx` (kotak undangan di Beranda dan Teman digantikan kartu mengambang). `FriendsPage` memuat ulang daftar bila kartu mengambang menerima/menolak (event `FRIENDS_CHANGED`).
+- Hemat data: ajakan lewat langganan RTDB yang sama; permintaan teman lewat satu query (`listIncomingRequests`) saat dibuka, tiap 90 dtk bila layar terlihat, saat kembali ke aplikasi, dan saat daftar berubah. Tidak ada koleksi atau Rules baru.
+- Belum teruji dengan dua akun nyata.
