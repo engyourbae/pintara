@@ -5,6 +5,8 @@ import { cn } from '@/utils/cn';
 interface Option<T> {
   value: T;
   label: string;
+  /** Tidak bisa dipilih (tampil abu-abu), mis. karena sudah dipakai. */
+  disabled?: boolean;
 }
 
 interface ChoiceProps<T extends string | number> {
@@ -32,11 +34,13 @@ export function ChoiceGroup<T extends string | number>({ label, value, options, 
               type="button"
               role="radio"
               aria-checked={on}
-              disabled={disabled}
+              disabled={disabled || o.disabled}
               onClick={() => onChange(o.value)}
               className={cn(
-                'min-h-[48px] min-w-[48px] rounded-2xl border-2 border-tinta px-4 font-display text-base font-semibold transition active:translate-y-0.5 disabled:opacity-50',
-                on ? 'bg-aksen text-white shadow-stiker' : 'bg-white text-tinta',
+                'min-h-[48px] min-w-[48px] rounded-2xl border-2 px-4 font-display text-base font-semibold transition active:translate-y-0.5',
+                o.disabled
+                  ? 'cursor-not-allowed border-tinta/25 bg-tinta/10 text-tinta/45'
+                  : cn('border-tinta disabled:opacity-50', on ? 'bg-aksen text-white shadow-stiker' : 'bg-white text-tinta'),
               )}
             >
               {o.label}
