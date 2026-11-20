@@ -85,7 +85,12 @@ service cloud.firestore {
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['teacherVerified', 'teacherRejected'])
           && request.resource.data.teacherVerified is bool
           && request.resource.data.teacherRejected is bool);
-      allow delete: if isUser(uid) || (signedIn() && resource.data.get('parentUid', '') == request.auth.uid);
+      // Admin hanya boleh menghapus akun GURU yang berstatus ditolak (bukan yang disetujui), agar data tidak menumpuk.
+      allow delete: if isUser(uid) || (signedIn() && resource.data.get('parentUid', '') == request.auth.uid)
+        || (isAdmin()
+          && resource.data.role == 'teacher'
+          && resource.data.get('teacherRejected', false) == true
+          && resource.data.get('teacherVerified', false) != true);
     }
 
     // Penanda admin. Hanya bisa dibaca pemiliknya; dibuat manual lewat Console (tidak ada penulisan dari klien).
@@ -160,7 +165,12 @@ service cloud.firestore {
         && validName(request.resource.data.displayName)
         && (!('school' in request.resource.data.keys())
             || (request.resource.data.school is string && request.resource.data.school.size() <= 60));
-      allow delete: if isUser(uid);
+      // Admin boleh menghapus profil guru yang ditolak (dipakai bersama penghapusan akunnya, satu batch).
+      allow delete: if isUser(uid)
+        || (isAdmin()
+          && userData(uid).get('role', '') == 'teacher'
+          && userData(uid).get('teacherRejected', false) == true
+          && userData(uid).get('teacherVerified', false) != true);
     }
 
     function classData(id) { return get(/databases/$(database)/documents/classes/$(id)).data; }
