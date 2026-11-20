@@ -1,6 +1,7 @@
 import { get, onValue, push, ref, remove, serverTimestamp, set, update, type Unsubscribe } from 'firebase/database';
 import { doc, getDoc } from 'firebase/firestore';
-import { getDb, getRtdb } from './client';
+import { getDb } from './client';
+import { getRtdb } from './rtdb';
 
 /**
  * Duel Kilat Hitung 1 lawan 1 antar teman, lewat Realtime Database (tanpa Cloud Functions).

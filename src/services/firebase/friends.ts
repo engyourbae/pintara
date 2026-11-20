@@ -12,7 +12,8 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 import { FirebaseError } from 'firebase/app';
-import { getDb, getRtdb } from './client';
+import { getDb } from './client';
+import { getRtdb } from './rtdb';
 import { UserFacingError, USERNAME_RE } from './auth';
 
 /**
