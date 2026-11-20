@@ -24,6 +24,7 @@ import {
 } from '@/services/firebase/duel';
 import { cn } from '@/utils/cn';
 import { correctIndex, makeDuelQuestions, packQuestions, scoreAll } from './duelCore';
+import { DUEL_CORRECT_POINTS, DUEL_FAST_BONUS, DUEL_RULES } from './scoring';
 
 const TEMAN = `${MODE_BASE.student}/teman`;
 const STALE_MS = 45000;
@@ -294,7 +295,7 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
           {isHost ? (
             <>
               <p>
-                {isPack ? `10 soal dari "${(content?.title ?? '').replace(' (contoh)', '')}", adu cepat.` : '10 soal hitungan, adu cepat.'} Benar = 100 poin, yang lebih cepat dapat bonus +20.
+                {isPack ? `10 soal dari "${(content?.title ?? '').replace(' (contoh)', '')}", adu cepat.` : '10 soal hitungan, adu cepat.'} {DUEL_RULES}
               </p>
               <Button size="lg" block disabled={!opp || starting} onClick={() => void start()}>
                 {opp ? 'Mulai duel' : 'Menunggu teman bergabung…'}
@@ -405,12 +406,12 @@ function DuelRoomView({ me, parentUid, roomId }: { me: string; parentUid: string
         {!reveal && myAns && `Jawabanmu terkirim. Menunggu ${opp?.name ?? 'teman'}…`}
         {reveal && (
           <>
-            {mineRight ? 'Benar! +100' : myAns ? 'Belum tepat.' : 'Waktu habis.'}
-            {bonus === 'mine' && ' Kamu lebih cepat: +20'}
+            {mineRight ? `Benar! +${DUEL_CORRECT_POINTS}` : myAns ? 'Belum tepat.' : 'Waktu habis.'}
+            {bonus === 'mine' && ` Kamu lebih cepat: +${DUEL_FAST_BONUS}`}
             <br />
             <span className="font-normal">
               {opp?.name ?? 'Teman'}: {oppAns ? (oppRight ? 'benar' : 'salah') : 'tidak menjawab'}
-              {bonus === 'opp' && ' dan lebih cepat (+20)'}
+              {bonus === 'opp' && ` dan lebih cepat (+${DUEL_FAST_BONUS})`}
             </span>
           </>
         )}

@@ -8,7 +8,7 @@ import { progressActions, starsFor, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
 import type { CategoryGroup, LearningContent, QuizQuestion } from '@/types';
 import { localDayKey, seededSample } from './daily';
-import { QUICK_LIMIT, comboBonusXp, quickPoints, starsOfBest } from './scoring';
+import { QUICK_LIMIT, SPEED_RULES, TF_LIVES, TF_POINTS, TF_SECONDS, comboBonusXp, quickPoints, starsOfBest, tfXp } from './scoring';
 
 const GAME = `${MODE_BASE.student}/game`;
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
@@ -161,6 +161,7 @@ export function KuisKilatPaket() {
     return (
       <Page className="max-w-2xl">
         <PageHeader title="Kuis Kilat" subtitle="10 soal acak dari paket pilihanmu. Makin cepat, makin banyak poin." icon="book" />
+        <Card tone="langit" className="text-base">{SPEED_RULES} Jawaban benar beruntun memberi bonus XP.</Card>
         <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1" role="group" aria-label="Filter kelompok">
           {[{ id: 'semua' as const, label: 'Semua', icon: 'star' as const }, ...GROUPS].map((g) => (
             <button
@@ -305,8 +306,8 @@ export function KuisKilatPaket() {
 
 // ───────── Benar atau Salah Kilat ─────────
 
-const BS_SECONDS = 30;
-const BS_LIVES = 3;
+const BS_SECONDS = TF_SECONDS;
+const BS_LIVES = TF_LIVES;
 
 interface Statement {
   title: string;
@@ -361,7 +362,7 @@ export function BenarSalahKilat() {
   function finish(finalScore: number, finalRight: number) {
     if (finished.current) return;
     finished.current = true;
-    const xp = Math.min(30, finalRight * 2);
+    const xp = tfXp(finalRight);
     const best = finalScore > (p.gameBest['benar-salah'] ?? 0);
     progressActions.recordGame('benar-salah', finalScore, xp);
     setResult({ xp, best });
@@ -384,7 +385,7 @@ export function BenarSalahKilat() {
     if (phase !== 'play' || flash !== null || !st) return;
     const ok = choice === st.truth;
     setFlash(ok);
-    const nextScore = ok ? score + 10 : score;
+    const nextScore = ok ? score + TF_POINTS : score;
     const nextRight = ok ? right + 1 : right;
     const nextLives = ok ? lives : lives - 1;
     if (ok) {
@@ -409,7 +410,7 @@ export function BenarSalahKilat() {
           <ul className="space-y-2 text-lg">
             <li>⏱ {BS_SECONDS} detik, secepat mungkin.</li>
             <li>❤️ {BS_LIVES} nyawa. Salah menjawab = nyawa berkurang.</li>
-            <li>⭐ Tiap jawaban benar +10 poin.</li>
+            <li>⭐ Tiap jawaban benar +{TF_POINTS} poin.</li>
           </ul>
           {best > 0 && (
             <p className="flex items-center gap-2 font-bold text-aksen-tua">

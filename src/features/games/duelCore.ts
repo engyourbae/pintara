@@ -1,5 +1,6 @@
 import { DUEL_TOTAL, type DuelAnswer, type DuelPack, type DuelQuestion } from '@/services/firebase/duel';
 import type { LearningContent } from '@/types';
+import { DUEL_CORRECT_POINTS, DUEL_FAST_BONUS } from './scoring';
 
 const rand = (a: number, b: number) => a + Math.floor(Math.random() * (b - a + 1));
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
@@ -76,7 +77,7 @@ export interface DuelScore {
 }
 
 /**
- * Skor dari jawaban yang tercatat: benar = 100. Bila kedua pemain benar, yang lebih cepat (cap waktu server) dapat +20.
+ * Skor dari jawaban yang tercatat (aturan di scoring.ts): benar = DUEL_CORRECT_POINTS; bila kedua pemain benar, yang lebih cepat (cap waktu server) dapat DUEL_FAST_BONUS.
  * `upTo` = indeks soal terakhir yang dihitung (inklusif). `correct` = indeks benar per soal (duel paket); tanpa itu dihitung dari soal hitungan.
  */
 export function scoreAll(uids: string[], questions: (DuelQuestion | null)[], answers: Record<string, DuelAnswer>[], upTo: number, correct?: number[]): Record<string, DuelScore> {
@@ -88,14 +89,14 @@ export function scoreAll(uids: string[], questions: (DuelQuestion | null)[], ans
     if (ci === undefined || ci < 0) continue;
     const right = uids.filter((u) => answers[i]?.[u]?.choice === ci);
     right.forEach((u) => {
-      out[u].score += 100;
+      out[u].score += DUEL_CORRECT_POINTS;
       out[u].correct += 1;
     });
     if (right.length === 2) {
       const [a, b] = right;
       const ta = answers[i][a].at;
       const tb = answers[i][b].at;
-      if (ta !== tb) out[ta < tb ? a : b].score += 20;
+      if (ta !== tb) out[ta < tb ? a : b].score += DUEL_FAST_BONUS;
     }
   }
   return out;

@@ -57,3 +57,23 @@ export function starsOfBest(key: string, best: number): number {
   if (key === 'benar-salah') return best >= 100 ? 3 : best >= 60 ? 2 : 1;
   return 0;
 }
+
+// ───────── Satu sumber aturan untuk duel, kuis kilat, benar/salah, kilat hitung (F28d) ─────────
+
+/** Teks aturan poin cepat yang sama di kuis tim, Kuis Kilat, dan layar aturan lain. */
+export const SPEED_RULES = TEAM_QUIZ_RULES;
+
+/** Duel 1 lawan 1 (hitung dan paket): benar = 100, bila keduanya benar yang lebih cepat +20. */
+export const DUEL_CORRECT_POINTS = 100;
+export const DUEL_FAST_BONUS = 20;
+export const DUEL_RULES = `Benar = ${DUEL_CORRECT_POINTS} poin, yang lebih cepat dapat bonus +${DUEL_FAST_BONUS}.`;
+
+/** Benar atau Salah Kilat. */
+export const TF_SECONDS = 30;
+export const TF_LIVES = 3;
+export const TF_POINTS = 10;
+export const TF_XP_CAP = 30;
+export const tfXp = (correct: number): number => Math.min(TF_XP_CAP, correct * 2);
+
+/** Kilat Hitung (game lama): 10 poin + sisa detik. Rumus dipertahankan agar skor terbaik lama tetap sebanding. */
+export const kilatHitungPoints = (secondsLeft: number): number => 10 + Math.floor(secondsLeft);

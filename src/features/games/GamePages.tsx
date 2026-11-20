@@ -5,7 +5,7 @@ import { MODE_BASE } from '@/app/navigation';
 import { progressActions, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
 import { dailyPack } from './daily';
-import { starsOfBest } from './scoring';
+import { kilatHitungPoints, starsOfBest } from './scoring';
 
 const GAME = `${MODE_BASE.student}/game`;
 
@@ -187,7 +187,7 @@ export function KilatHitung() {
     setPicked(value);
     if (value === q.answer) {
       setRight((r) => r + 1);
-      setScore((s) => s + 10 + Math.floor(time));
+      setScore((s) => s + kilatHitungPoints(time));
     }
   }
 
