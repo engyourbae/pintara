@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Card, Icon, Page } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { makePackInvite } from '@/features/games/duelCore';
+import { DUEL_RULES } from '@/features/games/scoring';
 import { useAuth } from '@/hooks/useAuth';
 import { AVATARS, useProgress } from '@/hooks/useProgress';
 import { friendlyError } from '@/services/firebase/auth';
@@ -84,7 +85,7 @@ export function PackDuelPicker({ content, onClose }: { content: LearningContent;
       </div>
       <Card tone="langit" className="space-y-1">
         <p className="font-display text-lg font-semibold">{title}</p>
-        <p>10 soal acak dari paket ini, adu cepat. Benar = 100 poin, yang lebih cepat dapat bonus +20.</p>
+        <p>10 soal acak dari paket ini, adu cepat. {DUEL_RULES}</p>
       </Card>
       {!me ? (
         <Card tone="catatan">Duel hanya bisa dimainkan dengan akun anak yang dibuat orang tua.</Card>
