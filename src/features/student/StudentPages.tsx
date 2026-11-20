@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, Stat, useConfirm } from '@/components/ui';
 import { AVATARS, levelInfo, progressActions, totalStars, useProgress } from '@/hooks/useProgress';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleContents } from '@/data/sample';
 import { useAuth } from '@/hooks/useAuth';
-import { JoinClassCard } from './JoinClassCard';
+/** Kartu gabung kelas membawa SDK Firebase; dimuat setelah halaman tampil agar layar awal tidak menunggu unduhan besar. */
+const JoinClassCard = lazy(() => import('./JoinClassCard').then((m) => ({ default: m.JoinClassCard })));
 import { cn } from '@/utils/cn';
 
 const TIPS = [
@@ -63,7 +64,9 @@ export function StudentHome() {
         </ButtonLink>
       </div>
 
-      <JoinClassCard />
+      <Suspense fallback={null}>
+        <JoinClassCard />
+      </Suspense>
 
       <Card tone="catatan" className="flex items-start gap-3">
         <Icon name="bulb" size={26} className="mt-0.5 shrink-0" />
