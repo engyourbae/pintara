@@ -68,8 +68,20 @@ self.addEventListener('fetch', (event) => {
   if (rel.startsWith('admin/') || rel === 'version.json' || rel === 'sw.js') return;
 
   if (req.mode === 'navigate') {
-    // Jaringan dulu (agar versi baru terambil); bila gagal/offline pakai index.html tersimpan.
-    event.respondWith(fetch(req).catch(() => caches.match(BASE + 'index.html', { ignoreSearch: true }).then((r) => r || caches.match(BASE))));
+    // Jaringan dulu (agar versi baru terambil), tetapi jangan menunggu lebih dari 4 detik: bila jaringan lambat/menggantung
+    // atau offline, pakai index.html tersimpan (berpasangan dengan berkas JS yang juga tersimpan). Tanpa salinan, tunggu jaringan.
+    event.respondWith((async () => {
+      const saved = () => caches.match(BASE + 'index.html', { ignoreSearch: true }).then((r) => r || caches.match(BASE));
+      const net = fetch(req);
+      const slow = new Promise((resolve) => setTimeout(() => resolve(null), 4000));
+      try {
+        const first = await Promise.race([net, slow]);
+        if (first) return first;
+        return (await saved()) || net;
+      } catch (e) {
+        return (await saved()) || Response.error();
+      }
+    })());
     return;
   }
   event.respondWith(

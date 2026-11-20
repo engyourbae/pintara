@@ -131,15 +131,27 @@
       <button id="sp-retry" type="button" hidden onclick="location.reload()">Muat ulang</button>
     </div>
     <script>
-      /* Pesan bergantian di splash; berjalan walau JS aplikasi macet. Lambat >10 dtk: pesan sabar; >20 dtk: tombol Muat ulang. */
+      /* Pesan bergantian di splash; berjalan walau JS aplikasi macet. Lambat >10 dtk: pesan sabar; >15 dtk: tombol Muat ulang. */
       (function () {
         var tips = ['Pinta lagi menyiapkan pensil…', 'Menata buku pelajaran…', 'Mengasah otak biar tajam…', 'Menghitung bintang…'];
-        var i = 0, t0 = Date.now();
+        var i = 0, t0 = Date.now(), failed = false;
+        /* Berkas JS/CSS gagal diunduh (jaringan putus/berkas lama hilang): beri tahu dan tampilkan tombol, jangan diam. */
+        window.addEventListener('error', function (e) {
+          var t = e.target;
+          if (t && (t.tagName === 'SCRIPT' || t.tagName === 'LINK')) {
+            var m = document.getElementById('sp-msg'), b = document.getElementById('sp-retry');
+            if (!m || !b) return;
+            failed = true;
+            m.textContent = 'Aplikasi belum bisa dimuat. Periksa koneksi, lalu tekan Muat ulang.';
+            b.hidden = false;
+          }
+        }, true);
         var timer = setInterval(function () {
           var s = document.getElementById('splash'), m = document.getElementById('sp-msg');
           if (!s) { clearInterval(timer); return; }
+          if (failed) return;
           var d = Date.now() - t0;
-          if (d > 20000) document.getElementById('sp-retry').hidden = false;
+          if (d > 15000) document.getElementById('sp-retry').hidden = false;
           if (d > 10000) { m.textContent = 'Koneksi atau perangkat agak lambat. Sabar ya, Pinta masih berusaha!'; return; }
           i = (i + 1) % tips.length; m.textContent = tips[i];
         }, 2600);
