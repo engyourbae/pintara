@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Button, ButtonLink, Card, ChoiceGroup, Icon, Page, PageHeader, ProgressBar, Stat } from '@/components/ui';
+import { Badge, Button, ButtonLink, Card, ChoiceGroup, Icon, Page, PageHeader, ProgressBar, SearchBox, Stat, matchesSearch } from '@/components/ui';
 import { Field, FormError } from '@/features/auth/parts';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleCategories, sampleContents } from '@/data/sample';
@@ -148,14 +148,18 @@ function MyQuizzes() {
 }
 
 export function TeacherQuizzes() {
+  const [search, setSearch] = useState('');
+  const shown = sampleContents.filter((c) => matchesSearch(`${c.title} ${sampleCategories.find((x) => x.id === c.categoryId)?.name ?? ''}`, search));
   return (
     <Page>
       <PageHeader title="Kuis" subtitle="Buat kuis sendiri untuk kelasmu, atau coba paket kuis yang tersedia." icon="pencil" />
       <MyQuizzes />
       <h2 className="mt-2 text-xl">Paket kuis tersedia</h2>
       <p className="-mt-2 text-sm text-tinta/75">Mencoba paket tidak mengubah data murid.</p>
+      <SearchBox value={search} onChange={setSearch} label="Cari paket kuis" placeholder="Cari pelajaran, mis. pecahan…" />
+      {shown.length === 0 && <Card tone="catatan">Tidak ada paket yang cocok dengan "{search.trim()}".</Card>}
       <ul className="grid gap-3 sm:grid-cols-2">
-        {sampleContents.map((c) => (
+        {shown.map((c) => (
           <li key={c.id}>
             <Card className="flex h-full flex-col gap-3 p-4">
               <div>
