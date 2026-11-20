@@ -1,15 +1,17 @@
-import { useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, SampleBadge, Sparkle } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { GROUPS, GROUP_BY_ID } from '@/data/groups';
 import { isSampleContent, sampleCategories, sampleContents } from '@/data/sample';
 import { progressActions, starsFor, useProgress } from '@/hooks/useProgress';
-import { PackDuelPicker } from '@/features/friends/PackDuelPicker';
+import { LoadingScreen } from '@/components/LoadingScreen';
 import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/utils/cn';
 import type { CategoryGroup, LearningContent } from '@/types';
 
+/** Duel membawa SDK Firebase; dimuat hanya saat tombol "Duel dengan teman" ditekan. */
+const PackDuelPicker = lazy(() => import('@/features/friends/PackDuelPicker').then((m) => ({ default: m.PackDuelPicker })));
 const BELAJAR = `${MODE_BASE.student}/belajar`;
 const categoryName = (id: string) => sampleCategories.find((c) => c.id === id)?.name ?? id;
 const groupOf = (c: LearningContent): CategoryGroup =>
@@ -164,7 +166,13 @@ function Quiz({ content, base, preview }: { content: LearningContent; base: stri
     }
   }
 
-  if (duelOpen) return <PackDuelPicker content={content} onClose={() => setDuelOpen(false)} />;
+  if (duelOpen) {
+    return (
+      <Suspense fallback={<LoadingScreen label="Membuka duel…" />}>
+        <PackDuelPicker content={content} onClose={() => setDuelOpen(false)} />
+      </Suspense>
+    );
+  }
 
   if (result) {
     return (
