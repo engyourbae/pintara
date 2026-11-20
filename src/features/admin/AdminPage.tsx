@@ -4,7 +4,7 @@ import { Badge, Button, Card, Icon, Logo, useConfirm, type ConfirmOptions } from
 import { FormError } from '@/features/auth/parts';
 import { useAuth } from '@/hooks/useAuth';
 import { friendlyError } from '@/services/firebase/auth';
-import { isAdmin, listTeachers, setTeacherState, type TeacherRow, type TeacherState } from '@/services/firebase/admin';
+import { deleteRejectedTeachers, isAdmin, listTeachers, setTeacherState, type TeacherRow, type TeacherState } from '@/services/firebase/admin';
 
 function Shell({ children, onSignOut }: { children: ReactNode; onSignOut?: () => void }) {
   return (
@@ -113,6 +113,20 @@ export function AdminPage() {
     }
   }
 
+  async function remove(list: TeacherRow[], ask: ConfirmOptions) {
+    if (!(await confirm(ask))) return;
+    setBusy(true);
+    setError('');
+    try {
+      await deleteRejectedTeachers(list.map((t) => t.uid));
+    } catch (e) {
+      setError(friendlyError(e));
+    } finally {
+      setBusy(false);
+      await reload();
+    }
+  }
+
   if (status === 'disabled') return <Shell><p>Firebase belum dikonfigurasi.</p></Shell>;
   if (status === 'loading') return <Shell><p role="status">Memeriksa akun…</p></Shell>;
   if (status === 'signedOut' || status === 'noProfile') return <Navigate to="/masuk" replace state={{ from: '/admin' }} />;
@@ -179,11 +193,32 @@ export function AdminPage() {
             rows={by('rejected')}
             busy={busy}
             actions={(t) => (
-              <Button variant="sekunder" disabled={busy} onClick={() => void change(t, 'approved')}>
-                Setujui
-              </Button>
+              <>
+                <Button variant="sekunder" disabled={busy} onClick={() => void change(t, 'approved')}>
+                  Setujui
+                </Button>
+                <Button
+                  variant="sekunder"
+                  disabled={busy}
+                  onClick={() => void remove([t], { title: `Hapus ${t.displayName}?`, message: 'Data guru yang ditolak ini dihapus permanen dari server. Ia hanya bisa mendaftar ulang dari awal.', confirmLabel: 'Hapus', danger: true })}
+                >
+                  <Icon name="trash" size={18} />
+                  Hapus
+                </Button>
+              </>
             )}
           />
+          {by('rejected').length > 1 && (
+            <Button
+              variant="sekunder"
+              block
+              disabled={busy}
+              onClick={() => void remove(by('rejected'), { title: `Hapus ${by('rejected').length} guru yang ditolak?`, message: 'Semua data guru berstatus ditolak dihapus permanen dari server. Mereka hanya bisa mendaftar ulang dari awal.', confirmLabel: 'Hapus semua', danger: true })}
+            >
+              <Icon name="trash" size={18} />
+              Hapus semua yang ditolak ({by('rejected').length})
+            </Button>
+          )}
         </>
       )}
       <Card tone="langit" className="flex items-start gap-3">
