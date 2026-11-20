@@ -37,6 +37,11 @@ export interface Progress {
   quizBest: Record<string, QuizBest>;
   /** Skor terbaik per game/tingkat. */
   gameBest: Record<string, number>;
+  /**
+   * Id soal yang sudah dikerjakan per paket kuis (untuk level: soal yang sudah dikerjakan tidak muncul lagi sampai semua
+   * soal paket selesai). Hanya di perangkat; tidak disalin ke Firebase agar data server tidak menumpuk.
+   */
+  levelDone: Record<string, string[]>;
   streak: number;
   lastDay: string;
 }
@@ -50,6 +55,7 @@ const EMPTY: Progress = {
   stars: {},
   quizBest: {},
   gameBest: {},
+  levelDone: {},
   streak: 0,
   lastDay: '',
 };
@@ -154,6 +160,17 @@ export const progressActions = {
       xp: state.xp + gained,
       gameBest: { ...state.gameBest, [gameId]: Math.max(state.gameBest[gameId] ?? 0, score) },
     });
+  },
+  /** Tandai soal-soal ini selesai dikerjakan pada paket tersebut. */
+  markLevelDone(contentId: string, ids: string[]) {
+    const merged = Array.from(new Set([...(state.levelDone?.[contentId] ?? []), ...ids]));
+    save({ ...state, levelDone: { ...(state.levelDone ?? {}), [contentId]: merged } });
+  },
+  /** Ulangi paket dari awal: semua soal boleh muncul lagi. */
+  resetLevels(contentId: string) {
+    const next = { ...(state.levelDone ?? {}) };
+    delete next[contentId];
+    save({ ...state, levelDone: next });
   },
   setProfile(name: string, avatar: string) {
     save({ ...state, name: name.slice(0, 20), avatar });
