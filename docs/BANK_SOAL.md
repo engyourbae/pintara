@@ -30,3 +30,7 @@ Ke depan bila soal > ± 500: pecah muat-malas per kategori (sekarang semua ikut 
 - Soal hitungan (matematika k1-k6, pola, uang) dibuat dengan skrip yang menghitung jawaban dan pengecoh; soal teks ditulis AI. **Belum ditinjau guru.**
 - Paket `contoh-*` tetap berlabel contoh (id tidak boleh diganti); ganti dengan paket bank nyata secara bertahap.
 - Batas Rules (maks 100 soal/paket) masih jauh.
+
+## Level (F29)
+- Aplikasi membagi setiap paket menjadi level 10 soal menurut urutan `questions` (paket 30 soal = 3 level). Soal yang sudah dikerjakan dicatat per `id` soal di perangkat murid dan tidak muncul lagi sampai semua soal paket selesai.
+- Menambah soal: tambah di AKHIR paket dengan `id` baru yang unik dan naikkan `version`. Jangan mengubah `id` soal lama dan jangan menyisipkan soal di tengah (menggeser level). Paket tidak harus kelipatan 10: sisa soal membentuk level terakhir yang lebih pendek.

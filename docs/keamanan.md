@@ -62,3 +62,8 @@ Tanpa server, hal berikut **tidak bisa dijamin**:
 ## Duel dari paket kuis (F28b)
 - Rules RTDB menambah validasi `meta.kind` (`hitung|paket`), `meta.packId` (`^[a-z0-9-]{1,60}$`), `meta.ver` (angka), `meta.order` (maks 10 bilangan bulat 0–99; paket wajib punya ketiganya), dan `packId` pada notifikasi. **BELUM TERUJI** (emulator tidak tersedia); hanya sintaks JSON diperiksa.
 - Batas jujur (sama dengan duel hitung, lebih jelas untuk paket): kunci jawaban ada di bundel aplikasi, bukan di database. Klien yang dimodifikasi bisa mengetahui jawaban benar atau mengirim jawaban apa pun; Rules tidak bisa memeriksa kebenaran jawaban maupun waktu. Izin orang tua tetap hanya dicek di klien. Ruang tetap sementara (dihapus setelah selesai), tanpa riwayat duel.
+
+## Penghapusan data (F29)
+- Admin hanya dapat menghapus akun guru yang berstatus ditolak (bukan yang disetujui/menunggu): Rules `users/{uid}` dan `teacher_profiles/{uid}`. Kelas yang pernah dibuat guru yang dulu disetujui lalu ditolak TIDAK ikut terhapus (admin tidak punya hak atas kelas). Rules baru **BELUM TERUJI** (emulator tidak tersedia).
+- Guru menghapus kelasnya sendiri dengan menghapus tiap subkoleksi lebih dulu dari klien (Firestore tidak punya hapus berantai). Bila proses terputus di tengah, sebagian data kelas bisa tersisa (dokumen kelas dihapus terakhir, jadi guru masih bisa mengulang "Hapus kelas").
+- Hasil kelas kini hanya ditulis untuk misi aktif. Hasil lama dapat dibersihkan guru lewat "Bersihkan hasil lama".
