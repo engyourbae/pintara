@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, updateDoc, where, writeBatch } from 'firebase/firestore';
 import { getDb, getFirebaseAuth } from './client';
 
 /**
@@ -44,4 +44,19 @@ export async function setTeacherState(uid: string, state: TeacherState): Promise
     teacherVerified: state === 'approved',
     teacherRejected: state === 'rejected',
   });
+}
+
+/**
+ * Hapus akun guru yang DITOLAK (profil + dokumen akun) agar data tidak menumpuk. Rules hanya mengizinkan bila guru itu
+ * memang berstatus ditolak. Akun masuknya (Firebase Auth) tidak bisa dihapus dari aplikasi; tanpa dokumen akun ia
+ * hanya bisa mendaftar ulang dari awal.
+ */
+export async function deleteRejectedTeachers(uids: string[]): Promise<void> {
+  const db = getDb();
+  for (const uid of uids) {
+    const batch = writeBatch(db);
+    batch.delete(doc(db, 'teacher_profiles', uid));
+    batch.delete(doc(db, 'users', uid));
+    await batch.commit();
+  }
 }

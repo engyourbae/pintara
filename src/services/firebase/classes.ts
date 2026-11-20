@@ -1,6 +1,8 @@
 import {
-  collection, deleteDoc, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where, writeBatch,
+  collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where, writeBatch,
+  type DocumentReference,
 } from 'firebase/firestore';
+import { resultKeyOf } from '@/data/missions';
 import type { Mission } from '@/types';
 import type { ChildItem, ChildProgress, ChildSummary, ClassInfo, Grade, MemberRow, MemberStatus, MyMembership, ResultRow } from '@/types';
 import { getDb } from './client';
@@ -169,8 +171,66 @@ export async function addMission(classId: string, m: Omit<Mission, 'id'>): Promi
   });
 }
 
-export async function deleteMission(classId: string, id: string): Promise<void> {
-  await deleteDoc(doc(getDb(), 'classes', classId, 'quizzes', id));
+/** Hapus dokumen bertahap (batas Firestore 500 per batch). Mengembalikan jumlah yang dihapus. */
+async function deleteRefs(refs: DocumentReference[]): Promise<number> {
+  const db = getDb();
+  for (let i = 0; i < refs.length; i += 400) {
+    const batch = writeBatch(db);
+    refs.slice(i, i + 400).forEach((r) => batch.delete(r));
+    await batch.commit();
+  }
+  return refs.length;
+}
+
+/** Hapus misi beserta hasil murid untuk misi itu (supaya data tidak menumpuk). */
+export async function deleteMission(classId: string, m: Pick<Mission, 'id' | 'kind' | 'contentId'>): Promise<void> {
+  const db = getDb();
+  const res = await getDocs(query(collection(db, 'classes', classId, 'results'), where('quizId', '==', resultKeyOf(m))));
+  await deleteRefs([...res.docs.map((d) => d.ref), doc(db, 'classes', classId, 'quizzes', m.id)]);
+}
+
+/**
+ * Hapus hasil yang tidak lagi dipakai: hasil dari kuis/game yang bukan misi kelas sekarang dan bukan nilai kuis guru yang
+ * masih ada. Mengembalikan jumlah dokumen yang dihapus.
+ */
+export async function pruneClassResults(classId: string): Promise<number> {
+  const db = getDb();
+  const [missions, tq, results] = await Promise.all([
+    listMissions(classId),
+    getDocs(collection(db, 'classes', classId, 'teacher_quizzes')),
+    getDocs(collection(db, 'classes', classId, 'results')),
+  ]);
+  const keep = new Set<string>([...missions.map(resultKeyOf), ...tq.docs.map((d) => `tq_${d.id}`)]);
+  const stale = results.docs.filter((d) => !keep.has(String(d.data().quizId))).map((d) => d.ref);
+  return deleteRefs(stale);
+}
+
+/** Kelas langsung memakai Realtime Database sementara; bersihkan sisanya sebisa mungkin (galat diabaikan). */
+const LIVE_NODES = ['roster', 'state', 'question', 'groups', 'teams', 'meta'] as const;
+async function clearLiveClass(classId: string): Promise<void> {
+  try {
+    const [{ ref, remove }, { getRtdb }] = await Promise.all([import('firebase/database'), import('./rtdb')]);
+    const rtdb = getRtdb();
+    for (const node of LIVE_NODES) await remove(ref(rtdb, `class_live/${classId}/${node}`)).catch(() => undefined);
+  } catch {
+    /* RTDB tidak dikonfigurasi atau ditolak: tidak apa-apa, datanya sementara */
+  }
+}
+
+/**
+ * Hapus kelas sepenuhnya: misi, kuis guru + kuncinya, jawaban, hasil, anggota, kode gabung, dan sisa kelas langsung.
+ * Urutan penting: Rules memeriksa dokumen kelas, jadi dokumen kelas dihapus PALING AKHIR.
+ */
+export async function deleteClassCascade(c: { id: string; joinCode: string }): Promise<void> {
+  const db = getDb();
+  for (const sub of ['quizzes', 'quiz_keys', 'teacher_quizzes', 'quiz_answers', 'results'] as const) {
+    const snap = await getDocs(collection(db, 'classes', c.id, sub));
+    await deleteRefs(snap.docs.map((d) => d.ref));
+  }
+  const members = await getDocs(query(collection(db, 'class_members'), where('classId', '==', c.id)));
+  await deleteRefs(members.docs.map((d) => d.ref));
+  await clearLiveClass(c.id);
+  await deleteRefs([doc(db, 'class_codes', c.joinCode), doc(db, 'classes', c.id)]);
 }
 
 // ───────── Kelas milik siswa ─────────

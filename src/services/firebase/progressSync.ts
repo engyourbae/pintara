@@ -1,8 +1,9 @@
 import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore';
 import { sampleContents } from '@/data/sample';
-import { GAME_MISSIONS, gameIdOfKey } from '@/data/missions';
+import { GAME_MISSIONS, gameIdOfKey, resultKeyOf } from '@/data/missions';
 import { getProgress, progressActions, subscribeProgress } from '@/hooks/useProgress';
 import type { QuizBest } from '@/types';
+import { listMissions } from './classes';
 import { getDb } from './client';
 
 /**
@@ -122,11 +123,31 @@ async function pushSnapshot(uid: string, remote: Remote) {
   remote.snapSig = sig;
 }
 
-/** Hasil per kuis untuk setiap kelas yang sudah menyetujui siswa. Hanya yang berubah sejak terakhir. */
+/** Kunci hasil misi aktif per kelas (dibaca paling sering tiap 5 menit). null = gagal dibaca: jangan menulis apa pun. */
+const missionKeyCache = new Map<string, { at: number; keys: Set<string> }>();
+async function missionKeysOf(classId: string): Promise<Set<string> | null> {
+  const hit = missionKeyCache.get(classId);
+  if (hit && Date.now() - hit.at < 5 * 60_000) return hit.keys;
+  try {
+    const keys = new Set((await listMissions(classId)).map(resultKeyOf));
+    missionKeyCache.set(classId, { at: Date.now(), keys });
+    return keys;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Hasil per kuis untuk setiap kelas yang sudah menyetujui siswa, HANYA untuk kuis/game yang menjadi misi kelas itu
+ * (agar data kelas tidak menumpuk). Hanya yang berubah sejak terakhir.
+ */
 async function pushClassResults(uid: string, pushed: Map<string, string>, classIds: string[]) {
   const db = getDb();
   for (const classId of classIds) {
+    const keys = await missionKeysOf(classId);
+    if (!keys) continue;
     for (const [quizId, b] of Object.entries(getProgress().quizBest)) {
+      if (!keys.has(quizId)) continue;
       const sig = `${b.score}|${b.attempts}`;
       if (pushed.get(`${classId}:${quizId}`) === sig) continue;
       await setDoc(doc(db, 'classes', classId, 'results', `${quizId}_${uid}`), {
@@ -145,7 +166,7 @@ async function pushClassResults(uid: string, pushed: Map<string, string>, classI
     const played = new Set(Object.entries(getProgress().gameBest).filter(([, v]) => v > 0).map(([k]) => gameIdOfKey(k)).filter((id) => missionIds.has(id)));
     for (const gameId of played) {
       const quizId = `game_${gameId}`;
-      if (pushed.get(`${classId}:${quizId}`) === 'ok') continue;
+      if (!keys.has(quizId) || pushed.get(`${classId}:${quizId}`) === 'ok') continue;
       await setDoc(doc(db, 'classes', classId, 'results', `${quizId}_${uid}`), {
         uid, quizId, score: 100, correct: 1, total: 1, updatedAt: serverTimestamp(),
       });
