@@ -1,3 +1,4 @@
+import { checkLock, checkResetCooldown, formatWait, recordFailure, recordResetRequest, recordServerThrottle, recordSuccess } from '@/utils/loginGuard';
 import { deleteApp, FirebaseError, initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
@@ -6,6 +7,7 @@ import {
   inMemoryPersistence,
   initializeAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -105,8 +107,63 @@ export function currentUid(): string | null {
   return getFirebaseAuth().currentUser?.uid ?? null;
 }
 
+const CREDENTIAL_ERRORS = new Set(['auth/invalid-credential', 'auth/wrong-password', 'auth/user-not-found', 'auth/invalid-login-credentials']);
+const lockedMessage = (ms: number) => `Terlalu banyak percobaan salah. Demi keamanan, coba lagi dalam ${formatWait(ms)}.`;
+
+/**
+ * "Lupa sandi" untuk akun email (orang tua, guru, admin): Firebase mengirim email berisi TAUTAN untuk membuat sandi baru
+ * (bukan kode OTP). Murid memakai nama pengguna tanpa email sungguhan, jadi tidak bisa memakai jalur ini. Selalu tampak
+ * berhasil bila email tidak terdaftar (tidak membocorkan siapa yang punya akun). Ada jeda bertingkat per email dan per perangkat.
+ */
+export async function requestPasswordReset(rawEmail: string): Promise<void> {
+  const email = rawEmail.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.endsWith(`@${CHILD_EMAIL_DOMAIN}`)) {
+    throw new UserFacingError('Isi alamat email yang valid. Murid masuk dengan nama pengguna dan PIN, bukan email.');
+  }
+  const wait = checkResetCooldown(email);
+  if (wait.locked) throw new UserFacingError(`Tautan reset baru saja diminta. Coba lagi dalam ${formatWait(wait.remainingMs)}.`);
+  const auth = getFirebaseAuth();
+  auth.languageCode = 'id';
+  // Jeda hanya dicatat bila Firebase benar-benar memproses permintaan (bukan saat gagal karena tidak ada internet).
+  try {
+    await sendPasswordResetEmail(auth, email);
+    recordResetRequest(email);
+  } catch (e) {
+    if (e instanceof FirebaseError) {
+      if (e.code === 'auth/user-not-found') {
+        recordResetRequest(email);
+        return;
+      }
+      if (e.code === 'auth/too-many-requests') {
+        recordResetRequest(email);
+        throw new UserFacingError('Terlalu banyak permintaan. Coba lagi nanti.');
+      }
+    }
+    throw e;
+  }
+}
+
+/**
+ * Masuk dengan sandi/PIN. Dijaga jeda bertingkat bila salah berulang (lihat utils/loginGuard.ts untuk aturan dan
+ * batasnya: perlindungan sisi klien, pembatasan server tetap oleh Firebase Auth).
+ */
 export async function signInWithIdentifier(identifier: string, secret: string): Promise<void> {
-  await signInWithEmailAndPassword(getFirebaseAuth(), identifierToEmail(identifier), secret);
+  const lock = checkLock(identifier);
+  if (lock.locked) throw new UserFacingError(lockedMessage(lock.remainingMs));
+  try {
+    await signInWithEmailAndPassword(getFirebaseAuth(), identifierToEmail(identifier), secret);
+    recordSuccess(identifier);
+  } catch (e) {
+    if (e instanceof FirebaseError) {
+      if (CREDENTIAL_ERRORS.has(e.code)) {
+        const s = recordFailure(identifier);
+        if (s.locked) throw new UserFacingError(`Nama pengguna/email atau sandi salah. ${lockedMessage(s.remainingMs)}`);
+      } else if (e.code === 'auth/too-many-requests') {
+        throw new UserFacingError(lockedMessage(recordServerThrottle(identifier).remainingMs));
+      }
+    }
+    throw e;
+  }
 }
 
 /**
