@@ -6,6 +6,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { friendlyError, registerAdult, signInWithGoogle, signInWithIdentifier } from '@/services/firebase/auth';
 import { passwordOk } from '@/utils/password';
 import { AuthShell, Field, FormError, GoogleButton, PasswordField } from './parts';
+import { ForgotPassword } from './ForgotPassword';
+import { LoginLockNotice, useLoginLock } from './LoginLock';
 import { cn } from '@/utils/cn';
 
 type TeacherMode = 'masuk' | 'daftar';
@@ -35,6 +37,8 @@ export function MasukPage() {
   const [tEmail, setTEmail] = useState('');
   const [tPass, setTPass] = useState('');
   const [tError, setTError] = useState('');
+  const lockMain = useLoginLock(identifier);
+  const lockTeacher = useLoginLock(tEmail);
 
   useEffect(() => {
     if (status === 'ready' && user) {
@@ -177,10 +181,12 @@ export function MasukPage() {
             <Field label="Email" type="email" value={tEmail} onChange={(e) => setTEmail(e.target.value)} autoComplete="email" autoCapitalize="none" required />
             <PasswordField label="Sandi" value={tPass} onChange={setTPass} autoComplete={mode === 'masuk' ? 'current-password' : 'new-password'} required checklist={mode === 'daftar'} />
             <FormError message={tError} />
-            <Button type="submit" size="lg" block disabled={busy !== '' || (mode === 'daftar' && !passwordOk(tPass))}>
+            {mode === 'masuk' && <LoginLockNotice lock={lockTeacher} />}
+            <Button type="submit" size="lg" block disabled={busy !== '' || (mode === 'masuk' && lockTeacher.locked) || (mode === 'daftar' && !passwordOk(tPass))}>
               {busy === 'guru-form' ? 'Memproses…' : mode === 'masuk' ? 'Masuk sebagai guru' : 'Daftar sebagai guru'}
             </Button>
           </form>
+          {mode === 'masuk' && <ForgotPassword initialEmail={tEmail} />}
           {mode === 'daftar' && (
             <p className="flex items-start gap-2 text-sm">
               <Icon name="shield" size={18} className="mt-0.5 shrink-0" />
@@ -247,10 +253,12 @@ export function MasukPage() {
                 hint="Nama pengguna diberikan orang tuamu."
               />
               <PasswordField label="PIN atau sandi" value={secret} onChange={setSecret} autoComplete="current-password" required />
-              <Button type="submit" size="lg" block disabled={busy !== ''}>
+              <LoginLockNotice lock={lockMain} />
+              <Button type="submit" size="lg" block disabled={busy !== '' || lockMain.locked}>
                 {busy === 'form' ? 'Memeriksa…' : 'Masuk'}
               </Button>
             </form>
+            <ForgotPassword initialEmail={identifier} />
           </>
         ) : (
           <>

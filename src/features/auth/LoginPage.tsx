@@ -5,6 +5,8 @@ import { MODE_BASE } from '@/app/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { friendlyError, signInWithGoogle, signInWithIdentifier } from '@/services/firebase/auth';
 import { AuthShell, Field, FormError, GoogleButton, PasswordField } from './parts';
+import { ForgotPassword } from './ForgotPassword';
+import { LoginLockNotice, useLoginLock } from './LoginLock';
 
 /** `home` dipakai aplikasi admin: tujuan setelah masuk, tanpa tautan daftar/tamu. */
 export function LoginPage({ home }: { home?: string } = {}) {
@@ -12,6 +14,7 @@ export function LoginPage({ home }: { home?: string } = {}) {
   const navigate = useNavigate();
   const from = (useLocation().state as { from?: string } | null)?.from;
   const [identifier, setIdentifier] = useState('');
+  const lock = useLoginLock(identifier);
   const [secret, setSecret] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -95,10 +98,12 @@ export function LoginPage({ home }: { home?: string } = {}) {
         />
         <PasswordField label="Sandi atau PIN" value={secret} onChange={setSecret} autoComplete="current-password" required />
         <FormError message={error} />
-        <Button type="submit" size="lg" block disabled={busy}>
+        <LoginLockNotice lock={lock} />
+        <Button type="submit" size="lg" block disabled={busy || lock.locked}>
           {busy ? 'Memeriksa…' : 'Masuk'}
         </Button>
       </form>
+      <ForgotPassword initialEmail={identifier} />
 
       {home ? (
         <Card tone="langit" className="flex items-start gap-3">
