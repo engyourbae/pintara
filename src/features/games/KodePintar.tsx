@@ -80,6 +80,20 @@ function SqlTableView({ t, tone }: { t: SqlTable; tone?: 'hasil' }) {
   );
 }
 
+function TermScreen({ lesson, trackId, shown, indent, done }: { lesson: KLesson; trackId: string; shown: string[]; indent: number[]; done: boolean }) {
+  const prompt = trackId === 'git' ? '$ ' : trackId === 'py' ? '>>> ' : '';
+  return (
+    <div className="space-y-2">
+      <pre className="overflow-x-auto whitespace-pre-wrap break-all rounded-xl border-2 border-tinta bg-tinta p-3 font-mono text-sm text-gading">
+        {shown.map((c, k) => (trackId === 'py' ? '    '.repeat(indent[k] ?? 0) + c : prompt + c)).join('\n')}
+        {done && lesson.out ? '\n\n' + lesson.out : ''}
+      </pre>
+      {!done && <p className="font-bold text-tinta/70">Keluaran muncul setelah semua baris selesai kamu ketik.</p>}
+      <p className="text-sm text-tinta/70">Keluaran ini simulasi untuk belajar.</p>
+    </div>
+  );
+}
+
 function SqlScreen({ lesson, done }: { lesson: KLesson; done: boolean }) {
   const s = lesson.sql;
   if (!s) return null;
@@ -101,10 +115,13 @@ function SqlScreen({ lesson, done }: { lesson: KLesson; done: boolean }) {
   );
 }
 
-function Layar({ track, lesson, shown, done }: { track: KTrack; lesson: KLesson; shown: string[]; done: boolean }) {
+function Layar({ track, lesson, shown, indent, done }: { track: KTrack; lesson: KLesson; shown: string[]; indent: number[]; done: boolean }) {
   const [open, setOpen] = useState(false);
   const isSql = track.id === 'sql';
-  const doc = useMemo(() => (isSql ? '' : buildDoc(track, lesson, shown)), [isSql, track, lesson, shown]);
+  const isTerm = track.id === 'py' || track.id === 'git';
+  const textual = isSql || isTerm;
+  const text = isTerm ? <TermScreen lesson={lesson} trackId={track.id} shown={shown} indent={indent} done={done} /> : <SqlScreen lesson={lesson} done={done} />;
+  const doc = useMemo(() => (textual ? '' : buildDoc(track, lesson, shown)), [textual, track, lesson, shown]);
 
   useEffect(() => {
     if (!open) return;
@@ -115,9 +132,7 @@ function Layar({ track, lesson, shown, done }: { track: KTrack; lesson: KLesson;
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  const preview = isSql ? (
-    <SqlScreen lesson={lesson} done={done} />
-  ) : (
+  const preview = (
     <iframe
       title="Layar hasil proyek"
       sandbox="allow-scripts"
@@ -140,7 +155,7 @@ function Layar({ track, lesson, shown, done }: { track: KTrack; lesson: KLesson;
           </span>
           <span className="text-sm font-bold text-langit-700">Ketuk untuk memperbesar</span>
         </button>
-        <div className="max-h-48 overflow-hidden p-2">{isSql ? <SqlScreen lesson={lesson} done={done} /> : preview}</div>
+        <div className="max-h-48 overflow-hidden p-2">{textual ? text : preview}</div>
       </div>
       {open && (
         <div role="dialog" aria-modal="true" aria-label="Layar hasil" className="fixed inset-0 z-50 flex flex-col gap-3 bg-tinta/60 p-3">
@@ -151,7 +166,7 @@ function Layar({ track, lesson, shown, done }: { track: KTrack; lesson: KLesson;
                 <Icon name="close" size={20} /> Tutup
               </Button>
             </div>
-            {isSql ? <SqlScreen lesson={lesson} done={done} /> : <div className="min-h-0 flex-1">{preview}</div>}
+            {textual ? text : <div className="min-h-0 flex-1">{preview}</div>}
           </div>
         </div>
       )}
@@ -194,11 +209,12 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
   const placedCount = slotTile.filter((t) => t !== null).length;
   const target = phase === 'ketik' ? codes[cur] ?? '' : '';
 
-  const shown = useMemo(() => {
-    if (phase === 'susun') return slotTile.flatMap((t) => (t === null ? [] : [lesson.lines[t].c]));
-    const upto = phase === 'selesai' ? n : cur;
-    return slotTile.slice(0, upto).flatMap((t) => (t === null ? [] : [lesson.lines[t].c]));
-  }, [phase, slotTile, cur, n, lesson]);
+  const shownSlots = useMemo(() => {
+    const upto = phase === 'selesai' ? n : phase === 'ketik' ? cur : n;
+    return slotTile.slice(0, upto).flatMap((t, i) => (t === null ? [] : [i]));
+  }, [phase, slotTile, cur, n]);
+  const shown = useMemo(() => shownSlots.map((i) => lesson.lines[slotTile[i] as number].c), [shownSlots, slotTile, lesson]);
+  const shownIndent = useMemo(() => shownSlots.map((i) => lesson.lines[i].i ?? 0), [shownSlots, lesson]);
 
   useEffect(() => {
     if (phase !== 'ketik') return;
@@ -294,7 +310,7 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
           </p>
           <p className="text-tinta/85">Kamu sudah bisa: {lesson.goal.charAt(0).toLowerCase() + lesson.goal.slice(1)}</p>
           <div className="w-full">
-            <Layar track={track} lesson={lesson} shown={shown} done />
+            <Layar track={track} lesson={lesson} shown={shown} indent={shownIndent} done />
           </div>
           <div className="grid w-full gap-3 sm:grid-cols-2">
             {next && (
@@ -337,7 +353,7 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
         <p className="text-tinta/85">{lesson.goal}</p>
       </div>
 
-      <Layar track={track} lesson={lesson} shown={shown} done={false} />
+      <Layar track={track} lesson={lesson} shown={shown} indent={shownIndent} done={false} />
 
       <Card tone="papan" className="space-y-2">
         <p className="font-display text-lg font-semibold">{phase === 'susun' ? 'Langkah 1: Susun kotak kode' : 'Langkah 2: Ketik kodenya'}</p>
@@ -542,7 +558,7 @@ export function KodePintar() {
         );
       })}
 
-      <p className="text-sm text-tinta/70">Jalur lain (mis. Python dan Git) ditambahkan bertahap.</p>
+      <p className="text-sm text-tinta/70">Jalur baru ditambahkan bertahap.</p>
       <ButtonLink to={GAME} variant="sekunder">
         Kembali
       </ButtonLink>
