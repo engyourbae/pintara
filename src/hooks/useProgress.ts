@@ -42,6 +42,8 @@ export interface Progress {
    * soal paket selesai). Hanya di perangkat; tidak disalin ke Firebase agar data server tidak menumpuk.
    */
   levelDone: Record<string, string[]>;
+  /** Bintang terbaik (1-3) per pelajaran game Kode Pintar. Hanya di perangkat; ringkasan jumlah selesai ada di gameBest. */
+  kode: Record<string, number>;
   streak: number;
   lastDay: string;
 }
@@ -56,6 +58,7 @@ const EMPTY: Progress = {
   quizBest: {},
   gameBest: {},
   levelDone: {},
+  kode: {},
   streak: 0,
   lastDay: '',
 };
@@ -159,6 +162,16 @@ export const progressActions = {
       ...touchStreak(state),
       xp: state.xp + gained,
       gameBest: { ...state.gameBest, [gameId]: Math.max(state.gameBest[gameId] ?? 0, score) },
+    });
+  },
+  /** Mencatat satu pelajaran Kode Pintar selesai. trackKey (mis. kode-html) menyimpan jumlah pelajaran selesai di jalur itu. */
+  recordKode(lessonId: string, stars: number, trackKey: string, doneInTrack: number, gained: number) {
+    save({
+      ...state,
+      ...touchStreak(state),
+      xp: state.xp + gained,
+      kode: { ...(state.kode ?? {}), [lessonId]: Math.max(state.kode?.[lessonId] ?? 0, stars) },
+      gameBest: { ...state.gameBest, [trackKey]: Math.max(state.gameBest[trackKey] ?? 0, doneInTrack) },
     });
   },
   /** Tandai soal-soal ini selesai dikerjakan pada paket tersebut. */
