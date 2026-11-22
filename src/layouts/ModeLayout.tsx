@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { ButtonLink, Icon, Logo } from '@/components/ui';
+import { ButtonLink, Icon, Logo, PageSkeleton } from '@/components/ui';
 import { AccountMenu } from './AccountMenu';
 import { useAuth } from '@/hooks/useAuth';
 import { MODE_BASE, MODE_LABEL, NAV } from '@/app/navigation';
@@ -45,7 +45,9 @@ export function ModeLayout({ role }: { role: Role }) {
   if (focus) {
     return (
       <div data-mode={role} className="min-h-screen">
-        <Outlet />
+        <Suspense fallback={<PageSkeleton />}>
+          <Outlet />
+        </Suspense>
         {floating}
       </div>
     );
@@ -119,7 +121,9 @@ export function ModeLayout({ role }: { role: Role }) {
       </header>
 
       <div className="flex-1">
-        <Outlet />
+        <Suspense fallback={<PageSkeleton />}>
+          <Outlet />
+        </Suspense>
       </div>
       {floating}
     </div>
