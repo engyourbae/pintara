@@ -3683,7 +3683,7 @@
       5
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -4044,6 +4044,246 @@
         ],
         "answerIndex": 1,
         "explanation": "Sila keempat tentang kerakyatan dan permusyawaratan."
+      },
+      {
+        "id": "q31",
+        "prompt": "Kata \"mufakat\" berarti ...",
+        "options": [
+          "pertengkaran",
+          "kesepakatan bersama",
+          "pemaksaan",
+          "kekalahan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mufakat adalah hasil yang disepakati bersama."
+      },
+      {
+        "id": "q32",
+        "prompt": "Perbedaan agama di Indonesia sebaiknya disikapi dengan ...",
+        "options": [
+          "toleransi",
+          "permusuhan",
+          "ejekan",
+          "pemaksaan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Toleransi berarti menghargai perbedaan."
+      },
+      {
+        "id": "q33",
+        "prompt": "Toleransi berarti ...",
+        "options": [
+          "memaksakan pendapat",
+          "menjauhi teman",
+          "iri hati",
+          "menghargai perbedaan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Toleransi adalah saling menghargai."
+      },
+      {
+        "id": "q34",
+        "prompt": "Rumah Gadang adalah rumah adat dari ...",
+        "options": [
+          "Papua",
+          "Bali",
+          "Sumatra Barat",
+          "Jawa Tengah"
+        ],
+        "answerIndex": 2,
+        "explanation": "Rumah Gadang milik suku Minangkabau."
+      },
+      {
+        "id": "q35",
+        "prompt": "Tari Kecak berasal dari ...",
+        "options": [
+          "Bali",
+          "Aceh",
+          "Papua",
+          "Sumatra Barat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tari Kecak terkenal dari Bali."
+      },
+      {
+        "id": "q36",
+        "prompt": "Alat musik angklung berasal dari ...",
+        "options": [
+          "Papua",
+          "Sumatra Utara",
+          "Jawa Barat",
+          "Maluku"
+        ],
+        "answerIndex": 2,
+        "explanation": "Angklung dari bambu khas Jawa Barat."
+      },
+      {
+        "id": "q37",
+        "prompt": "Honai adalah rumah adat dari ...",
+        "options": [
+          "Papua",
+          "Bali",
+          "Aceh",
+          "Jawa Barat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Honai berasal dari Papua."
+      },
+      {
+        "id": "q38",
+        "prompt": "Rendang adalah makanan khas dari ...",
+        "options": [
+          "Sumatra Barat",
+          "Jawa Timur",
+          "Bali",
+          "Papua"
+        ],
+        "answerIndex": 0,
+        "explanation": "Rendang berasal dari Minangkabau."
+      },
+      {
+        "id": "q39",
+        "prompt": "Papeda adalah makanan khas dari ...",
+        "options": [
+          "Aceh",
+          "Papua dan Maluku",
+          "Jawa Barat",
+          "Bali"
+        ],
+        "answerIndex": 1,
+        "explanation": "Papeda dibuat dari sagu."
+      },
+      {
+        "id": "q40",
+        "prompt": "Salah satu isi Sumpah Pemuda adalah berbangsa satu, bangsa ...",
+        "options": [
+          "Jawa",
+          "Indonesia",
+          "Sumatra",
+          "Bali"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bangsa Indonesia."
+      },
+      {
+        "id": "q41",
+        "prompt": "Pemimpin musyawarah harus bersikap ...",
+        "options": [
+          "memihak",
+          "pemarah",
+          "acuh",
+          "adil"
+        ],
+        "answerIndex": 3,
+        "explanation": "Pemimpin harus adil kepada semua."
+      },
+      {
+        "id": "q42",
+        "prompt": "Jika ada perbedaan pendapat dalam musyawarah, sebaiknya ...",
+        "options": [
+          "dibawa dengan marah",
+          "meninggalkan ruangan",
+          "dibahas dengan kepala dingin",
+          "berteriak"
+        ],
+        "answerIndex": 2,
+        "explanation": "Selesaikan dengan tenang."
+      },
+      {
+        "id": "q43",
+        "prompt": "Memotong pembicaraan orang lain saat musyawarah adalah sikap ...",
+        "options": [
+          "terpuji",
+          "wajib",
+          "bijaksana",
+          "kurang sopan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Dengarkan sampai selesai."
+      },
+      {
+        "id": "q44",
+        "prompt": "Pertemuan warga satu RT untuk membahas masalah bersama disebut ...",
+        "options": [
+          "rapat warga",
+          "upacara",
+          "lomba",
+          "pesta"
+        ],
+        "answerIndex": 0,
+        "explanation": "Rapat warga adalah musyawarah di RT."
+      },
+      {
+        "id": "q45",
+        "prompt": "Mengikuti kerja bakti bersama tetangga yang berbeda suku menunjukkan sikap ...",
+        "options": [
+          "permusuhan",
+          "persatuan",
+          "iri",
+          "pelit"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bekerja sama tanpa membedakan suku."
+      },
+      {
+        "id": "q46",
+        "prompt": "Hari Sumpah Pemuda diperingati setiap tahun pada bulan ...",
+        "options": [
+          "Juni",
+          "Agustus",
+          "Mei",
+          "Oktober"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sumpah Pemuda 28 Oktober."
+      },
+      {
+        "id": "q47",
+        "prompt": "Semboyan Bhinneka Tunggal Ika tertulis pada pita yang dicengkeram ...",
+        "options": [
+          "kepala Garuda",
+          "sayap Garuda",
+          "kaki Garuda",
+          "perisai"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pita ada di kaki Garuda."
+      },
+      {
+        "id": "q48",
+        "prompt": "Pemungutan suara dilakukan dengan cara ...",
+        "options": [
+          "menunjuk sendiri",
+          "melempar koin",
+          "menunggu ada yang menyerah",
+          "menghitung suara terbanyak"
+        ],
+        "answerIndex": 3,
+        "explanation": "Suara terbanyak menjadi keputusan."
+      },
+      {
+        "id": "q49",
+        "prompt": "Saat ada teman baru dari daerah lain di kelas, kita sebaiknya ...",
+        "options": [
+          "menjauhinya",
+          "mengejek logatnya",
+          "menyambutnya dengan ramah",
+          "mengabaikannya"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sambut dengan ramah dan hormat."
+      },
+      {
+        "id": "q50",
+        "prompt": "Perbedaan adalah ... bagi bangsa Indonesia.",
+        "options": [
+          "kelemahan",
+          "kekayaan",
+          "masalah",
+          "aib"
+        ],
+        "answerIndex": 1,
+        "explanation": "Perbedaan membuat Indonesia kaya budaya."
       }
     ]
   },
@@ -4055,7 +4295,7 @@
       6
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -4416,6 +4656,246 @@
         ],
         "answerIndex": 0,
         "explanation": "Menghemat sumber daya adalah kewajiban bersama."
+      },
+      {
+        "id": "q31",
+        "prompt": "Merebut mainan teman termasuk ...",
+        "options": [
+          "menjalankan kewajiban",
+          "berbagi",
+          "gotong royong",
+          "melanggar hak orang lain"
+        ],
+        "answerIndex": 3,
+        "explanation": "Mengambil milik orang lain melanggar hak."
+      },
+      {
+        "id": "q32",
+        "prompt": "Orang tua berkewajiban kepada anak untuk ...",
+        "options": [
+          "merawat dan mendidik",
+          "meminta uang",
+          "menyuruh bekerja berat",
+          "mengabaikan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Orang tua merawat dan mendidik anak."
+      },
+      {
+        "id": "q33",
+        "prompt": "Kewajiban murid terhadap guru adalah ...",
+        "options": [
+          "membantah",
+          "mengejek",
+          "menghormati",
+          "menghindar"
+        ],
+        "answerIndex": 2,
+        "explanation": "Murid wajib menghormati guru."
+      },
+      {
+        "id": "q34",
+        "prompt": "Memakai seragam sesuai aturan sekolah termasuk ...",
+        "options": [
+          "hak guru",
+          "kewajiban siswa",
+          "hak siswa",
+          "pilihan bebas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Menaati aturan adalah kewajiban."
+      },
+      {
+        "id": "q35",
+        "prompt": "Salah satu hak siswa di sekolah adalah ...",
+        "options": [
+          "membuat tata tertib sendiri",
+          "tidak mengerjakan tugas",
+          "datang kapan saja",
+          "mendapat pelajaran dari guru"
+        ],
+        "answerIndex": 3,
+        "explanation": "Siswa berhak belajar."
+      },
+      {
+        "id": "q36",
+        "prompt": "Melaksanakan jadwal piket kelas adalah ...",
+        "options": [
+          "kewajiban",
+          "hak",
+          "hadiah",
+          "hukuman"
+        ],
+        "answerIndex": 0,
+        "explanation": "Piket adalah tanggung jawab siswa."
+      },
+      {
+        "id": "q37",
+        "prompt": "Setiap warga negara wajib menaati ...",
+        "options": [
+          "keinginan sendiri",
+          "ajakan teman",
+          "iklan",
+          "hukum dan peraturan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Hukum berlaku bagi semua warga."
+      },
+      {
+        "id": "q38",
+        "prompt": "Salah satu hak warga negara adalah mendapat ...",
+        "options": [
+          "membayar pajak",
+          "menaati peraturan",
+          "pekerjaan yang layak",
+          "membela negara"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pekerjaan layak adalah hak warga."
+      },
+      {
+        "id": "q39",
+        "prompt": "Pemilihan umum dilaksanakan untuk memilih ...",
+        "options": [
+          "pemimpin dan wakil rakyat",
+          "ketua kelas",
+          "juara lomba",
+          "guru baru"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pemilu memilih pemimpin negara."
+      },
+      {
+        "id": "q40",
+        "prompt": "Memilih dalam pemilu adalah hak sekaligus ...",
+        "options": [
+          "hukuman",
+          "hadiah",
+          "tanggung jawab warga",
+          "paksaan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Suara kita menentukan pemimpin."
+      },
+      {
+        "id": "q41",
+        "prompt": "Anak berhak mendapat ... dari orang tua.",
+        "options": [
+          "pekerjaan berat",
+          "kasih sayang",
+          "hukuman fisik",
+          "tanggung jawab keuangan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Anak berhak disayangi."
+      },
+      {
+        "id": "q42",
+        "prompt": "Contoh menjaga perdamaian di lingkungan adalah ...",
+        "options": [
+          "membuat gaduh",
+          "mengadu domba",
+          "tidak bertengkar dengan tetangga",
+          "membuang sampah sembarangan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Hidup rukun menjaga perdamaian."
+      },
+      {
+        "id": "q43",
+        "prompt": "Mengikuti upacara bendera dengan tertib termasuk ...",
+        "options": [
+          "kewajiban siswa",
+          "hak istimewa",
+          "pilihan bebas",
+          "hukuman"
+        ],
+        "answerIndex": 0,
+        "explanation": "Upacara dilakukan dengan tertib."
+      },
+      {
+        "id": "q44",
+        "prompt": "Pajak yang dibayar warga digunakan untuk ...",
+        "options": [
+          "membeli mainan pribadi",
+          "memberi hadiah ulang tahun",
+          "membangun fasilitas umum",
+          "menutup jalan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pajak membiayai jalan dan sekolah."
+      },
+      {
+        "id": "q45",
+        "prompt": "Hak untuk beribadah dijamin oleh ...",
+        "options": [
+          "pengumuman RT",
+          "UUD 1945",
+          "aturan kelas",
+          "keputusan teman"
+        ],
+        "answerIndex": 1,
+        "explanation": "UUD 1945 menjamin kebebasan beribadah."
+      },
+      {
+        "id": "q46",
+        "prompt": "Anak yang bertanggung jawab akan ...",
+        "options": [
+          "menunda tugasnya",
+          "menyelesaikan tugasnya",
+          "menyuruh orang lain terus",
+          "melupakan tugasnya"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tanggung jawab berarti menuntaskan tugas."
+      },
+      {
+        "id": "q47",
+        "prompt": "Hak mendapat pelayanan kesehatan dapat diperoleh di ...",
+        "options": [
+          "puskesmas",
+          "pasar",
+          "stasiun",
+          "gudang"
+        ],
+        "answerIndex": 0,
+        "explanation": "Puskesmas melayani kesehatan warga."
+      },
+      {
+        "id": "q48",
+        "prompt": "Menyampaikan pendapat tanpa menghina orang lain berarti kita ...",
+        "options": [
+          "melanggar hak",
+          "berbohong",
+          "marah",
+          "menghormati hak orang lain"
+        ],
+        "answerIndex": 3,
+        "explanation": "Pendapat disampaikan dengan sopan."
+      },
+      {
+        "id": "q49",
+        "prompt": "Menuntut hak tanpa menjalankan kewajiban membuat kehidupan ...",
+        "options": [
+          "seimbang",
+          "tenang",
+          "adil",
+          "tidak seimbang"
+        ],
+        "answerIndex": 3,
+        "explanation": "Hak dan kewajiban harus seimbang."
+      },
+      {
+        "id": "q50",
+        "prompt": "Wujud cinta tanah air oleh siswa adalah ...",
+        "options": [
+          "membolos",
+          "belajar giat dan menjaga lingkungan",
+          "merusak fasilitas",
+          "mengejek bangsa"
+        ],
+        "answerIndex": 1,
+        "explanation": "Belajar dan menjaga lingkungan itu bermanfaat."
       }
     ]
   },
@@ -4428,7 +4908,7 @@
       5
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -4789,6 +5269,246 @@
         ],
         "answerIndex": 0,
         "explanation": "Ears = telinga."
+      },
+      {
+        "id": "q31",
+        "prompt": "\"Sheep\" artinya ...",
+        "options": [
+          "kambing",
+          "sapi",
+          "domba",
+          "kuda"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sheep berarti domba."
+      },
+      {
+        "id": "q32",
+        "prompt": "\"Frog\" artinya ...",
+        "options": [
+          "ular",
+          "katak",
+          "ikan",
+          "kura-kura"
+        ],
+        "answerIndex": 1,
+        "explanation": "Frog berarti katak."
+      },
+      {
+        "id": "q33",
+        "prompt": "\"Butterfly\" artinya ...",
+        "options": [
+          "kupu-kupu",
+          "burung",
+          "lebah",
+          "capung"
+        ],
+        "answerIndex": 0,
+        "explanation": "Butterfly berarti kupu-kupu."
+      },
+      {
+        "id": "q34",
+        "prompt": "\"Bear\" artinya ...",
+        "options": [
+          "singa",
+          "harimau",
+          "beruang",
+          "kera"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bear berarti beruang."
+      },
+      {
+        "id": "q35",
+        "prompt": "\"Giraffe\" artinya ...",
+        "options": [
+          "gajah",
+          "kuda",
+          "zebra",
+          "jerapah"
+        ],
+        "answerIndex": 3,
+        "explanation": "Giraffe berarti jerapah."
+      },
+      {
+        "id": "q36",
+        "prompt": "\"Turtle\" artinya ...",
+        "options": [
+          "katak",
+          "ikan",
+          "ular",
+          "kura-kura"
+        ],
+        "answerIndex": 3,
+        "explanation": "Turtle berarti kura-kura."
+      },
+      {
+        "id": "q37",
+        "prompt": "\"Mouse\" artinya ...",
+        "options": [
+          "kucing",
+          "tikus",
+          "kelinci",
+          "tupai"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mouse berarti tikus."
+      },
+      {
+        "id": "q38",
+        "prompt": "\"Whale\" artinya ...",
+        "options": [
+          "ikan",
+          "hiu",
+          "lumba-lumba",
+          "paus"
+        ],
+        "answerIndex": 3,
+        "explanation": "Whale berarti paus."
+      },
+      {
+        "id": "q39",
+        "prompt": "\"Crocodile\" artinya ...",
+        "options": [
+          "buaya",
+          "ular",
+          "kadal",
+          "katak"
+        ],
+        "answerIndex": 0,
+        "explanation": "Crocodile berarti buaya."
+      },
+      {
+        "id": "q40",
+        "prompt": "\"Spider\" artinya ...",
+        "options": [
+          "laba-laba",
+          "semut",
+          "lalat",
+          "nyamuk"
+        ],
+        "answerIndex": 0,
+        "explanation": "Spider berarti laba-laba."
+      },
+      {
+        "id": "q41",
+        "prompt": "\"Foot\" artinya ...",
+        "options": [
+          "tangan",
+          "kepala",
+          "telapak kaki",
+          "lutut"
+        ],
+        "answerIndex": 2,
+        "explanation": "Foot berarti telapak kaki."
+      },
+      {
+        "id": "q42",
+        "prompt": "\"Neck\" artinya ...",
+        "options": [
+          "bahu",
+          "leher",
+          "kepala",
+          "perut"
+        ],
+        "answerIndex": 1,
+        "explanation": "Neck berarti leher."
+      },
+      {
+        "id": "q43",
+        "prompt": "\"Shoulder\" artinya ...",
+        "options": [
+          "leher",
+          "lutut",
+          "siku",
+          "bahu"
+        ],
+        "answerIndex": 3,
+        "explanation": "Shoulder berarti bahu."
+      },
+      {
+        "id": "q44",
+        "prompt": "\"Back\" artinya ...",
+        "options": [
+          "perut",
+          "dada",
+          "punggung",
+          "kepala"
+        ],
+        "answerIndex": 2,
+        "explanation": "Back berarti punggung."
+      },
+      {
+        "id": "q45",
+        "prompt": "\"Face\" artinya ...",
+        "options": [
+          "tangan",
+          "kaki",
+          "wajah",
+          "perut"
+        ],
+        "answerIndex": 2,
+        "explanation": "Face berarti wajah."
+      },
+      {
+        "id": "q46",
+        "prompt": "\"Tongue\" artinya ...",
+        "options": [
+          "gigi",
+          "hidung",
+          "telinga",
+          "lidah"
+        ],
+        "answerIndex": 3,
+        "explanation": "Tongue berarti lidah."
+      },
+      {
+        "id": "q47",
+        "prompt": "\"Elbow\" artinya ...",
+        "options": [
+          "lutut",
+          "siku",
+          "bahu",
+          "jari"
+        ],
+        "answerIndex": 1,
+        "explanation": "Elbow berarti siku."
+      },
+      {
+        "id": "q48",
+        "prompt": "We smell with our ...",
+        "options": [
+          "eyes",
+          "nose",
+          "ears",
+          "hands"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kita mencium dengan hidung (nose)."
+      },
+      {
+        "id": "q49",
+        "prompt": "We write with our ...",
+        "options": [
+          "hand",
+          "foot",
+          "ear",
+          "eye"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kita menulis dengan tangan (hand)."
+      },
+      {
+        "id": "q50",
+        "prompt": "Bahasa Inggris dari \"sapi\" adalah ...",
+        "options": [
+          "cow",
+          "horse",
+          "goat",
+          "duck"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sapi dalam bahasa Inggris adalah cow."
       }
     ]
   },
@@ -4801,7 +5521,7 @@
       6
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -5162,6 +5882,246 @@
         ],
         "answerIndex": 0,
         "explanation": "November = November."
+      },
+      {
+        "id": "q31",
+        "prompt": "Bulan setelah July adalah ...",
+        "options": [
+          "June",
+          "September",
+          "August",
+          "May"
+        ],
+        "answerIndex": 2,
+        "explanation": "Setelah Juli adalah Agustus (August)."
+      },
+      {
+        "id": "q32",
+        "prompt": "Bulan sebelum October adalah ...",
+        "options": [
+          "November",
+          "August",
+          "December",
+          "September"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sebelum Oktober adalah September."
+      },
+      {
+        "id": "q33",
+        "prompt": "Bulan setelah November adalah ...",
+        "options": [
+          "December",
+          "October",
+          "January",
+          "September"
+        ],
+        "answerIndex": 0,
+        "explanation": "Setelah November adalah Desember."
+      },
+      {
+        "id": "q34",
+        "prompt": "Bulan sebelum March adalah ...",
+        "options": [
+          "April",
+          "January",
+          "May",
+          "February"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sebelum Maret adalah Februari."
+      },
+      {
+        "id": "q35",
+        "prompt": "Bulan kedua dalam setahun adalah ...",
+        "options": [
+          "January",
+          "February",
+          "March",
+          "April"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bulan kedua adalah Februari."
+      },
+      {
+        "id": "q36",
+        "prompt": "Bulan keenam dalam setahun adalah ...",
+        "options": [
+          "June",
+          "July",
+          "May",
+          "August"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bulan keenam adalah Juni."
+      },
+      {
+        "id": "q37",
+        "prompt": "Bulan kesembilan dalam setahun adalah ...",
+        "options": [
+          "August",
+          "September",
+          "October",
+          "November"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bulan kesembilan adalah September."
+      },
+      {
+        "id": "q38",
+        "prompt": "Bulan kesepuluh dalam setahun adalah ...",
+        "options": [
+          "September",
+          "November",
+          "December",
+          "October"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bulan kesepuluh adalah Oktober."
+      },
+      {
+        "id": "q39",
+        "prompt": "Bulan terakhir dalam setahun adalah ...",
+        "options": [
+          "November",
+          "January",
+          "December",
+          "October"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bulan terakhir adalah Desember."
+      },
+      {
+        "id": "q40",
+        "prompt": "Hari sebelum Wednesday adalah ...",
+        "options": [
+          "Thursday",
+          "Tuesday",
+          "Monday",
+          "Friday"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sebelum Rabu adalah Selasa."
+      },
+      {
+        "id": "q41",
+        "prompt": "Hari sebelum Sunday adalah ...",
+        "options": [
+          "Monday",
+          "Saturday",
+          "Friday",
+          "Thursday"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sebelum Minggu adalah Sabtu."
+      },
+      {
+        "id": "q42",
+        "prompt": "Hari setelah Wednesday adalah ...",
+        "options": [
+          "Tuesday",
+          "Friday",
+          "Thursday",
+          "Monday"
+        ],
+        "answerIndex": 2,
+        "explanation": "Setelah Rabu adalah Kamis."
+      },
+      {
+        "id": "q43",
+        "prompt": "Hari setelah Thursday adalah ...",
+        "options": [
+          "Friday",
+          "Wednesday",
+          "Saturday",
+          "Monday"
+        ],
+        "answerIndex": 0,
+        "explanation": "Setelah Kamis adalah Jumat."
+      },
+      {
+        "id": "q44",
+        "prompt": "Jika besok Friday, maka hari ini adalah ...",
+        "options": [
+          "Saturday",
+          "Thursday",
+          "Wednesday",
+          "Monday"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sehari sebelum Jumat adalah Kamis."
+      },
+      {
+        "id": "q45",
+        "prompt": "Jika kemarin Sunday, maka hari ini adalah ...",
+        "options": [
+          "Saturday",
+          "Tuesday",
+          "Monday",
+          "Friday"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sehari setelah Minggu adalah Senin."
+      },
+      {
+        "id": "q46",
+        "prompt": "Bahasa Inggris dari hari Rabu adalah ...",
+        "options": [
+          "Tuesday",
+          "Thursday",
+          "Wendsday",
+          "Wednesday"
+        ],
+        "answerIndex": 3,
+        "explanation": "Rabu = Wednesday."
+      },
+      {
+        "id": "q47",
+        "prompt": "Bahasa Inggris dari hari Kamis adalah ...",
+        "options": [
+          "Tuesday",
+          "Wednesday",
+          "Friday",
+          "Thursday"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kamis = Thursday."
+      },
+      {
+        "id": "q48",
+        "prompt": "Bahasa Inggris dari bulan Juli adalah ...",
+        "options": [
+          "July",
+          "June",
+          "March",
+          "May"
+        ],
+        "answerIndex": 0,
+        "explanation": "Juli = July."
+      },
+      {
+        "id": "q49",
+        "prompt": "Bahasa Inggris dari bulan Oktober adalah ...",
+        "options": [
+          "August",
+          "November",
+          "October",
+          "December"
+        ],
+        "answerIndex": 2,
+        "explanation": "Oktober = October."
+      },
+      {
+        "id": "q50",
+        "prompt": "Hari Senin sampai Jumat disebut ...",
+        "options": [
+          "weekdays",
+          "weekend",
+          "holiday",
+          "midweek"
+        ],
+        "answerIndex": 0,
+        "explanation": "Weekdays adalah hari kerja atau sekolah."
       }
     ]
   }

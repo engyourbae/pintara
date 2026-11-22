@@ -4909,7 +4909,7 @@
       4
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -5270,6 +5270,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Garuda adalah burung mitologi sebagai lambang negara."
+      },
+      {
+        "id": "q31",
+        "prompt": "Bunyi sila keempat Pancasila adalah ...",
+        "options": [
+          "Persatuan Indonesia",
+          "Kemanusiaan yang adil dan beradab",
+          "Keadilan sosial bagi seluruh rakyat Indonesia",
+          "Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan/perwakilan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sila keempat tentang kerakyatan dan musyawarah."
+      },
+      {
+        "id": "q32",
+        "prompt": "Rantai pada lambang sila kedua menggambarkan ...",
+        "options": [
+          "kekuatan senjata",
+          "keindahan alam",
+          "hubungan antarmanusia yang saling berkaitan",
+          "banyaknya makanan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Rantai melambangkan manusia yang saling terhubung."
+      },
+      {
+        "id": "q33",
+        "prompt": "Pohon beringin melambangkan ...",
+        "options": [
+          "kekayaan harta",
+          "kecepatan",
+          "persatuan bangsa Indonesia",
+          "keberanian"
+        ],
+        "answerIndex": 2,
+        "explanation": "Beringin memberi naungan bagi semua."
+      },
+      {
+        "id": "q34",
+        "prompt": "Padi dan kapas melambangkan ...",
+        "options": [
+          "kecukupan pangan dan sandang",
+          "keberanian",
+          "kesucian",
+          "persatuan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Padi adalah pangan, kapas adalah sandang."
+      },
+      {
+        "id": "q35",
+        "prompt": "Bintang pada lambang sila pertama berwarna ...",
+        "options": [
+          "merah",
+          "biru",
+          "hijau",
+          "emas atau kuning"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bintang emas berlatar hitam."
+      },
+      {
+        "id": "q36",
+        "prompt": "Jumlah bulu pada sayap Garuda Pancasila adalah ...",
+        "options": [
+          "8",
+          "17",
+          "45",
+          "5"
+        ],
+        "answerIndex": 1,
+        "explanation": "17 melambangkan tanggal 17."
+      },
+      {
+        "id": "q37",
+        "prompt": "Jumlah bulu pada ekor Garuda Pancasila adalah ...",
+        "options": [
+          "8",
+          "17",
+          "45",
+          "5"
+        ],
+        "answerIndex": 0,
+        "explanation": "8 melambangkan bulan Agustus."
+      },
+      {
+        "id": "q38",
+        "prompt": "Jumlah bulu pada leher Garuda Pancasila adalah ...",
+        "options": [
+          "17",
+          "8",
+          "45",
+          "5"
+        ],
+        "answerIndex": 2,
+        "explanation": "45 melambangkan tahun 1945."
+      },
+      {
+        "id": "q39",
+        "prompt": "Kepala Garuda Pancasila menoleh ke ...",
+        "options": [
+          "kiri",
+          "depan",
+          "atas",
+          "kanan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kepala garuda menoleh ke kanan."
+      },
+      {
+        "id": "q40",
+        "prompt": "Pita yang dicengkeram kaki Garuda berwarna ...",
+        "options": [
+          "merah",
+          "putih",
+          "biru",
+          "kuning"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pita itu berwarna putih bertuliskan Bhinneka Tunggal Ika."
+      },
+      {
+        "id": "q41",
+        "prompt": "Membagi kue sama rata kepada semua teman sesuai dengan sila ...",
+        "options": [
+          "pertama",
+          "ketiga",
+          "keempat",
+          "kelima"
+        ],
+        "answerIndex": 3,
+        "explanation": "Adil kepada semua sesuai sila kelima."
+      },
+      {
+        "id": "q42",
+        "prompt": "Sila Ketuhanan Yang Maha Esa adalah sila ke ...",
+        "options": [
+          "pertama",
+          "kedua",
+          "ketiga",
+          "keempat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sila pertama adalah Ketuhanan Yang Maha Esa."
+      },
+      {
+        "id": "q43",
+        "prompt": "Perisai di dada Garuda melambangkan ...",
+        "options": [
+          "pertahanan dan perlindungan",
+          "kecepatan",
+          "kekayaan",
+          "kesenangan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Perisai adalah tameng pelindung."
+      },
+      {
+        "id": "q44",
+        "prompt": "Pancasila berarti ...",
+        "options": [
+          "lima warna",
+          "lima dasar",
+          "lima pulau",
+          "lima tokoh"
+        ],
+        "answerIndex": 1,
+        "explanation": "Panca berarti lima, sila berarti dasar."
+      },
+      {
+        "id": "q45",
+        "prompt": "Mengucapkan terima kasih saat ditolong mencerminkan sikap ...",
+        "options": [
+          "sombong",
+          "beradab",
+          "pemarah",
+          "malas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sopan santun adalah sikap beradab."
+      },
+      {
+        "id": "q46",
+        "prompt": "Saat upacara bendera, kita memberi hormat kepada ...",
+        "options": [
+          "tiang bendera saja",
+          "bendera Merah Putih",
+          "petugas upacara saja",
+          "barisan teman"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kita menghormati bendera negara."
+      },
+      {
+        "id": "q47",
+        "prompt": "Warna bendera Indonesia adalah ...",
+        "options": [
+          "merah dan biru",
+          "putih dan hijau",
+          "kuning dan merah",
+          "merah dan putih"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bendera Indonesia merah putih."
+      },
+      {
+        "id": "q48",
+        "prompt": "Warna bendera Indonesia di bagian atas adalah ...",
+        "options": [
+          "putih",
+          "biru",
+          "merah",
+          "kuning"
+        ],
+        "answerIndex": 2,
+        "explanation": "Merah di atas, putih di bawah."
+      },
+      {
+        "id": "q49",
+        "prompt": "Hari Kesaktian Pancasila diperingati setiap tanggal ...",
+        "options": [
+          "1 Juni",
+          "17 Agustus",
+          "1 Oktober",
+          "28 Oktober"
+        ],
+        "answerIndex": 2,
+        "explanation": "Hari Kesaktian Pancasila jatuh pada 1 Oktober."
+      },
+      {
+        "id": "q50",
+        "prompt": "Pencipta lagu Indonesia Raya adalah ...",
+        "options": [
+          "W.R. Supratman",
+          "Ki Hajar Dewantara",
+          "R.A. Kartini",
+          "Bung Tomo"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lagu Indonesia Raya diciptakan W.R. Supratman."
       }
     ]
   },
@@ -5282,7 +5522,7 @@
       4
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -5643,6 +5883,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Please dipakai untuk meminta dengan sopan."
+      },
+      {
+        "id": "q31",
+        "prompt": "\"Pink\" artinya ...",
+        "options": [
+          "oranye",
+          "merah muda",
+          "ungu",
+          "cokelat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pink berarti merah muda."
+      },
+      {
+        "id": "q32",
+        "prompt": "\"Purple\" artinya ...",
+        "options": [
+          "merah muda",
+          "biru",
+          "ungu",
+          "hijau"
+        ],
+        "answerIndex": 2,
+        "explanation": "Purple berarti ungu."
+      },
+      {
+        "id": "q33",
+        "prompt": "\"Brown\" artinya ...",
+        "options": [
+          "hitam",
+          "abu-abu",
+          "kuning",
+          "cokelat"
+        ],
+        "answerIndex": 3,
+        "explanation": "Brown berarti cokelat."
+      },
+      {
+        "id": "q34",
+        "prompt": "\"Gray\" artinya ...",
+        "options": [
+          "abu-abu",
+          "putih",
+          "hitam",
+          "cokelat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Gray berarti abu-abu."
+      },
+      {
+        "id": "q35",
+        "prompt": "\"Eleven\" artinya angka ...",
+        "options": [
+          "12",
+          "10",
+          "1",
+          "11"
+        ],
+        "answerIndex": 3,
+        "explanation": "Eleven adalah 11."
+      },
+      {
+        "id": "q36",
+        "prompt": "\"Fifteen\" artinya angka ...",
+        "options": [
+          "50",
+          "15",
+          "5",
+          "14"
+        ],
+        "answerIndex": 1,
+        "explanation": "Fifteen adalah 15."
+      },
+      {
+        "id": "q37",
+        "prompt": "Angka 8 dalam bahasa Inggris adalah ...",
+        "options": [
+          "eighteen",
+          "seven",
+          "eight",
+          "nine"
+        ],
+        "answerIndex": 2,
+        "explanation": "8 = eight."
+      },
+      {
+        "id": "q38",
+        "prompt": "Angka 30 dalam bahasa Inggris adalah ...",
+        "options": [
+          "thirteen",
+          "three",
+          "twenty",
+          "thirty"
+        ],
+        "answerIndex": 3,
+        "explanation": "30 = thirty."
+      },
+      {
+        "id": "q39",
+        "prompt": "Angka 100 dalam bahasa Inggris adalah ...",
+        "options": [
+          "one hundred",
+          "one thousand",
+          "ten",
+          "one"
+        ],
+        "answerIndex": 0,
+        "explanation": "100 = one hundred."
+      },
+      {
+        "id": "q40",
+        "prompt": "\"Pencil\" artinya ...",
+        "options": [
+          "pensil",
+          "pulpen",
+          "penghapus",
+          "penggaris"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pencil berarti pensil."
+      },
+      {
+        "id": "q41",
+        "prompt": "\"Ruler\" artinya ...",
+        "options": [
+          "pensil",
+          "buku",
+          "tas",
+          "penggaris"
+        ],
+        "answerIndex": 3,
+        "explanation": "Ruler berarti penggaris."
+      },
+      {
+        "id": "q42",
+        "prompt": "\"Eraser\" artinya ...",
+        "options": [
+          "penggaris",
+          "penghapus",
+          "pensil",
+          "buku"
+        ],
+        "answerIndex": 1,
+        "explanation": "Eraser berarti penghapus."
+      },
+      {
+        "id": "q43",
+        "prompt": "\"Window\" artinya ...",
+        "options": [
+          "pintu",
+          "jendela",
+          "meja",
+          "kursi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Window berarti jendela."
+      },
+      {
+        "id": "q44",
+        "prompt": "\"Clock\" artinya ...",
+        "options": [
+          "meja",
+          "buku",
+          "jam dinding",
+          "pintu"
+        ],
+        "answerIndex": 2,
+        "explanation": "Clock berarti jam dinding."
+      },
+      {
+        "id": "q45",
+        "prompt": "\"Ball\" artinya ...",
+        "options": [
+          "topi",
+          "tas",
+          "bola",
+          "sepatu"
+        ],
+        "answerIndex": 2,
+        "explanation": "Ball berarti bola."
+      },
+      {
+        "id": "q46",
+        "prompt": "\"Good evening\" diucapkan pada ...",
+        "options": [
+          "sore atau malam",
+          "pagi hari",
+          "siang hari",
+          "tengah malam"
+        ],
+        "answerIndex": 0,
+        "explanation": "Good evening untuk menyapa di sore atau malam hari."
+      },
+      {
+        "id": "q47",
+        "prompt": "\"Sorry\" artinya ...",
+        "options": [
+          "maaf",
+          "terima kasih",
+          "selamat pagi",
+          "tolong"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sorry berarti maaf."
+      },
+      {
+        "id": "q48",
+        "prompt": "Jawaban untuk \"Thank you\" adalah ...",
+        "options": [
+          "Good morning.",
+          "I am sorry.",
+          "You are welcome.",
+          "Goodbye."
+        ],
+        "answerIndex": 2,
+        "explanation": "You are welcome berarti sama-sama."
+      },
+      {
+        "id": "q49",
+        "prompt": "My name ___ Budi. (Namaku Budi.)",
+        "options": [
+          "am",
+          "is",
+          "are",
+          "be"
+        ],
+        "answerIndex": 1,
+        "explanation": "Untuk benda atau nama tunggal dipakai is."
+      },
+      {
+        "id": "q50",
+        "prompt": "They ___ my friends. (Mereka temanku.)",
+        "options": [
+          "is",
+          "am",
+          "be",
+          "are"
+        ],
+        "answerIndex": 3,
+        "explanation": "Untuk they dipakai are."
       }
     ]
   }
