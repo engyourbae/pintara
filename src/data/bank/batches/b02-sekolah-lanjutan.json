@@ -4295,7 +4295,7 @@
       3
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -4656,6 +4656,246 @@
         ],
         "answerIndex": 2,
         "explanation": "Kacang tanah termasuk tumbuhan berkeping dua."
+      },
+      {
+        "id": "q31",
+        "prompt": "Tumbuhan hijau membuat makanan melalui proses ...",
+        "options": [
+          "penguapan",
+          "fotosintesis",
+          "pembekuan",
+          "penyerbukan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Fotosintesis terjadi di daun."
+      },
+      {
+        "id": "q32",
+        "prompt": "Bagian tumbuhan yang tumbuh ke arah bawah adalah ...",
+        "options": [
+          "akar",
+          "daun",
+          "bunga",
+          "buah"
+        ],
+        "answerIndex": 0,
+        "explanation": "Akar tumbuh ke dalam tanah."
+      },
+      {
+        "id": "q33",
+        "prompt": "Bagian tumbuhan yang tumbuh ke arah cahaya adalah ...",
+        "options": [
+          "hanya akar",
+          "hanya biji",
+          "tanah",
+          "batang dan daun"
+        ],
+        "answerIndex": 3,
+        "explanation": "Batang dan daun mencari cahaya."
+      },
+      {
+        "id": "q34",
+        "prompt": "Bagian wortel yang kita makan adalah ...",
+        "options": [
+          "batang",
+          "daun",
+          "akar",
+          "bunga"
+        ],
+        "answerIndex": 2,
+        "explanation": "Wortel adalah akar yang membesar."
+      },
+      {
+        "id": "q35",
+        "prompt": "Bagian bayam yang kita makan adalah ...",
+        "options": [
+          "daun",
+          "akar",
+          "buah",
+          "biji"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bayam dimakan daunnya."
+      },
+      {
+        "id": "q36",
+        "prompt": "Bagian pisang yang biasa kita makan adalah ...",
+        "options": [
+          "akar",
+          "daun",
+          "buah",
+          "biji"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pisang dimakan buahnya."
+      },
+      {
+        "id": "q37",
+        "prompt": "Bagian brokoli yang kita makan adalah ...",
+        "options": [
+          "bunga",
+          "akar",
+          "biji",
+          "kulit"
+        ],
+        "answerIndex": 0,
+        "explanation": "Brokoli adalah kumpulan bunga."
+      },
+      {
+        "id": "q38",
+        "prompt": "Bagian kacang tanah yang kita makan adalah ...",
+        "options": [
+          "biji",
+          "akar",
+          "daun",
+          "bunga"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kacang tanah adalah biji."
+      },
+      {
+        "id": "q39",
+        "prompt": "Daun yang masih muda biasanya berwarna ...",
+        "options": [
+          "hitam",
+          "hijau muda",
+          "putih",
+          "biru"
+        ],
+        "answerIndex": 1,
+        "explanation": "Daun muda berwarna hijau muda."
+      },
+      {
+        "id": "q40",
+        "prompt": "Lubang kecil pada daun untuk bernapas disebut ...",
+        "options": [
+          "klorofil",
+          "stomata",
+          "putik",
+          "tunas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Stomata adalah lubang pernapasan daun."
+      },
+      {
+        "id": "q41",
+        "prompt": "Bagian tumbuhan yang membuat tumbuhan berdiri tegak adalah ...",
+        "options": [
+          "bunga",
+          "daun",
+          "biji",
+          "batang"
+        ],
+        "answerIndex": 3,
+        "explanation": "Batang menopang tumbuhan."
+      },
+      {
+        "id": "q42",
+        "prompt": "Tumbuhan yang hidup di air disebut tumbuhan ...",
+        "options": [
+          "gurun",
+          "panjat",
+          "air",
+          "parasit"
+        ],
+        "answerIndex": 2,
+        "explanation": "Contohnya teratai dan eceng gondok."
+      },
+      {
+        "id": "q43",
+        "prompt": "Cabai berkembang biak dengan ...",
+        "options": [
+          "stek daun",
+          "umbi",
+          "spora",
+          "biji"
+        ],
+        "answerIndex": 3,
+        "explanation": "Cabai ditanam dari biji."
+      },
+      {
+        "id": "q44",
+        "prompt": "Cocor bebek berkembang biak dengan ...",
+        "options": [
+          "tunas pada tepi daun",
+          "umbi",
+          "spora",
+          "cangkok"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tunas tumbuh di tepi daunnya."
+      },
+      {
+        "id": "q45",
+        "prompt": "Bawang merah berkembang biak dengan ...",
+        "options": [
+          "spora",
+          "umbi",
+          "cangkok",
+          "stek daun"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bawang ditanam dari umbinya."
+      },
+      {
+        "id": "q46",
+        "prompt": "Tumbuhan paku berkembang biak dengan ...",
+        "options": [
+          "bunga",
+          "umbi",
+          "stek batang",
+          "spora"
+        ],
+        "answerIndex": 3,
+        "explanation": "Paku memiliki spora."
+      },
+      {
+        "id": "q47",
+        "prompt": "Bagian jahe yang dipakai sebagai bumbu adalah ...",
+        "options": [
+          "daun",
+          "bunga",
+          "rimpang",
+          "biji"
+        ],
+        "answerIndex": 2,
+        "explanation": "Jahe adalah rimpang."
+      },
+      {
+        "id": "q48",
+        "prompt": "Kelapa memiliki akar ...",
+        "options": [
+          "tunggang",
+          "gantung",
+          "napas",
+          "serabut"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kelapa berakar serabut."
+      },
+      {
+        "id": "q49",
+        "prompt": "Tumbuhan memerlukan tanah untuk ...",
+        "options": [
+          "menghasilkan cahaya",
+          "berpindah tempat",
+          "berpijak dan mengambil zat hara",
+          "menangkap hewan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tanah menopang dan memberi zat hara."
+      },
+      {
+        "id": "q50",
+        "prompt": "Biji kacang hijau yang direndam beberapa hari akan menjadi ...",
+        "options": [
+          "bunga",
+          "kecambah",
+          "buah",
+          "pohon besar"
+        ],
+        "answerIndex": 1,
+        "explanation": "Biji berkecambah saat lembap."
       }
     ]
   },
@@ -4667,7 +4907,7 @@
       5
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -5028,6 +5268,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Gula dan minyak berlebihan mengganggu kesehatan."
+      },
+      {
+        "id": "q31",
+        "prompt": "Lidah berfungsi membantu ...",
+        "options": [
+          "memotong makanan",
+          "menyerap sari makanan",
+          "mengeluarkan asam lambung",
+          "mengecap rasa dan mengaduk makanan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Lidah mengecap dan menggerakkan makanan."
+      },
+      {
+        "id": "q32",
+        "prompt": "Organ yang menghasilkan empedu adalah ...",
+        "options": [
+          "hati",
+          "lambung",
+          "jantung",
+          "kerongkongan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Hati menghasilkan empedu."
+      },
+      {
+        "id": "q33",
+        "prompt": "Gerakan kerongkongan yang mendorong makanan ke lambung disebut gerak ...",
+        "options": [
+          "tarik",
+          "gesek",
+          "peristaltik",
+          "jatuh"
+        ],
+        "answerIndex": 2,
+        "explanation": "Gerak peristaltik mendorong makanan."
+      },
+      {
+        "id": "q34",
+        "prompt": "Air liur mulai mencerna ...",
+        "options": [
+          "lemak",
+          "nasi (karbohidrat)",
+          "protein",
+          "vitamin"
+        ],
+        "answerIndex": 1,
+        "explanation": "Enzim air liur mencerna karbohidrat."
+      },
+      {
+        "id": "q35",
+        "prompt": "Vitamin dan mineral dibutuhkan tubuh untuk ...",
+        "options": [
+          "membuat gigi lepas",
+          "mengurangi tinggi badan",
+          "menghentikan lapar",
+          "menjaga tubuh tetap sehat"
+        ],
+        "answerIndex": 3,
+        "explanation": "Vitamin dan mineral menjaga kesehatan."
+      },
+      {
+        "id": "q36",
+        "prompt": "Sumber lemak adalah ...",
+        "options": [
+          "minyak goreng",
+          "nasi",
+          "bayam",
+          "air putih"
+        ],
+        "answerIndex": 0,
+        "explanation": "Minyak goreng kaya lemak."
+      },
+      {
+        "id": "q37",
+        "prompt": "Sumber vitamin banyak terdapat pada ...",
+        "options": [
+          "permen",
+          "minuman bersoda",
+          "keripik",
+          "buah dan sayur"
+        ],
+        "answerIndex": 3,
+        "explanation": "Buah dan sayur kaya vitamin."
+      },
+      {
+        "id": "q38",
+        "prompt": "Zat makanan yang membangun dan memperbaiki tubuh adalah ...",
+        "options": [
+          "karbohidrat",
+          "lemak",
+          "protein",
+          "air"
+        ],
+        "answerIndex": 2,
+        "explanation": "Protein untuk membangun tubuh."
+      },
+      {
+        "id": "q39",
+        "prompt": "Zat makanan sebagai sumber tenaga utama adalah ...",
+        "options": [
+          "karbohidrat",
+          "vitamin",
+          "mineral",
+          "serat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Nasi dan roti kaya karbohidrat."
+      },
+      {
+        "id": "q40",
+        "prompt": "Gigi pertama yang tumbuh pada bayi disebut gigi ...",
+        "options": [
+          "tetap",
+          "bungsu",
+          "susu",
+          "emas"
+        ],
+        "answerIndex": 2,
+        "explanation": "Gigi susu tumbuh lebih dulu."
+      },
+      {
+        "id": "q41",
+        "prompt": "Gigi susu akan diganti dengan gigi ...",
+        "options": [
+          "susu lagi",
+          "tetap",
+          "palsu",
+          "emas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gigi tetap menggantikan gigi susu."
+      },
+      {
+        "id": "q42",
+        "prompt": "Lapisan keras pelindung gigi disebut ...",
+        "options": [
+          "akar",
+          "gusi",
+          "email",
+          "lidah"
+        ],
+        "answerIndex": 2,
+        "explanation": "Email melindungi gigi."
+      },
+      {
+        "id": "q43",
+        "prompt": "Gigi berlubang disebabkan oleh ...",
+        "options": [
+          "kuman dan sisa makanan manis",
+          "minum air putih",
+          "menyikat gigi",
+          "makan sayur"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kuman mengubah sisa makanan manis menjadi asam."
+      },
+      {
+        "id": "q44",
+        "prompt": "Ujung usus halus bersambung dengan ...",
+        "options": [
+          "lambung",
+          "kerongkongan",
+          "usus besar",
+          "mulut"
+        ],
+        "answerIndex": 2,
+        "explanation": "Setelah usus halus makanan masuk usus besar."
+      },
+      {
+        "id": "q45",
+        "prompt": "Panjang usus halus manusia dewasa sekitar ...",
+        "options": [
+          "6 sentimeter",
+          "6 meter",
+          "60 meter",
+          "6 kilometer"
+        ],
+        "answerIndex": 1,
+        "explanation": "Usus halus sangat panjang dan berkelok."
+      },
+      {
+        "id": "q46",
+        "prompt": "Diare dapat disebabkan oleh ...",
+        "options": [
+          "makan sayur",
+          "makanan atau minuman yang tidak bersih",
+          "tidur cukup",
+          "minum susu hangat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kuman dari makanan kotor menyebabkan diare."
+      },
+      {
+        "id": "q47",
+        "prompt": "Sembelit dapat dicegah dengan ...",
+        "options": [
+          "makan makanan berserat dan minum air",
+          "makan banyak gorengan",
+          "tidak minum air",
+          "menahan buang air"
+        ],
+        "answerIndex": 0,
+        "explanation": "Serat dan air melancarkan pencernaan."
+      },
+      {
+        "id": "q48",
+        "prompt": "Menahan buang air besar terlalu sering dapat ...",
+        "options": [
+          "menyehatkan",
+          "menguatkan gigi",
+          "menambah tinggi",
+          "mengganggu kesehatan pencernaan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sisa makanan sebaiknya segera dibuang."
+      },
+      {
+        "id": "q49",
+        "prompt": "Makanan yang sudah dikunyah dan siap ditelan disebut ...",
+        "options": [
+          "feses",
+          "empedu",
+          "urin",
+          "bolus"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bolus adalah gumpalan makanan."
+      },
+      {
+        "id": "q50",
+        "prompt": "Organ pencernaan yang berbentuk seperti kantong adalah ...",
+        "options": [
+          "kerongkongan",
+          "lambung",
+          "usus halus",
+          "mulut"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lambung menampung dan mencerna makanan."
       }
     ]
   },
@@ -5040,7 +5520,7 @@
       5
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -5401,6 +5881,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Magnet dapat menarik besi dari jarak tertentu."
+      },
+      {
+        "id": "q31",
+        "prompt": "Gaya tidak dapat dilihat, tetapi dapat dilihat ...",
+        "options": [
+          "warnanya",
+          "bentuknya",
+          "pengaruhnya pada benda",
+          "baunya"
+        ],
+        "answerIndex": 2,
+        "explanation": "Gaya dikenali dari akibatnya."
+      },
+      {
+        "id": "q32",
+        "prompt": "Gaya otot digunakan saat ...",
+        "options": [
+          "benda jatuh dari meja",
+          "mengangkat ember",
+          "magnet menarik paku",
+          "angin menerbangkan layang-layang"
+        ],
+        "answerIndex": 1,
+        "explanation": "Otot menghasilkan gaya saat mengangkat."
+      },
+      {
+        "id": "q33",
+        "prompt": "Layang-layang terbang karena dorongan ...",
+        "options": [
+          "angin",
+          "magnet",
+          "pegas",
+          "rem"
+        ],
+        "answerIndex": 0,
+        "explanation": "Angin mendorong layang-layang."
+      },
+      {
+        "id": "q34",
+        "prompt": "Magnet tidak dapat menarik benda dari ...",
+        "options": [
+          "paku",
+          "jarum",
+          "plastik",
+          "peniti"
+        ],
+        "answerIndex": 2,
+        "explanation": "Plastik bukan bahan magnetik."
+      },
+      {
+        "id": "q35",
+        "prompt": "Magnet memiliki ... kutub.",
+        "options": [
+          "satu",
+          "tiga",
+          "empat",
+          "dua"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kutub utara dan kutub selatan."
+      },
+      {
+        "id": "q36",
+        "prompt": "Kompas bekerja dengan memanfaatkan ...",
+        "options": [
+          "gravitasi",
+          "gesekan",
+          "pegas",
+          "magnet"
+        ],
+        "answerIndex": 3,
+        "explanation": "Jarum kompas adalah magnet."
+      },
+      {
+        "id": "q37",
+        "prompt": "Besi dapat dijadikan magnet dengan cara digosok dengan ...",
+        "options": [
+          "kain",
+          "magnet",
+          "kertas",
+          "air"
+        ],
+        "answerIndex": 1,
+        "explanation": "Menggosok dengan magnet memagnetkan besi."
+      },
+      {
+        "id": "q38",
+        "prompt": "Buah mangga matang jatuh dari pohon karena gaya ...",
+        "options": [
+          "magnet",
+          "pegas",
+          "otot",
+          "gravitasi"
+        ],
+        "answerIndex": 3,
+        "explanation": "Gravitasi menarik benda ke bumi."
+      },
+      {
+        "id": "q39",
+        "prompt": "Menggosok kedua telapak tangan terasa hangat karena adanya gaya ...",
+        "options": [
+          "gesek",
+          "magnet",
+          "pegas",
+          "apung"
+        ],
+        "answerIndex": 0,
+        "explanation": "Gesekan menimbulkan panas."
+      },
+      {
+        "id": "q40",
+        "prompt": "Kasur pegas memanfaatkan gaya ...",
+        "options": [
+          "pegas",
+          "magnet",
+          "gesek",
+          "otot"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pegas kembali ke bentuk semula."
+      },
+      {
+        "id": "q41",
+        "prompt": "Neraca pegas dipakai untuk mengukur ...",
+        "options": [
+          "suhu",
+          "waktu",
+          "gaya",
+          "warna"
+        ],
+        "answerIndex": 2,
+        "explanation": "Neraca pegas mengukur gaya."
+      },
+      {
+        "id": "q42",
+        "prompt": "Perahu didayung bergerak maju karena gaya ...",
+        "options": [
+          "magnet",
+          "otot pendayung",
+          "pegas",
+          "gravitasi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pendayung memakai tenaga otot."
+      },
+      {
+        "id": "q43",
+        "prompt": "Kapal laut dapat mengapung karena adanya gaya ...",
+        "options": [
+          "magnet",
+          "pegas",
+          "listrik",
+          "apung"
+        ],
+        "answerIndex": 3,
+        "explanation": "Air memberi gaya apung."
+      },
+      {
+        "id": "q44",
+        "prompt": "Gaya dapat mengubah bentuk benda, contohnya ...",
+        "options": [
+          "membaca buku",
+          "menyalakan lampu",
+          "menekan plastisin",
+          "melihat awan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Menekan mengubah bentuk plastisin."
+      },
+      {
+        "id": "q45",
+        "prompt": "Gaya dapat mengubah arah gerak benda, contohnya ...",
+        "options": [
+          "benda diam di meja",
+          "lampu menyala",
+          "pemain memukul bola ke arah lain",
+          "air menguap"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pukulan mengubah arah bola."
+      },
+      {
+        "id": "q46",
+        "prompt": "Roda memudahkan memindahkan benda karena ...",
+        "options": [
+          "menambah gesekan",
+          "menambah berat",
+          "memperbesar magnet",
+          "mengurangi gesekan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Roda menggelinding dengan gesekan kecil."
+      },
+      {
+        "id": "q47",
+        "prompt": "Permukaan jalan yang kasar membuat ban ...",
+        "options": [
+          "mudah tergelincir",
+          "tidak mudah tergelincir",
+          "meleleh",
+          "terbang"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gesekan besar menahan ban."
+      },
+      {
+        "id": "q48",
+        "prompt": "Dua anak menarik tali ke arah berlawanan dengan gaya sama besar. Tali akan ...",
+        "options": [
+          "bergerak ke kiri",
+          "tetap diam",
+          "bergerak ke kanan",
+          "langsung putus"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gaya yang sama besar saling meniadakan."
+      },
+      {
+        "id": "q49",
+        "prompt": "Gaya yang menarik benda ke pusat bumi disebut gaya ...",
+        "options": [
+          "gravitasi bumi",
+          "magnet",
+          "pegas",
+          "gesek"
+        ],
+        "answerIndex": 0,
+        "explanation": "Gravitasi menarik benda ke pusat bumi."
+      },
+      {
+        "id": "q50",
+        "prompt": "Magnet kulkas menempel pada pintu kulkas karena ...",
+        "options": [
+          "gaya magnet",
+          "gaya pegas",
+          "gaya apung",
+          "gaya otot"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pintu kulkas terbuat dari bahan magnetik."
       }
     ]
   }

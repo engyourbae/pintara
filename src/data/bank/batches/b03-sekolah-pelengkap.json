@@ -2459,7 +2459,7 @@
       2
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -2820,6 +2820,246 @@
         ],
         "answerIndex": 2,
         "explanation": "Kulit peraba rasa sakit."
+      },
+      {
+        "id": "q31",
+        "prompt": "Indra penglihat adalah ...",
+        "options": [
+          "telinga",
+          "hidung",
+          "mata",
+          "lidah"
+        ],
+        "answerIndex": 2,
+        "explanation": "Mata untuk melihat."
+      },
+      {
+        "id": "q32",
+        "prompt": "Indra pendengar adalah ...",
+        "options": [
+          "mata",
+          "kulit",
+          "lidah",
+          "telinga"
+        ],
+        "answerIndex": 3,
+        "explanation": "Telinga untuk mendengar."
+      },
+      {
+        "id": "q33",
+        "prompt": "Indra pencium adalah ...",
+        "options": [
+          "hidung",
+          "mata",
+          "telinga",
+          "kulit"
+        ],
+        "answerIndex": 0,
+        "explanation": "Hidung untuk mencium."
+      },
+      {
+        "id": "q34",
+        "prompt": "Indra pengecap adalah ...",
+        "options": [
+          "hidung",
+          "mata",
+          "telinga",
+          "lidah"
+        ],
+        "answerIndex": 3,
+        "explanation": "Lidah untuk mengecap rasa."
+      },
+      {
+        "id": "q35",
+        "prompt": "Indra peraba adalah ...",
+        "options": [
+          "mata",
+          "kulit",
+          "lidah",
+          "hidung"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kulit untuk meraba."
+      },
+      {
+        "id": "q36",
+        "prompt": "Rasa asin dirasakan oleh ...",
+        "options": [
+          "lidah",
+          "hidung",
+          "mata",
+          "telinga"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lidah mengecap rasa."
+      },
+      {
+        "id": "q37",
+        "prompt": "Bunyi guntur didengar oleh ...",
+        "options": [
+          "mata",
+          "telinga",
+          "kulit",
+          "lidah"
+        ],
+        "answerIndex": 1,
+        "explanation": "Telinga menangkap bunyi."
+      },
+      {
+        "id": "q38",
+        "prompt": "Kita memakai topi saat panas untuk melindungi ...",
+        "options": [
+          "kaki",
+          "perut",
+          "jari",
+          "kepala"
+        ],
+        "answerIndex": 3,
+        "explanation": "Topi menutupi kepala."
+      },
+      {
+        "id": "q39",
+        "prompt": "Kita membersihkan telinga dengan hati-hati supaya ...",
+        "options": [
+          "tidak lapar",
+          "tubuh tinggi",
+          "tidak terluka",
+          "tidak haus"
+        ],
+        "answerIndex": 2,
+        "explanation": "Telinga sangat sensitif."
+      },
+      {
+        "id": "q40",
+        "prompt": "Kita mencuci muka dengan ...",
+        "options": [
+          "pasir",
+          "air bersih",
+          "oli",
+          "cat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Air bersih aman untuk wajah."
+      },
+      {
+        "id": "q41",
+        "prompt": "Bagian tubuh untuk berpikir adalah ...",
+        "options": [
+          "jari",
+          "otak",
+          "kuku",
+          "rambut"
+        ],
+        "answerIndex": 1,
+        "explanation": "Otak ada di dalam kepala."
+      },
+      {
+        "id": "q42",
+        "prompt": "Kita menggunakan ... untuk menulis.",
+        "options": [
+          "telinga",
+          "lutut",
+          "tangan",
+          "hidung"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tangan memegang pensil."
+      },
+      {
+        "id": "q43",
+        "prompt": "Rambut dikeramas dengan ...",
+        "options": [
+          "sampo",
+          "pasta gigi",
+          "minyak tanah",
+          "lem"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sampo membersihkan rambut."
+      },
+      {
+        "id": "q44",
+        "prompt": "Kuku yang panjang sebaiknya ...",
+        "options": [
+          "digigit",
+          "digunting",
+          "dibiarkan kotor",
+          "dilem"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kuku dipotong agar bersih."
+      },
+      {
+        "id": "q45",
+        "prompt": "Sarapan yang baik adalah ...",
+        "options": [
+          "permen saja",
+          "es krim saja",
+          "nasi, telur, dan sayur",
+          "keripik saja"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sarapan harus bergizi."
+      },
+      {
+        "id": "q46",
+        "prompt": "Kita menyikat gigi pada pagi hari dan sebelum ...",
+        "options": [
+          "mandi sore",
+          "bermain",
+          "makan siang",
+          "tidur malam"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sikat gigi sebelum tidur."
+      },
+      {
+        "id": "q47",
+        "prompt": "Bagian tubuh yang dipakai untuk memegang pensil adalah ...",
+        "options": [
+          "siku",
+          "lutut",
+          "tumit",
+          "jari"
+        ],
+        "answerIndex": 3,
+        "explanation": "Jari menggenggam pensil."
+      },
+      {
+        "id": "q48",
+        "prompt": "Saat sakit kita sebaiknya ...",
+        "options": [
+          "beristirahat dan berobat",
+          "bermain hujan",
+          "makan permen banyak",
+          "begadang"
+        ],
+        "answerIndex": 0,
+        "explanation": "Istirahat membantu sembuh."
+      },
+      {
+        "id": "q49",
+        "prompt": "Kita tidak boleh menatap matahari langsung karena dapat merusak ...",
+        "options": [
+          "telinga",
+          "kaki",
+          "mata",
+          "hidung"
+        ],
+        "answerIndex": 2,
+        "explanation": "Cahaya kuat merusak mata."
+      },
+      {
+        "id": "q50",
+        "prompt": "Menutup mulut saat batuk bertujuan ...",
+        "options": [
+          "tidak menularkan kuman",
+          "menambah suara",
+          "mengurangi lapar",
+          "mencari makan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mencegah kuman menyebar."
       }
     ]
   },
@@ -2831,7 +3071,7 @@
       6
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -3192,6 +3432,246 @@
         ],
         "answerIndex": 1,
         "explanation": "Saklar membuka dan menutup rangkaian."
+      },
+      {
+        "id": "q31",
+        "prompt": "Satuan kuat arus listrik adalah ...",
+        "options": [
+          "newton",
+          "meter",
+          "ampere",
+          "liter"
+        ],
+        "answerIndex": 2,
+        "explanation": "Arus diukur dalam ampere."
+      },
+      {
+        "id": "q32",
+        "prompt": "Alat untuk mengukur arus listrik adalah ...",
+        "options": [
+          "termometer",
+          "amperemeter",
+          "neraca",
+          "penggaris"
+        ],
+        "answerIndex": 1,
+        "explanation": "Amperemeter mengukur arus."
+      },
+      {
+        "id": "q33",
+        "prompt": "Bahan yang mudah menghantarkan listrik adalah ...",
+        "options": [
+          "aluminium",
+          "kayu",
+          "kaca",
+          "plastik"
+        ],
+        "answerIndex": 0,
+        "explanation": "Aluminium adalah logam konduktor."
+      },
+      {
+        "id": "q34",
+        "prompt": "Contoh isolator adalah ...",
+        "options": [
+          "tembaga",
+          "besi",
+          "kaca",
+          "aluminium"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kaca tidak menghantarkan listrik."
+      },
+      {
+        "id": "q35",
+        "prompt": "Pada rangkaian paralel, tiap lampu memiliki ...",
+        "options": [
+          "jalur yang sama saja",
+          "jalur sendiri",
+          "tidak ada jalur",
+          "dua baterai"
+        ],
+        "answerIndex": 1,
+        "explanation": "Cabang-cabang terpisah."
+      },
+      {
+        "id": "q36",
+        "prompt": "Jika baterai ditambah pada rangkaian seri, lampu menyala ...",
+        "options": [
+          "lebih redup",
+          "padam",
+          "berubah warna",
+          "lebih terang"
+        ],
+        "answerIndex": 3,
+        "explanation": "Tegangan bertambah."
+      },
+      {
+        "id": "q37",
+        "prompt": "Jika lampu ditambah pada rangkaian seri, nyala lampu menjadi ...",
+        "options": [
+          "lebih terang",
+          "sama saja",
+          "padam seketika",
+          "lebih redup"
+        ],
+        "answerIndex": 3,
+        "explanation": "Arus terbagi pada banyak lampu."
+      },
+      {
+        "id": "q38",
+        "prompt": "Kutub baterai yang bertanda (+) adalah kutub ...",
+        "options": [
+          "positif",
+          "negatif",
+          "tengah",
+          "netral"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tanda + berarti positif."
+      },
+      {
+        "id": "q39",
+        "prompt": "Pemakaian listrik rumah dicatat oleh ...",
+        "options": [
+          "termometer",
+          "meteran listrik",
+          "jam pasir",
+          "penggaris"
+        ],
+        "answerIndex": 1,
+        "explanation": "Meteran mencatat pemakaian."
+      },
+      {
+        "id": "q40",
+        "prompt": "Jika kabel listrik terkelupas, kita sebaiknya ...",
+        "options": [
+          "menyentuhnya",
+          "membiarkannya",
+          "meminta orang dewasa memperbaikinya",
+          "menariknya"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kabel terkelupas berbahaya."
+      },
+      {
+        "id": "q41",
+        "prompt": "Bermain layang-layang dekat kabel listrik berbahaya karena ...",
+        "options": [
+          "layang-layang rusak",
+          "angin berhenti",
+          "dapat tersengat listrik",
+          "tali putus"
+        ],
+        "answerIndex": 2,
+        "explanation": "Benang basah dapat menghantarkan listrik."
+      },
+      {
+        "id": "q42",
+        "prompt": "Tangan basah memegang colokan berbahaya karena air ...",
+        "options": [
+          "menghambat listrik",
+          "menghantarkan listrik",
+          "menghentikan listrik",
+          "memadamkan api"
+        ],
+        "answerIndex": 1,
+        "explanation": "Air menghantarkan listrik."
+      },
+      {
+        "id": "q43",
+        "prompt": "Contoh lampu hemat energi adalah ...",
+        "options": [
+          "lampu minyak",
+          "lilin",
+          "lampu LED",
+          "obor"
+        ],
+        "answerIndex": 2,
+        "explanation": "LED memakai sedikit listrik."
+      },
+      {
+        "id": "q44",
+        "prompt": "Bel listrik bekerja dengan prinsip ...",
+        "options": [
+          "gesekan",
+          "elektromagnet",
+          "pegas",
+          "gravitasi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Elektromagnet menggerakkan pemukul bel."
+      },
+      {
+        "id": "q45",
+        "prompt": "Energi listrik dari PLTA berasal dari ...",
+        "options": [
+          "air yang jatuh atau mengalir",
+          "angin",
+          "panas bumi",
+          "batu bara"
+        ],
+        "answerIndex": 0,
+        "explanation": "Air memutar turbin."
+      },
+      {
+        "id": "q46",
+        "prompt": "Alat yang mengubah listrik menjadi bunyi adalah ...",
+        "options": [
+          "pengeras suara",
+          "kipas angin",
+          "setrika",
+          "lampu"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pengeras suara menghasilkan bunyi."
+      },
+      {
+        "id": "q47",
+        "prompt": "Sekring yang putus sebaiknya diganti oleh ...",
+        "options": [
+          "anak kecil sendirian",
+          "siapa saja asal cepat",
+          "hewan peliharaan",
+          "orang dewasa atau teknisi"
+        ],
+        "answerIndex": 3,
+        "explanation": "Listrik berbahaya bagi yang belum ahli."
+      },
+      {
+        "id": "q48",
+        "prompt": "Komponen rangkaian senter: baterai, lampu, kabel, dan ...",
+        "options": [
+          "panci",
+          "air",
+          "gunting",
+          "saklar"
+        ],
+        "answerIndex": 3,
+        "explanation": "Saklar menghubungkan arus."
+      },
+      {
+        "id": "q49",
+        "prompt": "Rangkaian yang terputus membuat arus ...",
+        "options": [
+          "tidak mengalir",
+          "mengalir deras",
+          "berubah arah",
+          "bertambah"
+        ],
+        "answerIndex": 0,
+        "explanation": "Arus butuh rangkaian tertutup."
+      },
+      {
+        "id": "q50",
+        "prompt": "Mencabut charger yang sudah penuh bertujuan ...",
+        "options": [
+          "menambah daya",
+          "membuat HP panas",
+          "mempercepat habis",
+          "menghemat listrik"
+        ],
+        "answerIndex": 3,
+        "explanation": "Mencegah pemborosan listrik."
       }
     ]
   },

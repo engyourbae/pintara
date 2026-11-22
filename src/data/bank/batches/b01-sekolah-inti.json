@@ -3682,7 +3682,7 @@
       4
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -4043,6 +4043,246 @@
         ],
         "answerIndex": 0,
         "explanation": "Sumber alternatif membantu menjaga ketersediaan energi."
+      },
+      {
+        "id": "q31",
+        "prompt": "Energi yang tersimpan dalam makanan disebut energi ...",
+        "options": [
+          "listrik",
+          "bunyi",
+          "angin",
+          "kimia"
+        ],
+        "answerIndex": 3,
+        "explanation": "Makanan menyimpan energi kimia."
+      },
+      {
+        "id": "q32",
+        "prompt": "Perahu layar bergerak karena didorong oleh energi ...",
+        "options": [
+          "batu bara",
+          "baterai",
+          "angin",
+          "bensin"
+        ],
+        "answerIndex": 2,
+        "explanation": "Layar menangkap energi angin."
+      },
+      {
+        "id": "q33",
+        "prompt": "Setrika listrik menghasilkan energi ...",
+        "options": [
+          "bunyi",
+          "gerak",
+          "panas",
+          "magnet"
+        ],
+        "answerIndex": 2,
+        "explanation": "Setrika mengubah listrik menjadi panas."
+      },
+      {
+        "id": "q34",
+        "prompt": "Gas LPG dipakai untuk ...",
+        "options": [
+          "memasak",
+          "menulis",
+          "membaca",
+          "menyiram tanaman"
+        ],
+        "answerIndex": 0,
+        "explanation": "LPG adalah bahan bakar kompor."
+      },
+      {
+        "id": "q35",
+        "prompt": "Yang termasuk sumber energi terbarukan adalah ...",
+        "options": [
+          "minyak bumi",
+          "batu bara",
+          "gas alam",
+          "sinar matahari"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sinar matahari tidak akan habis."
+      },
+      {
+        "id": "q36",
+        "prompt": "Minyak bumi diolah menjadi ...",
+        "options": [
+          "beras dan gula",
+          "bensin dan solar",
+          "baju dan sepatu",
+          "buku dan pensil"
+        ],
+        "answerIndex": 1,
+        "explanation": "Minyak bumi diolah menjadi bahan bakar."
+      },
+      {
+        "id": "q37",
+        "prompt": "Radio yang menyala mengubah energi listrik menjadi energi ...",
+        "options": [
+          "bunyi",
+          "dingin",
+          "kimia",
+          "angin"
+        ],
+        "answerIndex": 0,
+        "explanation": "Radio menghasilkan suara."
+      },
+      {
+        "id": "q38",
+        "prompt": "Tenaga surya cocok dikembangkan di Indonesia karena Indonesia ...",
+        "options": [
+          "bersalju sepanjang tahun",
+          "tidak punya matahari",
+          "disinari matahari sepanjang tahun",
+          "selalu gelap"
+        ],
+        "answerIndex": 2,
+        "explanation": "Indonesia berada di daerah tropis."
+      },
+      {
+        "id": "q39",
+        "prompt": "Benda yang memanfaatkan energi surya adalah ...",
+        "options": [
+          "lampu minyak",
+          "kompor gas",
+          "mesin diesel",
+          "kalkulator tenaga surya"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kalkulator surya memakai panel surya."
+      },
+      {
+        "id": "q40",
+        "prompt": "Energi gerak dimiliki oleh benda yang ...",
+        "options": [
+          "diam saja",
+          "bergerak",
+          "tersimpan di rak",
+          "membeku"
+        ],
+        "answerIndex": 1,
+        "explanation": "Benda yang bergerak memiliki energi gerak."
+      },
+      {
+        "id": "q41",
+        "prompt": "Air sungai yang mengalir deras memiliki energi ...",
+        "options": [
+          "kimia",
+          "bunyi saja",
+          "magnet",
+          "gerak"
+        ],
+        "answerIndex": 3,
+        "explanation": "Air yang mengalir bergerak."
+      },
+      {
+        "id": "q42",
+        "prompt": "Cara menghemat bahan bakar kendaraan adalah ...",
+        "options": [
+          "memakai sepeda untuk jarak dekat",
+          "menyalakan mesin terus-menerus",
+          "berkendara sambil ngebut",
+          "membeli lebih banyak mobil"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sepeda tidak memakai bahan bakar."
+      },
+      {
+        "id": "q43",
+        "prompt": "Alat yang mengubah energi listrik menjadi cahaya adalah ...",
+        "options": [
+          "lampu",
+          "kipas angin",
+          "setrika",
+          "radio"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lampu menghasilkan cahaya."
+      },
+      {
+        "id": "q44",
+        "prompt": "Kayu bakar sebaiknya digunakan secara ...",
+        "options": [
+          "berlebihan",
+          "hemat dan diimbangi menanam pohon",
+          "sembarangan",
+          "tanpa batas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pohon yang ditebang harus diganti."
+      },
+      {
+        "id": "q45",
+        "prompt": "Pembangkit listrik tenaga surya memakai ...",
+        "options": [
+          "kincir angin",
+          "panel surya",
+          "bendungan",
+          "batu bara"
+        ],
+        "answerIndex": 1,
+        "explanation": "Panel surya mengubah cahaya menjadi listrik."
+      },
+      {
+        "id": "q46",
+        "prompt": "Alat yang mengubah gerak angin menjadi listrik adalah ...",
+        "options": [
+          "panel surya",
+          "turbin angin",
+          "baterai",
+          "setrika"
+        ],
+        "answerIndex": 1,
+        "explanation": "Turbin angin digerakkan angin."
+      },
+      {
+        "id": "q47",
+        "prompt": "Lampu senter yang menyala menghasilkan energi ...",
+        "options": [
+          "dingin",
+          "tarik",
+          "magnet",
+          "cahaya"
+        ],
+        "answerIndex": 3,
+        "explanation": "Lampu menghasilkan cahaya."
+      },
+      {
+        "id": "q48",
+        "prompt": "Contoh bahan bakar alternatif pengganti bensin adalah ...",
+        "options": [
+          "plastik",
+          "kaca",
+          "biodiesel",
+          "pasir"
+        ],
+        "answerIndex": 2,
+        "explanation": "Biodiesel dibuat dari tumbuhan."
+      },
+      {
+        "id": "q49",
+        "prompt": "Energi terbarukan lebih ramah lingkungan karena ...",
+        "options": [
+          "menghasilkan banyak asap",
+          "memakai banyak bensin",
+          "tidak menghasilkan banyak asap",
+          "menghasilkan limbah plastik"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sumber terbarukan lebih bersih."
+      },
+      {
+        "id": "q50",
+        "prompt": "Tanda alat memakai energi listrik adalah ...",
+        "options": [
+          "memerlukan colokan atau baterai",
+          "memakai tali",
+          "berputar sendiri",
+          "memakai air"
+        ],
+        "answerIndex": 0,
+        "explanation": "Alat listrik butuh sumber listrik."
       }
     ]
   },
@@ -4055,7 +4295,7 @@
       5
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -4416,6 +4656,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Air minum perlu jernih dan dimasak hingga matang."
+      },
+      {
+        "id": "q31",
+        "prompt": "Siklus air terjadi ...",
+        "options": [
+          "satu kali saja",
+          "terus-menerus berulang",
+          "hanya di musim hujan",
+          "hanya di laut"
+        ],
+        "answerIndex": 1,
+        "explanation": "Air selalu berputar dalam siklus."
+      },
+      {
+        "id": "q32",
+        "prompt": "Hujan terjadi bila titik air dalam awan menjadi ...",
+        "options": [
+          "kecil dan ringan",
+          "uap panas",
+          "besar dan berat",
+          "debu"
+        ],
+        "answerIndex": 2,
+        "explanation": "Titik air yang berat akan jatuh."
+      },
+      {
+        "id": "q33",
+        "prompt": "Air di sungai, danau, dan laut menguap karena ...",
+        "options": [
+          "angin dingin",
+          "cahaya bulan",
+          "gempa",
+          "panas matahari"
+        ],
+        "answerIndex": 3,
+        "explanation": "Panas matahari menguapkan air."
+      },
+      {
+        "id": "q34",
+        "prompt": "Hutan yang lebat membantu siklus air karena ...",
+        "options": [
+          "akar pohon menyerap dan menyimpan air hujan",
+          "pohon menolak air",
+          "pohon menghentikan hujan",
+          "pohon membuat air menguap semua"
+        ],
+        "answerIndex": 0,
+        "explanation": "Akar pohon menyimpan air."
+      },
+      {
+        "id": "q35",
+        "prompt": "Salah satu penyebab banjir adalah ...",
+        "options": [
+          "menanam pohon",
+          "membuat lubang biopori",
+          "membersihkan selokan",
+          "menebang hutan sembarangan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Tanpa pohon air sulit meresap."
+      },
+      {
+        "id": "q36",
+        "prompt": "Lubang biopori berguna untuk ...",
+        "options": [
+          "menyimpan sampah plastik",
+          "meresapkan air hujan ke dalam tanah",
+          "menaikkan air ke atap",
+          "mengubah air menjadi uap"
+        ],
+        "answerIndex": 1,
+        "explanation": "Biopori membantu air meresap."
+      },
+      {
+        "id": "q37",
+        "prompt": "Air tanah dapat diambil dengan membuat ...",
+        "options": [
+          "jembatan",
+          "pagar",
+          "sumur",
+          "atap"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sumur mengambil air tanah."
+      },
+      {
+        "id": "q38",
+        "prompt": "Cuaca yang paling cepat mengeringkan jemuran adalah ...",
+        "options": [
+          "hujan",
+          "mendung",
+          "berkabut",
+          "panas dan berangin"
+        ],
+        "answerIndex": 3,
+        "explanation": "Panas dan angin mempercepat penguapan."
+      },
+      {
+        "id": "q39",
+        "prompt": "Air cair berubah menjadi padat disebut ...",
+        "options": [
+          "membeku",
+          "menguap",
+          "mengembun",
+          "mencair"
+        ],
+        "answerIndex": 0,
+        "explanation": "Membeku berarti cair menjadi padat."
+      },
+      {
+        "id": "q40",
+        "prompt": "Es batu yang mencair berubah wujud menjadi ...",
+        "options": [
+          "cair",
+          "gas",
+          "padat",
+          "debu"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mencair: padat menjadi cair."
+      },
+      {
+        "id": "q41",
+        "prompt": "Gelas berisi es terlihat berembun di luar karena ...",
+        "options": [
+          "air merembes lewat kaca",
+          "es membuat gelas panas",
+          "air menguap dari es",
+          "uap air di udara mengembun"
+        ],
+        "answerIndex": 3,
+        "explanation": "Uap air mengembun pada permukaan dingin."
+      },
+      {
+        "id": "q42",
+        "prompt": "Air hujan yang mengalir di permukaan tanah disebut ...",
+        "options": [
+          "penguapan",
+          "limpasan",
+          "pengembunan",
+          "transpirasi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Limpasan mengalir di permukaan."
+      },
+      {
+        "id": "q43",
+        "prompt": "Pada gambar siklus air, panah dari laut ke awan menunjukkan ...",
+        "options": [
+          "hujan",
+          "penguapan",
+          "peresapan",
+          "limpasan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Air laut naik menjadi uap."
+      },
+      {
+        "id": "q44",
+        "prompt": "Air yang akan diminum sebaiknya dimasak sampai ...",
+        "options": [
+          "hangat",
+          "dingin",
+          "mendidih",
+          "keruh"
+        ],
+        "answerIndex": 2,
+        "explanation": "Air mendidih membunuh kuman."
+      },
+      {
+        "id": "q45",
+        "prompt": "Hujan asam dapat terjadi karena ...",
+        "options": [
+          "udara yang bersih",
+          "batu yang basah",
+          "asap pabrik dan kendaraan mencemari udara",
+          "angin yang sepoi"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pencemaran udara mengasamkan hujan."
+      },
+      {
+        "id": "q46",
+        "prompt": "Sumber air bersih alami adalah ...",
+        "options": [
+          "mata air",
+          "air got",
+          "air limbah",
+          "genangan sampah"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mata air jernih dan alami."
+      },
+      {
+        "id": "q47",
+        "prompt": "Cara menghemat air adalah ...",
+        "options": [
+          "memakai air bekas cuci sayur untuk menyiram tanaman",
+          "membiarkan keran mengalir",
+          "mandi terlalu lama",
+          "mencuci mobil tiap hari"
+        ],
+        "answerIndex": 0,
+        "explanation": "Air bekas bersih dapat dipakai ulang."
+      },
+      {
+        "id": "q48",
+        "prompt": "Air di bumi paling banyak berupa ...",
+        "options": [
+          "air sungai",
+          "air danau",
+          "air laut",
+          "mata air"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sebagian besar air bumi adalah air laut."
+      },
+      {
+        "id": "q49",
+        "prompt": "Salju turun terutama di daerah ...",
+        "options": [
+          "gurun",
+          "kutub atau pegunungan tinggi",
+          "pantai tropis",
+          "hutan hujan tropis"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tempat yang sangat dingin."
+      },
+      {
+        "id": "q50",
+        "prompt": "Alat pengukur curah hujan adalah ...",
+        "options": [
+          "termometer",
+          "barometer",
+          "anemometer",
+          "penakar hujan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Penakar hujan mengukur banyaknya hujan."
       }
     ]
   },
