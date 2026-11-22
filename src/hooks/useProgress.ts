@@ -44,6 +44,8 @@ export interface Progress {
   levelDone: Record<string, string[]>;
   /** Bintang terbaik (1-3) per pelajaran game Kode Pintar. Hanya di perangkat; ringkasan jumlah selesai ada di gameBest. */
   kode: Record<string, number>;
+  /** Nilai buatan anak pada bagian bebas Kode Pintar: kunci 'idPelajaran#nomorBaris' berisi baris lengkapnya. Hanya di perangkat. */
+  kodeEdit: Record<string, string>;
   streak: number;
   lastDay: string;
 }
@@ -59,6 +61,7 @@ const EMPTY: Progress = {
   gameBest: {},
   levelDone: {},
   kode: {},
+  kodeEdit: {},
   streak: 0,
   lastDay: '',
 };
@@ -165,9 +168,11 @@ export const progressActions = {
     });
   },
   /** Mencatat satu pelajaran Kode Pintar selesai. trackKey (mis. kode-html) menyimpan jumlah pelajaran selesai di jalur itu. */
-  recordKode(lessonId: string, stars: number, trackKey: string, doneInTrack: number, gained: number) {
+  recordKode(lessonId: string, stars: number, trackKey: string, doneInTrack: number, gained: number, edits: Record<string, string> = {}) {
+    const keep = Object.fromEntries(Object.entries(state.kodeEdit ?? {}).filter(([key]) => !key.startsWith(`${lessonId}#`)));
     save({
       ...state,
+      kodeEdit: { ...keep, ...edits },
       ...touchStreak(state),
       xp: state.xp + gained,
       kode: { ...(state.kode ?? {}), [lessonId]: Math.max(state.kode?.[lessonId] ?? 0, stars) },
