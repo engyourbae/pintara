@@ -109,19 +109,25 @@ function SqlScreen({ lesson, done }: { lesson: KLesson; done: boolean }) {
 }
 
 /** Seluruh berkas: pelengkap redup, baris pelajaran ini menyala. */
-function KodeView({ ti, li, shown, indent }: { ti: number; li: number; shown: string[]; indent: number[] }) {
+function KodeView({ ti, li, shown, indent, onPick }: { ti: number; li: number; shown: string[]; indent: number[]; onPick: (x: Ln) => void }) {
   const c = compose(ti, li);
   const rows = [
     ...c.before.map((x) => ({ ...x, cur: false })),
-    ...shown.map((t, k) => ({ t, i: (indent[k] ?? 0) + c.ind, cur: true })),
+    ...shown.map((t, k) => ({ ...(c.lesson.lines.find((l) => l.c === t) ?? { r: undefined, w: undefined }), t, i: (indent[k] ?? 0) + c.ind, cur: true })),
     ...c.after.map((x) => ({ ...x, cur: false })),
   ];
   return (
     <ol aria-label="Kode lengkap" className="overflow-x-auto rounded-xl border-2 border-tinta bg-tinta p-3 font-mono text-sm">
       {rows.map((r, k) => (
-        <li key={k} className={cn('flex gap-3 whitespace-pre rounded px-1', r.cur ? 'bg-kuning-300/25 font-bold text-gading' : 'text-gading/45')}>
-          <span className="w-6 shrink-0 text-right opacity-60">{k + 1}</span>
-          <span style={{ paddingLeft: `${r.i * 2}ch` }}>{r.t}</span>
+        <li key={k}>
+          <button
+            type="button"
+            onClick={() => onPick({ t: r.t, i: r.i, r: r.r, w: r.w })}
+            className={cn('flex min-h-8 w-full gap-3 whitespace-pre rounded px-1 text-left', r.cur ? 'bg-kuning-300/25 font-bold text-gading' : 'text-gading/45')}
+          >
+            <span className="w-6 shrink-0 text-right opacity-60">{k + 1}</span>
+            <span style={{ paddingLeft: `${r.i * 2}ch` }}>{r.t}</span>
+          </button>
         </li>
       ))}
     </ol>
@@ -133,9 +139,11 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
   const lesson = track.lessons[li];
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<'hasil' | 'kode'>('hasil');
+  const [sel, setSel] = useState<Ln | null>(null);
   const isTerm = track.id === 'py' || track.id === 'git';
   const textual = isTerm || track.id === 'sql';
   const doc = useMemo(() => (textual ? '' : buildDoc(ti, li, shown)), [textual, ti, li, shown]);
+  const title = /<title>(.*?)<\/title>/.exec(doc)?.[1];
   const text = isTerm ? <TermScreen ti={ti} li={li} shown={shown} done={done} /> : <SqlScreen lesson={lesson} done={done} />;
 
   useEffect(() => {
@@ -150,7 +158,7 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
   const frame = (big: boolean) => (
     <iframe
       title="Layar hasil proyek"
-      sandbox="allow-scripts"
+      sandbox="allow-scripts allow-forms"
       srcDoc={doc}
       className={cn('w-full rounded-xl border-2 border-tinta bg-white', big ? 'h-full min-h-[320px]' : 'pointer-events-none h-36')}
       tabIndex={big ? 0 : -1}
@@ -164,6 +172,7 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
           type="button"
           onClick={() => {
             setTab('hasil');
+            setSel(null);
             setOpen(true);
           }}
           className="flex min-h-12 w-full items-center justify-between gap-2 border-b-2 border-tinta bg-langit-100 px-4 py-2 text-left font-display font-semibold"
@@ -173,6 +182,7 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
           </span>
           <span className="text-sm font-bold text-langit-700">Ketuk: hasil dan kode</span>
         </button>
+        {title && <p className="border-b-2 border-tinta/20 px-4 py-1 text-sm">Judul tab: <strong>{title}</strong></p>}
         <div className="max-h-48 overflow-hidden p-2">{textual ? text : frame(false)}</div>
       </div>
       {open && (
@@ -197,7 +207,19 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
                 <Icon name="close" size={20} /> Tutup
               </Button>
             </div>
-            {tab === 'kode' ? <KodeView ti={ti} li={li} shown={shown} indent={indent} /> : textual ? text : <div className="min-h-0 flex-1">{frame(true)}</div>}
+            {tab === 'kode' && (
+              <p className="text-sm text-tinta/80">Ketuk baris mana pun untuk membaca kenapa baris itu ada di situ.</p>
+            )}
+            {tab === 'kode' && sel && (
+              <Card tone="langit" aria-live="polite">
+                <p>
+                  <code className="break-all font-mono font-bold">{sel.t}</code>
+                  {sel.r ? <span className="font-bold"> ({sel.r})</span> : null}
+                </p>
+                <p>{sel.w ?? 'Baris ini bagian dari kerangka.'}</p>
+              </Card>
+            )}
+            {tab === 'kode' ? <KodeView ti={ti} li={li} shown={shown} indent={indent} onPick={setSel} /> : textual ? text : <div className="min-h-0 flex-1">{frame(true)}</div>}
           </div>
         </div>
       )}
@@ -206,7 +228,7 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
 }
 
 /** Kode pelajaran sebelumnya sebagai pelengkap: redup, tidak bisa diklik. */
-function CtxBlock({ lines, start, label }: { lines: Ln[]; start: number; label: string }) {
+function CtxBlock({ lines, start, label, onPick }: { lines: Ln[]; start: number; label: string; onPick: (x: Ln) => void }) {
   const [open, setOpen] = useState(lines.length <= 4);
   if (lines.length === 0) return null;
   return (
@@ -220,9 +242,11 @@ function CtxBlock({ lines, start, label }: { lines: Ln[]; start: number; label: 
       {open && (
         <ol className="font-mono text-xs text-gading/50">
           {lines.map((x, k) => (
-            <li key={k} className="flex gap-2 whitespace-pre-wrap break-all">
-              <span className="w-6 shrink-0 text-right opacity-70">{start + k + 1}</span>
-              <span style={{ paddingLeft: `${x.i * 2}ch` }}>{x.t}</span>
+            <li key={k}>
+              <button type="button" onClick={() => onPick(x)} className="flex min-h-8 w-full gap-2 whitespace-pre-wrap break-all text-left">
+                <span className="w-6 shrink-0 text-right opacity-70">{start + k + 1}</span>
+                <span style={{ paddingLeft: `${x.i * 2}ch` }}>{x.t}</span>
+              </button>
             </li>
           ))}
         </ol>
@@ -257,6 +281,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
   const [phase, setPhase] = useState<Phase>('susun');
   const [msg, setMsg] = useState<{ kind: 'ok' | 'bad' | 'info'; text: string }>({ kind: 'info', text: 'Ketuk satu kotak kode di bawah, lalu ketuk tempatnya di lembar kode.' });
   const [shake, setShake] = useState<number | null>(null);
+  const [note, setNote] = useState<Ln | null>(null);
   const [mistakes, setMistakes] = useState(0);
   const [cur, setCur] = useState(0);
   const [typed, setTyped] = useState('');
@@ -299,6 +324,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
 
   function place(slot: number) {
     if (phase !== 'susun') return;
+    setNote(null);
     const here = slotTile[slot];
     if (here !== null) {
       setMsg({ kind: 'info', text: `${lesson.lines[here].c}: ${whyOf(lesson.lines[here].c)}` });
@@ -343,6 +369,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
     const v = norm(raw);
     if (v === target) {
       setTyped('');
+      setNote(null);
       if (cur + 1 < n) setCur(cur + 1);
       else finish();
       return;
@@ -416,8 +443,8 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
 
       <Card tone="papan" className="space-y-2">
         <p className="font-display text-lg font-semibold">{phase === 'susun' ? 'Langkah 1: Susun kotak kode' : 'Langkah 2: Ketik kodenya'}</p>
-        {(cx.before.length > 0 || cx.after.length > 0) && <p className="text-sm opacity-90">Baris redup adalah kode pelajaran sebelumnya sebagai pelengkap. Fokus ke baris bernomor yang bisa diketuk.</p>}
-        <CtxBlock lines={cx.before} start={0} label="Pelengkap di atas" />
+        {(cx.before.length > 0 || cx.after.length > 0) && <p className="text-sm opacity-90">Baris redup adalah kode pelajaran lain sebagai pelengkap. Ketuk untuk membaca kenapa baris itu ada. Fokus ke baris bernomor yang bisa disusun dan diketik.</p>}
+        <CtxBlock lines={cx.before} start={0} label="Pelengkap di atas" onPick={setNote} />
         <ol className="space-y-2" aria-label="Lembar kode">
           {lesson.lines.map((L, i) => {
             const tile = slotTile[i];
@@ -444,7 +471,9 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
                   {phase === 'ketik' && (
                     <div className={cn('rounded-xl border-2 px-3 py-2', isCur ? 'border-kuning-300 bg-white/15' : 'border-transparent')}>
                       {doneLine ? (
-                        <code className="whitespace-pre-wrap break-all font-mono text-sm font-bold text-hijau-300">{codes[i]}</code>
+                        <button type="button" onClick={() => setNote({ t: codes[i], i: L.i ?? 0, r: L.r, w: whyOf(codes[i]) })} className="min-h-8 w-full text-left">
+                          <code className="whitespace-pre-wrap break-all font-mono text-sm font-bold text-hijau-300">{codes[i]}</code>
+                        </button>
                       ) : isCur ? (
                         <>
                           <code className="whitespace-pre-wrap break-all font-mono text-base" aria-label={`Ketik: ${codes[i]}`}>
@@ -474,13 +503,24 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
             );
           })}
         </ol>
-        <CtxBlock lines={cx.after} start={cx.before.length + n} label="Pelengkap di bawah" />
+        <CtxBlock lines={cx.after} start={cx.before.length + n} label="Pelengkap di bawah" onPick={setNote} />
       </Card>
 
-      <Card tone={msg.kind === 'bad' ? 'catatan' : 'langit'} aria-live="polite" className="min-h-[72px]">
-        {phase === 'ketik' ? (
+      <Card tone={msg.kind === 'bad' && !note ? 'catatan' : 'langit'} aria-live="polite" className="min-h-[72px]">
+        {note ? (
+          <div className="space-y-1">
+            <p>
+              <code className="break-all font-mono font-bold">{note.t}</code>
+              {note.r ? <span className="font-bold"> ({note.r})</span> : null}
+            </p>
+            <p>{note.w}</p>
+            <button type="button" onClick={() => setNote(null)} className="min-h-10 font-bold text-langit-700 underline">
+              Tutup penjelasan
+            </button>
+          </div>
+        ) : phase === 'ketik' ? (
           <p>
-            <strong>Tentang baris {cur + 1}:</strong> {whyOf(codes[cur] ?? '')}
+            <strong>Tentang baris {cx.before.length + cur + 1}:</strong> {whyOf(codes[cur] ?? '')}
           </p>
         ) : (
           <p className={cn(msg.kind === 'bad' && 'font-bold')}>{msg.text}</p>
@@ -571,11 +611,14 @@ export function KodePintar() {
     <Page className="max-w-2xl">
       <PageHeader title="Kode Pintar" subtitle="Belajar coding dari nol, selangkah demi selangkah." icon="chip" aside={<Badge tone="kuning">{totalDone}/{KODE_TOTAL}</Badge>} />
       <Card tone="catatan" className="space-y-2">
+        <p className="font-display text-lg font-semibold">Proyek: Tugas Pintar</p>
+        <p>Kamu membangun satu aplikasi pencatat tugas dari awal: rangka (HTML), tampilan (CSS), gerak (JavaScript), logika (Python), gudang data (SQL), lalu menyimpannya (Git).</p>
         <p className="font-display text-lg font-semibold">Cara bermain</p>
         <ol className="list-decimal space-y-1 pl-5">
           <li>Susun kotak kode ke tempat yang benar, seperti puzzle.</li>
           <li>Ketik kodenya sendiri. Huruf benar menyala hijau, huruf salah menyala merah.</li>
-          <li>Ketuk "Layar hasil" untuk melihat proyekmu hidup.</li>
+          <li>Ketuk "Layar hasil" untuk melihat hasil dan seluruh kodenya.</li>
+          <li>Ketuk baris mana pun, termasuk yang redup, untuk membaca kenapa baris itu ada di situ.</li>
         </ol>
       </Card>
 
