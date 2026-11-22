@@ -3,7 +3,8 @@ import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, Progre
 import { MODE_BASE } from '@/app/navigation';
 import { progressActions, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
-import { KODE_TOTAL, TRACKS, type KLesson, type KTrack, type SqlTable } from './kodeData';
+import { buildDoc, compose, previousOutputs, type Ln } from './kodeCompose';
+import { KODE_TOTAL, TRACKS, type KLesson, type SqlTable } from './kodeData';
 
 const GAME = `${MODE_BASE.student}/game`;
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
@@ -26,22 +27,6 @@ function Stars({ count }: { count: number }) {
 }
 
 /* ───────────────────────── Layar hasil ───────────────────────── */
-
-function syntaxOk(code: string): boolean {
-  try {
-    // Hanya memeriksa tata bahasa; kode TIDAK dijalankan di sini.
-    new Function(code);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function buildDoc(track: KTrack, lesson: KLesson, shown: string[]): string {
-  const code = shown.join('\n');
-  if (track.id === 'js') return (lesson.pre ?? '') + (syntaxOk(code) ? code : '') + (lesson.post ?? '');
-  return (lesson.pre ?? '') + code + (lesson.post ?? '');
-}
 
 function SqlTableView({ t, tone }: { t: SqlTable; tone?: 'hasil' }) {
   return (
@@ -80,15 +65,23 @@ function SqlTableView({ t, tone }: { t: SqlTable; tone?: 'hasil' }) {
   );
 }
 
-function TermScreen({ lesson, trackId, shown, indent, done }: { lesson: KLesson; trackId: string; shown: string[]; indent: number[]; done: boolean }) {
-  const prompt = trackId === 'git' ? '$ ' : trackId === 'py' ? '>>> ' : '';
+function TermScreen({ ti, li, shown, done }: { ti: number; li: number; shown: string[]; done: boolean }) {
+  const track = TRACKS[ti];
+  const lesson = track.lessons[li];
+  const hist = previousOutputs(ti, li);
+  let text: string;
+  if (track.id === 'py') {
+    text = [...hist.map((h) => h.out), done ? lesson.out ?? '' : ''].filter(Boolean).join('\n');
+    if (!text) text = '(belum ada keluaran)';
+  } else {
+    const parts = hist.map((h) => [...h.cmds.map((c) => '$ ' + c), h.out].join('\n'));
+    parts.push([...shown.map((c) => '$ ' + c), done ? lesson.out ?? '' : ''].filter(Boolean).join('\n'));
+    text = parts.filter(Boolean).join('\n');
+  }
   return (
     <div className="space-y-2">
-      <pre className="overflow-x-auto whitespace-pre-wrap break-all rounded-xl border-2 border-tinta bg-tinta p-3 font-mono text-sm text-gading">
-        {shown.map((c, k) => (trackId === 'py' ? '    '.repeat(indent[k] ?? 0) + c : prompt + c)).join('\n')}
-        {done && lesson.out ? '\n\n' + lesson.out : ''}
-      </pre>
-      {!done && <p className="font-bold text-tinta/70">Keluaran muncul setelah semua baris selesai kamu ketik.</p>}
+      <pre className="overflow-x-auto whitespace-pre-wrap break-all rounded-xl border-2 border-tinta bg-tinta p-3 font-mono text-sm text-gading">{text}</pre>
+      {!done && <p className="font-bold text-tinta/70">Keluaran pelajaran ini muncul setelah semua baris selesai kamu ketik.</p>}
       <p className="text-sm text-tinta/70">Keluaran ini simulasi untuk belajar.</p>
     </div>
   );
@@ -115,13 +108,35 @@ function SqlScreen({ lesson, done }: { lesson: KLesson; done: boolean }) {
   );
 }
 
-function Layar({ track, lesson, shown, indent, done }: { track: KTrack; lesson: KLesson; shown: string[]; indent: number[]; done: boolean }) {
+/** Seluruh berkas: pelengkap redup, baris pelajaran ini menyala. */
+function KodeView({ ti, li, shown, indent }: { ti: number; li: number; shown: string[]; indent: number[] }) {
+  const c = compose(ti, li);
+  const rows = [
+    ...c.before.map((x) => ({ ...x, cur: false })),
+    ...shown.map((t, k) => ({ t, i: (indent[k] ?? 0) + c.ind, cur: true })),
+    ...c.after.map((x) => ({ ...x, cur: false })),
+  ];
+  return (
+    <ol aria-label="Kode lengkap" className="overflow-x-auto rounded-xl border-2 border-tinta bg-tinta p-3 font-mono text-sm">
+      {rows.map((r, k) => (
+        <li key={k} className={cn('flex gap-3 whitespace-pre rounded px-1', r.cur ? 'bg-kuning-300/25 font-bold text-gading' : 'text-gading/45')}>
+          <span className="w-6 shrink-0 text-right opacity-60">{k + 1}</span>
+          <span style={{ paddingLeft: `${r.i * 2}ch` }}>{r.t}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown: string[]; indent: number[]; done: boolean }) {
+  const track = TRACKS[ti];
+  const lesson = track.lessons[li];
   const [open, setOpen] = useState(false);
-  const isSql = track.id === 'sql';
+  const [tab, setTab] = useState<'hasil' | 'kode'>('hasil');
   const isTerm = track.id === 'py' || track.id === 'git';
-  const textual = isSql || isTerm;
-  const text = isTerm ? <TermScreen lesson={lesson} trackId={track.id} shown={shown} indent={indent} done={done} /> : <SqlScreen lesson={lesson} done={done} />;
-  const doc = useMemo(() => (textual ? '' : buildDoc(track, lesson, shown)), [textual, track, lesson, shown]);
+  const textual = isTerm || track.id === 'sql';
+  const doc = useMemo(() => (textual ? '' : buildDoc(ti, li, shown)), [textual, ti, li, shown]);
+  const text = isTerm ? <TermScreen ti={ti} li={li} shown={shown} done={done} /> : <SqlScreen lesson={lesson} done={done} />;
 
   useEffect(() => {
     if (!open) return;
@@ -132,13 +147,13 @@ function Layar({ track, lesson, shown, indent, done }: { track: KTrack; lesson: 
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  const preview = (
+  const frame = (big: boolean) => (
     <iframe
       title="Layar hasil proyek"
       sandbox="allow-scripts"
       srcDoc={doc}
-      className={cn('w-full rounded-xl border-2 border-tinta bg-white', open ? 'h-full min-h-[320px]' : 'pointer-events-none h-36')}
-      tabIndex={open ? 0 : -1}
+      className={cn('w-full rounded-xl border-2 border-tinta bg-white', big ? 'h-full min-h-[320px]' : 'pointer-events-none h-36')}
+      tabIndex={big ? 0 : -1}
     />
   );
 
@@ -147,30 +162,72 @@ function Layar({ track, lesson, shown, indent, done }: { track: KTrack; lesson: 
       <div className="stiker overflow-hidden rounded-3xl bg-gading">
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setTab('hasil');
+            setOpen(true);
+          }}
           className="flex min-h-12 w-full items-center justify-between gap-2 border-b-2 border-tinta bg-langit-100 px-4 py-2 text-left font-display font-semibold"
         >
           <span className="flex items-center gap-2">
             <Icon name="eye" size={22} /> Layar hasil
           </span>
-          <span className="text-sm font-bold text-langit-700">Ketuk untuk memperbesar</span>
+          <span className="text-sm font-bold text-langit-700">Ketuk: hasil dan kode</span>
         </button>
-        <div className="max-h-48 overflow-hidden p-2">{textual ? text : preview}</div>
+        <div className="max-h-48 overflow-hidden p-2">{textual ? text : frame(false)}</div>
       </div>
       {open && (
-        <div role="dialog" aria-modal="true" aria-label="Layar hasil" className="fixed inset-0 z-50 flex flex-col gap-3 bg-tinta/60 p-3">
+        <div role="dialog" aria-modal="true" aria-label="Layar hasil dan kode" className="fixed inset-0 z-50 flex flex-col gap-3 bg-tinta/60 p-3">
           <div className="stiker flex min-h-0 flex-1 flex-col gap-3 overflow-auto rounded-3xl bg-gading p-3">
             <div className="flex items-center justify-between gap-2">
-              <h2 className="font-display text-xl font-semibold">Layar hasil</h2>
+              <div role="tablist" aria-label="Pilih tampilan" className="flex gap-2">
+                {(['hasil', 'kode'] as const).map((k) => (
+                  <button
+                    key={k}
+                    type="button"
+                    role="tab"
+                    aria-selected={tab === k}
+                    onClick={() => setTab(k)}
+                    className={cn('stiker min-h-12 rounded-2xl px-4 font-display font-semibold', tab === k ? 'bg-kuning-300' : 'bg-gading')}
+                  >
+                    {k === 'hasil' ? 'Hasil' : 'Kode'}
+                  </button>
+                ))}
+              </div>
               <Button variant="sekunder" onClick={() => setOpen(false)} aria-label="Tutup layar hasil">
                 <Icon name="close" size={20} /> Tutup
               </Button>
             </div>
-            {textual ? text : <div className="min-h-0 flex-1">{preview}</div>}
+            {tab === 'kode' ? <KodeView ti={ti} li={li} shown={shown} indent={indent} /> : textual ? text : <div className="min-h-0 flex-1">{frame(true)}</div>}
           </div>
         </div>
       )}
     </>
+  );
+}
+
+/** Kode pelajaran sebelumnya sebagai pelengkap: redup, tidak bisa diklik. */
+function CtxBlock({ lines, start, label }: { lines: Ln[]; start: number; label: string }) {
+  const [open, setOpen] = useState(lines.length <= 4);
+  if (lines.length === 0) return null;
+  return (
+    <div className="rounded-xl bg-black/20 px-2 py-1">
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className="flex min-h-10 w-full items-center justify-between gap-2 text-left text-sm font-bold text-gading/80">
+        <span>
+          {label} ({lines.length} baris)
+        </span>
+        <span>{open ? 'Tutup' : 'Buka'}</span>
+      </button>
+      {open && (
+        <ol className="font-mono text-xs text-gading/50">
+          {lines.map((x, k) => (
+            <li key={k} className="flex gap-2 whitespace-pre-wrap break-all">
+              <span className="w-6 shrink-0 text-right opacity-70">{start + k + 1}</span>
+              <span style={{ paddingLeft: `${x.i * 2}ch` }}>{x.t}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
   );
 }
 
@@ -179,15 +236,18 @@ function Layar({ track, lesson, shown, indent, done }: { track: KTrack; lesson: 
 type Phase = 'susun' | 'ketik' | 'selesai';
 
 interface PlayProps {
-  track: KTrack;
-  lesson: KLesson;
+  ti: number;
+  li: number;
   next: { label: string } | null;
   onExit: () => void;
   onNext: () => void;
   onAgain: () => void;
 }
 
-function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps) {
+function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
+  const track = TRACKS[ti];
+  const lesson = track.lessons[li];
+  const cx = useMemo(() => compose(ti, li), [ti, li]);
   const p = useProgress();
   const confirm = useConfirm();
   const n = lesson.lines.length;
@@ -269,7 +329,7 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
   }
 
   function finish() {
-    const stars = mistakes === 0 ? 3 : mistakes <= 3 ? 2 : 1;
+    const stars = mistakes === 0 ? 3 : mistakes <= 2 ? 2 : 1;
     const first = (p.kode?.[lesson.id] ?? 0) === 0;
     const gained = first ? 20 + stars * 5 : 0;
     const doneCount = track.lessons.filter((l) => l.id === lesson.id || (p.kode?.[l.id] ?? 0) > 0).length;
@@ -281,7 +341,6 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
   function onType(raw: string) {
     if (phase !== 'ketik') return;
     const v = norm(raw);
-    if (firstBad(typed, target) < 0 && firstBad(v, target) >= 0 && v.length > typed.length) setMistakes((m) => m + 1);
     if (v === target) {
       setTyped('');
       if (cur + 1 < n) setCur(cur + 1);
@@ -305,12 +364,12 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
           <h1 className="text-3xl">Pelajaran selesai!</h1>
           <Stars count={result.stars} />
           <p className="text-lg">
-            {lesson.title} · salah {mistakes} kali ·{' '}
+            {lesson.title} · salah menaruh kotak {mistakes} kali ·{' '}
             {result.gained > 0 ? <strong>+{result.gained} XP</strong> : <span>XP hanya diberikan saat pertama kali selesai</span>}
           </p>
           <p className="text-tinta/85">Kamu sudah bisa: {lesson.goal.charAt(0).toLowerCase() + lesson.goal.slice(1)}</p>
           <div className="w-full">
-            <Layar track={track} lesson={lesson} shown={shown} indent={shownIndent} done />
+            <Layar ti={ti} li={li} shown={shown} indent={shownIndent} done />
           </div>
           <div className="grid w-full gap-3 sm:grid-cols-2">
             {next && (
@@ -353,22 +412,21 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
         <p className="text-tinta/85">{lesson.goal}</p>
       </div>
 
-      <Layar track={track} lesson={lesson} shown={shown} indent={shownIndent} done={false} />
+      <Layar ti={ti} li={li} shown={shown} indent={shownIndent} done={false} />
 
       <Card tone="papan" className="space-y-2">
         <p className="font-display text-lg font-semibold">{phase === 'susun' ? 'Langkah 1: Susun kotak kode' : 'Langkah 2: Ketik kodenya'}</p>
-        {(lesson.pre || track.id === 'css' || track.id === 'js') && phase === 'susun' && (
-          <p className="text-sm opacity-90">Kerangka halaman sudah disiapkan. Kamu hanya menyusun bagian yang penting.</p>
-        )}
+        {(cx.before.length > 0 || cx.after.length > 0) && <p className="text-sm opacity-90">Baris redup adalah kode pelajaran sebelumnya sebagai pelengkap. Fokus ke baris bernomor yang bisa diketuk.</p>}
+        <CtxBlock lines={cx.before} start={0} label="Pelengkap di atas" />
         <ol className="space-y-2" aria-label="Lembar kode">
           {lesson.lines.map((L, i) => {
             const tile = slotTile[i];
-            const indent = { paddingLeft: `${(L.i ?? 0) * 14}px` };
+            const indent = { paddingLeft: `${((L.i ?? 0) + cx.ind) * 10}px` };
             const isCur = phase === 'ketik' && i === cur;
             const doneLine = phase === 'ketik' && i < cur;
             return (
               <li key={i} ref={isCur ? curRowRef : undefined} className="flex items-start gap-2">
-                <span className="w-5 shrink-0 pt-3 text-right font-mono text-sm opacity-70">{i + 1}</span>
+                <span className="w-6 shrink-0 pt-3 text-right font-mono text-sm opacity-70">{cx.before.length + i + 1}</span>
                 <div className="min-w-0 flex-1" style={indent}>
                   {phase === 'susun' && (
                     <button
@@ -416,6 +474,7 @@ function LessonPlay({ track, lesson, next, onExit, onNext, onAgain }: PlayProps)
             );
           })}
         </ol>
+        <CtxBlock lines={cx.after} start={cx.before.length + n} label="Pelengkap di bawah" />
       </Card>
 
       <Card tone={msg.kind === 'bad' ? 'catatan' : 'langit'} aria-live="polite" className="min-h-[72px]">
@@ -498,8 +557,8 @@ export function KodePintar() {
     return (
       <LessonPlay
         key={`${lesson.id}-${active.run}`}
-        track={track}
-        lesson={lesson}
+        ti={active.t}
+        li={active.l}
         next={nextLesson ? { label: nextLesson.t === active.t ? 'Pelajaran berikutnya' : `Mulai jalur ${TRACKS[nextLesson.t].title.split(':')[0]}` } : null}
         onExit={() => setActive(null)}
         onNext={() => nextLesson && setActive({ ...nextLesson, run: 0 })}
