@@ -1,4 +1,5 @@
 import { Button, Card, Icon, Page, PageHeader, useConfirm } from '@/components/ui';
+import { ChangePasswordCard } from '@/features/auth/ChangePasswordCard';
 import { progressActions } from '@/hooks/useProgress';
 
 export function ParentSettings() {
@@ -12,6 +13,7 @@ export function ParentSettings() {
           Kemajuan anak di menu Perkembangan diambil dari akun anak, bukan dari perangkat ini. Hapus data di bawah hanya memengaruhi data tamu di perangkat ini.
         </p>
       </Card>
+      <ChangePasswordCard />
       <Card className="space-y-3">
         <h2 className="text-xl">Hapus data belajar</h2>
         <p>Menghapus nama, XP, bintang, dan skor game di perangkat ini. Tidak bisa dibatalkan.</p>
