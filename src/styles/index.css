@@ -129,3 +129,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-kedip { animation: kedip 4.6s ease-in-out infinite !important; }
 }
+
+/* Skeleton memuat: kilau lembut; tanpa gerak bila "kurangi animasi" */
+.sk{background:linear-gradient(90deg,rgba(42,51,40,.08) 25%,rgba(42,51,40,.16) 50%,rgba(42,51,40,.08) 75%);background-size:200% 100%;animation:sk-shine 1.4s ease-in-out infinite}
+@keyframes sk-shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.sk{animation:none !important}}
