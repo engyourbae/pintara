@@ -5,7 +5,7 @@ import { Field, FormError } from '@/features/auth/parts';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleCategories, sampleContents } from '@/data/sample';
 import { friendlyError } from '@/services/firebase/auth';
-import { addMission, deleteClassCascade, deleteMission, listMembers, listMissions, listResults, pruneClassResults, setMemberStatus, updateClass } from '@/services/firebase/classes';
+import { addMission, deleteClassCascade, deleteMission, listMembers, listMissions, listResults, pruneClassResults, removeMember, setMemberStatus, updateClass } from '@/services/firebase/classes';
 import { GAME_MISSIONS, resultKeyOf, resultTitle } from '@/data/missions';
 import { useAuth } from '@/hooks/useAuth';
 import { listMyClasses } from '@/services/firebase/classes';
@@ -208,7 +208,7 @@ export function ClassDetail() {
                 <span className="font-semibold">{m.displayName}</span>
                 <span className="flex gap-2">
                   <Button disabled={busy} onClick={() => void act(() => setMemberStatus(c.id, m.uid, 'active'), members.reload)}>Setujui</Button>
-                  <Button variant="sekunder" disabled={busy} onClick={() => void act(() => setMemberStatus(c.id, m.uid, 'removed'), members.reload)}>Tolak</Button>
+                  <Button variant="sekunder" disabled={busy} onClick={() => void act(() => removeMember(c.id, m.uid), members.reload)}>Tolak</Button>
                 </span>
               </li>
             ))}
@@ -240,8 +240,8 @@ export function ClassDetail() {
                         disabled={busy}
                         className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-tinta bg-gading"
                         onClick={async () => {
-                          const ok = await confirm({ title: 'Keluarkan murid?', message: `${m.displayName} tidak lagi menjadi anggota kelas ini.`, confirmLabel: 'Keluarkan', danger: true });
-                          if (ok) void act(() => setMemberStatus(c.id, m.uid, 'removed'), members.reload);
+                          const ok = await confirm({ title: 'Keluarkan murid?', message: `${m.displayName} dihapus dari kelas ini beserta hasil dan jawabannya. Dia bisa mendaftar lagi dengan kode (perlu disetujui).`, confirmLabel: 'Keluarkan', danger: true });
+                          if (ok) void act(() => removeMember(c.id, m.uid), members.reload);
                         }}
                       >
                         <Icon name="close" size={18} />
