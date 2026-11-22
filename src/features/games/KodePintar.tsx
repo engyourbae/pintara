@@ -3,19 +3,14 @@ import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, Progre
 import { MODE_BASE } from '@/app/navigation';
 import { progressActions, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
-import { buildDoc, compose, previousOutputs, type Ln } from './kodeCompose';
+import { buildDoc, compose, previousOutputs, type Edits, type Ln } from './kodeCompose';
+import { freeHint, parseTyped } from './kodeFree';
 import { KODE_TOTAL, TRACKS, type KLesson, type SqlTable } from './kodeData';
 
 const GAME = `${MODE_BASE.student}/game`;
 const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5);
 /** Papan ketik ponsel sering mengubah tanda kutip jadi lengkung; samakan dulu. */
 const norm = (s: string) => s.replace(/[‘’`´]/g, "'").replace(/[“”]/g, '"');
-/** Indeks karakter pertama yang salah, atau -1 bila awalan masih benar. */
-function firstBad(typed: string, target: string): number {
-  for (let i = 0; i < typed.length; i++) if (typed[i] !== target[i]) return i;
-  return -1;
-}
-
 function Stars({ count }: { count: number }) {
   return (
     <span className="inline-flex gap-0.5" role="img" aria-label={`${count} dari 3 bintang`}>
@@ -109,11 +104,11 @@ function SqlScreen({ lesson, done }: { lesson: KLesson; done: boolean }) {
 }
 
 /** Seluruh berkas: pelengkap redup, baris pelajaran ini menyala. */
-function KodeView({ ti, li, shown, indent, onPick }: { ti: number; li: number; shown: string[]; indent: number[]; onPick: (x: Ln) => void }) {
-  const c = compose(ti, li);
+function KodeView({ ti, li, shown, indent, meta, edits, onPick }: { ti: number; li: number; shown: string[]; indent: number[]; meta: { r?: string; w?: string }[]; edits: Edits; onPick: (x: Ln) => void }) {
+  const c = compose(ti, li, edits);
   const rows = [
     ...c.before.map((x) => ({ ...x, cur: false })),
-    ...shown.map((t, k) => ({ ...(c.lesson.lines.find((l) => l.c === t) ?? { r: undefined, w: undefined }), t, i: (indent[k] ?? 0) + c.ind, cur: true })),
+    ...shown.map((t, k) => ({ r: meta[k]?.r, w: meta[k]?.w, t, i: (indent[k] ?? 0) + c.ind, cur: true })),
     ...c.after.map((x) => ({ ...x, cur: false })),
   ];
   return (
@@ -134,7 +129,7 @@ function KodeView({ ti, li, shown, indent, onPick }: { ti: number; li: number; s
   );
 }
 
-function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown: string[]; indent: number[]; done: boolean }) {
+function Layar({ ti, li, shown, indent, meta, edits, done }: { ti: number; li: number; shown: string[]; indent: number[]; meta: { r?: string; w?: string }[]; edits: Edits; done: boolean }) {
   const track = TRACKS[ti];
   const lesson = track.lessons[li];
   const [open, setOpen] = useState(false);
@@ -142,7 +137,7 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
   const [sel, setSel] = useState<Ln | null>(null);
   const isTerm = track.id === 'py' || track.id === 'git';
   const textual = isTerm || track.id === 'sql';
-  const doc = useMemo(() => (textual ? '' : buildDoc(ti, li, shown)), [textual, ti, li, shown]);
+  const doc = useMemo(() => (textual ? '' : buildDoc(ti, li, shown, edits)), [textual, ti, li, shown, edits]);
   const title = /<title>(.*?)<\/title>/.exec(doc)?.[1];
   const text = isTerm ? <TermScreen ti={ti} li={li} shown={shown} done={done} /> : <SqlScreen lesson={lesson} done={done} />;
 
@@ -219,7 +214,7 @@ function Layar({ ti, li, shown, indent, done }: { ti: number; li: number; shown:
                 <p>{sel.w ?? 'Baris ini bagian dari kerangka.'}</p>
               </Card>
             )}
-            {tab === 'kode' ? <KodeView ti={ti} li={li} shown={shown} indent={indent} onPick={setSel} /> : textual ? text : <div className="min-h-0 flex-1">{frame(true)}</div>}
+            {tab === 'kode' ? <KodeView ti={ti} li={li} shown={shown} indent={indent} meta={meta} edits={edits} onPick={setSel} /> : textual ? text : <div className="min-h-0 flex-1">{frame(true)}</div>}
           </div>
         </div>
       )}
@@ -271,9 +266,11 @@ interface PlayProps {
 function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
   const track = TRACKS[ti];
   const lesson = track.lessons[li];
-  const cx = useMemo(() => compose(ti, li), [ti, li]);
   const p = useProgress();
   const confirm = useConfirm();
+  const edits = p.kodeEdit;
+  const cx = useMemo(() => compose(ti, li, edits), [ti, li, edits]);
+
   const n = lesson.lines.length;
   const [order] = useState(() => shuffle(lesson.lines.map((_, i) => i)));
   const [slotTile, setSlotTile] = useState<(number | null)[]>(() => lesson.lines.map(() => null));
@@ -282,6 +279,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
   const [msg, setMsg] = useState<{ kind: 'ok' | 'bad' | 'info'; text: string }>({ kind: 'info', text: 'Ketuk satu kotak kode di bawah, lalu ketuk tempatnya di lembar kode.' });
   const [shake, setShake] = useState<number | null>(null);
   const [note, setNote] = useState<Ln | null>(null);
+  const [custom, setCustom] = useState<Record<number, string>>({});
   const [mistakes, setMistakes] = useState(0);
   const [cur, setCur] = useState(0);
   const [typed, setTyped] = useState('');
@@ -293,12 +291,15 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
   const whyOf = (code: string) => lesson.lines.find((l) => l.c === code)?.w ?? '';
   const placedCount = slotTile.filter((t) => t !== null).length;
   const target = phase === 'ketik' ? codes[cur] ?? '' : '';
+  const curFree = phase === 'ketik' ? lesson.lines.find((l) => l.c === target)?.free : undefined;
+  const parsed = phase === 'ketik' ? parseTyped(target, curFree, typed) : null;
 
   const shownSlots = useMemo(() => {
     const upto = phase === 'selesai' ? n : phase === 'ketik' ? cur : n;
     return slotTile.slice(0, upto).flatMap((t, i) => (t === null ? [] : [i]));
   }, [phase, slotTile, cur, n]);
-  const shown = useMemo(() => shownSlots.map((i) => lesson.lines[slotTile[i] as number].c), [shownSlots, slotTile, lesson]);
+  const shown = useMemo(() => shownSlots.map((i) => custom[i] ?? lesson.lines[slotTile[i] as number].c), [shownSlots, slotTile, lesson, custom]);
+  const shownMeta = useMemo(() => shownSlots.map((i) => lesson.lines[slotTile[i] as number]), [shownSlots, slotTile, lesson]);
   const shownIndent = useMemo(() => shownSlots.map((i) => lesson.lines[i].i ?? 0), [shownSlots, lesson]);
 
   useEffect(() => {
@@ -354,12 +355,17 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
     }
   }
 
-  function finish() {
+  function finish(finalCustom: Record<number, string>) {
     const stars = mistakes === 0 ? 3 : mistakes <= 2 ? 2 : 1;
     const first = (p.kode?.[lesson.id] ?? 0) === 0;
     const gained = first ? 20 + stars * 5 : 0;
     const doneCount = track.lessons.filter((l) => l.id === lesson.id || (p.kode?.[l.id] ?? 0) > 0).length;
-    progressActions.recordKode(lesson.id, stars, `kode-${track.id}`, doneCount, gained);
+    const edited: Record<string, string> = {};
+    for (const [slot, code] of Object.entries(finalCustom)) {
+      const canon = lesson.lines.findIndex((l) => l.c === codes[Number(slot)]);
+      if (canon >= 0 && code !== codes[Number(slot)]) edited[`${lesson.id}#${canon}`] = code;
+    }
+    progressActions.recordKode(lesson.id, stars, `kode-${track.id}`, doneCount, gained, edited);
     setResult({ stars, gained });
     setPhase('selesai');
   }
@@ -367,11 +373,13 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
   function onType(raw: string) {
     if (phase !== 'ketik') return;
     const v = norm(raw);
-    if (v === target) {
+    if (parseTyped(target, curFree, v).done) {
+      const nextCustom = v !== target ? { ...custom, [cur]: v } : custom;
+      setCustom(nextCustom);
       setTyped('');
       setNote(null);
       if (cur + 1 < n) setCur(cur + 1);
-      else finish();
+      else finish(nextCustom);
       return;
     }
     setTyped(v);
@@ -396,7 +404,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
           </p>
           <p className="text-tinta/85">Kamu sudah bisa: {lesson.goal.charAt(0).toLowerCase() + lesson.goal.slice(1)}</p>
           <div className="w-full">
-            <Layar ti={ti} li={li} shown={shown} indent={shownIndent} done />
+            <Layar ti={ti} li={li} shown={shown} indent={shownIndent} meta={shownMeta} edits={edits} done />
           </div>
           <div className="grid w-full gap-3 sm:grid-cols-2">
             {next && (
@@ -439,7 +447,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
         <p className="text-tinta/85">{lesson.goal}</p>
       </div>
 
-      <Layar ti={ti} li={li} shown={shown} indent={shownIndent} done={false} />
+      <Layar ti={ti} li={li} shown={shown} indent={shownIndent} meta={shownMeta} edits={edits} done={false} />
 
       <Card tone="papan" className="space-y-2">
         <p className="font-display text-lg font-semibold">{phase === 'susun' ? 'Langkah 1: Susun kotak kode' : 'Langkah 2: Ketik kodenya'}</p>
@@ -471,27 +479,34 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
                   {phase === 'ketik' && (
                     <div className={cn('rounded-xl border-2 px-3 py-2', isCur ? 'border-kuning-300 bg-white/15' : 'border-transparent')}>
                       {doneLine ? (
-                        <button type="button" onClick={() => setNote({ t: codes[i], i: L.i ?? 0, r: L.r, w: whyOf(codes[i]) })} className="min-h-8 w-full text-left">
-                          <code className="whitespace-pre-wrap break-all font-mono text-sm font-bold text-hijau-300">{codes[i]}</code>
+                        <button type="button" onClick={() => setNote({ t: custom[i] ?? codes[i], i: L.i ?? 0, r: L.r, w: whyOf(codes[i]) })} className="min-h-8 w-full text-left">
+                          <code className="whitespace-pre-wrap break-all font-mono text-sm font-bold text-hijau-300">{custom[i] ?? codes[i]}</code>
                         </button>
                       ) : isCur ? (
                         <>
                           <code className="whitespace-pre-wrap break-all font-mono text-base" aria-label={`Ketik: ${codes[i]}`}>
-                            {codes[i].split('').map((ch, k) => {
-                              const t = typed[k];
-                              const cls =
-                                t === undefined
-                                  ? cn('text-white/55', k === typed.length && 'border-b-2 border-kuning-300 text-white')
-                                  : t === ch
+                            {(() => {
+                              const firstGhost = parsed?.cells.findIndex((c) => c.k === 'ghost' || c.k === 'freeghost') ?? -1;
+                              return (parsed?.cells ?? []).map((c, k) => {
+                                const cls =
+                                  c.k === 'ok'
                                     ? 'font-bold text-hijau-300'
-                                    : 'bg-merah-100 font-bold text-merah-600';
-                              return (
-                                <span key={k} className={cls}>
-                                  {ch}
-                                </span>
-                              );
-                            })}
+                                    : c.k === 'bad' || c.k === 'freebad'
+                                      ? 'bg-merah-100 font-bold text-merah-600'
+                                      : c.k === 'free'
+                                        ? 'font-bold text-kuning-300 underline decoration-dotted underline-offset-4'
+                                        : c.k === 'freeghost'
+                                          ? cn('text-kuning-300/70 underline decoration-dotted underline-offset-4', k === firstGhost && 'border-b-2 border-kuning-300')
+                                          : cn('text-white/55', k === firstGhost && 'border-b-2 border-kuning-300 text-white');
+                                return (
+                                  <span key={k} className={cls}>
+                                    {c.ch}
+                                  </span>
+                                );
+                              });
+                            })()}
                           </code>
+                          {curFree && <p className="mt-1 text-sm text-kuning-300">{freeHint(curFree)}</p>}
                         </>
                       ) : (
                         <code className="whitespace-pre-wrap break-all font-mono text-sm text-white/40">{codes[i]}</code>
@@ -533,7 +548,7 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
             ref={inputRef}
             value={typed}
             onChange={(e) => onType(e.target.value)}
-            maxLength={target.length}
+            maxLength={target.length + (curFree ? 24 : 0)}
             autoCapitalize="none"
             autoCorrect="off"
             autoComplete="off"
@@ -543,9 +558,9 @@ function LessonPlay({ ti, li, next, onExit, onNext, onAgain }: PlayProps) {
             placeholder={`Ketik baris ${cur + 1} di sini`}
             className="h-12 w-full rounded-xl border-2 border-tinta bg-white px-3 font-mono text-base text-tinta"
           />
-          {firstBad(typed, target) >= 0 && (
+          {parsed?.bad && (
             <p role="alert" className="mt-1 px-1 font-bold text-merah-600">
-              Salah ketik. Hapus huruf yang merah lalu coba lagi.
+              {curFree ? 'Belum sah. Cek tulisan yang merah: bagian kuning harus berisi nilai yang benar.' : 'Salah ketik. Hapus huruf yang merah lalu coba lagi.'}
             </p>
           )}
         </div>

@@ -14,6 +14,8 @@ export interface KLine {
   i?: number;
   g?: string;
   box?: string;
+  /** Bagian baris yang boleh diganti anak dengan nilai sah buatannya sendiri (warna, angka, atau tulisan). v = nilai bawaan di dalam c. */
+  free?: { v: string; kind: 'warna' | 'angka' | 'teks'; max?: number };
 }
 
 export type Cell = string | number;
@@ -222,14 +224,14 @@ export const TRACKS: KTrack[] = [
         into: 'style',
         lines: [
           k('button {', 3, 'Pemilih semua tombol', 'Memilih semua elemen button sekaligus, jadi tombol Tambah dan Hapus tampil seragam tanpa menulis dua kali.'),
-          k('background: #f08a24;', 4, SIFAT, 'Jingga dipakai karena beda dari hijau lain, jadi tombol mudah ditemukan.', { g: 'a' }),
+          k('background: orange;', 4, SIFAT, 'Jingga (orange) dipakai karena beda dari hijau lain, jadi tombol mudah ditemukan. Warna bisa ditulis dengan nama atau kode.', { g: 'a' }),
           k('color: white;', 4, SIFAT, 'Tulisan putih dipilih karena kontras dengan latar jingga, supaya mudah dibaca.', { g: 'a' }),
           k('border: none;', 4, SIFAT, 'Menghapus garis tepi bawaan browser yang tampak kaku.', { g: 'a' }),
           k('border-radius: 12px;', 4, SIFAT, 'Sudut bulat, sama dengan kolom ketik supaya serasi.', { g: 'a' }),
           k('padding: 12px 16px;', 4, SIFAT, 'Dua angka: jarak atas-bawah 12px lalu kiri-kanan 16px, supaya tombol cukup besar untuk jari.', { g: 'a' }),
           k('}', 3, 'Menutup aturan tombol', 'Menutup aturan tombol biasa lebih dulu, karena aturan :hover adalah aturan terpisah.'),
           k('button:hover {', 3, 'Tombol saat disentuh', ':hover berlaku saat penunjuk atau jari menyentuh elemen. Ditulis setelah aturan button biasa karena aturan yang belakangan menang bila bertabrakan.'),
-          k('background: #d9731a;', 4, 'Warna saat disentuh', 'Jingga sedikit lebih gelap sebagai tanda bahwa tombol merespons sentuhan.'),
+          k('background: darkorange;', 4, 'Warna saat disentuh', 'Jingga sedikit lebih gelap (darkorange) sebagai tanda bahwa tombol merespons sentuhan.'),
           k('}', 3, 'Menutup aturan sentuh', 'Menutup aturan sentuh. Aturan ini sengaja ditaruh sesudah aturan tombol biasa.'),
         ],
       },
@@ -638,6 +640,37 @@ export const TRACKS: KTrack[] = [
     ],
   },
 ];
+
+/** Bagian bebas: anak boleh mengetik nilainya sendiri (pelajaran, baris, nilai bawaan). */
+const FREE_LINES: [string, string, NonNullable<KLine['free']>][] = [
+  ['html-1', '<title>Tugas Pintar</title>', { v: 'Tugas Pintar', kind: 'teks' }],
+  ['html-3', '<h1>Tugas Pintar</h1>', { v: 'Tugas Pintar', kind: 'teks' }],
+  ['html-3', '<p>Catat tugas sekolahmu di sini.</p>', { v: 'Catat tugas sekolahmu di sini.', kind: 'teks' }],
+  ['html-4', '<label for="input-tugas">Tugas baru:</label>', { v: 'Tugas baru:', kind: 'teks' }],
+  ['html-5', '<li>Kerjakan PR matematika</li>', { v: 'Kerjakan PR matematika', kind: 'teks' }],
+  ['html-5', '<li class="selesai">Baca buku cerita</li>', { v: 'Baca buku cerita', kind: 'teks' }],
+  ['html-6', '<p>Dibuat dengan Kode Pintar</p>', { v: 'Dibuat dengan Kode Pintar', kind: 'teks' }],
+  ['css-1', 'background: #fff8e7;', { v: '#fff8e7', kind: 'warna' }],
+  ['css-2', 'background: #4a8f3c;', { v: '#4a8f3c', kind: 'warna' }],
+  ['css-2', 'color: white;', { v: 'white', kind: 'warna' }],
+  ['css-2', 'padding: 16px;', { v: '16', kind: 'angka', max: 80 }],
+  ['css-3', 'max-width: 480px;', { v: '480', kind: 'angka', max: 900 }],
+  ['css-4', 'gap: 8px;', { v: '8', kind: 'angka', max: 40 }],
+  ['css-4', 'border: 2px solid #4a8f3c;', { v: '#4a8f3c', kind: 'warna' }],
+  ['css-4', 'border-radius: 12px;', { v: '12', kind: 'angka', max: 40 }],
+  ['css-5', 'background: orange;', { v: 'orange', kind: 'warna' }],
+  ['css-5', 'color: white;', { v: 'white', kind: 'warna' }],
+  ['css-5', 'background: darkorange;', { v: 'darkorange', kind: 'warna' }],
+  ['css-6', 'background: white;', { v: 'white', kind: 'warna' }],
+  ['css-6', 'padding: 12px;', { v: '12', kind: 'angka', max: 60 }],
+  ['css-6', 'margin-bottom: 8px;', { v: '8', kind: 'angka', max: 40 }],
+  ['css-7', 'color: gray;', { v: 'gray', kind: 'warna' }],
+  ['css-7', 'font-size: 14px;', { v: '14', kind: 'angka', max: 40 }],
+];
+for (const [lid, code, free] of FREE_LINES) {
+  const line = TRACKS.flatMap((t) => t.lessons).find((l) => l.id === lid)?.lines.find((x) => x.c === code);
+  if (line) line.free = free;
+}
 
 export const ALL_LESSONS = TRACKS.flatMap((t) => t.lessons);
 export const KODE_TOTAL = ALL_LESSONS.length;

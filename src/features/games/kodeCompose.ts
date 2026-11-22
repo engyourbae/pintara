@@ -21,7 +21,8 @@ export interface Composed {
 }
 
 const WEB = ['html', 'css', 'js'];
-const toLn = (l: KLine): Ln => ({ t: l.c, i: l.i ?? 0, r: l.r, w: l.w, box: l.box });
+export type Edits = Record<string, string>;
+const toLn = (l: KLine, code = l.c): Ln => ({ t: code, i: l.i ?? 0, r: l.r, w: l.w, box: l.box });
 
 /** Indeks tempat menyisipkan: tepat sebelum penutup wadah bernama `into` (atau di akhir berkas). */
 function insertIndex(file: Ln[], into?: string): number {
@@ -42,12 +43,12 @@ function projectOf(ti: number, li: number): { lessons: KLesson[]; pos: number } 
   return { lessons, pos: lessons.indexOf(track.lessons[li]) };
 }
 
-export function compose(ti: number, li: number): Composed {
+export function compose(ti: number, li: number, edits: Edits = {}): Composed {
   const { lessons, pos } = projectOf(ti, li);
   const file: Ln[] = [];
   for (let j = 0; j < pos; j++) {
     const L = lessons[j];
-    file.splice(insertIndex(file, L.into), 0, ...L.lines.map(toLn));
+    file.splice(insertIndex(file, L.into), 0, ...L.lines.map((l, k) => toLn(l, edits[`${L.id}#${k}`] ?? l.c)));
   }
   const at = insertIndex(file, lessons[pos].into);
   return { before: file.slice(0, at), after: file.slice(at), ind: 0, lesson: lessons[pos] };
@@ -81,8 +82,8 @@ function docValid(lines: string[]): boolean {
 }
 
 /** Dokumen untuk layar hasil (HTML/CSS/JS): berkas lengkap + baris pelajaran yang sudah terpasang. */
-export function buildDoc(ti: number, li: number, shown: string[]): string {
-  const c = compose(ti, li);
+export function buildDoc(ti: number, li: number, shown: string[], edits: Edits = {}): string {
+  const c = compose(ti, li, edits);
   const b = c.before.map((x) => x.t);
   const a = c.after.map((x) => x.t);
   const withShown = [...b, ...shown, ...a];
