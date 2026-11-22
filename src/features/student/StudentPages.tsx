@@ -1,3 +1,4 @@
+import { ChangePasswordCard } from '@/features/auth/ChangePasswordCard';
 import { lazy, Suspense, useState } from 'react';
 import { Badge, Button, ButtonLink, Card, CardSkeleton, Icon, Mascot, Page, PageHeader, ProgressBar, Stat, useConfirm } from '@/components/ui';
 import { AVATARS, levelInfo, progressActions, totalStars, useProgress } from '@/hooks/useProgress';
@@ -172,6 +173,7 @@ export function StudentProfile() {
         <Icon name="trash" size={20} />
         Hapus kemajuan
       </Button>
+      <ChangePasswordCard />
     </Page>
   );
 }
