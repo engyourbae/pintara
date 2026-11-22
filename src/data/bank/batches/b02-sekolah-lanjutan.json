@@ -3069,7 +3069,7 @@
       5
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -3430,6 +3430,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Kata bakunya Jumat."
+      },
+      {
+        "id": "q31",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "ijasah",
+          "ijazah",
+          "ijaza",
+          "izasah"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bentuk bakunya adalah \"ijazah\"."
+      },
+      {
+        "id": "q32",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "hakikat",
+          "hakekat",
+          "hakikad",
+          "hakeqat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bentuk bakunya adalah \"hakikat\"."
+      },
+      {
+        "id": "q33",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "jenasah",
+          "jenaza",
+          "jenazat",
+          "jenazah"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bentuk bakunya adalah \"jenazah\"."
+      },
+      {
+        "id": "q34",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "kaos",
+          "kous",
+          "kaus",
+          "kauz"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bentuk bakunya adalah \"kaus\"."
+      },
+      {
+        "id": "q35",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "Februari",
+          "Pebruari",
+          "Febuari",
+          "Februwari"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bentuk bakunya adalah \"Februari\"."
+      },
+      {
+        "id": "q36",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "Nopember",
+          "Novembar",
+          "November",
+          "Novmber"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bentuk bakunya adalah \"November\"."
+      },
+      {
+        "id": "q37",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "sekadar",
+          "sekedar",
+          "sekadad",
+          "sekedat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bentuk bakunya adalah \"sekadar\"."
+      },
+      {
+        "id": "q38",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "sopir",
+          "supir",
+          "sopier",
+          "sopire"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bentuk bakunya adalah \"sopir\"."
+      },
+      {
+        "id": "q39",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "tentram",
+          "tenteram",
+          "tenterem",
+          "tentaram"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bentuk bakunya adalah \"tenteram\"."
+      },
+      {
+        "id": "q40",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "trampil",
+          "terampil",
+          "terapil",
+          "teramphil"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bentuk bakunya adalah \"terampil\"."
+      },
+      {
+        "id": "q41",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "konkrit",
+          "kongkret",
+          "konkert",
+          "konkret"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bentuk bakunya adalah \"konkret\"."
+      },
+      {
+        "id": "q42",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "lembab",
+          "lembaf",
+          "lembap",
+          "lembhap"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bentuk bakunya adalah \"lembap\"."
+      },
+      {
+        "id": "q43",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "nafas",
+          "napaz",
+          "nafaz",
+          "napas"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bentuk bakunya adalah \"napas\"."
+      },
+      {
+        "id": "q44",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "persen",
+          "prosen",
+          "persin",
+          "presen"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bentuk bakunya adalah \"persen\"."
+      },
+      {
+        "id": "q45",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "handal",
+          "andal",
+          "andhal",
+          "andall"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bentuk bakunya adalah \"andal\"."
+      },
+      {
+        "id": "q46",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "bis",
+          "bas",
+          "buss",
+          "bus"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bentuk bakunya adalah \"bus\"."
+      },
+      {
+        "id": "q47",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "karir",
+          "karer",
+          "karier",
+          "karieer"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bentuk bakunya adalah \"karier\"."
+      },
+      {
+        "id": "q48",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "hipotesa",
+          "hipotesys",
+          "hipotesiss",
+          "hipotesis"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bentuk bakunya adalah \"hipotesis\"."
+      },
+      {
+        "id": "q49",
+        "prompt": "Kata yang penulisannya baku adalah ...",
+        "options": [
+          "merubah",
+          "mengobah",
+          "mengubah",
+          "mengubahh"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bentuk bakunya adalah \"mengubah\"."
+      },
+      {
+        "id": "q50",
+        "prompt": "Penulisan yang benar menurut KBBI adalah ...",
+        "options": [
+          "adzan",
+          "azan",
+          "azzan",
+          "azhan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bentuk bakunya adalah \"azan\"."
       }
     ]
   },
@@ -3443,7 +3683,7 @@
       6
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -3804,6 +4044,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Kalimat lain menjelaskan keuntungan belajar kelompok."
+      },
+      {
+        "id": "q31",
+        "prompt": "\"Gajah adalah hewan darat terbesar. Tubuhnya bisa mencapai beberapa ton. Belalainya kuat untuk mengambil makanan.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "belalai gajah untuk makan",
+          "gajah hidup di hutan",
+          "gajah makan rumput",
+          "gajah hewan darat terbesar"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kalimat pertama memuat gagasan pokok: gajah hewan darat terbesar."
+      },
+      {
+        "id": "q32",
+        "prompt": "\"Menabung adalah kebiasaan baik. Uang yang disimpan bisa dipakai saat butuh. Anak yang rajin menabung belajar berhemat.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "menabung adalah kebiasaan baik",
+          "uang dipakai saat butuh",
+          "anak belajar berhemat",
+          "celengan dibuat dari tanah liat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kalimat utama di awal: menabung adalah kebiasaan baik."
+      },
+      {
+        "id": "q33",
+        "prompt": "\"Hutan bakau melindungi pantai. Akarnya menahan ombak. Banyak ikan kecil berlindung di sana.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "ombak sangat besar",
+          "ikan kecil hidup di laut",
+          "hutan bakau melindungi pantai",
+          "akar pohon sangat kuat"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat pertama adalah kalimat utama."
+      },
+      {
+        "id": "q34",
+        "prompt": "\"Tomat dijual di pasar. Cabai dan bawang juga tersedia. Pasar menjual berbagai sayuran segar.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "tomat dijual di pasar",
+          "pasar menjual berbagai sayuran segar",
+          "cabai dan bawang murah",
+          "sayuran dibeli ibu"
+        ],
+        "answerIndex": 1,
+        "explanation": "Paragraf induktif: kalimat utama ada di akhir."
+      },
+      {
+        "id": "q35",
+        "prompt": "\"Tidur cukup penting bagi anak. Saat tidur, tubuh beristirahat dan tumbuh. Anak yang cukup tidur lebih segar di sekolah.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "tubuh tumbuh saat tidur",
+          "anak segar di sekolah",
+          "anak tidur malam hari",
+          "tidur cukup penting bagi anak"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kalimat pertama memuat gagasan pokok."
+      },
+      {
+        "id": "q36",
+        "prompt": "\"Burung punya paruh yang berbeda. Elang berparuh tajam. Pelatuk berparuh kuat untuk melubangi kayu.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "bentuk paruh burung berbeda-beda",
+          "elang berparuh tajam",
+          "pelatuk melubangi kayu",
+          "burung bisa terbang tinggi"
+        ],
+        "answerIndex": 0,
+        "explanation": "Seluruh kalimat membahas paruh burung yang berbeda."
+      },
+      {
+        "id": "q37",
+        "prompt": "\"Kerja bakti membuat lingkungan bersih. Warga menyapu jalan dan memangkas rumput. Selokan pun bebas sampah.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "warga menyapu jalan",
+          "selokan bebas sampah",
+          "rumput cepat tumbuh",
+          "kerja bakti membuat lingkungan bersih"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kalimat pertama adalah kalimat utama."
+      },
+      {
+        "id": "q38",
+        "prompt": "\"Pagi hari, ayam berkokok. Petani menuju sawah. Anak-anak berangkat sekolah. Desa mulai sibuk di pagi hari.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "ayam berkokok",
+          "petani pergi ke sawah",
+          "desa mulai sibuk pada pagi hari",
+          "anak-anak suka sekolah"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat utama di akhir: desa mulai sibuk pada pagi hari."
+      },
+      {
+        "id": "q39",
+        "prompt": "\"Gigi perlu dirawat setiap hari. Gosok gigi pagi dan malam. Jangan terlalu banyak makan permen.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "gigi perlu dirawat setiap hari",
+          "permen merusak gigi",
+          "gosok gigi dua kali",
+          "dokter gigi ramah"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kalimat pertama memuat gagasan pokok."
+      },
+      {
+        "id": "q40",
+        "prompt": "\"Lumba-lumba termasuk mamalia laut. Ia bernapas dengan paru-paru dan menyusui anaknya. Meski hidup di air, ia bukan ikan.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "lumba-lumba bukan hewan darat",
+          "lumba-lumba menyusui",
+          "lumba-lumba adalah mamalia laut",
+          "lumba-lumba makan ikan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat pertama adalah kalimat utama."
+      },
+      {
+        "id": "q41",
+        "prompt": "\"Pohon besar memberi banyak manfaat. Daunnya menyaring debu. Akarnya menahan tanah agar tidak longsor.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "daun menyaring debu",
+          "pohon besar memberi banyak manfaat",
+          "akar menahan tanah",
+          "tanah longsor berbahaya"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kalimat pertama adalah kalimat utama."
+      },
+      {
+        "id": "q42",
+        "prompt": "\"Batik adalah kain khas Indonesia. Setiap daerah punya motif sendiri. Batik dipakai pada acara resmi.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "motif batik berbeda-beda",
+          "batik dipakai di acara resmi",
+          "batik adalah kain khas Indonesia",
+          "batik dibuat dari kapas"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat pertama memuat gagasan pokok."
+      },
+      {
+        "id": "q43",
+        "prompt": "\"Matikan lampu yang tidak dipakai. Cabut charger setelah selesai mengisi daya. Pakai AC seperlunya. Banyak cara menghemat listrik di rumah.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "ada banyak cara menghemat listrik",
+          "lampu harus dimatikan",
+          "charger dicabut",
+          "AC membuat sejuk"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kalimat utama di akhir: cara menghemat listrik."
+      },
+      {
+        "id": "q44",
+        "prompt": "\"Sepeda ramah lingkungan. Sepeda tidak menghasilkan asap. Bersepeda juga membuat badan sehat.\" Gagasan pokok paragraf tersebut adalah ...",
+        "options": [
+          "sepeda tidak berasap",
+          "bersepeda menyehatkan badan",
+          "sepeda ramah lingkungan",
+          "sepeda punya dua roda"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat pertama memuat gagasan pokok."
+      },
+      {
+        "id": "q45",
+        "prompt": "Paragraf yang kalimat utamanya di awal dan di akhir disebut paragraf ...",
+        "options": [
+          "deduktif",
+          "campuran",
+          "induktif",
+          "naratif"
+        ],
+        "answerIndex": 1,
+        "explanation": "Campuran: kalimat utama muncul di awal dan diulang di akhir."
+      },
+      {
+        "id": "q46",
+        "prompt": "Kalimat utama biasanya diikuti kalimat ...",
+        "options": [
+          "tanya",
+          "penjelas",
+          "seru",
+          "perintah"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kalimat penjelas menjelaskan kalimat utama."
+      },
+      {
+        "id": "q47",
+        "prompt": "Pertanyaan yang membantu menemukan gagasan pokok adalah ...",
+        "options": [
+          "apa yang paling dibahas dalam paragraf",
+          "siapa penulis paragraf",
+          "kapan paragraf ditulis",
+          "berapa kalimat dalam paragraf"
+        ],
+        "answerIndex": 0,
+        "explanation": "Gagasan pokok adalah hal yang paling dibahas."
+      },
+      {
+        "id": "q48",
+        "prompt": "Gagasan pokok disebut juga ...",
+        "options": [
+          "ide tambahan",
+          "contoh",
+          "akhir cerita",
+          "ide utama"
+        ],
+        "answerIndex": 3,
+        "explanation": "Gagasan pokok sama dengan ide utama."
+      },
+      {
+        "id": "q49",
+        "prompt": "Sebuah paragraf terdiri atas kalimat utama dan ...",
+        "options": [
+          "judul",
+          "gambar",
+          "nomor halaman",
+          "kalimat penjelas"
+        ],
+        "answerIndex": 3,
+        "explanation": "Paragraf berisi kalimat utama dan kalimat-kalimat penjelas."
+      },
+      {
+        "id": "q50",
+        "prompt": "Kalimat utama biasanya bersifat ...",
+        "options": [
+          "rinci",
+          "umum",
+          "berupa contoh",
+          "berupa angka"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kalimat utama bersifat umum, sedangkan kalimat penjelas lebih rinci."
       }
     ]
   },

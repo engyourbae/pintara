@@ -2457,7 +2457,7 @@
       3
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -2818,6 +2818,246 @@
         ],
         "answerIndex": 3,
         "explanation": "Kata sapaan Bu ditulis kapital dan dipisah koma."
+      },
+      {
+        "id": "q31",
+        "prompt": "Penulisan kalimat yang tepat adalah ...",
+        "options": [
+          "ayah pergi ke Pontianak.",
+          "Ayah pergi ke pontianak.",
+          "ayah Pergi ke pontianak.",
+          "Ayah pergi ke Pontianak."
+        ],
+        "answerIndex": 3,
+        "explanation": "Awal kalimat dan nama kota diawali huruf kapital."
+      },
+      {
+        "id": "q32",
+        "prompt": "Tanda baca yang tepat: \"Berapa harga buku ini_\"",
+        "options": [
+          ".",
+          "!",
+          "?",
+          ","
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat tanya diakhiri tanda tanya (?)."
+      },
+      {
+        "id": "q33",
+        "prompt": "Tanda baca yang tepat: \"Adik sedang tidur di kamar_\"",
+        "options": [
+          "?",
+          "!",
+          ".",
+          ","
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat berita diakhiri titik (.)."
+      },
+      {
+        "id": "q34",
+        "prompt": "Penulisan nama bulan yang benar adalah ...",
+        "options": [
+          "Desember",
+          "desember",
+          "dEsember",
+          "DESEMBER"
+        ],
+        "answerIndex": 0,
+        "explanation": "Nama bulan diawali huruf kapital: Desember."
+      },
+      {
+        "id": "q35",
+        "prompt": "Penulisan nama gunung yang benar adalah ...",
+        "options": [
+          "gunung bromo",
+          "Gunung bromo",
+          "gunung Bromo",
+          "Gunung Bromo"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kata gunung dan nama Bromo sama-sama diawali huruf kapital."
+      },
+      {
+        "id": "q36",
+        "prompt": "Kalimat dengan tanda koma yang tepat adalah ...",
+        "options": [
+          "Ibu, membeli telur gula dan tepung.",
+          "Ibu membeli telur, gula, dan tepung.",
+          "Ibu membeli, telur gula, dan tepung.",
+          "Ibu membeli telur gula, dan, tepung."
+        ],
+        "answerIndex": 1,
+        "explanation": "Koma dipakai untuk memisahkan rincian."
+      },
+      {
+        "id": "q37",
+        "prompt": "Penulisan nama sekolah yang benar adalah ...",
+        "options": [
+          "SD Negeri 1 Pontianak",
+          "sd negeri 1 pontianak",
+          "SD negeri 1 pontianak",
+          "Sd Negeri 1 pontianak"
+        ],
+        "answerIndex": 0,
+        "explanation": "Nama sekolah dan nama kota diawali huruf kapital."
+      },
+      {
+        "id": "q38",
+        "prompt": "Kalimat seru yang tepat adalah ...",
+        "options": [
+          "Wah, pemandangannya indah sekali.",
+          "Wah, pemandangannya indah sekali?",
+          "Wah, pemandangannya indah sekali!",
+          "Wah, pemandangannya indah sekali,"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat seru diakhiri tanda seru (!)."
+      },
+      {
+        "id": "q39",
+        "prompt": "Huruf kapital dipakai pada huruf pertama ...",
+        "options": [
+          "nama buah",
+          "kata kerja",
+          "kata sifat",
+          "nama orang"
+        ],
+        "answerIndex": 3,
+        "explanation": "Nama orang diawali huruf kapital, misalnya Rina."
+      },
+      {
+        "id": "q40",
+        "prompt": "Penulisan kalimat yang benar adalah ...",
+        "options": [
+          "kami belajar renang pada hari sabtu.",
+          "Kami belajar renang pada hari Sabtu.",
+          "Kami belajar renang pada hari sabtu.",
+          "kami Belajar renang pada hari Sabtu."
+        ],
+        "answerIndex": 1,
+        "explanation": "Awal kalimat dan nama hari diawali huruf kapital."
+      },
+      {
+        "id": "q41",
+        "prompt": "Tanda baca yang tepat: \"Siapa yang membawa payung_\"",
+        "options": [
+          ".",
+          "!",
+          ",",
+          "?"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kalimat tanya diakhiri tanda tanya (?)."
+      },
+      {
+        "id": "q42",
+        "prompt": "Perbaikan yang benar dari \"adik pergi ke sekolah.\" adalah ...",
+        "options": [
+          "Adik pergi ke sekolah.",
+          "Adik Pergi ke sekolah.",
+          "adik pergi ke Sekolah.",
+          "Adik pergi ke sekolah?"
+        ],
+        "answerIndex": 0,
+        "explanation": "Huruf pertama di awal kalimat harus kapital."
+      },
+      {
+        "id": "q43",
+        "prompt": "Penulisan nama pulau yang benar adalah ...",
+        "options": [
+          "Pulau Kalimantan",
+          "pulau kalimantan",
+          "Pulau kalimantan",
+          "pulau Kalimantan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kata pulau dan nama Kalimantan diawali huruf kapital."
+      },
+      {
+        "id": "q44",
+        "prompt": "Kalimat tanya yang tepat adalah ...",
+        "options": [
+          "Langit berwarna biru?",
+          "Mengapa langit berwarna biru?",
+          "Mengapa langit berwarna biru.",
+          "Mengapa langit berwarna biru!"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kata tanya \"mengapa\" diakhiri tanda tanya (?)."
+      },
+      {
+        "id": "q45",
+        "prompt": "Penulisan sapaan yang benar adalah ...",
+        "options": [
+          "selamat pagi, bu dewi.",
+          "Selamat pagi, Bu Dewi.",
+          "Selamat pagi Bu dewi.",
+          "Selamat Pagi, bu Dewi."
+        ],
+        "answerIndex": 1,
+        "explanation": "Awal kalimat dan nama orang kapital; setelah salam diberi koma."
+      },
+      {
+        "id": "q46",
+        "prompt": "Tanda baca yang tepat: \"Kakak membeli sepatu_ tas, dan topi.\"",
+        "options": [
+          ".",
+          ",",
+          "?",
+          "!"
+        ],
+        "answerIndex": 1,
+        "explanation": "Koma memisahkan rincian benda yang dibeli."
+      },
+      {
+        "id": "q47",
+        "prompt": "Tanda baca di akhir kalimat perintah yang tegas adalah ...",
+        "options": [
+          "titik dua (:)",
+          "tanda tanya (?)",
+          "koma (,)",
+          "tanda seru (!)"
+        ],
+        "answerIndex": 3,
+        "explanation": "Perintah atau seruan yang kuat memakai tanda seru."
+      },
+      {
+        "id": "q48",
+        "prompt": "Penulisan nama danau yang benar adalah ...",
+        "options": [
+          "danau toba",
+          "Danau toba",
+          "Danau Toba",
+          "danau Toba"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kata danau dan nama Toba diawali huruf kapital."
+      },
+      {
+        "id": "q49",
+        "prompt": "Pilih kalimat yang ejaannya benar.",
+        "options": [
+          "rina membawa bekal ke sekolah.",
+          "Rina membawa Bekal ke sekolah.",
+          "Rina membawa bekal ke sekolah.",
+          "Rina membawa bekal ke Sekolah."
+        ],
+        "answerIndex": 2,
+        "explanation": "Hanya awal kalimat dan nama orang yang berhuruf kapital."
+      },
+      {
+        "id": "q50",
+        "prompt": "Kalimat yang penulisannya benar adalah ...",
+        "options": [
+          "Perahu itu melewati Sungai Landak.",
+          "perahu itu melewati sungai landak.",
+          "Perahu itu melewati sungai Landak.",
+          "Perahu itu melewati Sungai landak."
+        ],
+        "answerIndex": 0,
+        "explanation": "Awal kalimat dan nama sungai diawali huruf kapital."
       }
     ]
   },
@@ -2830,7 +3070,7 @@
       4
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -3191,6 +3431,246 @@
         ],
         "answerIndex": 2,
         "explanation": "Rajin dan malas berlawanan."
+      },
+      {
+        "id": "q31",
+        "prompt": "Sinonim dari \"kawan\" adalah ...",
+        "options": [
+          "musuh",
+          "teman",
+          "guru",
+          "tetangga jauh"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kawan dan teman sama artinya."
+      },
+      {
+        "id": "q32",
+        "prompt": "Sinonim dari \"gembira\" adalah ...",
+        "options": [
+          "sedih",
+          "marah",
+          "riang",
+          "malu"
+        ],
+        "answerIndex": 2,
+        "explanation": "Gembira dan riang sama artinya."
+      },
+      {
+        "id": "q33",
+        "prompt": "Sinonim dari \"wajah\" adalah ...",
+        "options": [
+          "kaki",
+          "tangan",
+          "rambut",
+          "muka"
+        ],
+        "answerIndex": 3,
+        "explanation": "Wajah dan muka sama artinya."
+      },
+      {
+        "id": "q34",
+        "prompt": "Sinonim dari \"lelah\" adalah ...",
+        "options": [
+          "letih",
+          "segar",
+          "kuat",
+          "semangat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lelah dan letih sama artinya."
+      },
+      {
+        "id": "q35",
+        "prompt": "Sinonim dari \"hening\" adalah ...",
+        "options": [
+          "ramai",
+          "gaduh",
+          "bising",
+          "sunyi"
+        ],
+        "answerIndex": 3,
+        "explanation": "Hening dan sunyi sama artinya."
+      },
+      {
+        "id": "q36",
+        "prompt": "Sinonim dari \"ibu\" adalah ...",
+        "options": [
+          "ayah",
+          "bunda",
+          "kakak",
+          "paman"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ibu dan bunda sama artinya."
+      },
+      {
+        "id": "q37",
+        "prompt": "Sinonim dari \"pergi\" adalah ...",
+        "options": [
+          "pulang",
+          "tiba",
+          "berangkat",
+          "datang"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pergi dan berangkat sama artinya."
+      },
+      {
+        "id": "q38",
+        "prompt": "Sinonim dari \"melihat\" adalah ...",
+        "options": [
+          "mendengar",
+          "mencium",
+          "meraba",
+          "memandang"
+        ],
+        "answerIndex": 3,
+        "explanation": "Melihat dan memandang sama artinya."
+      },
+      {
+        "id": "q39",
+        "prompt": "Sinonim dari \"luas\" adalah ...",
+        "options": [
+          "lapang",
+          "sempit",
+          "sesak",
+          "kecil"
+        ],
+        "answerIndex": 0,
+        "explanation": "Luas dan lapang sama artinya."
+      },
+      {
+        "id": "q40",
+        "prompt": "Sinonim dari \"pakaian\" adalah ...",
+        "options": [
+          "baju",
+          "sepatu",
+          "topi",
+          "tas"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pakaian dan baju sama artinya."
+      },
+      {
+        "id": "q41",
+        "prompt": "Antonim dari \"dalam\" adalah ...",
+        "options": [
+          "dekat",
+          "tinggi",
+          "lebar",
+          "dangkal"
+        ],
+        "answerIndex": 3,
+        "explanation": "Lawan kata dalam adalah dangkal."
+      },
+      {
+        "id": "q42",
+        "prompt": "Antonim dari \"maju\" adalah ...",
+        "options": [
+          "lompat",
+          "mundur",
+          "belok",
+          "diam di tempat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lawan kata maju adalah mundur."
+      },
+      {
+        "id": "q43",
+        "prompt": "Antonim dari \"depan\" adalah ...",
+        "options": [
+          "samping",
+          "belakang",
+          "atas",
+          "tengah"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lawan kata depan adalah belakang."
+      },
+      {
+        "id": "q44",
+        "prompt": "Antonim dari \"buka\" adalah ...",
+        "options": [
+          "geser",
+          "angkat",
+          "tutup",
+          "putar"
+        ],
+        "answerIndex": 2,
+        "explanation": "Lawan kata buka adalah tutup."
+      },
+      {
+        "id": "q45",
+        "prompt": "Antonim dari \"datang\" adalah ...",
+        "options": [
+          "tiba",
+          "hadir",
+          "pergi",
+          "muncul"
+        ],
+        "answerIndex": 2,
+        "explanation": "Lawan kata datang adalah pergi."
+      },
+      {
+        "id": "q46",
+        "prompt": "Antonim dari \"awal\" adalah ...",
+        "options": [
+          "akhir",
+          "mula",
+          "pertama",
+          "dahulu"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lawan kata awal adalah akhir."
+      },
+      {
+        "id": "q47",
+        "prompt": "Antonim dari \"tebal\" adalah ...",
+        "options": [
+          "tipis",
+          "berat",
+          "lebar",
+          "kasar"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lawan kata tebal adalah tipis."
+      },
+      {
+        "id": "q48",
+        "prompt": "Antonim dari \"masuk\" adalah ...",
+        "options": [
+          "naik",
+          "duduk",
+          "keluar",
+          "maju"
+        ],
+        "answerIndex": 2,
+        "explanation": "Lawan kata masuk adalah keluar."
+      },
+      {
+        "id": "q49",
+        "prompt": "Antonim dari \"keras\" adalah ...",
+        "options": [
+          "kasar",
+          "lembut",
+          "kuat",
+          "berat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lawan kata keras adalah lembut."
+      },
+      {
+        "id": "q50",
+        "prompt": "Antonim dari \"dekat\" adalah ...",
+        "options": [
+          "sempit",
+          "rendah",
+          "pendek",
+          "jauh"
+        ],
+        "answerIndex": 3,
+        "explanation": "Lawan kata dekat adalah jauh."
       }
     ]
   },

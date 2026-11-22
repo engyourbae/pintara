@@ -1233,7 +1233,7 @@
       1
     ],
     "difficulty": 1,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -1594,6 +1594,246 @@
         ],
         "answerIndex": 2,
         "explanation": "Kalimat berita diakhiri titik."
+      },
+      {
+        "id": "q31",
+        "prompt": "Kata \"sapi\" dipenggal menjadi ...",
+        "options": [
+          "s-api",
+          "sap-i",
+          "sa-pi",
+          "sa-p-i"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sa-pi: dua suku kata."
+      },
+      {
+        "id": "q32",
+        "prompt": "Banyak suku kata pada kata \"buku\" adalah ...",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bu-ku: dua suku kata."
+      },
+      {
+        "id": "q33",
+        "prompt": "Huruf pertama pada kata \"ikan\" adalah ...",
+        "options": [
+          "i",
+          "k",
+          "a",
+          "n"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ikan diawali huruf i."
+      },
+      {
+        "id": "q34",
+        "prompt": "Lengkapi kata: pe_sil (untuk pensil)",
+        "options": [
+          "m",
+          "r",
+          "n",
+          "t"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kata yang benar: pensil."
+      },
+      {
+        "id": "q35",
+        "prompt": "Susunlah huruf t-o-p-i menjadi kata ...",
+        "options": [
+          "poti",
+          "itop",
+          "ptoi",
+          "topi"
+        ],
+        "answerIndex": 3,
+        "explanation": "Susunannya: topi."
+      },
+      {
+        "id": "q36",
+        "prompt": "Banyak huruf pada kata \"bola\" adalah ...",
+        "options": [
+          "3",
+          "5",
+          "2",
+          "4"
+        ],
+        "answerIndex": 3,
+        "explanation": "b-o-l-a ada 4 huruf."
+      },
+      {
+        "id": "q37",
+        "prompt": "Yang termasuk huruf vokal adalah ...",
+        "options": [
+          "t",
+          "o",
+          "m",
+          "s"
+        ],
+        "answerIndex": 1,
+        "explanation": "Huruf vokal: a, i, u, e, o."
+      },
+      {
+        "id": "q38",
+        "prompt": "Kata yang diawali huruf \"s\" adalah ...",
+        "options": [
+          "topi",
+          "baju",
+          "kaki",
+          "sapu"
+        ],
+        "answerIndex": 3,
+        "explanation": "Sapu diawali huruf s."
+      },
+      {
+        "id": "q39",
+        "prompt": "Kata \"semut\" dipenggal menjadi ...",
+        "options": [
+          "se-mut",
+          "sem-ut",
+          "s-emut",
+          "semu-t"
+        ],
+        "answerIndex": 0,
+        "explanation": "Se-mut: dua suku kata."
+      },
+      {
+        "id": "q40",
+        "prompt": "Banyak suku kata pada kata \"pensil\" adalah ...",
+        "options": [
+          "2",
+          "1",
+          "3",
+          "4"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pen-sil: dua suku kata."
+      },
+      {
+        "id": "q41",
+        "prompt": "Huruf terakhir pada kata \"kaki\" adalah ...",
+        "options": [
+          "k",
+          "a",
+          "i",
+          "ka"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kaki diakhiri huruf i."
+      },
+      {
+        "id": "q42",
+        "prompt": "Lengkapi kata: ku_ing (untuk kucing)",
+        "options": [
+          "s",
+          "c",
+          "g",
+          "k"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kata yang benar: kucing."
+      },
+      {
+        "id": "q43",
+        "prompt": "Kata yang terdiri dari dua suku kata adalah ...",
+        "options": [
+          "kelinci",
+          "pelangi",
+          "kupu-kupu",
+          "mata"
+        ],
+        "answerIndex": 3,
+        "explanation": "Ma-ta: dua suku kata."
+      },
+      {
+        "id": "q44",
+        "prompt": "Huruf besar dari \"g\" adalah ...",
+        "options": [
+          "Q",
+          "C",
+          "G",
+          "O"
+        ],
+        "answerIndex": 2,
+        "explanation": "Huruf besar dari g adalah G."
+      },
+      {
+        "id": "q45",
+        "prompt": "Huruf kecil dari \"T\" adalah ...",
+        "options": [
+          "f",
+          "l",
+          "t",
+          "i"
+        ],
+        "answerIndex": 2,
+        "explanation": "Huruf kecil dari T adalah t."
+      },
+      {
+        "id": "q46",
+        "prompt": "Huruf setelah \"m\" dalam abjad adalah ...",
+        "options": [
+          "l",
+          "o",
+          "p",
+          "n"
+        ],
+        "answerIndex": 3,
+        "explanation": "Urutan abjad: l, m, n."
+      },
+      {
+        "id": "q47",
+        "prompt": "Yang termasuk huruf konsonan adalah ...",
+        "options": [
+          "a",
+          "k",
+          "i",
+          "u"
+        ],
+        "answerIndex": 1,
+        "explanation": "Huruf k adalah konsonan."
+      },
+      {
+        "id": "q48",
+        "prompt": "Kata \"rumah\" dipenggal menjadi ...",
+        "options": [
+          "rum-ah",
+          "ru-mah",
+          "r-umah",
+          "ru-ma-h"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ru-mah: dua suku kata."
+      },
+      {
+        "id": "q49",
+        "prompt": "Kata yang diawali huruf \"k\" adalah ...",
+        "options": [
+          "kursi",
+          "meja",
+          "sapi",
+          "tas"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kursi diawali huruf k."
+      },
+      {
+        "id": "q50",
+        "prompt": "Banyak suku kata pada kata \"kelinci\" adalah ...",
+        "options": [
+          "3",
+          "2",
+          "4",
+          "5"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ke-lin-ci: tiga suku kata."
       }
     ]
   },
@@ -1606,7 +1846,7 @@
       3
     ],
     "difficulty": 2,
-    "version": 2,
+    "version": 3,
     "questions": [
       {
         "id": "q1",
@@ -1967,6 +2207,246 @@
         ],
         "answerIndex": 2,
         "explanation": "Mahal menggambarkan harga sepatu."
+      },
+      {
+        "id": "q31",
+        "prompt": "Kata \"menendang\" termasuk kata ...",
+        "options": [
+          "benda",
+          "sifat",
+          "kerja",
+          "bilangan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Menendang menyatakan perbuatan."
+      },
+      {
+        "id": "q32",
+        "prompt": "Kata \"payung\" termasuk kata ...",
+        "options": [
+          "kerja",
+          "sifat",
+          "bilangan",
+          "benda"
+        ],
+        "answerIndex": 3,
+        "explanation": "Payung adalah nama benda."
+      },
+      {
+        "id": "q33",
+        "prompt": "Kata \"gemuk\" termasuk kata ...",
+        "options": [
+          "sifat",
+          "benda",
+          "kerja",
+          "bilangan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Gemuk menyatakan sifat."
+      },
+      {
+        "id": "q34",
+        "prompt": "Nenek menanam bunga di kebun. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "nenek",
+          "bunga",
+          "kebun",
+          "menanam"
+        ],
+        "answerIndex": 3,
+        "explanation": "Menanam menyatakan perbuatan."
+      },
+      {
+        "id": "q35",
+        "prompt": "Pisang itu sangat manis. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "pisang",
+          "manis",
+          "itu",
+          "sangat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Manis menyatakan sifat pisang."
+      },
+      {
+        "id": "q36",
+        "prompt": "Adik memakai topi merah. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "merah",
+          "adik",
+          "memakai",
+          "topi"
+        ],
+        "answerIndex": 0,
+        "explanation": "Merah menyatakan warna topi."
+      },
+      {
+        "id": "q37",
+        "prompt": "Ibu ... sayur di pasar. Kata kerja yang tepat adalah ...",
+        "options": [
+          "pasar",
+          "membeli",
+          "segar",
+          "hijau"
+        ],
+        "answerIndex": 1,
+        "explanation": "Membeli adalah perbuatan."
+      },
+      {
+        "id": "q38",
+        "prompt": "Langit malam itu sangat ... . Kata sifat yang tepat adalah ...",
+        "options": [
+          "bintang",
+          "bersinar",
+          "bulan",
+          "gelap"
+        ],
+        "answerIndex": 3,
+        "explanation": "Gelap menyatakan sifat langit."
+      },
+      {
+        "id": "q39",
+        "prompt": "Kata benda yang menyatakan nama buah adalah ...",
+        "options": [
+          "berlari",
+          "manis",
+          "jeruk",
+          "besar"
+        ],
+        "answerIndex": 2,
+        "explanation": "Jeruk adalah nama buah."
+      },
+      {
+        "id": "q40",
+        "prompt": "Kata kerja yang dilakukan ikan di air adalah ...",
+        "options": [
+          "terbang",
+          "berenang",
+          "berlari",
+          "memanjat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Ikan berenang di air."
+      },
+      {
+        "id": "q41",
+        "prompt": "Kata sifat yang menggambarkan es adalah ...",
+        "options": [
+          "panas",
+          "dingin",
+          "pedas",
+          "hangat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Es terasa dingin."
+      },
+      {
+        "id": "q42",
+        "prompt": "Murid itu menulis surat. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "murid",
+          "itu",
+          "menulis",
+          "surat"
+        ],
+        "answerIndex": 2,
+        "explanation": "Menulis menyatakan perbuatan."
+      },
+      {
+        "id": "q43",
+        "prompt": "Kata \"tidur\" termasuk kata ...",
+        "options": [
+          "kerja",
+          "benda",
+          "sifat",
+          "bilangan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tidur menyatakan perbuatan."
+      },
+      {
+        "id": "q44",
+        "prompt": "Kata \"lembut\" termasuk kata ...",
+        "options": [
+          "benda",
+          "sifat",
+          "kerja",
+          "bilangan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lembut menyatakan sifat."
+      },
+      {
+        "id": "q45",
+        "prompt": "Kata \"jendela\" termasuk kata ...",
+        "options": [
+          "sifat",
+          "kerja",
+          "benda",
+          "bilangan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Jendela adalah nama benda."
+      },
+      {
+        "id": "q46",
+        "prompt": "Anak itu membawa tas berat. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "anak",
+          "membawa",
+          "tas",
+          "berat"
+        ],
+        "answerIndex": 3,
+        "explanation": "Berat menyatakan sifat tas."
+      },
+      {
+        "id": "q47",
+        "prompt": "Kakek ... di kursi goyang. Kata kerja yang tepat adalah ...",
+        "options": [
+          "kursi",
+          "goyang",
+          "tua",
+          "duduk"
+        ],
+        "answerIndex": 3,
+        "explanation": "Duduk adalah perbuatan."
+      },
+      {
+        "id": "q48",
+        "prompt": "Kata benda yang ada di dalam kelas adalah ...",
+        "options": [
+          "penghapus",
+          "menghapus",
+          "bersih",
+          "rajin"
+        ],
+        "answerIndex": 0,
+        "explanation": "Penghapus adalah nama benda."
+      },
+      {
+        "id": "q49",
+        "prompt": "Kupu-kupu terbang di taman. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "kupu-kupu",
+          "taman",
+          "terbang",
+          "di"
+        ],
+        "answerIndex": 2,
+        "explanation": "Terbang menyatakan perbuatan."
+      },
+      {
+        "id": "q50",
+        "prompt": "Rumah nenek sangat luas. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "luas",
+          "rumah",
+          "nenek",
+          "sangat"
+        ],
+        "answerIndex": 0,
+        "explanation": "Luas menyatakan sifat rumah."
       }
     ]
   },
