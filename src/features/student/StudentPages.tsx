@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react';
-import { Badge, Button, ButtonLink, Card, Icon, Mascot, Page, PageHeader, ProgressBar, Stat, useConfirm } from '@/components/ui';
+import { Badge, Button, ButtonLink, Card, CardSkeleton, Icon, Mascot, Page, PageHeader, ProgressBar, Stat, useConfirm } from '@/components/ui';
 import { AVATARS, levelInfo, progressActions, totalStars, useProgress } from '@/hooks/useProgress';
 import { MODE_BASE } from '@/app/navigation';
 import { sampleContents } from '@/data/sample';
@@ -64,7 +64,7 @@ export function StudentHome() {
         </ButtonLink>
       </div>
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<CardSkeleton lines={2} />}>
         <JoinClassCard />
       </Suspense>
 
