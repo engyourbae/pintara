@@ -75,6 +75,19 @@ export async function setMemberStatus(classId: string, uid: string, status: 'act
   await updateDoc(doc(getDb(), 'class_members', `${classId}_${uid}`), { status });
 }
 
+/**
+ * Keluarkan/tolak murid = hapus fisik: hasil dan jawaban kuisnya di kelas ini ikut dihapus, dokumen anggota paling akhir.
+ * Murid bisa mendaftar lagi dengan kode (tetap perlu disetujui guru).
+ */
+export async function removeMember(classId: string, uid: string): Promise<void> {
+  const db = getDb();
+  for (const sub of ['results', 'quiz_answers'] as const) {
+    const snap = await getDocs(query(collection(db, 'classes', classId, sub), where('uid', '==', uid)));
+    await deleteRefs(snap.docs.map((d) => d.ref));
+  }
+  await deleteRefs([doc(db, 'class_members', `${classId}_${uid}`)]);
+}
+
 export async function listResults(classId: string): Promise<ResultRow[]> {
   const snap = await getDocs(collection(getDb(), 'classes', classId, 'results'));
   const rows: ResultRow[] = [];
