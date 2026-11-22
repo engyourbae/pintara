@@ -3,14 +3,17 @@ import { deleteApp, FirebaseError, initializeApp } from 'firebase/app';
 import {
   createUserWithEmailAndPassword,
   deleteUser,
+  EmailAuthProvider,
   GoogleAuthProvider,
   inMemoryPersistence,
   initializeAuth,
   onAuthStateChanged,
+  reauthenticateWithCredential,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
   type User,
 } from 'firebase/auth';
 import {
@@ -164,6 +167,42 @@ export async function signInWithIdentifier(identifier: string, secret: string): 
     }
     throw e;
   }
+}
+
+/**
+ * Ubah sandi akun yang sedang masuk (orang tua/guru: sandi; anak: PIN 6 angka).
+ * Wajib memasukkan sandi lama (masuk ulang), lalu Firebase Auth menimpa sandi itu: tidak ada sandi lama yang tersisa.
+ * Akun Google tidak punya sandi di sini. Jeda percobaan salah memakai loginGuard (per email Auth).
+ */
+export async function changePassword(oldSecret: string, newSecret: string): Promise<void> {
+  const auth = getFirebaseAuth();
+  const user = auth.currentUser;
+  const email = user?.email;
+  if (!user || !email) throw new UserFacingError('Kamu belum masuk.');
+  if (!user.providerData.some((p) => p.providerId === 'password')) {
+    throw new UserFacingError('Akun ini masuk dengan Google, jadi tidak punya sandi di PINTARA. Atur lewat akun Google-mu.');
+  }
+  const isChild = email.endsWith('@' + CHILD_EMAIL_DOMAIN);
+  if (isChild ? !PIN_RE.test(newSecret) : !passwordOk(newSecret)) {
+    throw new UserFacingError(isChild ? 'PIN baru harus 6 angka.' : 'Sandi baru belum memenuhi semua syarat.');
+  }
+  if (newSecret === oldSecret) throw new UserFacingError('Sandi baru harus berbeda dari yang lama.');
+  const lock = checkLock(email);
+  if (lock.locked) throw new UserFacingError(lockedMessage(lock.remainingMs));
+  try {
+    await reauthenticateWithCredential(user, EmailAuthProvider.credential(email, oldSecret));
+  } catch (e) {
+    if (e instanceof FirebaseError) {
+      if (CREDENTIAL_ERRORS.has(e.code)) {
+        const s = recordFailure(email);
+        throw new UserFacingError(s.locked ? `Sandi lama salah. ${lockedMessage(s.remainingMs)}` : 'Sandi lama salah.');
+      }
+      if (e.code === 'auth/too-many-requests') throw new UserFacingError(lockedMessage(recordServerThrottle(email).remainingMs));
+    }
+    throw e;
+  }
+  recordSuccess(email);
+  await updatePassword(user, newSecret);
 }
 
 /**
