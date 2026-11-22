@@ -27,6 +27,7 @@ const InvitePage = lazy(() => import('@/features/student/InvitePage').then((m) =
 const KuisKilatPaket = lazy(() => import('@/features/games/BankGames').then((m) => ({ default: m.KuisKilatPaket })));
 const BenarSalahKilat = lazy(() => import('@/features/games/BankGames').then((m) => ({ default: m.BenarSalahKilat })));
 const PasanganMemori = lazy(() => import('@/features/games/MemoryGame').then((m) => ({ default: m.PasanganMemori })));
+const KodePintar = lazy(() => import('@/features/games/KodePintar').then((m) => ({ default: m.KodePintar })));
 const DuelPage = lazy(() => import('@/features/games/DuelPage').then((m) => ({ default: m.DuelPage })));
 const MasukPage = lazy(() => import('@/features/auth/MasukPage').then((m) => ({ default: m.MasukPage })));
 const RegisterPage = lazy(() => import('@/features/auth/RegisterPage').then((m) => ({ default: m.RegisterPage })));
@@ -120,6 +121,7 @@ export function App() {
                     <Route path="game/kuis-kilat" element={<KuisKilatPaket />} />
                     <Route path="game/benar-salah" element={<BenarSalahKilat />} />
                     <Route path="game/pasangan-memori" element={<PasanganMemori />} />
+                    <Route path="game/kode-pintar" element={<KodePintar />} />
                   </>
                 )}
               </Route>
