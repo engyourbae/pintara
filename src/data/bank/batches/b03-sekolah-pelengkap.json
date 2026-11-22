@@ -1,3728 +1,4208 @@
 [
- {
-  "id": "mat-k4-data-diagram",
-  "categoryId": "matematika",
-  "title": "Data, diagram, dan modus",
-  "grades": [
-   4,
-   5
-  ],
-  "difficulty": 2,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Nilai ulangan lima anak: 7, 8, 8, 9, 6, 8, 7. Modus (nilai yang paling sering muncul) adalah ...",
-    "options": [
-     "6",
-     "7",
-     "8",
-     "9"
-    ],
-    "answerIndex": 2,
-    "explanation": "Angka 8 muncul 3 kali, paling banyak dibanding yang lain."
-   },
-   {
-    "id": "q2",
-    "prompt": "Banyak buah di keranjang: apel 5, jeruk 8, mangga 3, pisang 6. Buah yang paling banyak adalah ...",
-    "options": [
-     "apel",
-     "jeruk",
-     "mangga",
-     "pisang"
-    ],
-    "answerIndex": 1,
-    "explanation": "Jeruk berjumlah 8, angka terbesar."
-   },
-   {
-    "id": "q3",
-    "prompt": "Apel 5, jeruk 8, mangga 3, pisang 6. Jumlah seluruh buah ada ...",
-    "options": [
-     "21",
-     "20",
-     "24",
-     "22"
-    ],
-    "answerIndex": 3,
-    "explanation": "5 + 8 + 3 + 6 = 22."
-   },
-   {
-    "id": "q4",
-    "prompt": "Apel 5, jeruk 8, mangga 3, pisang 6. Selisih jeruk dan mangga adalah ...",
-    "options": [
-     "5",
-     "11",
-     "4",
-     "6"
-    ],
-    "answerIndex": 0,
-    "explanation": "8 − 3 = 5."
-   },
-   {
-    "id": "q5",
-    "prompt": "Modus dari data 2, 3, 3, 4, 4, 4, 5 adalah ...",
-    "options": [
-     "3",
-     "2",
-     "5",
-     "4"
-    ],
-    "answerIndex": 3,
-    "explanation": "Angka 4 muncul 3 kali, paling sering."
-   },
-   {
-    "id": "q6",
-    "prompt": "Pada diagram batang, tinggi batang menunjukkan ...",
-    "options": [
-     "nama pembuat",
-     "judul diagram",
-     "banyaknya data",
-     "warna batang"
-    ],
-    "answerIndex": 2,
-    "explanation": "Semakin tinggi batang, semakin besar jumlah datanya."
-   },
-   {
-    "id": "q7",
-    "prompt": "Kelereng Ani 12, Budi 9, Cici 15. Siapa yang punya kelereng paling sedikit?",
-    "options": [
-     "Budi",
-     "Cici",
-     "Ani",
-     "Ani dan Cici"
-    ],
-    "answerIndex": 0,
-    "explanation": "Angka terkecil adalah 9, milik Budi."
-   },
-   {
-    "id": "q8",
-    "prompt": "Kelereng Ani 12, Budi 9, Cici 15. Jumlah kelereng mereka bertiga ...",
-    "options": [
-     "34",
-     "36",
-     "38",
-     "35"
-    ],
-    "answerIndex": 1,
-    "explanation": "12 + 9 + 15 = 36."
-   },
-   {
-    "id": "q9",
-    "prompt": "Rata-rata dari 6, 8, dan 10 adalah ...",
-    "options": [
-     "6",
-     "24",
-     "8",
-     "9"
-    ],
-    "answerIndex": 2,
-    "explanation": "(6 + 8 + 10) : 3 = 24 : 3 = 8."
-   },
-   {
-    "id": "q10",
-    "prompt": "Warna favorit: merah 10 anak, biru 7 anak, hijau 5 anak. Selisih penyuka merah dan hijau ...",
-    "options": [
-     "5 anak",
-     "3 anak",
-     "2 anak",
-     "7 anak"
-    ],
-    "answerIndex": 0,
-    "explanation": "10 − 5 = 5 anak."
-   },
-   {
-    "id": "q11",
-    "prompt": "Data nilai: 8, 8, 8, 11, 7, 9, 11, 8. Modusnya adalah ...",
-    "options": [
-     "7",
-     "9",
-     "10",
-     "8"
-    ],
-    "answerIndex": 3,
-    "explanation": "Angka 8 muncul 4 kali, paling sering."
-   },
-   {
-    "id": "q12",
-    "prompt": "Data nilai: 11, 9, 9, 13, 13, 12, 12, 9, 9. Modusnya adalah ...",
-    "options": [
-     "8",
-     "9",
-     "12",
-     "7"
-    ],
-    "answerIndex": 1,
-    "explanation": "Angka 9 muncul 4 kali, paling sering."
-   },
-   {
-    "id": "q13",
-    "prompt": "Data nilai: 9, 8, 7, 7, 11, 11, 7, 7. Modusnya adalah ...",
-    "options": [
-     "5",
-     "8",
-     "7",
-     "10"
-    ],
-    "answerIndex": 2,
-    "explanation": "Angka 7 muncul 4 kali, paling sering."
-   },
-   {
-    "id": "q14",
-    "prompt": "Rata-rata dari 9, 4, 8, 3 adalah ...",
-    "options": [
-     "6",
-     "4",
-     "7",
-     "3"
-    ],
-    "answerIndex": 0,
-    "explanation": "(9 + 4 + 8 + 3) : 4 = 24 : 4 = 6."
-   },
-   {
-    "id": "q15",
-    "prompt": "Rata-rata dari 7, 9, 3, 2, 4 adalah ...",
-    "options": [
-     "7",
-     "3",
-     "4",
-     "5"
-    ],
-    "answerIndex": 3,
-    "explanation": "(7 + 9 + 3 + 2 + 4) : 5 = 25 : 5 = 5."
-   },
-   {
-    "id": "q16",
-    "prompt": "Rata-rata dari 7, 6, 2, 9 adalah ...",
-    "options": [
-     "4",
-     "6",
-     "7",
-     "8"
-    ],
-    "answerIndex": 1,
-    "explanation": "(7 + 6 + 2 + 9) : 4 = 24 : 4 = 6."
-   },
-   {
-    "id": "q17",
-    "prompt": "Data hasil panen: bola 6, boneka 14, mobil-mobilan 11. Jumlah seluruhnya ...",
-    "options": [
-     "31",
-     "41",
-     "30",
-     "33"
-    ],
-    "answerIndex": 0,
-    "explanation": "6 + 14 + 11 = 31."
-   },
-   {
-    "id": "q18",
-    "prompt": "Data: apel 8, jeruk 6, mangga 14. Selisih data terbanyak dan tersedikit ...",
-    "options": [
-     "10",
-     "7",
-     "8",
-     "9"
-    ],
-    "answerIndex": 2,
-    "explanation": "14 − 6 = 8."
-   },
-   {
-    "id": "q19",
-    "prompt": "Banyak pengunjung perpustakaan: Senin 11, Selasa 18, Rabu 10, Kamis 7. Hari dengan pengunjung terbanyak ...",
-    "options": [
-     "Senin",
-     "Selasa",
-     "Kamis",
-     "Rabu"
-    ],
-    "answerIndex": 1,
-    "explanation": "Angka terbesar adalah 18, yaitu hari Selasa."
-   },
-   {
-    "id": "q20",
-    "prompt": "Data nilai: 9, 7, 7, 7, 6, 8, 9. Modusnya adalah ...",
-    "options": [
-     "5",
-     "8",
-     "6",
-     "7"
-    ],
-    "answerIndex": 3,
-    "explanation": "Angka 7 muncul 3 kali, paling sering."
-   },
-   {
-    "id": "q21",
-    "prompt": "Data nilai: 11, 10, 9, 9, 10, 11, 10, 8. Modusnya adalah ...",
-    "options": [
-     "12",
-     "13",
-     "8",
-     "10"
-    ],
-    "answerIndex": 3,
-    "explanation": "Angka 10 muncul 3 kali, paling sering."
-   },
-   {
-    "id": "q22",
-    "prompt": "Data nilai: 12, 10, 9, 9, 10, 10, 11, 12. Modusnya adalah ...",
-    "options": [
-     "7",
-     "10",
-     "8",
-     "13"
-    ],
-    "answerIndex": 1,
-    "explanation": "Angka 10 muncul 3 kali, paling sering."
-   },
-   {
-    "id": "q23",
-    "prompt": "Rata-rata dari 8, 2, 8 adalah ...",
-    "options": [
-     "6",
-     "3",
-     "7",
-     "5"
-    ],
-    "answerIndex": 0,
-    "explanation": "(8 + 2 + 8) : 3 = 18 : 3 = 6."
-   },
-   {
-    "id": "q24",
-    "prompt": "Rata-rata dari 9, 5, 4 adalah ...",
-    "options": [
-     "8",
-     "3",
-     "6",
-     "9"
-    ],
-    "answerIndex": 2,
-    "explanation": "(9 + 5 + 4) : 3 = 18 : 3 = 6."
-   },
-   {
-    "id": "q25",
-    "prompt": "Rata-rata dari 7, 4, 7 adalah ...",
-    "options": [
-     "6",
-     "7",
-     "9",
-     "8"
-    ],
-    "answerIndex": 0,
-    "explanation": "(7 + 4 + 7) : 3 = 18 : 3 = 6."
-   },
-   {
-    "id": "q26",
-    "prompt": "Data hasil panen: bola 5, boneka 10, mobil-mobilan 13. Jumlah seluruhnya ...",
-    "options": [
-     "18",
-     "28",
-     "38",
-     "27"
-    ],
-    "answerIndex": 1,
-    "explanation": "5 + 10 + 13 = 28."
-   },
-   {
-    "id": "q27",
-    "prompt": "Data: apel 14, jeruk 13, mangga 5. Selisih data terbanyak dan tersedikit ...",
-    "options": [
-     "7",
-     "8",
-     "9",
-     "6"
-    ],
-    "answerIndex": 2,
-    "explanation": "14 − 5 = 9."
-   },
-   {
-    "id": "q28",
-    "prompt": "Median (nilai tengah) dari data 17, 10, 16, 8, 9 adalah ...",
-    "options": [
-     "12",
-     "16",
-     "9",
-     "10"
-    ],
-    "answerIndex": 3,
-    "explanation": "Setelah diurutkan (8, 9, 10, 16, 17), nilai tengahnya 10."
-   },
-   {
-    "id": "q29",
-    "prompt": "Banyak pengunjung perpustakaan: Senin 7, Selasa 13, Rabu 16, Kamis 18. Hari dengan pengunjung terbanyak ...",
-    "options": [
-     "Kamis",
-     "Rabu",
-     "Senin",
-     "Selasa"
-    ],
-    "answerIndex": 0,
-    "explanation": "Angka terbesar adalah 18, yaitu hari Kamis."
-   },
-   {
-    "id": "q30",
-    "prompt": "Data nilai: 8, 9, 12, 10, 9, 11, 9, 10. Modusnya adalah ...",
-    "options": [
-     "10",
-     "12",
-     "7",
-     "9"
-    ],
-    "answerIndex": 3,
-    "explanation": "Angka 9 muncul 3 kali, paling sering."
-   }
-  ]
- },
- {
-  "id": "mat-k6-volume-kubus-balok",
-  "categoryId": "matematika",
-  "title": "Volume kubus dan balok",
-  "grades": [
-   5,
-   6
-  ],
-  "difficulty": 3,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Volume kubus dengan panjang rusuk 4 cm adalah ...",
-    "options": [
-     "12 cm³",
-     "48 cm³",
-     "16 cm³",
-     "64 cm³"
-    ],
-    "answerIndex": 3,
-    "explanation": "Volume kubus = rusuk × rusuk × rusuk = 4 × 4 × 4 = 64."
-   },
-   {
-    "id": "q2",
-    "prompt": "Balok berukuran 5 cm × 4 cm × 3 cm. Volumenya ...",
-    "options": [
-     "47 cm³",
-     "60 cm³",
-     "12 cm³",
-     "54 cm³"
-    ],
-    "answerIndex": 1,
-    "explanation": "Volume balok = p × l × t = 5 × 4 × 3 = 60."
-   },
-   {
-    "id": "q3",
-    "prompt": "Kubus dengan rusuk 10 cm memiliki volume ...",
-    "options": [
-     "600 cm³",
-     "100 cm³",
-     "30 cm³",
-     "1.000 cm³"
-    ],
-    "answerIndex": 3,
-    "explanation": "10 × 10 × 10 = 1.000."
-   },
-   {
-    "id": "q4",
-    "prompt": "Balok panjang 8 cm, lebar 5 cm, tinggi 2 cm. Volumenya ...",
-    "options": [
-     "160 cm³",
-     "40 cm³",
-     "80 cm³",
-     "15 cm³"
-    ],
-    "answerIndex": 2,
-    "explanation": "8 × 5 × 2 = 80."
-   },
-   {
-    "id": "q5",
-    "prompt": "Banyak rusuk pada kubus adalah ...",
-    "options": [
-     "12",
-     "6",
-     "8",
-     "10"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kubus punya 12 rusuk, 6 sisi, dan 8 titik sudut."
-   },
-   {
-    "id": "q6",
-    "prompt": "Banyak sisi pada balok adalah ...",
-    "options": [
-     "4",
-     "6",
-     "12",
-     "8"
-    ],
-    "answerIndex": 1,
-    "explanation": "Balok punya 6 sisi berbentuk persegi panjang."
-   },
-   {
-    "id": "q7",
-    "prompt": "Bak air berbentuk kubus dengan rusuk 5 dm. Bila penuh, isinya ... liter. (1 dm³ = 1 liter)",
-    "options": [
-     "25",
-     "15",
-     "125",
-     "50"
-    ],
-    "answerIndex": 2,
-    "explanation": "5 × 5 × 5 = 125 dm³ = 125 liter."
-   },
-   {
-    "id": "q8",
-    "prompt": "Volume balok 120 cm³, panjang 6 cm, lebar 5 cm. Tinggi balok ...",
-    "options": [
-     "20 cm",
-     "4 cm",
-     "3 cm",
-     "5 cm"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tinggi = 120 : (6 × 5) = 120 : 30 = 4."
-   },
-   {
-    "id": "q9",
-    "prompt": "Satuan volume yang benar adalah ...",
-    "options": [
-     "cm³",
-     "cm",
-     "kg",
-     "cm²"
-    ],
-    "answerIndex": 0,
-    "explanation": "Volume memakai satuan pangkat tiga, misalnya cm³ atau m³."
-   },
-   {
-    "id": "q10",
-    "prompt": "Volume sebuah kubus 27 cm³. Panjang rusuknya ...",
-    "options": [
-     "6 cm",
-     "9 cm",
-     "4 cm",
-     "3 cm"
-    ],
-    "answerIndex": 3,
-    "explanation": "3 × 3 × 3 = 27, jadi rusuknya 3 cm."
-   },
-   {
-    "id": "q11",
-    "prompt": "Kubus dengan panjang rusuk 5 cm. Volumenya ...",
-    "options": [
-     "100 cm³",
-     "115 cm³",
-     "125 cm³",
-     "275 cm³"
-    ],
-    "answerIndex": 2,
-    "explanation": "Volume = s × s × s = 5 × 5 × 5 = 125."
-   },
-   {
-    "id": "q12",
-    "prompt": "Kubus dengan panjang rusuk 3 cm. Volumenya ...",
-    "options": [
-     "27 cm³",
-     "36 cm³",
-     "81 cm³",
-     "37 cm³"
-    ],
-    "answerIndex": 0,
-    "explanation": "Volume = s × s × s = 3 × 3 × 3 = 27."
-   },
-   {
-    "id": "q13",
-    "prompt": "Balok dengan panjang 11 cm, lebar 5 cm, dan tinggi 4 cm. Volumenya ...",
-    "options": [
-     "220 cm³",
-     "165 cm³",
-     "275 cm³",
-     "200 cm³"
-    ],
-    "answerIndex": 0,
-    "explanation": "Volume = p × l × t = 11 × 5 × 4 = 220."
-   },
-   {
-    "id": "q14",
-    "prompt": "Balok dengan panjang 12 cm, lebar 5 cm, dan tinggi 3 cm. Volumenya ...",
-    "options": [
-     "160 cm³",
-     "195 cm³",
-     "165 cm³",
-     "180 cm³"
-    ],
-    "answerIndex": 3,
-    "explanation": "Volume = p × l × t = 12 × 5 × 3 = 180."
-   },
-   {
-    "id": "q15",
-    "prompt": "Volume balok 288 cm³, panjang 12 cm, dan lebar 8 cm. Tingginya ...",
-    "options": [
-     "2 cm",
-     "3 cm",
-     "4 cm",
-     "6 cm"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tinggi = 288 : (12 × 8) = 288 : 96 = 3."
-   },
-   {
-    "id": "q16",
-    "prompt": "Volume balok 420 cm³, panjang 12 cm, dan lebar 7 cm. Tingginya ...",
-    "options": [
-     "3 cm",
-     "8 cm",
-     "5 cm",
-     "2 cm"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tinggi = 420 : (12 × 7) = 420 : 84 = 5."
-   },
-   {
-    "id": "q17",
-    "prompt": "Bak mandi berbentuk kubus dengan rusuk 6 dm. Bila penuh, isinya ... liter. (1 dm³ = 1 liter)",
-    "options": [
-     "180",
-     "222",
-     "210",
-     "216"
-    ],
-    "answerIndex": 3,
-    "explanation": "6 × 6 × 6 = 216 dm³ = 216 liter."
-   },
-   {
-    "id": "q18",
-    "prompt": "Akuarium berukuran 10 dm × 10 dm × 3 dm. Isi akuarium ... liter.",
-    "options": [
-     "350",
-     "300",
-     "250",
-     "290"
-    ],
-    "answerIndex": 1,
-    "explanation": "10 × 10 × 3 = 300 dm³ = 300 liter."
-   },
-   {
-    "id": "q19",
-    "prompt": "Luas permukaan kubus dengan rusuk 2 cm adalah ...",
-    "options": [
-     "24 cm²",
-     "12 cm²",
-     "32 cm²",
-     "8 cm²"
-    ],
-    "answerIndex": 0,
-    "explanation": "Luas permukaan = 6 × s × s = 6 × 2 × 2 = 24."
-   },
-   {
-    "id": "q20",
-    "prompt": "Balok berukuran 4 cm × 3 cm × 4 cm. Luas permukaannya ...",
-    "options": [
-     "32 cm²",
-     "90 cm²",
-     "80 cm²",
-     "92 cm²"
-    ],
-    "answerIndex": 2,
-    "explanation": "Luas permukaan = 2 × (pl + pt + lt) = 2 × (12 + 16 + 12) = 80."
-   },
-   {
-    "id": "q21",
-    "prompt": "Kubus dengan panjang rusuk 6 cm. Volumenya ...",
-    "options": [
-     "234 cm³",
-     "216 cm³",
-     "206 cm³",
-     "217 cm³"
-    ],
-    "answerIndex": 1,
-    "explanation": "Volume = s × s × s = 6 × 6 × 6 = 216."
-   },
-   {
-    "id": "q22",
-    "prompt": "Kubus dengan panjang rusuk 9 cm. Volumenya ...",
-    "options": [
-     "243 cm³",
-     "1215 cm³",
-     "729 cm³",
-     "648 cm³"
-    ],
-    "answerIndex": 2,
-    "explanation": "Volume = s × s × s = 9 × 9 × 9 = 729."
-   },
-   {
-    "id": "q23",
-    "prompt": "Balok dengan panjang 5 cm, lebar 8 cm, dan tinggi 3 cm. Volumenya ...",
-    "options": [
-     "110 cm³",
-     "130 cm³",
-     "80 cm³",
-     "120 cm³"
-    ],
-    "answerIndex": 3,
-    "explanation": "Volume = p × l × t = 5 × 8 × 3 = 120."
-   },
-   {
-    "id": "q24",
-    "prompt": "Balok dengan panjang 10 cm, lebar 3 cm, dan tinggi 3 cm. Volumenya ...",
-    "options": [
-     "90 cm³",
-     "120 cm³",
-     "100 cm³",
-     "106 cm³"
-    ],
-    "answerIndex": 0,
-    "explanation": "Volume = p × l × t = 10 × 3 × 3 = 90."
-   },
-   {
-    "id": "q25",
-    "prompt": "Volume balok 60 cm³, panjang 4 cm, dan lebar 3 cm. Tingginya ...",
-    "options": [
-     "6 cm",
-     "5 cm",
-     "3 cm",
-     "4 cm"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tinggi = 60 : (4 × 3) = 60 : 12 = 5."
-   },
-   {
-    "id": "q26",
-    "prompt": "Volume balok 240 cm³, panjang 10 cm, dan lebar 6 cm. Tingginya ...",
-    "options": [
-     "7 cm",
-     "6 cm",
-     "4 cm",
-     "1 cm"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tinggi = 240 : (10 × 6) = 240 : 60 = 4."
-   },
-   {
-    "id": "q27",
-    "prompt": "Bak mandi berbentuk kubus dengan rusuk 4 dm. Bila penuh, isinya ... liter. (1 dm³ = 1 liter)",
-    "options": [
-     "64",
-     "80",
-     "54",
-     "60"
-    ],
-    "answerIndex": 0,
-    "explanation": "4 × 4 × 4 = 64 dm³ = 64 liter."
-   },
-   {
-    "id": "q28",
-    "prompt": "Akuarium berukuran 10 dm × 5 dm × 4 dm. Isi akuarium ... liter.",
-    "options": [
-     "190",
-     "250",
-     "180",
-     "200"
-    ],
-    "answerIndex": 3,
-    "explanation": "10 × 5 × 4 = 200 dm³ = 200 liter."
-   },
-   {
-    "id": "q29",
-    "prompt": "Luas permukaan kubus dengan rusuk 4 cm adalah ...",
-    "options": [
-     "96 cm²",
-     "32 cm²",
-     "80 cm²",
-     "160 cm²"
-    ],
-    "answerIndex": 0,
-    "explanation": "Luas permukaan = 6 × s × s = 6 × 4 × 4 = 96."
-   },
-   {
-    "id": "q30",
-    "prompt": "Balok berukuran 7 cm × 5 cm × 5 cm. Luas permukaannya ...",
-    "options": [
-     "188 cm²",
-     "155 cm²",
-     "190 cm²",
-     "225 cm²"
-    ],
-    "answerIndex": 2,
-    "explanation": "Luas permukaan = 2 × (pl + pt + lt) = 2 × (35 + 35 + 25) = 190."
-   }
-  ]
- },
- {
-  "id": "indo-k1-huruf-suku-kata",
-  "categoryId": "bahasa-indonesia",
-  "title": "Huruf dan suku kata",
-  "grades": [
-   1
-  ],
-  "difficulty": 1,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Kata \"bola\" dipenggal menjadi ...",
-    "options": [
-     "bo-l-a",
-     "bol-a",
-     "bo-la",
-     "b-ola"
-    ],
-    "answerIndex": 2,
-    "explanation": "Bo-la terdiri dari dua suku kata."
-   },
-   {
-    "id": "q2",
-    "prompt": "Banyak suku kata pada kata \"ibu\" adalah ...",
-    "options": [
-     "3",
-     "4",
-     "1",
-     "2"
-    ],
-    "answerIndex": 3,
-    "explanation": "i-bu, ada dua suku kata."
-   },
-   {
-    "id": "q3",
-    "prompt": "Huruf pertama pada kata \"meja\" adalah ...",
-    "options": [
-     "m",
-     "e",
-     "j",
-     "a"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kata meja diawali huruf m."
-   },
-   {
-    "id": "q4",
-    "prompt": "Yang termasuk huruf vokal adalah ...",
-    "options": [
-     "t",
-     "e",
-     "m",
-     "k"
-    ],
-    "answerIndex": 1,
-    "explanation": "Huruf vokal: a, i, u, e, o."
-   },
-   {
-    "id": "q5",
-    "prompt": "Lengkapi kata: ma_an (untuk makan)",
-    "options": [
-     "w",
-     "k",
-     "g",
-     "z"
-    ],
-    "answerIndex": 1,
-    "explanation": "Huruf k melengkapi menjadi \"makan\"."
-   },
-   {
-    "id": "q6",
-    "prompt": "Kata yang terdiri dari tiga suku kata adalah ...",
-    "options": [
-     "meja",
-     "kursi",
-     "buku",
-     "sepatu"
-    ],
-    "answerIndex": 3,
-    "explanation": "se-pa-tu ada tiga suku kata; yang lain dua."
-   },
-   {
-    "id": "q7",
-    "prompt": "Susunlah huruf s-a-p-i menjadi kata ...",
-    "options": [
-     "aspi",
-     "ipsa",
-     "sapi",
-     "pasi"
-    ],
-    "answerIndex": 2,
-    "explanation": "Huruf-huruf itu membentuk kata sapi."
-   },
-   {
-    "id": "q8",
-    "prompt": "Kata yang diawali huruf \"b\" adalah ...",
-    "options": [
-     "bunga",
-     "topi",
-     "ayam",
-     "kuda"
-    ],
-    "answerIndex": 0,
-    "explanation": "Bunga diawali huruf b."
-   },
-   {
-    "id": "q9",
-    "prompt": "Nama anak ditulis dengan benar, yaitu ...",
-    "options": [
-     "BUdi",
-     "bUdi",
-     "Budi",
-     "budi"
-    ],
-    "answerIndex": 2,
-    "explanation": "Nama orang diawali huruf kapital, sisanya huruf kecil."
-   },
-   {
-    "id": "q10",
-    "prompt": "Banyak huruf pada kata \"rumah\" adalah ...",
-    "options": [
-     "3",
-     "6",
-     "4",
-     "5"
-    ],
-    "answerIndex": 3,
-    "explanation": "r-u-m-a-h, ada 5 huruf."
-   },
-   {
-    "id": "q11",
-    "prompt": "Huruf setelah \"a\" dalam abjad adalah ...",
-    "options": [
-     "b",
-     "d",
-     "c",
-     "z"
-    ],
-    "answerIndex": 0,
-    "explanation": "Urutan abjad: a, b, c, d."
-   },
-   {
-    "id": "q12",
-    "prompt": "Huruf sebelum \"d\" dalam abjad adalah ...",
-    "options": [
-     "b",
-     "c",
-     "a",
-     "e"
-    ],
-    "answerIndex": 1,
-    "explanation": "Urutan abjad: a, b, c, d."
-   },
-   {
-    "id": "q13",
-    "prompt": "Banyak huruf pada kata \"sapu\" adalah ...",
-    "options": [
-     "4",
-     "5",
-     "2",
-     "3"
-    ],
-    "answerIndex": 0,
-    "explanation": "s-a-p-u, ada 4 huruf."
-   },
-   {
-    "id": "q14",
-    "prompt": "Kata \"kucing\" diawali huruf ...",
-    "options": [
-     "u",
-     "k",
-     "i",
-     "c"
-    ],
-    "answerIndex": 1,
-    "explanation": "Kata kucing diawali huruf k."
-   },
-   {
-    "id": "q15",
-    "prompt": "Kata \"meja\" dipenggal menjadi ...",
-    "options": [
-     "me-j-a",
-     "m-eja",
-     "me-ja",
-     "mej-a"
-    ],
-    "answerIndex": 2,
-    "explanation": "Meja terdiri atas dua suku kata: me-ja."
-   },
-   {
-    "id": "q16",
-    "prompt": "Banyak suku kata pada kata \"kupu-kupu\" adalah ...",
-    "options": [
-     "3",
-     "2",
-     "5",
-     "4"
-    ],
-    "answerIndex": 3,
-    "explanation": "ku-pu-ku-pu, ada 4 suku kata."
-   },
-   {
-    "id": "q17",
-    "prompt": "Huruf terakhir pada kata \"topi\" adalah ...",
-    "options": [
-     "p",
-     "t",
-     "i",
-     "o"
-    ],
-    "answerIndex": 2,
-    "explanation": "Kata topi diakhiri huruf i."
-   },
-   {
-    "id": "q18",
-    "prompt": "Lengkapi kata: ru_ah (untuk rumah)",
-    "options": [
-     "k",
-     "m",
-     "s",
-     "t"
-    ],
-    "answerIndex": 1,
-    "explanation": "Huruf m melengkapi menjadi rumah."
-   },
-   {
-    "id": "q19",
-    "prompt": "Lengkapi kata: pi_ing (untuk piring)",
-    "options": [
-     "r",
-     "m",
-     "t",
-     "s"
-    ],
-    "answerIndex": 0,
-    "explanation": "Huruf r melengkapi menjadi piring."
-   },
-   {
-    "id": "q20",
-    "prompt": "Gambar apel diawali huruf ...",
-    "options": [
-     "l",
-     "e",
-     "p",
-     "a"
-    ],
-    "answerIndex": 3,
-    "explanation": "Apel diawali huruf a."
-   },
-   {
-    "id": "q21",
-    "prompt": "Susunlah huruf k-u-d-a menjadi kata ...",
-    "options": [
-     "dkua",
-     "udak",
-     "akud",
-     "kuda"
-    ],
-    "answerIndex": 3,
-    "explanation": "Huruf-huruf itu membentuk kuda."
-   },
-   {
-    "id": "q22",
-    "prompt": "Penulisan kata yang benar adalah ...",
-    "options": [
-     "sekolah",
-     "skolah",
-     "sekolahh",
-     "sekola"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kata yang benar: sekolah."
-   },
-   {
-    "id": "q23",
-    "prompt": "Yang termasuk huruf konsonan adalah ...",
-    "options": [
-     "i",
-     "u",
-     "b",
-     "a"
-    ],
-    "answerIndex": 2,
-    "explanation": "Selain a, i, u, e, o adalah konsonan."
-   },
-   {
-    "id": "q24",
-    "prompt": "Huruf kecil dari \"M\" adalah ...",
-    "options": [
-     "n",
-     "m",
-     "w",
-     "e"
-    ],
-    "answerIndex": 1,
-    "explanation": "Huruf kecil M adalah m."
-   },
-   {
-    "id": "q25",
-    "prompt": "Huruf besar dari \"r\" adalah ...",
-    "options": [
-     "K",
-     "P",
-     "B",
-     "R"
-    ],
-    "answerIndex": 3,
-    "explanation": "Huruf besar r adalah R."
-   },
-   {
-    "id": "q26",
-    "prompt": "Kata yang bunyi akhirnya sama dengan \"buku\" adalah ...",
-    "options": [
-     "kuku",
-     "pena",
-     "meja",
-     "tas"
-    ],
-    "answerIndex": 0,
-    "explanation": "Buku dan kuku sama-sama berakhiran -ku."
-   },
-   {
-    "id": "q27",
-    "prompt": "Kata yang diawali huruf \"m\" adalah ...",
-    "options": [
-     "kuda",
-     "topi",
-     "meja",
-     "ayam"
-    ],
-    "answerIndex": 2,
-    "explanation": "Meja diawali huruf m."
-   },
-   {
-    "id": "q28",
-    "prompt": "Banyak suku kata pada kata \"ayah\" adalah ...",
-    "options": [
-     "1",
-     "2",
-     "4",
-     "3"
-    ],
-    "answerIndex": 1,
-    "explanation": "a-yah, ada dua suku kata."
-   },
-   {
-    "id": "q29",
-    "prompt": "Kalimat yang penulisannya benar adalah ...",
-    "options": [
-     "ibu memasak nasi",
-     "Ibu memasak Nasi.",
-     "ibu Memasak nasi.",
-     "Ibu memasak nasi."
-    ],
-    "answerIndex": 3,
-    "explanation": "Awal kalimat huruf kapital dan diakhiri titik."
-   },
-   {
-    "id": "q30",
-    "prompt": "Tanda baca di akhir kalimat berita adalah ...",
-    "options": [
-     "tanda seru",
-     "koma",
-     "titik",
-     "tanda tanya"
-    ],
-    "answerIndex": 2,
-    "explanation": "Kalimat berita diakhiri titik."
-   }
-  ]
- },
- {
-  "id": "indo-k3-jenis-kata",
-  "categoryId": "bahasa-indonesia",
-  "title": "Kata benda, kata kerja, kata sifat",
-  "grades": [
-   2,
-   3
-  ],
-  "difficulty": 2,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Kata benda adalah ...",
-    "options": [
-     "meja",
-     "cepat",
-     "berlari",
-     "indah"
-    ],
-    "answerIndex": 0,
-    "explanation": "Meja adalah nama benda."
-   },
-   {
-    "id": "q2",
-    "prompt": "Kata kerja adalah ...",
-    "options": [
-     "pintar",
-     "menulis",
-     "buku",
-     "kursi"
-    ],
-    "answerIndex": 1,
-    "explanation": "Menulis menyatakan perbuatan."
-   },
-   {
-    "id": "q3",
-    "prompt": "Kata sifat adalah ...",
-    "options": [
-     "berenang",
-     "makan",
-     "tinggi",
-     "tas"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tinggi menyatakan keadaan atau sifat."
-   },
-   {
-    "id": "q4",
-    "prompt": "Ibu memasak nasi di dapur. Kata kerja dalam kalimat itu adalah ...",
-    "options": [
-     "ibu",
-     "memasak",
-     "nasi",
-     "dapur"
-    ],
-    "answerIndex": 1,
-    "explanation": "Memasak adalah perbuatan yang dilakukan ibu."
-   },
-   {
-    "id": "q5",
-    "prompt": "Adik membaca buku cerita yang menarik. Kata sifatnya ...",
-    "options": [
-     "buku",
-     "adik",
-     "membaca",
-     "menarik"
-    ],
-    "answerIndex": 3,
-    "explanation": "Menarik menggambarkan sifat buku cerita."
-   },
-   {
-    "id": "q6",
-    "prompt": "Kata \"rajin\" termasuk kata ...",
-    "options": [
-     "sifat",
-     "kerja",
-     "tanya",
-     "benda"
-    ],
-    "answerIndex": 0,
-    "explanation": "Rajin menyatakan sifat seseorang."
-   },
-   {
-    "id": "q7",
-    "prompt": "Kata \"sepeda\" termasuk kata ...",
-    "options": [
-     "kerja",
-     "sifat",
-     "benda",
-     "bilangan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Sepeda adalah nama benda."
-   },
-   {
-    "id": "q8",
-    "prompt": "Ayah ... koran setiap pagi. Kata yang tepat untuk melengkapi adalah ...",
-    "options": [
-     "lemari",
-     "membaca",
-     "besar",
-     "merah"
-    ],
-    "answerIndex": 1,
-    "explanation": "Yang cocok untuk perbuatan adalah kata kerja: membaca."
-   },
-   {
-    "id": "q9",
-    "prompt": "Bunga mawar itu sangat harum. Kata sifat dalam kalimat itu adalah ...",
-    "options": [
-     "mawar",
-     "itu",
-     "bunga",
-     "harum"
-    ],
-    "answerIndex": 3,
-    "explanation": "Harum menggambarkan keadaan bunga mawar."
-   },
-   {
-    "id": "q10",
-    "prompt": "Kata \"bermain\" termasuk kata ...",
-    "options": [
-     "kerja",
-     "hubung",
-     "sifat",
-     "benda"
-    ],
-    "answerIndex": 0,
-    "explanation": "Bermain adalah kegiatan atau perbuatan."
-   },
-   {
-    "id": "q11",
-    "prompt": "Gunung itu sangat tinggi. Kata sifat dalam kalimat itu adalah ...",
-    "options": [
-     "sangat",
-     "gunung",
-     "tinggi",
-     "itu"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tinggi menggambarkan keadaan gunung."
-   },
-   {
-    "id": "q12",
-    "prompt": "Kakak menyapu halaman. Kata kerja dalam kalimat itu adalah ...",
-    "options": [
-     "kakak",
-     "halaman",
-     "itu",
-     "menyapu"
-    ],
-    "answerIndex": 3,
-    "explanation": "Menyapu adalah perbuatan."
-   },
-   {
-    "id": "q13",
-    "prompt": "Burung bernyanyi di dahan. Kata kerja dalam kalimat itu adalah ...",
-    "options": [
-     "burung",
-     "bernyanyi",
-     "dahan",
-     "di"
-    ],
-    "answerIndex": 1,
-    "explanation": "Bernyanyi adalah perbuatan burung."
-   },
-   {
-    "id": "q14",
-    "prompt": "Air sungai itu jernih. Kata sifat dalam kalimat itu adalah ...",
-    "options": [
-     "air",
-     "itu",
-     "jernih",
-     "sungai"
-    ],
-    "answerIndex": 2,
-    "explanation": "Jernih menggambarkan keadaan air."
-   },
-   {
-    "id": "q15",
-    "prompt": "Kata \"melompat\" termasuk kata ...",
-    "options": [
-     "benda",
-     "bilangan",
-     "sifat",
-     "kerja"
-    ],
-    "answerIndex": 3,
-    "explanation": "Melompat adalah perbuatan."
-   },
-   {
-    "id": "q16",
-    "prompt": "Kata \"merah\" termasuk kata ...",
-    "options": [
-     "sifat",
-     "tanya",
-     "benda",
-     "kerja"
-    ],
-    "answerIndex": 0,
-    "explanation": "Merah menyatakan sifat atau warna."
-   },
-   {
-    "id": "q17",
-    "prompt": "Kata \"lemari\" termasuk kata ...",
-    "options": [
-     "ganti",
-     "kerja",
-     "benda",
-     "sifat"
-    ],
-    "answerIndex": 2,
-    "explanation": "Lemari adalah nama benda."
-   },
-   {
-    "id": "q18",
-    "prompt": "Gajah itu sangat ... . Kata sifat yang tepat adalah ...",
-    "options": [
-     "berlari",
-     "makan",
-     "kebun",
-     "besar"
-    ],
-    "answerIndex": 3,
-    "explanation": "Besar menggambarkan keadaan gajah."
-   },
-   {
-    "id": "q19",
-    "prompt": "Adik ... air putih. Kata kerja yang tepat adalah ...",
-    "options": [
-     "minum",
-     "manis",
-     "gelas",
-     "dingin"
-    ],
-    "answerIndex": 0,
-    "explanation": "Minum adalah perbuatan."
-   },
-   {
-    "id": "q20",
-    "prompt": "Ayah membaca ... di ruang tamu. Kata benda yang tepat adalah ...",
-    "options": [
-     "sibuk",
-     "koran",
-     "berlari",
-     "pintar"
-    ],
-    "answerIndex": 1,
-    "explanation": "Koran adalah benda yang dibaca."
-   },
-   {
-    "id": "q21",
-    "prompt": "Kucing itu mengejar tikus. Kata kerja dalam kalimat itu adalah ...",
-    "options": [
-     "itu",
-     "tikus",
-     "mengejar",
-     "kucing"
-    ],
-    "answerIndex": 2,
-    "explanation": "Mengejar adalah perbuatan."
-   },
-   {
-    "id": "q22",
-    "prompt": "Kata \"cantik\" termasuk kata ...",
-    "options": [
-     "benda",
-     "kerja",
-     "bilangan",
-     "sifat"
-    ],
-    "answerIndex": 3,
-    "explanation": "Cantik menyatakan sifat."
-   },
-   {
-    "id": "q23",
-    "prompt": "Kata \"guru\" termasuk kata ...",
-    "options": [
-     "benda",
-     "sifat",
-     "tanya",
-     "kerja"
-    ],
-    "answerIndex": 0,
-    "explanation": "Guru adalah nama orang atau profesi."
-   },
-   {
-    "id": "q24",
-    "prompt": "Kata \"berlari\" termasuk kata ...",
-    "options": [
-     "ganti",
-     "kerja",
-     "sifat",
-     "benda"
-    ],
-    "answerIndex": 1,
-    "explanation": "Berlari adalah perbuatan."
-   },
-   {
-    "id": "q25",
-    "prompt": "Kata \"pintar\" termasuk kata ...",
-    "options": [
-     "sifat",
-     "bilangan",
-     "benda",
-     "kerja"
-    ],
-    "answerIndex": 0,
-    "explanation": "Pintar menyatakan sifat."
-   },
-   {
-    "id": "q26",
-    "prompt": "Kata benda yang menyatakan nama hewan adalah ...",
-    "options": [
-     "makan",
-     "kuda",
-     "berlari",
-     "cepat"
-    ],
-    "answerIndex": 1,
-    "explanation": "Kuda adalah nama hewan."
-   },
-   {
-    "id": "q27",
-    "prompt": "Kata kerja yang dilakukan murid di kelas adalah ...",
-    "options": [
-     "pensil",
-     "buku",
-     "belajar",
-     "papan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Belajar adalah kegiatan murid."
-   },
-   {
-    "id": "q28",
-    "prompt": "Kata sifat yang menggambarkan rasa gula adalah ...",
-    "options": [
-     "asin",
-     "pahit",
-     "asam",
-     "manis"
-    ],
-    "answerIndex": 3,
-    "explanation": "Gula terasa manis."
-   },
-   {
-    "id": "q29",
-    "prompt": "Kami makan nasi goreng yang lezat. Kata sifat dalam kalimat itu adalah ...",
-    "options": [
-     "makan",
-     "lezat",
-     "kami",
-     "nasi"
-    ],
-    "answerIndex": 1,
-    "explanation": "Lezat menggambarkan rasa nasi goreng."
-   },
-   {
-    "id": "q30",
-    "prompt": "Sepatu itu mahal. Kata sifat dalam kalimat itu adalah ...",
-    "options": [
-     "sepatu",
-     "beli",
-     "mahal",
-     "itu"
-    ],
-    "answerIndex": 2,
-    "explanation": "Mahal menggambarkan harga sepatu."
-   }
-  ]
- },
- {
-  "id": "ipas-k1-panca-indra-tubuh",
-  "categoryId": "ipas",
-  "title": "Panca indra dan tubuhku",
-  "grades": [
-   1,
-   2
-  ],
-  "difficulty": 1,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Kita melihat dengan menggunakan ...",
-    "options": [
-     "mata",
-     "hidung",
-     "lidah",
-     "telinga"
-    ],
-    "answerIndex": 0,
-    "explanation": "Mata adalah indra penglihat."
-   },
-   {
-    "id": "q2",
-    "prompt": "Kita mendengar suara dengan ...",
-    "options": [
-     "hidung",
-     "mata",
-     "kulit",
-     "telinga"
-    ],
-    "answerIndex": 3,
-    "explanation": "Telinga adalah indra pendengar."
-   },
-   {
-    "id": "q3",
-    "prompt": "Kita mencium bau bunga dengan ...",
-    "options": [
-     "telinga",
-     "hidung",
-     "mata",
-     "tangan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Hidung adalah indra pembau."
-   },
-   {
-    "id": "q4",
-    "prompt": "Rasa manis gula dirasakan oleh ...",
-    "options": [
-     "hidung",
-     "telinga",
-     "lidah",
-     "mata"
-    ],
-    "answerIndex": 2,
-    "explanation": "Lidah adalah indra pengecap."
-   },
-   {
-    "id": "q5",
-    "prompt": "Rasa panas atau dingin dirasakan oleh ...",
-    "options": [
-     "kulit",
-     "gigi",
-     "telinga",
-     "mata"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kulit adalah indra peraba."
-   },
-   {
-    "id": "q6",
-    "prompt": "Banyak panca indra manusia adalah ...",
-    "options": [
-     "6",
-     "3",
-     "4",
-     "5"
-    ],
-    "answerIndex": 3,
-    "explanation": "Panca berarti lima: mata, telinga, hidung, lidah, kulit."
-   },
-   {
-    "id": "q7",
-    "prompt": "Cara menjaga mata yang baik adalah ...",
-    "options": [
-     "menonton layar sangat dekat",
-     "membaca di tempat terang",
-     "menggosok mata dengan tangan kotor",
-     "membaca sambil tiduran di tempat gelap"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tempat yang terang membuat mata tidak cepat lelah."
-   },
-   {
-    "id": "q8",
-    "prompt": "Cara merawat gigi yang benar adalah ...",
-    "options": [
-     "menyikat gigi seminggu sekali",
-     "makan permen sebelum tidur",
-     "menyikat gigi dua kali sehari",
-     "tidak pernah ke dokter gigi"
-    ],
-    "answerIndex": 2,
-    "explanation": "Sikat gigi pagi dan sebelum tidur menjaga gigi tetap sehat."
-   },
-   {
-    "id": "q9",
-    "prompt": "Kita mencuci tangan dengan sabun ...",
-    "options": [
-     "hanya saat Lebaran",
-     "hanya bila disuruh",
-     "sebelum makan",
-     "setelah tidur siang saja"
-    ],
-    "answerIndex": 2,
-    "explanation": "Mencuci tangan sebelum makan mencegah kuman masuk ke tubuh."
-   },
-   {
-    "id": "q10",
-    "prompt": "Bagian tubuh yang kita pakai untuk berjalan adalah ...",
-    "options": [
-     "kaki",
-     "perut",
-     "tangan",
-     "kepala"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kaki membantu kita berjalan dan berlari."
-   },
-   {
-    "id": "q11",
-    "prompt": "Gigi berfungsi untuk ...",
-    "options": [
-     "melihat",
-     "mendengar",
-     "mencium",
-     "mengunyah makanan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Gigi menghaluskan makanan."
-   },
-   {
-    "id": "q12",
-    "prompt": "Tangan berfungsi untuk ...",
-    "options": [
-     "mendengar",
-     "memegang benda",
-     "mencium bau",
-     "melihat"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tangan dipakai memegang dan mengambil."
-   },
-   {
-    "id": "q13",
-    "prompt": "Hidung berfungsi untuk ...",
-    "options": [
-     "melihat",
-     "mendengar",
-     "berjalan",
-     "mencium bau dan bernapas"
-    ],
-    "answerIndex": 3,
-    "explanation": "Hidung membantu kita bernapas dan mencium."
-   },
-   {
-    "id": "q14",
-    "prompt": "Mulut berfungsi untuk ...",
-    "options": [
-     "melihat",
-     "mendengar",
-     "makan dan berbicara",
-     "mencium"
-    ],
-    "answerIndex": 2,
-    "explanation": "Mulut dipakai makan dan berbicara."
-   },
-   {
-    "id": "q15",
-    "prompt": "Banyak mata yang kita miliki adalah ...",
-    "options": [
-     "2",
-     "4",
-     "3",
-     "1"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kita memiliki dua mata."
-   },
-   {
-    "id": "q16",
-    "prompt": "Banyak jari pada kedua tangan adalah ...",
-    "options": [
-     "5",
-     "10",
-     "8",
-     "12"
-    ],
-    "answerIndex": 1,
-    "explanation": "Setiap tangan lima jari, jadi 10."
-   },
-   {
-    "id": "q17",
-    "prompt": "Rasa pahit dirasakan oleh ...",
-    "options": [
-     "hidung",
-     "lidah",
-     "telinga",
-     "mata"
-    ],
-    "answerIndex": 1,
-    "explanation": "Lidah dapat merasakan manis, asin, asam, dan pahit."
-   },
-   {
-    "id": "q18",
-    "prompt": "Benda yang kasar atau halus dirasakan oleh ...",
-    "options": [
-     "telinga",
-     "mata",
-     "lidah",
-     "kulit"
-    ],
-    "answerIndex": 3,
-    "explanation": "Kulit meraba permukaan benda."
-   },
-   {
-    "id": "q19",
-    "prompt": "Kita tidak boleh memasukkan benda keras ke ...",
-    "options": [
-     "tas",
-     "keranjang",
-     "telinga",
-     "laci"
-    ],
-    "answerIndex": 2,
-    "explanation": "Telinga mudah terluka."
-   },
-   {
-    "id": "q20",
-    "prompt": "Warna bunga dapat dilihat oleh ...",
-    "options": [
-     "mata",
-     "lidah",
-     "hidung",
-     "telinga"
-    ],
-    "answerIndex": 0,
-    "explanation": "Mata melihat warna."
-   },
-   {
-    "id": "q21",
-    "prompt": "Bunyi bel sekolah didengar oleh ...",
-    "options": [
-     "telinga",
-     "mata",
-     "hidung",
-     "kulit"
-    ],
-    "answerIndex": 0,
-    "explanation": "Telinga menangkap suara."
-   },
-   {
-    "id": "q22",
-    "prompt": "Bau harum bunga dicium oleh ...",
-    "options": [
-     "mata",
-     "telinga",
-     "lidah",
-     "hidung"
-    ],
-    "answerIndex": 3,
-    "explanation": "Hidung adalah indra pembau."
-   },
-   {
-    "id": "q23",
-    "prompt": "Agar tubuh sehat, kita perlu makan ...",
-    "options": [
-     "permen saja",
-     "sayur dan buah",
-     "minuman manis saja",
-     "gorengan saja"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sayur dan buah menyehatkan tubuh."
-   },
-   {
-    "id": "q24",
-    "prompt": "Agar tubuh tetap sehat, kita sebaiknya minum ...",
-    "options": [
-     "minuman bersoda saja",
-     "air kotor",
-     "air putih",
-     "minuman manis saja"
-    ],
-    "answerIndex": 2,
-    "explanation": "Air putih baik untuk tubuh."
-   },
-   {
-    "id": "q25",
-    "prompt": "Berolahraga membuat tubuh ...",
-    "options": [
-     "mudah sakit",
-     "malas",
-     "lemas",
-     "kuat dan sehat"
-    ],
-    "answerIndex": 3,
-    "explanation": "Olahraga menyehatkan tubuh."
-   },
-   {
-    "id": "q26",
-    "prompt": "Tidur yang cukup membuat tubuh ...",
-    "options": [
-     "segar",
-     "lesu",
-     "marah",
-     "sakit"
-    ],
-    "answerIndex": 0,
-    "explanation": "Tidur memulihkan tenaga."
-   },
-   {
-    "id": "q27",
-    "prompt": "Kita mencuci tangan dengan sabun setelah ...",
-    "options": [
-     "tidur",
-     "bermain dan dari toilet",
-     "berdiri",
-     "duduk"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tangan kotor membawa kuman."
-   },
-   {
-    "id": "q28",
-    "prompt": "Pakaian yang bersih membuat kita ...",
-    "options": [
-     "gatal",
-     "bau",
-     "nyaman dan sehat",
-     "sakit"
-    ],
-    "answerIndex": 2,
-    "explanation": "Pakaian bersih mencegah penyakit kulit."
-   },
-   {
-    "id": "q29",
-    "prompt": "Bagian tubuh yang dipakai untuk menendang bola adalah ...",
-    "options": [
-     "kepala",
-     "kaki",
-     "tangan",
-     "telinga"
-    ],
-    "answerIndex": 1,
-    "explanation": "Kaki dipakai menendang."
-   },
-   {
-    "id": "q30",
-    "prompt": "Indra yang dipakai untuk merasakan sakit karena cubitan adalah ...",
-    "options": [
-     "lidah",
-     "telinga",
-     "kulit",
-     "mata"
-    ],
-    "answerIndex": 2,
-    "explanation": "Kulit peraba rasa sakit."
-   }
-  ]
- },
- {
-  "id": "ipas-k6-listrik-rangkaian",
-  "categoryId": "ipas",
-  "title": "Listrik dan rangkaian sederhana",
-  "grades": [
-   6
-  ],
-  "difficulty": 2,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Benda yang menyimpan energi listrik untuk senter adalah ...",
-    "options": [
-     "kayu",
-     "batu",
-     "kertas",
-     "baterai"
-    ],
-    "answerIndex": 3,
-    "explanation": "Baterai menyimpan energi listrik dalam bentuk kimia."
-   },
-   {
-    "id": "q2",
-    "prompt": "Bahan yang menghantarkan listrik dengan baik (konduktor) adalah ...",
-    "options": [
-     "kayu kering",
-     "tembaga",
-     "karet",
-     "plastik"
-    ],
-    "answerIndex": 1,
-    "explanation": "Logam seperti tembaga adalah konduktor."
-   },
-   {
-    "id": "q3",
-    "prompt": "Bahan yang tidak menghantarkan listrik (isolator) adalah ...",
-    "options": [
-     "tembaga",
-     "besi",
-     "karet",
-     "aluminium"
-    ],
-    "answerIndex": 2,
-    "explanation": "Karet adalah isolator, maka dipakai membungkus kabel."
-   },
-   {
-    "id": "q4",
-    "prompt": "Pada rangkaian seri, lampu-lampu disusun ...",
-    "options": [
-     "berurutan dalam satu jalur",
-     "bercabang",
-     "terpisah dari baterai",
-     "tanpa kabel"
-    ],
-    "answerIndex": 0,
-    "explanation": "Rangkaian seri hanya punya satu jalur arus."
-   },
-   {
-    "id": "q5",
-    "prompt": "Pada rangkaian paralel, jika satu lampu mati maka lampu lain ...",
-    "options": [
-     "ikut mati",
-     "meledak",
-     "semakin redup",
-     "tetap menyala"
-    ],
-    "answerIndex": 3,
-    "explanation": "Rangkaian paralel punya cabang, sehingga lampu lain tetap dialiri arus."
-   },
-   {
-    "id": "q6",
-    "prompt": "Pada rangkaian seri, jika satu lampu putus maka lampu lain ...",
-    "options": [
-     "tetap menyala",
-     "ikut padam",
-     "makin terang",
-     "berganti warna"
-    ],
-    "answerIndex": 1,
-    "explanation": "Jalur arus terputus sehingga semua lampu padam."
-   },
-   {
-    "id": "q7",
-    "prompt": "Fungsi saklar dalam rangkaian listrik adalah ...",
-    "options": [
-     "menambah tegangan",
-     "menyimpan arus",
-     "mengganti lampu",
-     "menghubungkan atau memutus arus"
-    ],
-    "answerIndex": 3,
-    "explanation": "Saklar menyalakan dan mematikan aliran listrik."
-   },
-   {
-    "id": "q8",
-    "prompt": "Setrika listrik mengubah energi listrik menjadi energi ...",
-    "options": [
-     "gerak",
-     "bunyi",
-     "panas",
-     "kimia"
-    ],
-    "answerIndex": 2,
-    "explanation": "Setrika menjadi panas saat dialiri listrik."
-   },
-   {
-    "id": "q9",
-    "prompt": "Kipas angin mengubah energi listrik menjadi energi ...",
-    "options": [
-     "bunyi",
-     "gerak",
-     "cahaya",
-     "panas"
-    ],
-    "answerIndex": 1,
-    "explanation": "Listrik memutar baling-baling kipas."
-   },
-   {
-    "id": "q10",
-    "prompt": "Tindakan yang aman saat memakai listrik adalah ...",
-    "options": [
-     "tidak memegang colokan dengan tangan basah",
-     "menarik kabel saat mencabut",
-     "bermain layang-layang dekat kabel",
-     "memasukkan paku ke stopkontak"
-    ],
-    "answerIndex": 0,
-    "explanation": "Air menghantarkan listrik, tangan basah berbahaya."
-   },
-   {
-    "id": "q11",
-    "prompt": "Aliran muatan listrik disebut ...",
-    "options": [
-     "gempa",
-     "angin",
-     "arus listrik",
-     "air"
-    ],
-    "answerIndex": 2,
-    "explanation": "Arus listrik adalah aliran muatan."
-   },
-   {
-    "id": "q12",
-    "prompt": "Rangkaian listrik dapat menyala bila rangkaian ...",
-    "options": [
-     "tertutup",
-     "terbuka",
-     "terputus",
-     "dibasahi"
-    ],
-    "answerIndex": 0,
-    "explanation": "Arus hanya mengalir pada rangkaian tertutup."
-   },
-   {
-    "id": "q13",
-    "prompt": "Jika saklar terbuka, maka lampu ...",
-    "options": [
-     "meledak",
-     "menyala",
-     "makin terang",
-     "padam"
-    ],
-    "answerIndex": 3,
-    "explanation": "Arus terputus sehingga lampu padam."
-   },
-   {
-    "id": "q14",
-    "prompt": "Kabel listrik dibungkus plastik karena plastik ...",
-    "options": [
-     "isolator",
-     "bahan bakar",
-     "magnet",
-     "konduktor"
-    ],
-    "answerIndex": 0,
-    "explanation": "Plastik tidak menghantarkan listrik."
-   },
-   {
-    "id": "q15",
-    "prompt": "Bahan logam seperti besi termasuk ...",
-    "options": [
-     "air",
-     "konduktor",
-     "isolator",
-     "bahan bakar"
-    ],
-    "answerIndex": 1,
-    "explanation": "Logam menghantarkan listrik."
-   },
-   {
-    "id": "q16",
-    "prompt": "Kawat tembaga dipakai pada kabel karena ...",
-    "options": [
-     "murah dan keras",
-     "mengapung",
-     "menghantarkan listrik dengan baik",
-     "tidak berat"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tembaga adalah konduktor yang baik."
-   },
-   {
-    "id": "q17",
-    "prompt": "Lampu LED lebih ... dibanding lampu pijar.",
-    "options": [
-     "boros energi",
-     "besar",
-     "hemat energi",
-     "panas sekali"
-    ],
-    "answerIndex": 2,
-    "explanation": "LED hemat energi dan lebih awet."
-   },
-   {
-    "id": "q18",
-    "prompt": "Alat pengaman yang putus saat arus terlalu besar adalah ...",
-    "options": [
-     "saklar",
-     "sekring",
-     "lampu",
-     "baterai"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sekring melindungi rangkaian."
-   },
-   {
-    "id": "q19",
-    "prompt": "Korsleting terjadi saat ...",
-    "options": [
-     "kabel positif dan negatif bersentuhan",
-     "saklar dimatikan",
-     "baterai dilepas",
-     "lampu menyala"
-    ],
-    "answerIndex": 0,
-    "explanation": "Korsleting dapat menimbulkan api."
-   },
-   {
-    "id": "q20",
-    "prompt": "Instalasi listrik rumah umumnya memakai rangkaian ...",
-    "options": [
-     "acak",
-     "seri",
-     "tertutup rapat tanpa jalur",
-     "paralel"
-    ],
-    "answerIndex": 3,
-    "explanation": "Paralel membuat alat dapat menyala sendiri-sendiri."
-   },
-   {
-    "id": "q21",
-    "prompt": "Lampu hias pohon natal yang padam semua saat satu lampu dilepas berarti dirangkai ...",
-    "options": [
-     "campuran",
-     "paralel",
-     "seri",
-     "acak"
-    ],
-    "answerIndex": 2,
-    "explanation": "Rangkaian seri hanya punya satu jalur."
-   },
-   {
-    "id": "q22",
-    "prompt": "Pada baterai terdapat kutub ...",
-    "options": [
-     "barat dan timur",
-     "positif dan negatif",
-     "utara saja",
-     "kiri dan kanan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Baterai punya dua kutub."
-   },
-   {
-    "id": "q23",
-    "prompt": "Elektromagnet dibuat dari paku yang dililit kawat dan dialiri ...",
-    "options": [
-     "listrik",
-     "panas",
-     "udara",
-     "air"
-    ],
-    "answerIndex": 0,
-    "explanation": "Arus listrik membuat paku menjadi magnet."
-   },
-   {
-    "id": "q24",
-    "prompt": "Listrik statis dapat dibuktikan dengan ...",
-    "options": [
-     "saklar ditekan",
-     "baterai dipasang",
-     "lampu menyala",
-     "penggaris plastik digosok menarik kertas kecil"
-    ],
-    "answerIndex": 3,
-    "explanation": "Gesekan menimbulkan muatan statis."
-   },
-   {
-    "id": "q25",
-    "prompt": "Pada saat petir terjadi, kita sebaiknya ...",
-    "options": [
-     "berteduh di bawah pohon tinggi",
-     "bermain di lapangan terbuka",
-     "memegang tiang logam",
-     "berlindung di dalam bangunan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Bangunan tertutup lebih aman saat petir."
-   },
-   {
-    "id": "q26",
-    "prompt": "Energi listrik pada kulkas diubah menjadi energi ...",
-    "options": [
-     "dingin (pendinginan) dan gerak",
-     "panas saja",
-     "cahaya saja",
-     "bunyi saja"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kulkas mendinginkan dengan kompresor."
-   },
-   {
-    "id": "q27",
-    "prompt": "Baterai yang sudah habis daya sebaiknya ...",
-    "options": [
-     "dibuang ke sungai",
-     "dibuang ke tempat khusus",
-     "dikubur sembarangan",
-     "dibakar"
-    ],
-    "answerIndex": 1,
-    "explanation": "Baterai bekas mengandung bahan berbahaya."
-   },
-   {
-    "id": "q28",
-    "prompt": "Cara menghemat listrik di rumah adalah ...",
-    "options": [
-     "membiarkan TV menyala",
-     "membuka kulkas terus",
-     "mematikan alat listrik yang tidak dipakai",
-     "menyalakan lampu seharian"
-    ],
-    "answerIndex": 2,
-    "explanation": "Listrik yang tidak dipakai terbuang."
-   },
-   {
-    "id": "q29",
-    "prompt": "Lampu pijar menyala karena ... di dalamnya menjadi panas.",
-    "options": [
-     "air",
-     "kertas",
-     "kawat tipis",
-     "plastik"
-    ],
-    "answerIndex": 2,
-    "explanation": "Kawat pijar memancarkan cahaya saat panas."
-   },
-   {
-    "id": "q30",
-    "prompt": "Alat yang dipakai untuk menyambungkan dan memutus arus dalam rangkaian adalah ...",
-    "options": [
-     "kabel",
-     "saklar",
-     "lampu",
-     "baterai"
-    ],
-    "answerIndex": 1,
-    "explanation": "Saklar membuka dan menutup rangkaian."
-   }
-  ]
- },
- {
-  "id": "pancasila-k5-musyawarah",
-  "categoryId": "pancasila",
-  "title": "Musyawarah dan keberagaman",
-  "grades": [
-   5
-  ],
-  "difficulty": 2,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Musyawarah adalah ...",
-    "options": [
-     "menunggu perintah",
-     "memutuskan sendiri",
-     "berunding bersama untuk mencapai kesepakatan",
-     "adu kekuatan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Musyawarah menyelesaikan masalah dengan berunding."
-   },
-   {
-    "id": "q2",
-    "prompt": "Sikap yang baik saat musyawarah adalah ...",
-    "options": [
-     "pergi saat kalah",
-     "marah bila berbeda",
-     "memotong pembicaraan",
-     "mendengarkan pendapat orang lain"
-    ],
-    "answerIndex": 3,
-    "explanation": "Menghargai pendapat teman adalah dasar musyawarah."
-   },
-   {
-    "id": "q3",
-    "prompt": "Setelah ada keputusan musyawarah, kita ...",
-    "options": [
-     "menolaknya diam-diam",
-     "menerima dan melaksanakannya",
-     "mengejek yang menang",
-     "tidak peduli"
-    ],
-    "answerIndex": 1,
-    "explanation": "Keputusan bersama dilaksanakan bersama."
-   },
-   {
-    "id": "q4",
-    "prompt": "Bhinneka Tunggal Ika artinya ...",
-    "options": [
-     "berbeda-beda tetapi tetap satu",
-     "bersatu untuk menang",
-     "satu suku satu bahasa",
-     "semua harus sama"
-    ],
-    "answerIndex": 0,
-    "explanation": "Indonesia beragam tetapi bersatu."
-   },
-   {
-    "id": "q5",
-    "prompt": "Sikap kita kepada teman yang berbeda agama adalah ...",
-    "options": [
-     "menghormati dan tidak memaksakan",
-     "memaksa ikut agama kita",
-     "menjauhi",
-     "mengejek"
-    ],
-    "answerIndex": 0,
-    "explanation": "Sila pertama mengajarkan toleransi."
-   },
-   {
-    "id": "q6",
-    "prompt": "Ketua kelas dipilih dengan cara yang adil, yaitu ...",
-    "options": [
-     "siapa paling kuat",
-     "siapa paling keras bicara",
-     "ditunjuk teman akrab",
-     "musyawarah atau pemungutan suara"
-    ],
-    "answerIndex": 3,
-    "explanation": "Cara adil melibatkan pendapat semua anggota kelas."
-   },
-   {
-    "id": "q7",
-    "prompt": "Contoh keberagaman di Indonesia adalah ...",
-    "options": [
-     "hanya satu pulau",
-     "banyak suku dan bahasa daerah",
-     "hanya satu agama",
-     "semua warga satu adat"
-    ],
-    "answerIndex": 1,
-    "explanation": "Indonesia memiliki ratusan suku dan bahasa daerah."
-   },
-   {
-    "id": "q8",
-    "prompt": "Jika pendapatmu tidak dipilih dalam musyawarah, sebaiknya ...",
-    "options": [
-     "membenci teman",
-     "tidak mau ikut lagi",
-     "menghargai keputusan bersama",
-     "membuat kelompok sendiri"
-    ],
-    "answerIndex": 2,
-    "explanation": "Keputusan terbaik bagi bersama harus dihormati."
-   },
-   {
-    "id": "q9",
-    "prompt": "Lambang sila keempat Pancasila adalah ...",
-    "options": [
-     "bintang",
-     "kepala banteng",
-     "pohon beringin",
-     "rantai"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sila ke-4 berlambang kepala banteng."
-   },
-   {
-    "id": "q10",
-    "prompt": "Sikap yang bertentangan dengan musyawarah adalah ...",
-    "options": [
-     "mencari jalan tengah",
-     "bersikap sabar",
-     "bertukar pendapat",
-     "memaksakan kehendak"
-    ],
-    "answerIndex": 3,
-    "explanation": "Memaksakan kehendak tidak menghargai pendapat orang lain."
-   },
-   {
-    "id": "q11",
-    "prompt": "Hasil musyawarah yang disepakati bersama disebut ...",
-    "options": [
-     "mufakat",
-     "rebutan",
-     "perintah",
-     "paksaan"
-    ],
-    "answerIndex": 0,
-    "explanation": "Mufakat adalah kesepakatan bersama."
-   },
-   {
-    "id": "q12",
-    "prompt": "Jika musyawarah tidak mencapai mufakat, keputusan dapat diambil dengan ...",
-    "options": [
-     "lari",
-     "undian siapa kuat",
-     "pemungutan suara",
-     "paksaan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Pemungutan suara adalah jalan terakhir yang adil."
-   },
-   {
-    "id": "q13",
-    "prompt": "Cara menyampaikan pendapat yang baik adalah ...",
-    "options": [
-     "berteriak",
-     "marah-marah",
-     "memotong teman",
-     "dengan sopan dan jelas"
-    ],
-    "answerIndex": 3,
-    "explanation": "Pendapat disampaikan dengan santun."
-   },
-   {
-    "id": "q14",
-    "prompt": "Musyawarah dapat dilakukan di ...",
-    "options": [
-     "hanya di pasar",
-     "hanya di kebun",
-     "kelas, keluarga, dan RT",
-     "hanya di gedung besar"
-    ],
-    "answerIndex": 2,
-    "explanation": "Musyawarah bisa di mana saja ada keputusan bersama."
-   },
-   {
-    "id": "q15",
-    "prompt": "Yang bertugas memimpin jalannya musyawarah adalah ...",
-    "options": [
-     "penonton",
-     "pemimpin sidang atau ketua",
-     "orang yang paling keras",
-     "tamu"
-    ],
-    "answerIndex": 1,
-    "explanation": "Pemimpin mengatur agar musyawarah tertib."
-   },
-   {
-    "id": "q16",
-    "prompt": "Sikap yang sesuai dengan sila keempat adalah ...",
-    "options": [
-     "mengutamakan musyawarah",
-     "memaksakan kehendak",
-     "tidak mau mendengar",
-     "menang sendiri"
-    ],
-    "answerIndex": 0,
-    "explanation": "Sila keempat tentang musyawarah."
-   },
-   {
-    "id": "q17",
-    "prompt": "Bahasa persatuan bangsa Indonesia adalah ...",
-    "options": [
-     "Bahasa Inggris",
-     "Bahasa Sunda",
-     "Bahasa Jawa",
-     "Bahasa Indonesia"
-    ],
-    "answerIndex": 3,
-    "explanation": "Bahasa Indonesia mempersatukan banyak suku."
-   },
-   {
-    "id": "q18",
-    "prompt": "Sumpah Pemuda diikrarkan pada tanggal ...",
-    "options": [
-     "17 Agustus 1945",
-     "28 Oktober 1928",
-     "1 Juni 1945",
-     "10 November 1945"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sumpah Pemuda lahir 28 Oktober 1928."
-   },
-   {
-    "id": "q19",
-    "prompt": "Pakaian adat, tari, dan rumah adat adalah contoh ...",
-    "options": [
-     "keberagaman budaya",
-     "barang impor",
-     "keseragaman",
-     "perbedaan yang harus dihilangkan"
-    ],
-    "answerIndex": 0,
-    "explanation": "Budaya Indonesia beragam."
-   },
-   {
-    "id": "q20",
-    "prompt": "Sikap yang tepat terhadap perbedaan suku adalah ...",
-    "options": [
-     "menjauhi",
-     "memaksa mengikuti",
-     "saling menghargai",
-     "saling mengejek"
-    ],
-    "answerIndex": 2,
-    "explanation": "Perbedaan adalah kekayaan bangsa."
-   },
-   {
-    "id": "q21",
-    "prompt": "Berteman dengan semua orang tanpa membeda-bedakan suku adalah contoh ...",
-    "options": [
-     "persatuan",
-     "permusuhan",
-     "kesombongan",
-     "perpecahan"
-    ],
-    "answerIndex": 0,
-    "explanation": "Persatuan menyatukan perbedaan."
-   },
-   {
-    "id": "q22",
-    "prompt": "Kerja bakti membersihkan lingkungan adalah contoh ...",
-    "options": [
-     "kesombongan",
-     "gotong royong",
-     "kecurangan",
-     "pemaksaan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Gotong royong mempererat persatuan."
-   },
-   {
-    "id": "q23",
-    "prompt": "Keputusan musyawarah sebaiknya bermanfaat untuk ...",
-    "options": [
-     "satu orang saja",
-     "diri sendiri saja",
-     "kepentingan bersama",
-     "kelompok tertentu saja"
-    ],
-    "answerIndex": 2,
-    "explanation": "Musyawarah mencari yang terbaik bagi semua."
-   },
-   {
-    "id": "q24",
-    "prompt": "Lagu daerah dan tarian daerah perlu ...",
-    "options": [
-     "diganti",
-     "dilarang",
-     "dilupakan",
-     "dilestarikan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Budaya daerah adalah warisan bangsa."
-   },
-   {
-    "id": "q25",
-    "prompt": "Mencintai produk dalam negeri menunjukkan sikap ...",
-    "options": [
-     "malas",
-     "boros",
-     "tidak peduli",
-     "cinta tanah air"
-    ],
-    "answerIndex": 3,
-    "explanation": "Membeli produk lokal membantu sesama anak bangsa."
-   },
-   {
-    "id": "q26",
-    "prompt": "Contoh musyawarah di sekolah adalah ...",
-    "options": [
-     "menyontek",
-     "bolos",
-     "memilih ketua kelas",
-     "memaksa teman"
-    ],
-    "answerIndex": 2,
-    "explanation": "Pemilihan ketua kelas dilakukan bersama."
-   },
-   {
-    "id": "q27",
-    "prompt": "Saat teman menyampaikan pendapat, kita ...",
-    "options": [
-     "memotong",
-     "mendengarkan sampai selesai",
-     "mengejek",
-     "pergi"
-    ],
-    "answerIndex": 1,
-    "explanation": "Mendengarkan menghargai pembicara."
-   },
-   {
-    "id": "q28",
-    "prompt": "Musyawarah bertujuan ...",
-    "options": [
-     "mencapai keputusan bersama",
-     "menjatuhkan lawan",
-     "menang sendiri",
-     "membuat ribut"
-    ],
-    "answerIndex": 0,
-    "explanation": "Musyawarah mencari kesepakatan."
-   },
-   {
-    "id": "q29",
-    "prompt": "Indonesia terdiri atas banyak pulau dan suku, sehingga semboyan kita ...",
-    "options": [
-     "Bersatu Kita Teguh",
-     "Tut Wuri Handayani",
-     "Bhinneka Tunggal Ika",
-     "Maju Terus"
-    ],
-    "answerIndex": 2,
-    "explanation": "Bhinneka Tunggal Ika berarti berbeda-beda tetapi tetap satu."
-   },
-   {
-    "id": "q30",
-    "prompt": "Kata kunci dalam sila keempat adalah ...",
-    "options": [
-     "persaingan",
-     "permusyawaratan",
-     "pemaksaan",
-     "perpecahan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sila keempat tentang kerakyatan dan permusyawaratan."
-   }
-  ]
- },
- {
-  "id": "pancasila-k6-hak-kewajiban",
-  "categoryId": "pancasila",
-  "title": "Hak dan kewajiban warga",
-  "grades": [
-   6
-  ],
-  "difficulty": 2,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "Hak adalah ...",
-    "options": [
-     "sesuatu yang seharusnya kita terima",
-     "hadiah dari teman",
-     "sesuatu yang harus kita kerjakan",
-     "perintah guru"
-    ],
-    "answerIndex": 0,
-    "explanation": "Hak adalah sesuatu yang berhak kita dapatkan."
-   },
-   {
-    "id": "q2",
-    "prompt": "Kewajiban adalah ...",
-    "options": [
-     "hadiah",
-     "keinginan sendiri",
-     "sesuatu yang harus kita lakukan",
-     "sesuatu yang boleh ditinggalkan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Kewajiban adalah tugas yang harus dilaksanakan."
-   },
-   {
-    "id": "q3",
-    "prompt": "Salah satu hak anak adalah ...",
-    "options": [
-     "mendapat pendidikan",
-     "tidak sekolah",
-     "memilih tidak makan",
-     "bekerja seharian"
-    ],
-    "answerIndex": 0,
-    "explanation": "Setiap anak berhak belajar di sekolah."
-   },
-   {
-    "id": "q4",
-    "prompt": "Kewajiban siswa di sekolah adalah ...",
-    "options": [
-     "datang sesuka hati",
-     "membolos",
-     "menaati tata tertib",
-     "mengganggu teman"
-    ],
-    "answerIndex": 2,
-    "explanation": "Taat tata tertib membuat sekolah tertib dan aman."
-   },
-   {
-    "id": "q5",
-    "prompt": "Kewajiban warga negara dewasa kepada negara adalah ...",
-    "options": [
-     "merusak fasilitas umum",
-     "membuang sampah sembarangan",
-     "tidak ikut aturan",
-     "membayar pajak"
-    ],
-    "answerIndex": 3,
-    "explanation": "Pajak dipakai untuk membangun jalan, sekolah, dan lainnya."
-   },
-   {
-    "id": "q6",
-    "prompt": "Hak dan kewajiban harus dijalankan secara ...",
-    "options": [
-     "hanya haknya saja",
-     "seimbang",
-     "berat sebelah",
-     "hanya kewajibannya saja"
-    ],
-    "answerIndex": 1,
-    "explanation": "Menerima hak harus diimbangi kewajiban."
-   },
-   {
-    "id": "q7",
-    "prompt": "Kewajiban anak di rumah adalah ...",
-    "options": [
-     "melawan orang tua",
-     "membantu orang tua sesuai kemampuan",
-     "menunggu disuruh terus",
-     "membiarkan rumah berantakan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Membantu pekerjaan rumah adalah wujud tanggung jawab."
-   },
-   {
-    "id": "q8",
-    "prompt": "Contoh menjalankan kewajiban warga adalah ...",
-    "options": [
-     "mencoret tembok",
-     "membuang sampah ke sungai",
-     "menebang pohon sembarangan",
-     "menjaga kebersihan lingkungan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Menjaga lingkungan adalah kewajiban semua warga."
-   },
-   {
-    "id": "q9",
-    "prompt": "Setiap warga berhak memeluk agama ...",
-    "options": [
-     "sesuai keyakinannya masing-masing",
-     "yang ditentukan tetangga",
-     "yang paling banyak pemeluknya",
-     "yang dipilihkan teman"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kebebasan beragama dijamin sesuai sila pertama."
-   },
-   {
-    "id": "q10",
-    "prompt": "Contoh mendahulukan kewajiban adalah ...",
-    "options": [
-     "bermain dulu lalu lupa PR",
-     "menyontek PR teman",
-     "mengerjakan PR dulu baru bermain",
-     "tidak mengerjakan PR"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tugas diselesaikan lebih dulu, setelah itu boleh bermain."
-   },
-   {
-    "id": "q11",
-    "prompt": "Hak anak untuk mendapat layanan kesehatan berarti anak ...",
-    "options": [
-     "tidak boleh sakit",
-     "harus bekerja",
-     "membayar sendiri",
-     "berhak berobat bila sakit"
-    ],
-    "answerIndex": 3,
-    "explanation": "Kesehatan adalah hak setiap anak."
-   },
-   {
-    "id": "q12",
-    "prompt": "Anak berhak ... bersama teman.",
-    "options": [
-     "dihukum berat",
-     "bermain",
-     "bekerja sehari penuh",
-     "dilarang belajar"
-    ],
-    "answerIndex": 1,
-    "explanation": "Bermain adalah hak anak."
-   },
-   {
-    "id": "q13",
-    "prompt": "Kewajiban anak kepada orang tua adalah ...",
-    "options": [
-     "membentak",
-     "menghormati dan menaati nasihat yang baik",
-     "melawan",
-     "mengabaikan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Menghormati orang tua adalah kewajiban."
-   },
-   {
-    "id": "q14",
-    "prompt": "Kewajiban warga negara membela negara dapat dilakukan dengan ...",
-    "options": [
-     "merusak fasilitas",
-     "membuat kerusuhan",
-     "membolos",
-     "belajar dengan rajin dan menjaga persatuan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Bela negara bisa lewat hal yang baik di setiap bidang."
-   },
-   {
-    "id": "q15",
-    "prompt": "Warga negara yang sudah berusia 17 tahun berhak ...",
-    "options": [
-     "bekerja tanpa upah",
-     "diam di rumah",
-     "memilih dalam pemilihan umum",
-     "tidak sekolah"
-    ],
-    "answerIndex": 2,
-    "explanation": "Usia 17 tahun ke atas dapat memilih."
-   },
-   {
-    "id": "q16",
-    "prompt": "Menjaga fasilitas umum termasuk ...",
-    "options": [
-     "kewajiban warga",
-     "hak istimewa",
-     "larangan",
-     "pilihan saja"
-    ],
-    "answerIndex": 0,
-    "explanation": "Fasilitas umum milik bersama."
-   },
-   {
-    "id": "q17",
-    "prompt": "Menaati peraturan lalu lintas termasuk ...",
-    "options": [
-     "hak",
-     "kewajiban",
-     "hukuman",
-     "hadiah"
-    ],
-    "answerIndex": 1,
-    "explanation": "Aturan dibuat demi keselamatan bersama."
-   },
-   {
-    "id": "q18",
-    "prompt": "Setiap warga berhak menyampaikan pendapat dengan ...",
-    "options": [
-     "cara yang sopan dan bertanggung jawab",
-     "memaksa",
-     "merusak",
-     "memaki"
-    ],
-    "answerIndex": 0,
-    "explanation": "Hak berpendapat disertai tanggung jawab."
-   },
-   {
-    "id": "q19",
-    "prompt": "Menyuruh anak bekerja berat sehingga tidak bisa sekolah merupakan ...",
-    "options": [
-     "kewajiban anak",
-     "hal biasa",
-     "pelanggaran hak anak",
-     "hak orang tua"
-    ],
-    "answerIndex": 2,
-    "explanation": "Anak berhak belajar dan terlindungi."
-   },
-   {
-    "id": "q20",
-    "prompt": "Dasar hukum tertinggi di Indonesia adalah ...",
-    "options": [
-     "aturan RT",
-     "tata tertib kelas",
-     "peraturan sekolah",
-     "UUD 1945"
-    ],
-    "answerIndex": 3,
-    "explanation": "UUD 1945 adalah konstitusi negara."
-   },
-   {
-    "id": "q21",
-    "prompt": "Kewajiban warga di lingkungan RT antara lain ...",
-    "options": [
-     "membuang sampah sembarangan",
-     "mengganggu tetangga",
-     "merusak jalan",
-     "ikut kerja bakti"
-    ],
-    "answerIndex": 3,
-    "explanation": "Kerja bakti menjaga kebersihan bersama."
-   },
-   {
-    "id": "q22",
-    "prompt": "Setiap anak berhak mendapat nama dan ...",
-    "options": [
-     "kewarganegaraan",
-     "hukuman",
-     "uang",
-     "pekerjaan"
-    ],
-    "answerIndex": 0,
-    "explanation": "Anak berhak atas identitas."
-   },
-   {
-    "id": "q23",
-    "prompt": "Setiap anak berhak dilindungi dari ...",
-    "options": [
-     "kasih sayang",
-     "permainan",
-     "kekerasan",
-     "pendidikan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Anak harus aman dari kekerasan."
-   },
-   {
-    "id": "q24",
-    "prompt": "Orang yang tidak menjalankan kewajiban dapat ...",
-    "options": [
-     "disayang semua orang",
-     "merugikan orang lain",
-     "mendapat penghargaan",
-     "tidak apa-apa"
-    ],
-    "answerIndex": 1,
-    "explanation": "Kewajiban yang diabaikan merugikan orang lain."
-   },
-   {
-    "id": "q25",
-    "prompt": "Contoh tanggung jawab siswa adalah ...",
-    "options": [
-     "membuang sampah sembarangan",
-     "mengerjakan tugas tepat waktu",
-     "bolos",
-     "menyontek"
-    ],
-    "answerIndex": 1,
-    "explanation": "Tanggung jawab berarti menyelesaikan tugas sendiri."
-   },
-   {
-    "id": "q26",
-    "prompt": "Hak dan kewajiban ada pada ...",
-    "options": [
-     "orang dewasa saja",
-     "orang kaya saja",
-     "pejabat saja",
-     "setiap warga negara"
-    ],
-    "answerIndex": 3,
-    "explanation": "Semua warga memiliki hak dan kewajiban."
-   },
-   {
-    "id": "q27",
-    "prompt": "Menghormati hak orang lain termasuk ...",
-    "options": [
-     "hadiah",
-     "hukuman",
-     "kewajiban",
-     "pilihan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Kita wajib menghargai hak orang lain."
-   },
-   {
-    "id": "q28",
-    "prompt": "Sebelum menuntut hak, kita sebaiknya ...",
-    "options": [
-     "menjalankan kewajiban lebih dulu",
-     "marah-marah",
-     "menyalahkan orang lain",
-     "menunda semua kewajiban"
-    ],
-    "answerIndex": 0,
-    "explanation": "Hak dan kewajiban harus seimbang."
-   },
-   {
-    "id": "q29",
-    "prompt": "Belajar dengan tekun di sekolah adalah ...",
-    "options": [
-     "hukuman",
-     "kewajiban sekaligus hak",
-     "beban yang tidak perlu",
-     "larangan"
-    ],
-    "answerIndex": 1,
-    "explanation": "Belajar adalah hak dan kewajiban siswa."
-   },
-   {
-    "id": "q30",
-    "prompt": "Menggunakan listrik dan air dengan hemat adalah wujud ...",
-    "options": [
-     "tanggung jawab warga",
-     "pemborosan",
-     "hak istimewa",
-     "kesombongan"
-    ],
-    "answerIndex": 0,
-    "explanation": "Menghemat sumber daya adalah kewajiban bersama."
-   }
-  ]
- },
- {
-  "id": "inggris-k4-hewan-tubuh",
-  "categoryId": "bahasa-inggris",
-  "title": "Animals and body parts",
-  "grades": [
-   4,
-   5
-  ],
-  "difficulty": 1,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "\"Cat\" artinya ...",
-    "options": [
-     "ikan",
-     "kucing",
-     "burung",
-     "anjing"
-    ],
-    "answerIndex": 1,
-    "explanation": "Cat = kucing."
-   },
-   {
-    "id": "q2",
-    "prompt": "\"Dog\" artinya ...",
-    "options": [
-     "anjing",
-     "sapi",
-     "kelinci",
-     "kucing"
-    ],
-    "answerIndex": 0,
-    "explanation": "Dog = anjing."
-   },
-   {
-    "id": "q3",
-    "prompt": "\"Bird\" artinya ...",
-    "options": [
-     "ayam",
-     "ikan",
-     "burung",
-     "bebek"
-    ],
-    "answerIndex": 2,
-    "explanation": "Bird = burung."
-   },
-   {
-    "id": "q4",
-    "prompt": "\"Fish\" artinya ...",
-    "options": [
-     "kuda",
-     "kucing",
-     "burung",
-     "ikan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Fish = ikan."
-   },
-   {
-    "id": "q5",
-    "prompt": "\"Eye\" artinya ...",
-    "options": [
-     "hidung",
-     "telinga",
-     "mata",
-     "mulut"
-    ],
-    "answerIndex": 2,
-    "explanation": "Eye = mata."
-   },
-   {
-    "id": "q6",
-    "prompt": "\"Hand\" artinya ...",
-    "options": [
-     "perut",
-     "kepala",
-     "kaki",
-     "tangan"
-    ],
-    "answerIndex": 3,
-    "explanation": "Hand = tangan."
-   },
-   {
-    "id": "q7",
-    "prompt": "\"Ear\" artinya ...",
-    "options": [
-     "telinga",
-     "hidung",
-     "rambut",
-     "mata"
-    ],
-    "answerIndex": 0,
-    "explanation": "Ear = telinga."
-   },
-   {
-    "id": "q8",
-    "prompt": "Bahasa Inggris dari \"kepala\" adalah ...",
-    "options": [
-     "hair",
-     "head",
-     "heart",
-     "hand"
-    ],
-    "answerIndex": 1,
-    "explanation": "Kepala = head."
-   },
-   {
-    "id": "q9",
-    "prompt": "We see with our ...",
-    "options": [
-     "eyes",
-     "nose",
-     "hands",
-     "ears"
-    ],
-    "answerIndex": 0,
-    "explanation": "Kita melihat dengan mata (eyes)."
-   },
-   {
-    "id": "q10",
-    "prompt": "\"Elephant\" artinya ...",
-    "options": [
-     "jerapah",
-     "harimau",
-     "gajah",
-     "kuda"
-    ],
-    "answerIndex": 2,
-    "explanation": "Elephant = gajah."
-   },
-   {
-    "id": "q11",
-    "prompt": "\"Cow\" artinya ...",
-    "options": [
-     "kerbau",
-     "kuda",
-     "kambing",
-     "sapi"
-    ],
-    "answerIndex": 3,
-    "explanation": "Cow = sapi."
-   },
-   {
-    "id": "q12",
-    "prompt": "\"Horse\" artinya ...",
-    "options": [
-     "keledai",
-     "kuda",
-     "kambing",
-     "sapi"
-    ],
-    "answerIndex": 1,
-    "explanation": "Horse = kuda."
-   },
-   {
-    "id": "q13",
-    "prompt": "\"Duck\" artinya ...",
-    "options": [
-     "burung",
-     "angsa",
-     "ayam",
-     "bebek"
-    ],
-    "answerIndex": 3,
-    "explanation": "Duck = bebek."
-   },
-   {
-    "id": "q14",
-    "prompt": "\"Chicken\" artinya ...",
-    "options": [
-     "bebek",
-     "ayam",
-     "ikan",
-     "burung"
-    ],
-    "answerIndex": 1,
-    "explanation": "Chicken = ayam."
-   },
-   {
-    "id": "q15",
-    "prompt": "\"Goat\" artinya ...",
-    "options": [
-     "domba",
-     "kuda",
-     "kambing",
-     "sapi"
-    ],
-    "answerIndex": 2,
-    "explanation": "Goat = kambing."
-   },
-   {
-    "id": "q16",
-    "prompt": "\"Rabbit\" artinya ...",
-    "options": [
-     "kelinci",
-     "kucing",
-     "kancil",
-     "tikus"
-    ],
-    "answerIndex": 0,
-    "explanation": "Rabbit = kelinci."
-   },
-   {
-    "id": "q17",
-    "prompt": "\"Monkey\" artinya ...",
-    "options": [
-     "beruang",
-     "monyet",
-     "kera besar",
-     "kucing"
-    ],
-    "answerIndex": 1,
-    "explanation": "Monkey = monyet."
-   },
-   {
-    "id": "q18",
-    "prompt": "\"Lion\" artinya ...",
-    "options": [
-     "singa",
-     "harimau",
-     "serigala",
-     "macan tutul"
-    ],
-    "answerIndex": 0,
-    "explanation": "Lion = singa."
-   },
-   {
-    "id": "q19",
-    "prompt": "\"Tiger\" artinya ...",
-    "options": [
-     "singa",
-     "kucing",
-     "kuda",
-     "harimau"
-    ],
-    "answerIndex": 3,
-    "explanation": "Tiger = harimau."
-   },
-   {
-    "id": "q20",
-    "prompt": "\"Snake\" artinya ...",
-    "options": [
-     "ikan",
-     "cacing",
-     "ular",
-     "kadal"
-    ],
-    "answerIndex": 2,
-    "explanation": "Snake = ular."
-   },
-   {
-    "id": "q21",
-    "prompt": "\"Nose\" artinya ...",
-    "options": [
-     "mata",
-     "hidung",
-     "mulut",
-     "telinga"
-    ],
-    "answerIndex": 1,
-    "explanation": "Nose = hidung."
-   },
-   {
-    "id": "q22",
-    "prompt": "\"Mouth\" artinya ...",
-    "options": [
-     "mata",
-     "telinga",
-     "hidung",
-     "mulut"
-    ],
-    "answerIndex": 3,
-    "explanation": "Mouth = mulut."
-   },
-   {
-    "id": "q23",
-    "prompt": "\"Leg\" artinya ...",
-    "options": [
-     "kaki",
-     "tangan",
-     "perut",
-     "kepala"
-    ],
-    "answerIndex": 0,
-    "explanation": "Leg = kaki."
-   },
-   {
-    "id": "q24",
-    "prompt": "\"Finger\" artinya ...",
-    "options": [
-     "kaki",
-     "rambut",
-     "jari",
-     "lengan"
-    ],
-    "answerIndex": 2,
-    "explanation": "Finger = jari."
-   },
-   {
-    "id": "q25",
-    "prompt": "\"Hair\" artinya ...",
-    "options": [
-     "bulu mata",
-     "kepala",
-     "rambut",
-     "kuku"
-    ],
-    "answerIndex": 2,
-    "explanation": "Hair = rambut."
-   },
-   {
-    "id": "q26",
-    "prompt": "\"Teeth\" artinya ...",
-    "options": [
-     "bibir",
-     "lidah",
-     "pipi",
-     "gigi"
-    ],
-    "answerIndex": 3,
-    "explanation": "Teeth = gigi."
-   },
-   {
-    "id": "q27",
-    "prompt": "\"Arm\" artinya ...",
-    "options": [
-     "kaki",
-     "lengan",
-     "jari",
-     "leher"
-    ],
-    "answerIndex": 1,
-    "explanation": "Arm = lengan."
-   },
-   {
-    "id": "q28",
-    "prompt": "\"Stomach\" artinya ...",
-    "options": [
-     "perut",
-     "bahu",
-     "dada",
-     "punggung"
-    ],
-    "answerIndex": 0,
-    "explanation": "Stomach = perut."
-   },
-   {
-    "id": "q29",
-    "prompt": "\"Knee\" artinya ...",
-    "options": [
-     "pergelangan",
-     "bahu",
-     "siku",
-     "lutut"
-    ],
-    "answerIndex": 3,
-    "explanation": "Knee = lutut."
-   },
-   {
-    "id": "q30",
-    "prompt": "Kita mendengar dengan ...",
-    "options": [
-     "ears",
-     "nose",
-     "eyes",
-     "hands"
-    ],
-    "answerIndex": 0,
-    "explanation": "Ears = telinga."
-   }
-  ]
- },
- {
-  "id": "inggris-k5-hari-bulan",
-  "categoryId": "bahasa-inggris",
-  "title": "Days and months",
-  "grades": [
-   5,
-   6
-  ],
-  "difficulty": 2,
-  "version": 2,
-  "questions": [
-   {
-    "id": "q1",
-    "prompt": "\"Monday\" artinya hari ...",
-    "options": [
-     "Minggu",
-     "Selasa",
-     "Rabu",
-     "Senin"
-    ],
-    "answerIndex": 3,
-    "explanation": "Monday = Senin."
-   },
-   {
-    "id": "q2",
-    "prompt": "Bahasa Inggris dari hari Sabtu adalah ...",
-    "options": [
-     "Tuesday",
-     "Saturday",
-     "Sunday",
-     "Thursday"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sabtu = Saturday."
-   },
-   {
-    "id": "q3",
-    "prompt": "\"Sunday\" artinya hari ...",
-    "options": [
-     "Sabtu",
-     "Minggu",
-     "Jumat",
-     "Senin"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sunday = Minggu."
-   },
-   {
-    "id": "q4",
-    "prompt": "\"Wednesday\" artinya hari ...",
-    "options": [
-     "Selasa",
-     "Kamis",
-     "Jumat",
-     "Rabu"
-    ],
-    "answerIndex": 3,
-    "explanation": "Wednesday = Rabu."
-   },
-   {
-    "id": "q5",
-    "prompt": "Banyak hari dalam satu minggu: ...",
-    "options": [
-     "five",
-     "eight",
-     "seven",
-     "six"
-    ],
-    "answerIndex": 2,
-    "explanation": "Satu minggu ada 7 hari (seven days)."
-   },
-   {
-    "id": "q6",
-    "prompt": "Bulan pertama dalam setahun dalam bahasa Inggris adalah ...",
-    "options": [
-     "January",
-     "March",
-     "February",
-     "June"
-    ],
-    "answerIndex": 0,
-    "explanation": "Januari = January."
-   },
-   {
-    "id": "q7",
-    "prompt": "Hari setelah Tuesday adalah ...",
-    "options": [
-     "Friday",
-     "Wednesday",
-     "Monday",
-     "Thursday"
-    ],
-    "answerIndex": 1,
-    "explanation": "Urutan: Monday, Tuesday, Wednesday."
-   },
-   {
-    "id": "q8",
-    "prompt": "Bahasa Inggris dari bulan Agustus adalah ...",
-    "options": [
-     "August",
-     "October",
-     "July",
-     "April"
-    ],
-    "answerIndex": 0,
-    "explanation": "Agustus = August."
-   },
-   {
-    "id": "q9",
-    "prompt": "Hari sebelum Friday adalah ...",
-    "options": [
-     "Wednesday",
-     "Saturday",
-     "Sunday",
-     "Thursday"
-    ],
-    "answerIndex": 3,
-    "explanation": "Thursday datang sebelum Friday."
-   },
-   {
-    "id": "q10",
-    "prompt": "\"December\" adalah bulan ke- ...",
-    "options": [
-     "10",
-     "11",
-     "12",
-     "9"
-    ],
-    "answerIndex": 2,
-    "explanation": "Desember adalah bulan terakhir, ke-12."
-   },
-   {
-    "id": "q11",
-    "prompt": "\"Tuesday\" artinya hari ...",
-    "options": [
-     "Kamis",
-     "Rabu",
-     "Selasa",
-     "Senin"
-    ],
-    "answerIndex": 2,
-    "explanation": "Tuesday = Selasa."
-   },
-   {
-    "id": "q12",
-    "prompt": "\"Thursday\" artinya hari ...",
-    "options": [
-     "Kamis",
-     "Selasa",
-     "Jumat",
-     "Rabu"
-    ],
-    "answerIndex": 0,
-    "explanation": "Thursday = Kamis."
-   },
-   {
-    "id": "q13",
-    "prompt": "\"Friday\" artinya hari ...",
-    "options": [
-     "Kamis",
-     "Sabtu",
-     "Minggu",
-     "Jumat"
-    ],
-    "answerIndex": 3,
-    "explanation": "Friday = Jumat."
-   },
-   {
-    "id": "q14",
-    "prompt": "Hari setelah Saturday adalah ...",
-    "options": [
-     "Sunday",
-     "Monday",
-     "Friday",
-     "Thursday"
-    ],
-    "answerIndex": 0,
-    "explanation": "Setelah Saturday adalah Sunday."
-   },
-   {
-    "id": "q15",
-    "prompt": "Hari setelah Monday adalah ...",
-    "options": [
-     "Sunday",
-     "Friday",
-     "Tuesday",
-     "Wednesday"
-    ],
-    "answerIndex": 2,
-    "explanation": "Setelah Monday adalah Tuesday."
-   },
-   {
-    "id": "q16",
-    "prompt": "Akhir pekan (weekend) terdiri atas hari ...",
-    "options": [
-     "Friday dan Monday",
-     "Saturday dan Sunday",
-     "Thursday dan Friday",
-     "Monday dan Tuesday"
-    ],
-    "answerIndex": 1,
-    "explanation": "Weekend adalah Sabtu dan Minggu."
-   },
-   {
-    "id": "q17",
-    "prompt": "\"February\" artinya bulan ...",
-    "options": [
-     "April",
-     "Maret",
-     "Februari",
-     "Januari"
-    ],
-    "answerIndex": 2,
-    "explanation": "February = Februari."
-   },
-   {
-    "id": "q18",
-    "prompt": "\"March\" artinya bulan ...",
-    "options": [
-     "April",
-     "Maret",
-     "Mei",
-     "Juni"
-    ],
-    "answerIndex": 1,
-    "explanation": "March = Maret."
-   },
-   {
-    "id": "q19",
-    "prompt": "\"May\" artinya bulan ...",
-    "options": [
-     "Juli",
-     "Juni",
-     "Maret",
-     "Mei"
-    ],
-    "answerIndex": 3,
-    "explanation": "May = Mei."
-   },
-   {
-    "id": "q20",
-    "prompt": "\"June\" artinya bulan ...",
-    "options": [
-     "Juni",
-     "Januari",
-     "Juli",
-     "Mei"
-    ],
-    "answerIndex": 0,
-    "explanation": "June = Juni."
-   },
-   {
-    "id": "q21",
-    "prompt": "\"July\" artinya bulan ...",
-    "options": [
-     "Juli",
-     "Agustus",
-     "Mei",
-     "Juni"
-    ],
-    "answerIndex": 0,
-    "explanation": "July = Juli."
-   },
-   {
-    "id": "q22",
-    "prompt": "\"October\" artinya bulan ...",
-    "options": [
-     "November",
-     "September",
-     "Oktober",
-     "Agustus"
-    ],
-    "answerIndex": 2,
-    "explanation": "October = Oktober."
-   },
-   {
-    "id": "q23",
-    "prompt": "Bulan setelah March adalah ...",
-    "options": [
-     "February",
-     "May",
-     "June",
-     "April"
-    ],
-    "answerIndex": 3,
-    "explanation": "Setelah March adalah April."
-   },
-   {
-    "id": "q24",
-    "prompt": "Bulan sebelum June adalah ...",
-    "options": [
-     "August",
-     "May",
-     "April",
-     "July"
-    ],
-    "answerIndex": 1,
-    "explanation": "Sebelum June adalah May."
-   },
-   {
-    "id": "q25",
-    "prompt": "Banyak bulan dalam satu tahun adalah ...",
-    "options": [
-     "ten",
-     "eleven",
-     "thirteen",
-     "twelve"
-    ],
-    "answerIndex": 3,
-    "explanation": "Satu tahun ada 12 bulan (twelve)."
-   },
-   {
-    "id": "q26",
-    "prompt": "Bahasa Inggris dari bulan September adalah ...",
-    "options": [
-     "November",
-     "September",
-     "October",
-     "December"
-    ],
-    "answerIndex": 1,
-    "explanation": "September = September."
-   },
-   {
-    "id": "q27",
-    "prompt": "Jika kemarin Monday, maka hari ini adalah ...",
-    "options": [
-     "Sunday",
-     "Friday",
-     "Tuesday",
-     "Wednesday"
-    ],
-    "answerIndex": 2,
-    "explanation": "Sehari setelah Monday adalah Tuesday."
-   },
-   {
-    "id": "q28",
-    "prompt": "Bulan ketiga dalam setahun adalah ...",
-    "options": [
-     "March",
-     "May",
-     "April",
-     "January"
-    ],
-    "answerIndex": 0,
-    "explanation": "January, February, March."
-   },
-   {
-    "id": "q29",
-    "prompt": "Hari pertama sekolah biasanya hari ...",
-    "options": [
-     "Friday",
-     "Saturday",
-     "Sunday",
-     "Monday"
-    ],
-    "answerIndex": 3,
-    "explanation": "Monday adalah hari Senin."
-   },
-   {
-    "id": "q30",
-    "prompt": "Bahasa Inggris dari \"November\" adalah bulan ...",
-    "options": [
-     "November",
-     "Desember",
-     "Oktober",
-     "September"
-    ],
-    "answerIndex": 0,
-    "explanation": "November = November."
-   }
-  ]
- }
+  {
+    "id": "mat-k4-data-diagram",
+    "categoryId": "matematika",
+    "title": "Data, diagram, dan modus",
+    "grades": [
+      4,
+      5
+    ],
+    "difficulty": 2,
+    "version": 3,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Nilai ulangan lima anak: 7, 8, 8, 9, 6, 8, 7. Modus (nilai yang paling sering muncul) adalah ...",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "answerIndex": 2,
+        "explanation": "Angka 8 muncul 3 kali, paling banyak dibanding yang lain."
+      },
+      {
+        "id": "q2",
+        "prompt": "Banyak buah di keranjang: apel 5, jeruk 8, mangga 3, pisang 6. Buah yang paling banyak adalah ...",
+        "options": [
+          "apel",
+          "jeruk",
+          "mangga",
+          "pisang"
+        ],
+        "answerIndex": 1,
+        "explanation": "Jeruk berjumlah 8, angka terbesar."
+      },
+      {
+        "id": "q3",
+        "prompt": "Apel 5, jeruk 8, mangga 3, pisang 6. Jumlah seluruh buah ada ...",
+        "options": [
+          "21",
+          "20",
+          "24",
+          "22"
+        ],
+        "answerIndex": 3,
+        "explanation": "5 + 8 + 3 + 6 = 22."
+      },
+      {
+        "id": "q4",
+        "prompt": "Apel 5, jeruk 8, mangga 3, pisang 6. Selisih jeruk dan mangga adalah ...",
+        "options": [
+          "5",
+          "11",
+          "4",
+          "6"
+        ],
+        "answerIndex": 0,
+        "explanation": "8 − 3 = 5."
+      },
+      {
+        "id": "q5",
+        "prompt": "Modus dari data 2, 3, 3, 4, 4, 4, 5 adalah ...",
+        "options": [
+          "3",
+          "2",
+          "5",
+          "4"
+        ],
+        "answerIndex": 3,
+        "explanation": "Angka 4 muncul 3 kali, paling sering."
+      },
+      {
+        "id": "q6",
+        "prompt": "Pada diagram batang, tinggi batang menunjukkan ...",
+        "options": [
+          "nama pembuat",
+          "judul diagram",
+          "banyaknya data",
+          "warna batang"
+        ],
+        "answerIndex": 2,
+        "explanation": "Semakin tinggi batang, semakin besar jumlah datanya."
+      },
+      {
+        "id": "q7",
+        "prompt": "Kelereng Ani 12, Budi 9, Cici 15. Siapa yang punya kelereng paling sedikit?",
+        "options": [
+          "Budi",
+          "Cici",
+          "Ani",
+          "Ani dan Cici"
+        ],
+        "answerIndex": 0,
+        "explanation": "Angka terkecil adalah 9, milik Budi."
+      },
+      {
+        "id": "q8",
+        "prompt": "Kelereng Ani 12, Budi 9, Cici 15. Jumlah kelereng mereka bertiga ...",
+        "options": [
+          "34",
+          "36",
+          "38",
+          "35"
+        ],
+        "answerIndex": 1,
+        "explanation": "12 + 9 + 15 = 36."
+      },
+      {
+        "id": "q9",
+        "prompt": "Rata-rata dari 6, 8, dan 10 adalah ...",
+        "options": [
+          "6",
+          "24",
+          "8",
+          "9"
+        ],
+        "answerIndex": 2,
+        "explanation": "(6 + 8 + 10) : 3 = 24 : 3 = 8."
+      },
+      {
+        "id": "q10",
+        "prompt": "Warna favorit: merah 10 anak, biru 7 anak, hijau 5 anak. Selisih penyuka merah dan hijau ...",
+        "options": [
+          "5 anak",
+          "3 anak",
+          "2 anak",
+          "7 anak"
+        ],
+        "answerIndex": 0,
+        "explanation": "10 − 5 = 5 anak."
+      },
+      {
+        "id": "q11",
+        "prompt": "Data nilai: 8, 8, 8, 11, 7, 9, 11, 8. Modusnya adalah ...",
+        "options": [
+          "7",
+          "9",
+          "10",
+          "8"
+        ],
+        "answerIndex": 3,
+        "explanation": "Angka 8 muncul 4 kali, paling sering."
+      },
+      {
+        "id": "q12",
+        "prompt": "Data nilai: 11, 9, 9, 13, 13, 12, 12, 9, 9. Modusnya adalah ...",
+        "options": [
+          "8",
+          "9",
+          "12",
+          "7"
+        ],
+        "answerIndex": 1,
+        "explanation": "Angka 9 muncul 4 kali, paling sering."
+      },
+      {
+        "id": "q13",
+        "prompt": "Data nilai: 9, 8, 7, 7, 11, 11, 7, 7. Modusnya adalah ...",
+        "options": [
+          "5",
+          "8",
+          "7",
+          "10"
+        ],
+        "answerIndex": 2,
+        "explanation": "Angka 7 muncul 4 kali, paling sering."
+      },
+      {
+        "id": "q14",
+        "prompt": "Rata-rata dari 9, 4, 8, 3 adalah ...",
+        "options": [
+          "6",
+          "4",
+          "7",
+          "3"
+        ],
+        "answerIndex": 0,
+        "explanation": "(9 + 4 + 8 + 3) : 4 = 24 : 4 = 6."
+      },
+      {
+        "id": "q15",
+        "prompt": "Rata-rata dari 7, 9, 3, 2, 4 adalah ...",
+        "options": [
+          "7",
+          "3",
+          "4",
+          "5"
+        ],
+        "answerIndex": 3,
+        "explanation": "(7 + 9 + 3 + 2 + 4) : 5 = 25 : 5 = 5."
+      },
+      {
+        "id": "q16",
+        "prompt": "Rata-rata dari 7, 6, 2, 9 adalah ...",
+        "options": [
+          "4",
+          "6",
+          "7",
+          "8"
+        ],
+        "answerIndex": 1,
+        "explanation": "(7 + 6 + 2 + 9) : 4 = 24 : 4 = 6."
+      },
+      {
+        "id": "q17",
+        "prompt": "Data hasil panen: bola 6, boneka 14, mobil-mobilan 11. Jumlah seluruhnya ...",
+        "options": [
+          "31",
+          "41",
+          "30",
+          "33"
+        ],
+        "answerIndex": 0,
+        "explanation": "6 + 14 + 11 = 31."
+      },
+      {
+        "id": "q18",
+        "prompt": "Data: apel 8, jeruk 6, mangga 14. Selisih data terbanyak dan tersedikit ...",
+        "options": [
+          "10",
+          "7",
+          "8",
+          "9"
+        ],
+        "answerIndex": 2,
+        "explanation": "14 − 6 = 8."
+      },
+      {
+        "id": "q19",
+        "prompt": "Banyak pengunjung perpustakaan: Senin 11, Selasa 18, Rabu 10, Kamis 7. Hari dengan pengunjung terbanyak ...",
+        "options": [
+          "Senin",
+          "Selasa",
+          "Kamis",
+          "Rabu"
+        ],
+        "answerIndex": 1,
+        "explanation": "Angka terbesar adalah 18, yaitu hari Selasa."
+      },
+      {
+        "id": "q20",
+        "prompt": "Data nilai: 9, 7, 7, 7, 6, 8, 9. Modusnya adalah ...",
+        "options": [
+          "5",
+          "8",
+          "6",
+          "7"
+        ],
+        "answerIndex": 3,
+        "explanation": "Angka 7 muncul 3 kali, paling sering."
+      },
+      {
+        "id": "q21",
+        "prompt": "Data nilai: 11, 10, 9, 9, 10, 11, 10, 8. Modusnya adalah ...",
+        "options": [
+          "12",
+          "13",
+          "8",
+          "10"
+        ],
+        "answerIndex": 3,
+        "explanation": "Angka 10 muncul 3 kali, paling sering."
+      },
+      {
+        "id": "q22",
+        "prompt": "Data nilai: 12, 10, 9, 9, 10, 10, 11, 12. Modusnya adalah ...",
+        "options": [
+          "7",
+          "10",
+          "8",
+          "13"
+        ],
+        "answerIndex": 1,
+        "explanation": "Angka 10 muncul 3 kali, paling sering."
+      },
+      {
+        "id": "q23",
+        "prompt": "Rata-rata dari 8, 2, 8 adalah ...",
+        "options": [
+          "6",
+          "3",
+          "7",
+          "5"
+        ],
+        "answerIndex": 0,
+        "explanation": "(8 + 2 + 8) : 3 = 18 : 3 = 6."
+      },
+      {
+        "id": "q24",
+        "prompt": "Rata-rata dari 9, 5, 4 adalah ...",
+        "options": [
+          "8",
+          "3",
+          "6",
+          "9"
+        ],
+        "answerIndex": 2,
+        "explanation": "(9 + 5 + 4) : 3 = 18 : 3 = 6."
+      },
+      {
+        "id": "q25",
+        "prompt": "Rata-rata dari 7, 4, 7 adalah ...",
+        "options": [
+          "6",
+          "7",
+          "9",
+          "8"
+        ],
+        "answerIndex": 0,
+        "explanation": "(7 + 4 + 7) : 3 = 18 : 3 = 6."
+      },
+      {
+        "id": "q26",
+        "prompt": "Data hasil panen: bola 5, boneka 10, mobil-mobilan 13. Jumlah seluruhnya ...",
+        "options": [
+          "18",
+          "28",
+          "38",
+          "27"
+        ],
+        "answerIndex": 1,
+        "explanation": "5 + 10 + 13 = 28."
+      },
+      {
+        "id": "q27",
+        "prompt": "Data: apel 14, jeruk 13, mangga 5. Selisih data terbanyak dan tersedikit ...",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "6"
+        ],
+        "answerIndex": 2,
+        "explanation": "14 − 5 = 9."
+      },
+      {
+        "id": "q28",
+        "prompt": "Median (nilai tengah) dari data 17, 10, 16, 8, 9 adalah ...",
+        "options": [
+          "12",
+          "16",
+          "9",
+          "10"
+        ],
+        "answerIndex": 3,
+        "explanation": "Setelah diurutkan (8, 9, 10, 16, 17), nilai tengahnya 10."
+      },
+      {
+        "id": "q29",
+        "prompt": "Banyak pengunjung perpustakaan: Senin 7, Selasa 13, Rabu 16, Kamis 18. Hari dengan pengunjung terbanyak ...",
+        "options": [
+          "Kamis",
+          "Rabu",
+          "Senin",
+          "Selasa"
+        ],
+        "answerIndex": 0,
+        "explanation": "Angka terbesar adalah 18, yaitu hari Kamis."
+      },
+      {
+        "id": "q30",
+        "prompt": "Data nilai: 8, 9, 12, 10, 9, 11, 9, 10. Modusnya adalah ...",
+        "options": [
+          "10",
+          "12",
+          "7",
+          "9"
+        ],
+        "answerIndex": 3,
+        "explanation": "Angka 9 muncul 3 kali, paling sering."
+      },
+      {
+        "id": "q31",
+        "prompt": "Rata-rata dari 3, 5, 4, 10, 2, 3, 8 adalah ...",
+        "options": [
+          "6",
+          "5",
+          "4",
+          "7"
+        ],
+        "answerIndex": 1,
+        "explanation": "(3 + 5 + 4 + 10 + 2 + 3 + 8) : 7 = 35 : 7 = 5."
+      },
+      {
+        "id": "q32",
+        "prompt": "Hewan peliharaan kelas: kucing 2, kelinci 7, burung 4, ikan 14. Jumlah seluruh hewan ...",
+        "options": [
+          "54 ekor",
+          "32 ekor",
+          "27 ekor",
+          "29 ekor"
+        ],
+        "answerIndex": 2,
+        "explanation": "2 + 7 + 4 + 14 = 27."
+      },
+      {
+        "id": "q33",
+        "prompt": "Modus dari data 6, 10, 4, 9, 8, 9 adalah ...",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "9"
+        ],
+        "answerIndex": 3,
+        "explanation": "Angka 9 muncul 2 kali, paling sering."
+      },
+      {
+        "id": "q34",
+        "prompt": "Modus dari data 10, 6, 8, 4, 3, 8, 5 adalah ...",
+        "options": [
+          "8",
+          "3",
+          "4",
+          "5"
+        ],
+        "answerIndex": 0,
+        "explanation": "Angka 8 muncul 2 kali, paling sering."
+      },
+      {
+        "id": "q35",
+        "prompt": "Rata-rata dari 7, 10, 9, 9, 5 adalah ...",
+        "options": [
+          "9",
+          "8",
+          "7",
+          "10"
+        ],
+        "answerIndex": 1,
+        "explanation": "(7 + 10 + 9 + 9 + 5) : 5 = 40 : 5 = 8."
+      },
+      {
+        "id": "q36",
+        "prompt": "Hewan peliharaan kelas: kucing 14, kelinci 6, burung 9, ikan 13. Jumlah seluruh hewan ...",
+        "options": [
+          "42 ekor",
+          "37 ekor",
+          "52 ekor",
+          "44 ekor"
+        ],
+        "answerIndex": 0,
+        "explanation": "14 + 6 + 9 + 13 = 42."
+      },
+      {
+        "id": "q37",
+        "prompt": "Rata-rata dari 3, 9, 9, 7, 9, 3, 9 adalah ...",
+        "options": [
+          "7",
+          "8",
+          "6",
+          "9"
+        ],
+        "answerIndex": 0,
+        "explanation": "(3 + 9 + 9 + 7 + 9 + 3 + 9) : 7 = 49 : 7 = 7."
+      },
+      {
+        "id": "q38",
+        "prompt": "Modus dari data 7, 3, 4, 5, 10, 10 adalah ...",
+        "options": [
+          "10",
+          "3",
+          "4",
+          "5"
+        ],
+        "answerIndex": 0,
+        "explanation": "Angka 10 muncul 2 kali, paling sering."
+      },
+      {
+        "id": "q39",
+        "prompt": "Rata-rata dari 7, 5, 9, 10, 9 adalah ...",
+        "options": [
+          "9",
+          "7",
+          "10",
+          "8"
+        ],
+        "answerIndex": 3,
+        "explanation": "(7 + 5 + 9 + 10 + 9) : 5 = 40 : 5 = 8."
+      },
+      {
+        "id": "q40",
+        "prompt": "Hewan peliharaan kelas: kucing 2, kelinci 6, burung 7, ikan 11. Jumlah seluruh hewan ...",
+        "options": [
+          "25 ekor",
+          "26 ekor",
+          "52 ekor",
+          "36 ekor"
+        ],
+        "answerIndex": 1,
+        "explanation": "2 + 6 + 7 + 11 = 26."
+      },
+      {
+        "id": "q41",
+        "prompt": "Rata-rata dari 2, 2, 8, 8, 2, 3, 10 adalah ...",
+        "options": [
+          "6",
+          "4",
+          "7",
+          "5"
+        ],
+        "answerIndex": 3,
+        "explanation": "(2 + 2 + 8 + 8 + 2 + 3 + 10) : 7 = 35 : 7 = 5."
+      },
+      {
+        "id": "q42",
+        "prompt": "Rata-rata dari 6, 8, 7, 3, 3, 3 adalah ...",
+        "options": [
+          "6",
+          "4",
+          "5",
+          "7"
+        ],
+        "answerIndex": 2,
+        "explanation": "(6 + 8 + 7 + 3 + 3 + 3) : 6 = 30 : 6 = 5."
+      },
+      {
+        "id": "q43",
+        "prompt": "Hewan peliharaan kelas: kucing 8, kelinci 2, burung 10, ikan 12. Jumlah seluruh hewan ...",
+        "options": [
+          "37 ekor",
+          "32 ekor",
+          "64 ekor",
+          "31 ekor"
+        ],
+        "answerIndex": 1,
+        "explanation": "8 + 2 + 10 + 12 = 32."
+      },
+      {
+        "id": "q44",
+        "prompt": "Hewan peliharaan kelas: kucing 4, kelinci 14, burung 7, ikan 9. Jumlah seluruh hewan ...",
+        "options": [
+          "29 ekor",
+          "39 ekor",
+          "68 ekor",
+          "34 ekor"
+        ],
+        "answerIndex": 3,
+        "explanation": "4 + 14 + 7 + 9 = 34."
+      },
+      {
+        "id": "q45",
+        "prompt": "Modus dari data 8, 5, 6, 9, 5, 3 adalah ...",
+        "options": [
+          "3",
+          "6",
+          "5",
+          "8"
+        ],
+        "answerIndex": 2,
+        "explanation": "Angka 5 muncul 2 kali, paling sering."
+      },
+      {
+        "id": "q46",
+        "prompt": "Rata-rata dari 4, 6, 3, 4, 3, 6, 2 adalah ...",
+        "options": [
+          "5",
+          "3",
+          "6",
+          "4"
+        ],
+        "answerIndex": 3,
+        "explanation": "(4 + 6 + 3 + 4 + 3 + 6 + 2) : 7 = 28 : 7 = 4."
+      },
+      {
+        "id": "q47",
+        "prompt": "Hewan peliharaan kelas: kucing 4, kelinci 2, burung 5, ikan 14. Jumlah seluruh hewan ...",
+        "options": [
+          "25 ekor",
+          "20 ekor",
+          "26 ekor",
+          "15 ekor"
+        ],
+        "answerIndex": 0,
+        "explanation": "4 + 2 + 5 + 14 = 25."
+      },
+      {
+        "id": "q48",
+        "prompt": "Rata-rata dari 10, 7, 2, 7, 4 adalah ...",
+        "options": [
+          "7",
+          "6",
+          "5",
+          "8"
+        ],
+        "answerIndex": 1,
+        "explanation": "(10 + 7 + 2 + 7 + 4) : 5 = 30 : 5 = 6."
+      },
+      {
+        "id": "q49",
+        "prompt": "Hewan peliharaan kelas: kucing 7, kelinci 2, burung 11, ikan 9. Jumlah seluruh hewan ...",
+        "options": [
+          "58 ekor",
+          "24 ekor",
+          "29 ekor",
+          "28 ekor"
+        ],
+        "answerIndex": 2,
+        "explanation": "7 + 2 + 11 + 9 = 29."
+      },
+      {
+        "id": "q50",
+        "prompt": "Modus dari data 2, 8, 7, 5, 2 adalah ...",
+        "options": [
+          "5",
+          "7",
+          "2",
+          "8"
+        ],
+        "answerIndex": 2,
+        "explanation": "Angka 2 muncul 2 kali, paling sering."
+      }
+    ]
+  },
+  {
+    "id": "mat-k6-volume-kubus-balok",
+    "categoryId": "matematika",
+    "title": "Volume kubus dan balok",
+    "grades": [
+      5,
+      6
+    ],
+    "difficulty": 3,
+    "version": 3,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Volume kubus dengan panjang rusuk 4 cm adalah ...",
+        "options": [
+          "12 cm³",
+          "48 cm³",
+          "16 cm³",
+          "64 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "Volume kubus = rusuk × rusuk × rusuk = 4 × 4 × 4 = 64."
+      },
+      {
+        "id": "q2",
+        "prompt": "Balok berukuran 5 cm × 4 cm × 3 cm. Volumenya ...",
+        "options": [
+          "47 cm³",
+          "60 cm³",
+          "12 cm³",
+          "54 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "Volume balok = p × l × t = 5 × 4 × 3 = 60."
+      },
+      {
+        "id": "q3",
+        "prompt": "Kubus dengan rusuk 10 cm memiliki volume ...",
+        "options": [
+          "600 cm³",
+          "100 cm³",
+          "30 cm³",
+          "1.000 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "10 × 10 × 10 = 1.000."
+      },
+      {
+        "id": "q4",
+        "prompt": "Balok panjang 8 cm, lebar 5 cm, tinggi 2 cm. Volumenya ...",
+        "options": [
+          "160 cm³",
+          "40 cm³",
+          "80 cm³",
+          "15 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "8 × 5 × 2 = 80."
+      },
+      {
+        "id": "q5",
+        "prompt": "Banyak rusuk pada kubus adalah ...",
+        "options": [
+          "12",
+          "6",
+          "8",
+          "10"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kubus punya 12 rusuk, 6 sisi, dan 8 titik sudut."
+      },
+      {
+        "id": "q6",
+        "prompt": "Banyak sisi pada balok adalah ...",
+        "options": [
+          "4",
+          "6",
+          "12",
+          "8"
+        ],
+        "answerIndex": 1,
+        "explanation": "Balok punya 6 sisi berbentuk persegi panjang."
+      },
+      {
+        "id": "q7",
+        "prompt": "Bak air berbentuk kubus dengan rusuk 5 dm. Bila penuh, isinya ... liter. (1 dm³ = 1 liter)",
+        "options": [
+          "25",
+          "15",
+          "125",
+          "50"
+        ],
+        "answerIndex": 2,
+        "explanation": "5 × 5 × 5 = 125 dm³ = 125 liter."
+      },
+      {
+        "id": "q8",
+        "prompt": "Volume balok 120 cm³, panjang 6 cm, lebar 5 cm. Tinggi balok ...",
+        "options": [
+          "20 cm",
+          "4 cm",
+          "3 cm",
+          "5 cm"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tinggi = 120 : (6 × 5) = 120 : 30 = 4."
+      },
+      {
+        "id": "q9",
+        "prompt": "Satuan volume yang benar adalah ...",
+        "options": [
+          "cm³",
+          "cm",
+          "kg",
+          "cm²"
+        ],
+        "answerIndex": 0,
+        "explanation": "Volume memakai satuan pangkat tiga, misalnya cm³ atau m³."
+      },
+      {
+        "id": "q10",
+        "prompt": "Volume sebuah kubus 27 cm³. Panjang rusuknya ...",
+        "options": [
+          "6 cm",
+          "9 cm",
+          "4 cm",
+          "3 cm"
+        ],
+        "answerIndex": 3,
+        "explanation": "3 × 3 × 3 = 27, jadi rusuknya 3 cm."
+      },
+      {
+        "id": "q11",
+        "prompt": "Kubus dengan panjang rusuk 5 cm. Volumenya ...",
+        "options": [
+          "100 cm³",
+          "115 cm³",
+          "125 cm³",
+          "275 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "Volume = s × s × s = 5 × 5 × 5 = 125."
+      },
+      {
+        "id": "q12",
+        "prompt": "Kubus dengan panjang rusuk 3 cm. Volumenya ...",
+        "options": [
+          "27 cm³",
+          "36 cm³",
+          "81 cm³",
+          "37 cm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "Volume = s × s × s = 3 × 3 × 3 = 27."
+      },
+      {
+        "id": "q13",
+        "prompt": "Balok dengan panjang 11 cm, lebar 5 cm, dan tinggi 4 cm. Volumenya ...",
+        "options": [
+          "220 cm³",
+          "165 cm³",
+          "275 cm³",
+          "200 cm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "Volume = p × l × t = 11 × 5 × 4 = 220."
+      },
+      {
+        "id": "q14",
+        "prompt": "Balok dengan panjang 12 cm, lebar 5 cm, dan tinggi 3 cm. Volumenya ...",
+        "options": [
+          "160 cm³",
+          "195 cm³",
+          "165 cm³",
+          "180 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "Volume = p × l × t = 12 × 5 × 3 = 180."
+      },
+      {
+        "id": "q15",
+        "prompt": "Volume balok 288 cm³, panjang 12 cm, dan lebar 8 cm. Tingginya ...",
+        "options": [
+          "2 cm",
+          "3 cm",
+          "4 cm",
+          "6 cm"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tinggi = 288 : (12 × 8) = 288 : 96 = 3."
+      },
+      {
+        "id": "q16",
+        "prompt": "Volume balok 420 cm³, panjang 12 cm, dan lebar 7 cm. Tingginya ...",
+        "options": [
+          "3 cm",
+          "8 cm",
+          "5 cm",
+          "2 cm"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tinggi = 420 : (12 × 7) = 420 : 84 = 5."
+      },
+      {
+        "id": "q17",
+        "prompt": "Bak mandi berbentuk kubus dengan rusuk 6 dm. Bila penuh, isinya ... liter. (1 dm³ = 1 liter)",
+        "options": [
+          "180",
+          "222",
+          "210",
+          "216"
+        ],
+        "answerIndex": 3,
+        "explanation": "6 × 6 × 6 = 216 dm³ = 216 liter."
+      },
+      {
+        "id": "q18",
+        "prompt": "Akuarium berukuran 10 dm × 10 dm × 3 dm. Isi akuarium ... liter.",
+        "options": [
+          "350",
+          "300",
+          "250",
+          "290"
+        ],
+        "answerIndex": 1,
+        "explanation": "10 × 10 × 3 = 300 dm³ = 300 liter."
+      },
+      {
+        "id": "q19",
+        "prompt": "Luas permukaan kubus dengan rusuk 2 cm adalah ...",
+        "options": [
+          "24 cm²",
+          "12 cm²",
+          "32 cm²",
+          "8 cm²"
+        ],
+        "answerIndex": 0,
+        "explanation": "Luas permukaan = 6 × s × s = 6 × 2 × 2 = 24."
+      },
+      {
+        "id": "q20",
+        "prompt": "Balok berukuran 4 cm × 3 cm × 4 cm. Luas permukaannya ...",
+        "options": [
+          "32 cm²",
+          "90 cm²",
+          "80 cm²",
+          "92 cm²"
+        ],
+        "answerIndex": 2,
+        "explanation": "Luas permukaan = 2 × (pl + pt + lt) = 2 × (12 + 16 + 12) = 80."
+      },
+      {
+        "id": "q21",
+        "prompt": "Kubus dengan panjang rusuk 6 cm. Volumenya ...",
+        "options": [
+          "234 cm³",
+          "216 cm³",
+          "206 cm³",
+          "217 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "Volume = s × s × s = 6 × 6 × 6 = 216."
+      },
+      {
+        "id": "q22",
+        "prompt": "Kubus dengan panjang rusuk 9 cm. Volumenya ...",
+        "options": [
+          "243 cm³",
+          "1215 cm³",
+          "729 cm³",
+          "648 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "Volume = s × s × s = 9 × 9 × 9 = 729."
+      },
+      {
+        "id": "q23",
+        "prompt": "Balok dengan panjang 5 cm, lebar 8 cm, dan tinggi 3 cm. Volumenya ...",
+        "options": [
+          "110 cm³",
+          "130 cm³",
+          "80 cm³",
+          "120 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "Volume = p × l × t = 5 × 8 × 3 = 120."
+      },
+      {
+        "id": "q24",
+        "prompt": "Balok dengan panjang 10 cm, lebar 3 cm, dan tinggi 3 cm. Volumenya ...",
+        "options": [
+          "90 cm³",
+          "120 cm³",
+          "100 cm³",
+          "106 cm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "Volume = p × l × t = 10 × 3 × 3 = 90."
+      },
+      {
+        "id": "q25",
+        "prompt": "Volume balok 60 cm³, panjang 4 cm, dan lebar 3 cm. Tingginya ...",
+        "options": [
+          "6 cm",
+          "5 cm",
+          "3 cm",
+          "4 cm"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tinggi = 60 : (4 × 3) = 60 : 12 = 5."
+      },
+      {
+        "id": "q26",
+        "prompt": "Volume balok 240 cm³, panjang 10 cm, dan lebar 6 cm. Tingginya ...",
+        "options": [
+          "7 cm",
+          "6 cm",
+          "4 cm",
+          "1 cm"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tinggi = 240 : (10 × 6) = 240 : 60 = 4."
+      },
+      {
+        "id": "q27",
+        "prompt": "Bak mandi berbentuk kubus dengan rusuk 4 dm. Bila penuh, isinya ... liter. (1 dm³ = 1 liter)",
+        "options": [
+          "64",
+          "80",
+          "54",
+          "60"
+        ],
+        "answerIndex": 0,
+        "explanation": "4 × 4 × 4 = 64 dm³ = 64 liter."
+      },
+      {
+        "id": "q28",
+        "prompt": "Akuarium berukuran 10 dm × 5 dm × 4 dm. Isi akuarium ... liter.",
+        "options": [
+          "190",
+          "250",
+          "180",
+          "200"
+        ],
+        "answerIndex": 3,
+        "explanation": "10 × 5 × 4 = 200 dm³ = 200 liter."
+      },
+      {
+        "id": "q29",
+        "prompt": "Luas permukaan kubus dengan rusuk 4 cm adalah ...",
+        "options": [
+          "96 cm²",
+          "32 cm²",
+          "80 cm²",
+          "160 cm²"
+        ],
+        "answerIndex": 0,
+        "explanation": "Luas permukaan = 6 × s × s = 6 × 4 × 4 = 96."
+      },
+      {
+        "id": "q30",
+        "prompt": "Balok berukuran 7 cm × 5 cm × 5 cm. Luas permukaannya ...",
+        "options": [
+          "188 cm²",
+          "155 cm²",
+          "190 cm²",
+          "225 cm²"
+        ],
+        "answerIndex": 2,
+        "explanation": "Luas permukaan = 2 × (pl + pt + lt) = 2 × (35 + 35 + 25) = 190."
+      },
+      {
+        "id": "q31",
+        "prompt": "Volume kubus dengan rusuk 5 cm adalah ...",
+        "options": [
+          "15 cm³",
+          "25 cm³",
+          "150 cm³",
+          "125 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "5 × 5 × 5 = 125 cm³."
+      },
+      {
+        "id": "q32",
+        "prompt": "Balok berukuran 10 cm × 3 cm × 4 cm. Volumenya ...",
+        "options": [
+          "120 cm³",
+          "17 cm³",
+          "34 cm³",
+          "130 cm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "10 × 3 × 4 = 120 cm³."
+      },
+      {
+        "id": "q33",
+        "prompt": "Balok berukuran 7 cm × 7 cm × 5 cm. Volumenya ...",
+        "options": [
+          "19 cm³",
+          "54 cm³",
+          "252 cm³",
+          "245 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "7 × 7 × 5 = 245 cm³."
+      },
+      {
+        "id": "q34",
+        "prompt": "Balok berukuran 12 cm × 8 cm × 3 cm. Volumenya ...",
+        "options": [
+          "23 cm³",
+          "99 cm³",
+          "300 cm³",
+          "288 cm³"
+        ],
+        "answerIndex": 3,
+        "explanation": "12 × 8 × 3 = 288 cm³."
+      },
+      {
+        "id": "q35",
+        "prompt": "Balok berukuran 10 cm × 5 cm × 7 cm. Volumenya ...",
+        "options": [
+          "350 cm³",
+          "22 cm³",
+          "57 cm³",
+          "360 cm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "10 × 5 × 7 = 350 cm³."
+      },
+      {
+        "id": "q36",
+        "prompt": "Balok berukuran 8 cm × 8 cm × 8 cm. Volumenya ...",
+        "options": [
+          "24 cm³",
+          "512 cm³",
+          "72 cm³",
+          "520 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "8 × 8 × 8 = 512 cm³."
+      },
+      {
+        "id": "q37",
+        "prompt": "Bak berbentuk kubus dengan rusuk 5 dm. Volume air jika penuh ...",
+        "options": [
+          "125 dm³",
+          "15 dm³",
+          "25 dm³",
+          "150 dm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "5 × 5 × 5 = 125 dm³."
+      },
+      {
+        "id": "q38",
+        "prompt": "Bak berbentuk kubus dengan rusuk 2 dm. Volume air jika penuh ...",
+        "options": [
+          "6 dm³",
+          "4 dm³",
+          "8 dm³",
+          "24 dm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "2 × 2 × 2 = 8 dm³."
+      },
+      {
+        "id": "q39",
+        "prompt": "Balok berukuran 9 cm × 3 cm × 3 cm. Volumenya ...",
+        "options": [
+          "15 cm³",
+          "30 cm³",
+          "81 cm³",
+          "90 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "9 × 3 × 3 = 81 cm³."
+      },
+      {
+        "id": "q40",
+        "prompt": "Volume balok 288 cm³, panjang 12 cm, lebar 8 cm. Tingginya ...",
+        "options": [
+          "3 cm",
+          "4 cm",
+          "5 cm",
+          "2 cm"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tinggi = 288 : (12 × 8) = 288 : 96 = 3 cm."
+      },
+      {
+        "id": "q41",
+        "prompt": "Balok berukuran 9 cm × 4 cm × 3 cm. Volumenya ...",
+        "options": [
+          "16 cm³",
+          "108 cm³",
+          "39 cm³",
+          "117 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "9 × 4 × 3 = 108 cm³."
+      },
+      {
+        "id": "q42",
+        "prompt": "Volume kubus dengan rusuk 4 cm adalah ...",
+        "options": [
+          "12 cm³",
+          "64 cm³",
+          "16 cm³",
+          "96 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "4 × 4 × 4 = 64 cm³."
+      },
+      {
+        "id": "q43",
+        "prompt": "Balok berukuran 6 cm × 8 cm × 3 cm. Volumenya ...",
+        "options": [
+          "17 cm³",
+          "51 cm³",
+          "144 cm³",
+          "150 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "6 × 8 × 3 = 144 cm³."
+      },
+      {
+        "id": "q44",
+        "prompt": "Balok berukuran 6 cm × 6 cm × 6 cm. Volumenya ...",
+        "options": [
+          "18 cm³",
+          "216 cm³",
+          "42 cm³",
+          "222 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "6 × 6 × 6 = 216 cm³."
+      },
+      {
+        "id": "q45",
+        "prompt": "Balok berukuran 8 cm × 6 cm × 3 cm. Volumenya ...",
+        "options": [
+          "17 cm³",
+          "51 cm³",
+          "144 cm³",
+          "152 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "8 × 6 × 3 = 144 cm³."
+      },
+      {
+        "id": "q46",
+        "prompt": "Volume balok 128 cm³, panjang 4 cm, lebar 4 cm. Tingginya ...",
+        "options": [
+          "9 cm",
+          "10 cm",
+          "7 cm",
+          "8 cm"
+        ],
+        "answerIndex": 3,
+        "explanation": "Tinggi = 128 : (4 × 4) = 128 : 16 = 8 cm."
+      },
+      {
+        "id": "q47",
+        "prompt": "Volume balok 198 cm³, panjang 11 cm, lebar 3 cm. Tingginya ...",
+        "options": [
+          "7 cm",
+          "8 cm",
+          "5 cm",
+          "6 cm"
+        ],
+        "answerIndex": 3,
+        "explanation": "Tinggi = 198 : (11 × 3) = 198 : 33 = 6 cm."
+      },
+      {
+        "id": "q48",
+        "prompt": "Bak berbentuk kubus dengan rusuk 4 dm. Volume air jika penuh ...",
+        "options": [
+          "64 dm³",
+          "12 dm³",
+          "16 dm³",
+          "96 dm³"
+        ],
+        "answerIndex": 0,
+        "explanation": "4 × 4 × 4 = 64 dm³."
+      },
+      {
+        "id": "q49",
+        "prompt": "Balok berukuran 7 cm × 3 cm × 5 cm. Volumenya ...",
+        "options": [
+          "15 cm³",
+          "26 cm³",
+          "105 cm³",
+          "112 cm³"
+        ],
+        "answerIndex": 2,
+        "explanation": "7 × 3 × 5 = 105 cm³."
+      },
+      {
+        "id": "q50",
+        "prompt": "Balok berukuran 11 cm × 2 cm × 2 cm. Volumenya ...",
+        "options": [
+          "15 cm³",
+          "44 cm³",
+          "24 cm³",
+          "55 cm³"
+        ],
+        "answerIndex": 1,
+        "explanation": "11 × 2 × 2 = 44 cm³."
+      }
+    ]
+  },
+  {
+    "id": "indo-k1-huruf-suku-kata",
+    "categoryId": "bahasa-indonesia",
+    "title": "Huruf dan suku kata",
+    "grades": [
+      1
+    ],
+    "difficulty": 1,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Kata \"bola\" dipenggal menjadi ...",
+        "options": [
+          "bo-l-a",
+          "bol-a",
+          "bo-la",
+          "b-ola"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bo-la terdiri dari dua suku kata."
+      },
+      {
+        "id": "q2",
+        "prompt": "Banyak suku kata pada kata \"ibu\" adalah ...",
+        "options": [
+          "3",
+          "4",
+          "1",
+          "2"
+        ],
+        "answerIndex": 3,
+        "explanation": "i-bu, ada dua suku kata."
+      },
+      {
+        "id": "q3",
+        "prompt": "Huruf pertama pada kata \"meja\" adalah ...",
+        "options": [
+          "m",
+          "e",
+          "j",
+          "a"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kata meja diawali huruf m."
+      },
+      {
+        "id": "q4",
+        "prompt": "Yang termasuk huruf vokal adalah ...",
+        "options": [
+          "t",
+          "e",
+          "m",
+          "k"
+        ],
+        "answerIndex": 1,
+        "explanation": "Huruf vokal: a, i, u, e, o."
+      },
+      {
+        "id": "q5",
+        "prompt": "Lengkapi kata: ma_an (untuk makan)",
+        "options": [
+          "w",
+          "k",
+          "g",
+          "z"
+        ],
+        "answerIndex": 1,
+        "explanation": "Huruf k melengkapi menjadi \"makan\"."
+      },
+      {
+        "id": "q6",
+        "prompt": "Kata yang terdiri dari tiga suku kata adalah ...",
+        "options": [
+          "meja",
+          "kursi",
+          "buku",
+          "sepatu"
+        ],
+        "answerIndex": 3,
+        "explanation": "se-pa-tu ada tiga suku kata; yang lain dua."
+      },
+      {
+        "id": "q7",
+        "prompt": "Susunlah huruf s-a-p-i menjadi kata ...",
+        "options": [
+          "aspi",
+          "ipsa",
+          "sapi",
+          "pasi"
+        ],
+        "answerIndex": 2,
+        "explanation": "Huruf-huruf itu membentuk kata sapi."
+      },
+      {
+        "id": "q8",
+        "prompt": "Kata yang diawali huruf \"b\" adalah ...",
+        "options": [
+          "bunga",
+          "topi",
+          "ayam",
+          "kuda"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bunga diawali huruf b."
+      },
+      {
+        "id": "q9",
+        "prompt": "Nama anak ditulis dengan benar, yaitu ...",
+        "options": [
+          "BUdi",
+          "bUdi",
+          "Budi",
+          "budi"
+        ],
+        "answerIndex": 2,
+        "explanation": "Nama orang diawali huruf kapital, sisanya huruf kecil."
+      },
+      {
+        "id": "q10",
+        "prompt": "Banyak huruf pada kata \"rumah\" adalah ...",
+        "options": [
+          "3",
+          "6",
+          "4",
+          "5"
+        ],
+        "answerIndex": 3,
+        "explanation": "r-u-m-a-h, ada 5 huruf."
+      },
+      {
+        "id": "q11",
+        "prompt": "Huruf setelah \"a\" dalam abjad adalah ...",
+        "options": [
+          "b",
+          "d",
+          "c",
+          "z"
+        ],
+        "answerIndex": 0,
+        "explanation": "Urutan abjad: a, b, c, d."
+      },
+      {
+        "id": "q12",
+        "prompt": "Huruf sebelum \"d\" dalam abjad adalah ...",
+        "options": [
+          "b",
+          "c",
+          "a",
+          "e"
+        ],
+        "answerIndex": 1,
+        "explanation": "Urutan abjad: a, b, c, d."
+      },
+      {
+        "id": "q13",
+        "prompt": "Banyak huruf pada kata \"sapu\" adalah ...",
+        "options": [
+          "4",
+          "5",
+          "2",
+          "3"
+        ],
+        "answerIndex": 0,
+        "explanation": "s-a-p-u, ada 4 huruf."
+      },
+      {
+        "id": "q14",
+        "prompt": "Kata \"kucing\" diawali huruf ...",
+        "options": [
+          "u",
+          "k",
+          "i",
+          "c"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kata kucing diawali huruf k."
+      },
+      {
+        "id": "q15",
+        "prompt": "Kata \"meja\" dipenggal menjadi ...",
+        "options": [
+          "me-j-a",
+          "m-eja",
+          "me-ja",
+          "mej-a"
+        ],
+        "answerIndex": 2,
+        "explanation": "Meja terdiri atas dua suku kata: me-ja."
+      },
+      {
+        "id": "q16",
+        "prompt": "Banyak suku kata pada kata \"kupu-kupu\" adalah ...",
+        "options": [
+          "3",
+          "2",
+          "5",
+          "4"
+        ],
+        "answerIndex": 3,
+        "explanation": "ku-pu-ku-pu, ada 4 suku kata."
+      },
+      {
+        "id": "q17",
+        "prompt": "Huruf terakhir pada kata \"topi\" adalah ...",
+        "options": [
+          "p",
+          "t",
+          "i",
+          "o"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kata topi diakhiri huruf i."
+      },
+      {
+        "id": "q18",
+        "prompt": "Lengkapi kata: ru_ah (untuk rumah)",
+        "options": [
+          "k",
+          "m",
+          "s",
+          "t"
+        ],
+        "answerIndex": 1,
+        "explanation": "Huruf m melengkapi menjadi rumah."
+      },
+      {
+        "id": "q19",
+        "prompt": "Lengkapi kata: pi_ing (untuk piring)",
+        "options": [
+          "r",
+          "m",
+          "t",
+          "s"
+        ],
+        "answerIndex": 0,
+        "explanation": "Huruf r melengkapi menjadi piring."
+      },
+      {
+        "id": "q20",
+        "prompt": "Gambar apel diawali huruf ...",
+        "options": [
+          "l",
+          "e",
+          "p",
+          "a"
+        ],
+        "answerIndex": 3,
+        "explanation": "Apel diawali huruf a."
+      },
+      {
+        "id": "q21",
+        "prompt": "Susunlah huruf k-u-d-a menjadi kata ...",
+        "options": [
+          "dkua",
+          "udak",
+          "akud",
+          "kuda"
+        ],
+        "answerIndex": 3,
+        "explanation": "Huruf-huruf itu membentuk kuda."
+      },
+      {
+        "id": "q22",
+        "prompt": "Penulisan kata yang benar adalah ...",
+        "options": [
+          "sekolah",
+          "skolah",
+          "sekolahh",
+          "sekola"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kata yang benar: sekolah."
+      },
+      {
+        "id": "q23",
+        "prompt": "Yang termasuk huruf konsonan adalah ...",
+        "options": [
+          "i",
+          "u",
+          "b",
+          "a"
+        ],
+        "answerIndex": 2,
+        "explanation": "Selain a, i, u, e, o adalah konsonan."
+      },
+      {
+        "id": "q24",
+        "prompt": "Huruf kecil dari \"M\" adalah ...",
+        "options": [
+          "n",
+          "m",
+          "w",
+          "e"
+        ],
+        "answerIndex": 1,
+        "explanation": "Huruf kecil M adalah m."
+      },
+      {
+        "id": "q25",
+        "prompt": "Huruf besar dari \"r\" adalah ...",
+        "options": [
+          "K",
+          "P",
+          "B",
+          "R"
+        ],
+        "answerIndex": 3,
+        "explanation": "Huruf besar r adalah R."
+      },
+      {
+        "id": "q26",
+        "prompt": "Kata yang bunyi akhirnya sama dengan \"buku\" adalah ...",
+        "options": [
+          "kuku",
+          "pena",
+          "meja",
+          "tas"
+        ],
+        "answerIndex": 0,
+        "explanation": "Buku dan kuku sama-sama berakhiran -ku."
+      },
+      {
+        "id": "q27",
+        "prompt": "Kata yang diawali huruf \"m\" adalah ...",
+        "options": [
+          "kuda",
+          "topi",
+          "meja",
+          "ayam"
+        ],
+        "answerIndex": 2,
+        "explanation": "Meja diawali huruf m."
+      },
+      {
+        "id": "q28",
+        "prompt": "Banyak suku kata pada kata \"ayah\" adalah ...",
+        "options": [
+          "1",
+          "2",
+          "4",
+          "3"
+        ],
+        "answerIndex": 1,
+        "explanation": "a-yah, ada dua suku kata."
+      },
+      {
+        "id": "q29",
+        "prompt": "Kalimat yang penulisannya benar adalah ...",
+        "options": [
+          "ibu memasak nasi",
+          "Ibu memasak Nasi.",
+          "ibu Memasak nasi.",
+          "Ibu memasak nasi."
+        ],
+        "answerIndex": 3,
+        "explanation": "Awal kalimat huruf kapital dan diakhiri titik."
+      },
+      {
+        "id": "q30",
+        "prompt": "Tanda baca di akhir kalimat berita adalah ...",
+        "options": [
+          "tanda seru",
+          "koma",
+          "titik",
+          "tanda tanya"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kalimat berita diakhiri titik."
+      }
+    ]
+  },
+  {
+    "id": "indo-k3-jenis-kata",
+    "categoryId": "bahasa-indonesia",
+    "title": "Kata benda, kata kerja, kata sifat",
+    "grades": [
+      2,
+      3
+    ],
+    "difficulty": 2,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Kata benda adalah ...",
+        "options": [
+          "meja",
+          "cepat",
+          "berlari",
+          "indah"
+        ],
+        "answerIndex": 0,
+        "explanation": "Meja adalah nama benda."
+      },
+      {
+        "id": "q2",
+        "prompt": "Kata kerja adalah ...",
+        "options": [
+          "pintar",
+          "menulis",
+          "buku",
+          "kursi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Menulis menyatakan perbuatan."
+      },
+      {
+        "id": "q3",
+        "prompt": "Kata sifat adalah ...",
+        "options": [
+          "berenang",
+          "makan",
+          "tinggi",
+          "tas"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tinggi menyatakan keadaan atau sifat."
+      },
+      {
+        "id": "q4",
+        "prompt": "Ibu memasak nasi di dapur. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "ibu",
+          "memasak",
+          "nasi",
+          "dapur"
+        ],
+        "answerIndex": 1,
+        "explanation": "Memasak adalah perbuatan yang dilakukan ibu."
+      },
+      {
+        "id": "q5",
+        "prompt": "Adik membaca buku cerita yang menarik. Kata sifatnya ...",
+        "options": [
+          "buku",
+          "adik",
+          "membaca",
+          "menarik"
+        ],
+        "answerIndex": 3,
+        "explanation": "Menarik menggambarkan sifat buku cerita."
+      },
+      {
+        "id": "q6",
+        "prompt": "Kata \"rajin\" termasuk kata ...",
+        "options": [
+          "sifat",
+          "kerja",
+          "tanya",
+          "benda"
+        ],
+        "answerIndex": 0,
+        "explanation": "Rajin menyatakan sifat seseorang."
+      },
+      {
+        "id": "q7",
+        "prompt": "Kata \"sepeda\" termasuk kata ...",
+        "options": [
+          "kerja",
+          "sifat",
+          "benda",
+          "bilangan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sepeda adalah nama benda."
+      },
+      {
+        "id": "q8",
+        "prompt": "Ayah ... koran setiap pagi. Kata yang tepat untuk melengkapi adalah ...",
+        "options": [
+          "lemari",
+          "membaca",
+          "besar",
+          "merah"
+        ],
+        "answerIndex": 1,
+        "explanation": "Yang cocok untuk perbuatan adalah kata kerja: membaca."
+      },
+      {
+        "id": "q9",
+        "prompt": "Bunga mawar itu sangat harum. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "mawar",
+          "itu",
+          "bunga",
+          "harum"
+        ],
+        "answerIndex": 3,
+        "explanation": "Harum menggambarkan keadaan bunga mawar."
+      },
+      {
+        "id": "q10",
+        "prompt": "Kata \"bermain\" termasuk kata ...",
+        "options": [
+          "kerja",
+          "hubung",
+          "sifat",
+          "benda"
+        ],
+        "answerIndex": 0,
+        "explanation": "Bermain adalah kegiatan atau perbuatan."
+      },
+      {
+        "id": "q11",
+        "prompt": "Gunung itu sangat tinggi. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "sangat",
+          "gunung",
+          "tinggi",
+          "itu"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tinggi menggambarkan keadaan gunung."
+      },
+      {
+        "id": "q12",
+        "prompt": "Kakak menyapu halaman. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "kakak",
+          "halaman",
+          "itu",
+          "menyapu"
+        ],
+        "answerIndex": 3,
+        "explanation": "Menyapu adalah perbuatan."
+      },
+      {
+        "id": "q13",
+        "prompt": "Burung bernyanyi di dahan. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "burung",
+          "bernyanyi",
+          "dahan",
+          "di"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bernyanyi adalah perbuatan burung."
+      },
+      {
+        "id": "q14",
+        "prompt": "Air sungai itu jernih. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "air",
+          "itu",
+          "jernih",
+          "sungai"
+        ],
+        "answerIndex": 2,
+        "explanation": "Jernih menggambarkan keadaan air."
+      },
+      {
+        "id": "q15",
+        "prompt": "Kata \"melompat\" termasuk kata ...",
+        "options": [
+          "benda",
+          "bilangan",
+          "sifat",
+          "kerja"
+        ],
+        "answerIndex": 3,
+        "explanation": "Melompat adalah perbuatan."
+      },
+      {
+        "id": "q16",
+        "prompt": "Kata \"merah\" termasuk kata ...",
+        "options": [
+          "sifat",
+          "tanya",
+          "benda",
+          "kerja"
+        ],
+        "answerIndex": 0,
+        "explanation": "Merah menyatakan sifat atau warna."
+      },
+      {
+        "id": "q17",
+        "prompt": "Kata \"lemari\" termasuk kata ...",
+        "options": [
+          "ganti",
+          "kerja",
+          "benda",
+          "sifat"
+        ],
+        "answerIndex": 2,
+        "explanation": "Lemari adalah nama benda."
+      },
+      {
+        "id": "q18",
+        "prompt": "Gajah itu sangat ... . Kata sifat yang tepat adalah ...",
+        "options": [
+          "berlari",
+          "makan",
+          "kebun",
+          "besar"
+        ],
+        "answerIndex": 3,
+        "explanation": "Besar menggambarkan keadaan gajah."
+      },
+      {
+        "id": "q19",
+        "prompt": "Adik ... air putih. Kata kerja yang tepat adalah ...",
+        "options": [
+          "minum",
+          "manis",
+          "gelas",
+          "dingin"
+        ],
+        "answerIndex": 0,
+        "explanation": "Minum adalah perbuatan."
+      },
+      {
+        "id": "q20",
+        "prompt": "Ayah membaca ... di ruang tamu. Kata benda yang tepat adalah ...",
+        "options": [
+          "sibuk",
+          "koran",
+          "berlari",
+          "pintar"
+        ],
+        "answerIndex": 1,
+        "explanation": "Koran adalah benda yang dibaca."
+      },
+      {
+        "id": "q21",
+        "prompt": "Kucing itu mengejar tikus. Kata kerja dalam kalimat itu adalah ...",
+        "options": [
+          "itu",
+          "tikus",
+          "mengejar",
+          "kucing"
+        ],
+        "answerIndex": 2,
+        "explanation": "Mengejar adalah perbuatan."
+      },
+      {
+        "id": "q22",
+        "prompt": "Kata \"cantik\" termasuk kata ...",
+        "options": [
+          "benda",
+          "kerja",
+          "bilangan",
+          "sifat"
+        ],
+        "answerIndex": 3,
+        "explanation": "Cantik menyatakan sifat."
+      },
+      {
+        "id": "q23",
+        "prompt": "Kata \"guru\" termasuk kata ...",
+        "options": [
+          "benda",
+          "sifat",
+          "tanya",
+          "kerja"
+        ],
+        "answerIndex": 0,
+        "explanation": "Guru adalah nama orang atau profesi."
+      },
+      {
+        "id": "q24",
+        "prompt": "Kata \"berlari\" termasuk kata ...",
+        "options": [
+          "ganti",
+          "kerja",
+          "sifat",
+          "benda"
+        ],
+        "answerIndex": 1,
+        "explanation": "Berlari adalah perbuatan."
+      },
+      {
+        "id": "q25",
+        "prompt": "Kata \"pintar\" termasuk kata ...",
+        "options": [
+          "sifat",
+          "bilangan",
+          "benda",
+          "kerja"
+        ],
+        "answerIndex": 0,
+        "explanation": "Pintar menyatakan sifat."
+      },
+      {
+        "id": "q26",
+        "prompt": "Kata benda yang menyatakan nama hewan adalah ...",
+        "options": [
+          "makan",
+          "kuda",
+          "berlari",
+          "cepat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kuda adalah nama hewan."
+      },
+      {
+        "id": "q27",
+        "prompt": "Kata kerja yang dilakukan murid di kelas adalah ...",
+        "options": [
+          "pensil",
+          "buku",
+          "belajar",
+          "papan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Belajar adalah kegiatan murid."
+      },
+      {
+        "id": "q28",
+        "prompt": "Kata sifat yang menggambarkan rasa gula adalah ...",
+        "options": [
+          "asin",
+          "pahit",
+          "asam",
+          "manis"
+        ],
+        "answerIndex": 3,
+        "explanation": "Gula terasa manis."
+      },
+      {
+        "id": "q29",
+        "prompt": "Kami makan nasi goreng yang lezat. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "makan",
+          "lezat",
+          "kami",
+          "nasi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lezat menggambarkan rasa nasi goreng."
+      },
+      {
+        "id": "q30",
+        "prompt": "Sepatu itu mahal. Kata sifat dalam kalimat itu adalah ...",
+        "options": [
+          "sepatu",
+          "beli",
+          "mahal",
+          "itu"
+        ],
+        "answerIndex": 2,
+        "explanation": "Mahal menggambarkan harga sepatu."
+      }
+    ]
+  },
+  {
+    "id": "ipas-k1-panca-indra-tubuh",
+    "categoryId": "ipas",
+    "title": "Panca indra dan tubuhku",
+    "grades": [
+      1,
+      2
+    ],
+    "difficulty": 1,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Kita melihat dengan menggunakan ...",
+        "options": [
+          "mata",
+          "hidung",
+          "lidah",
+          "telinga"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mata adalah indra penglihat."
+      },
+      {
+        "id": "q2",
+        "prompt": "Kita mendengar suara dengan ...",
+        "options": [
+          "hidung",
+          "mata",
+          "kulit",
+          "telinga"
+        ],
+        "answerIndex": 3,
+        "explanation": "Telinga adalah indra pendengar."
+      },
+      {
+        "id": "q3",
+        "prompt": "Kita mencium bau bunga dengan ...",
+        "options": [
+          "telinga",
+          "hidung",
+          "mata",
+          "tangan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Hidung adalah indra pembau."
+      },
+      {
+        "id": "q4",
+        "prompt": "Rasa manis gula dirasakan oleh ...",
+        "options": [
+          "hidung",
+          "telinga",
+          "lidah",
+          "mata"
+        ],
+        "answerIndex": 2,
+        "explanation": "Lidah adalah indra pengecap."
+      },
+      {
+        "id": "q5",
+        "prompt": "Rasa panas atau dingin dirasakan oleh ...",
+        "options": [
+          "kulit",
+          "gigi",
+          "telinga",
+          "mata"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kulit adalah indra peraba."
+      },
+      {
+        "id": "q6",
+        "prompt": "Banyak panca indra manusia adalah ...",
+        "options": [
+          "6",
+          "3",
+          "4",
+          "5"
+        ],
+        "answerIndex": 3,
+        "explanation": "Panca berarti lima: mata, telinga, hidung, lidah, kulit."
+      },
+      {
+        "id": "q7",
+        "prompt": "Cara menjaga mata yang baik adalah ...",
+        "options": [
+          "menonton layar sangat dekat",
+          "membaca di tempat terang",
+          "menggosok mata dengan tangan kotor",
+          "membaca sambil tiduran di tempat gelap"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tempat yang terang membuat mata tidak cepat lelah."
+      },
+      {
+        "id": "q8",
+        "prompt": "Cara merawat gigi yang benar adalah ...",
+        "options": [
+          "menyikat gigi seminggu sekali",
+          "makan permen sebelum tidur",
+          "menyikat gigi dua kali sehari",
+          "tidak pernah ke dokter gigi"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sikat gigi pagi dan sebelum tidur menjaga gigi tetap sehat."
+      },
+      {
+        "id": "q9",
+        "prompt": "Kita mencuci tangan dengan sabun ...",
+        "options": [
+          "hanya saat Lebaran",
+          "hanya bila disuruh",
+          "sebelum makan",
+          "setelah tidur siang saja"
+        ],
+        "answerIndex": 2,
+        "explanation": "Mencuci tangan sebelum makan mencegah kuman masuk ke tubuh."
+      },
+      {
+        "id": "q10",
+        "prompt": "Bagian tubuh yang kita pakai untuk berjalan adalah ...",
+        "options": [
+          "kaki",
+          "perut",
+          "tangan",
+          "kepala"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kaki membantu kita berjalan dan berlari."
+      },
+      {
+        "id": "q11",
+        "prompt": "Gigi berfungsi untuk ...",
+        "options": [
+          "melihat",
+          "mendengar",
+          "mencium",
+          "mengunyah makanan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Gigi menghaluskan makanan."
+      },
+      {
+        "id": "q12",
+        "prompt": "Tangan berfungsi untuk ...",
+        "options": [
+          "mendengar",
+          "memegang benda",
+          "mencium bau",
+          "melihat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tangan dipakai memegang dan mengambil."
+      },
+      {
+        "id": "q13",
+        "prompt": "Hidung berfungsi untuk ...",
+        "options": [
+          "melihat",
+          "mendengar",
+          "berjalan",
+          "mencium bau dan bernapas"
+        ],
+        "answerIndex": 3,
+        "explanation": "Hidung membantu kita bernapas dan mencium."
+      },
+      {
+        "id": "q14",
+        "prompt": "Mulut berfungsi untuk ...",
+        "options": [
+          "melihat",
+          "mendengar",
+          "makan dan berbicara",
+          "mencium"
+        ],
+        "answerIndex": 2,
+        "explanation": "Mulut dipakai makan dan berbicara."
+      },
+      {
+        "id": "q15",
+        "prompt": "Banyak mata yang kita miliki adalah ...",
+        "options": [
+          "2",
+          "4",
+          "3",
+          "1"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kita memiliki dua mata."
+      },
+      {
+        "id": "q16",
+        "prompt": "Banyak jari pada kedua tangan adalah ...",
+        "options": [
+          "5",
+          "10",
+          "8",
+          "12"
+        ],
+        "answerIndex": 1,
+        "explanation": "Setiap tangan lima jari, jadi 10."
+      },
+      {
+        "id": "q17",
+        "prompt": "Rasa pahit dirasakan oleh ...",
+        "options": [
+          "hidung",
+          "lidah",
+          "telinga",
+          "mata"
+        ],
+        "answerIndex": 1,
+        "explanation": "Lidah dapat merasakan manis, asin, asam, dan pahit."
+      },
+      {
+        "id": "q18",
+        "prompt": "Benda yang kasar atau halus dirasakan oleh ...",
+        "options": [
+          "telinga",
+          "mata",
+          "lidah",
+          "kulit"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kulit meraba permukaan benda."
+      },
+      {
+        "id": "q19",
+        "prompt": "Kita tidak boleh memasukkan benda keras ke ...",
+        "options": [
+          "tas",
+          "keranjang",
+          "telinga",
+          "laci"
+        ],
+        "answerIndex": 2,
+        "explanation": "Telinga mudah terluka."
+      },
+      {
+        "id": "q20",
+        "prompt": "Warna bunga dapat dilihat oleh ...",
+        "options": [
+          "mata",
+          "lidah",
+          "hidung",
+          "telinga"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mata melihat warna."
+      },
+      {
+        "id": "q21",
+        "prompt": "Bunyi bel sekolah didengar oleh ...",
+        "options": [
+          "telinga",
+          "mata",
+          "hidung",
+          "kulit"
+        ],
+        "answerIndex": 0,
+        "explanation": "Telinga menangkap suara."
+      },
+      {
+        "id": "q22",
+        "prompt": "Bau harum bunga dicium oleh ...",
+        "options": [
+          "mata",
+          "telinga",
+          "lidah",
+          "hidung"
+        ],
+        "answerIndex": 3,
+        "explanation": "Hidung adalah indra pembau."
+      },
+      {
+        "id": "q23",
+        "prompt": "Agar tubuh sehat, kita perlu makan ...",
+        "options": [
+          "permen saja",
+          "sayur dan buah",
+          "minuman manis saja",
+          "gorengan saja"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sayur dan buah menyehatkan tubuh."
+      },
+      {
+        "id": "q24",
+        "prompt": "Agar tubuh tetap sehat, kita sebaiknya minum ...",
+        "options": [
+          "minuman bersoda saja",
+          "air kotor",
+          "air putih",
+          "minuman manis saja"
+        ],
+        "answerIndex": 2,
+        "explanation": "Air putih baik untuk tubuh."
+      },
+      {
+        "id": "q25",
+        "prompt": "Berolahraga membuat tubuh ...",
+        "options": [
+          "mudah sakit",
+          "malas",
+          "lemas",
+          "kuat dan sehat"
+        ],
+        "answerIndex": 3,
+        "explanation": "Olahraga menyehatkan tubuh."
+      },
+      {
+        "id": "q26",
+        "prompt": "Tidur yang cukup membuat tubuh ...",
+        "options": [
+          "segar",
+          "lesu",
+          "marah",
+          "sakit"
+        ],
+        "answerIndex": 0,
+        "explanation": "Tidur memulihkan tenaga."
+      },
+      {
+        "id": "q27",
+        "prompt": "Kita mencuci tangan dengan sabun setelah ...",
+        "options": [
+          "tidur",
+          "bermain dan dari toilet",
+          "berdiri",
+          "duduk"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tangan kotor membawa kuman."
+      },
+      {
+        "id": "q28",
+        "prompt": "Pakaian yang bersih membuat kita ...",
+        "options": [
+          "gatal",
+          "bau",
+          "nyaman dan sehat",
+          "sakit"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pakaian bersih mencegah penyakit kulit."
+      },
+      {
+        "id": "q29",
+        "prompt": "Bagian tubuh yang dipakai untuk menendang bola adalah ...",
+        "options": [
+          "kepala",
+          "kaki",
+          "tangan",
+          "telinga"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kaki dipakai menendang."
+      },
+      {
+        "id": "q30",
+        "prompt": "Indra yang dipakai untuk merasakan sakit karena cubitan adalah ...",
+        "options": [
+          "lidah",
+          "telinga",
+          "kulit",
+          "mata"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kulit peraba rasa sakit."
+      }
+    ]
+  },
+  {
+    "id": "ipas-k6-listrik-rangkaian",
+    "categoryId": "ipas",
+    "title": "Listrik dan rangkaian sederhana",
+    "grades": [
+      6
+    ],
+    "difficulty": 2,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Benda yang menyimpan energi listrik untuk senter adalah ...",
+        "options": [
+          "kayu",
+          "batu",
+          "kertas",
+          "baterai"
+        ],
+        "answerIndex": 3,
+        "explanation": "Baterai menyimpan energi listrik dalam bentuk kimia."
+      },
+      {
+        "id": "q2",
+        "prompt": "Bahan yang menghantarkan listrik dengan baik (konduktor) adalah ...",
+        "options": [
+          "kayu kering",
+          "tembaga",
+          "karet",
+          "plastik"
+        ],
+        "answerIndex": 1,
+        "explanation": "Logam seperti tembaga adalah konduktor."
+      },
+      {
+        "id": "q3",
+        "prompt": "Bahan yang tidak menghantarkan listrik (isolator) adalah ...",
+        "options": [
+          "tembaga",
+          "besi",
+          "karet",
+          "aluminium"
+        ],
+        "answerIndex": 2,
+        "explanation": "Karet adalah isolator, maka dipakai membungkus kabel."
+      },
+      {
+        "id": "q4",
+        "prompt": "Pada rangkaian seri, lampu-lampu disusun ...",
+        "options": [
+          "berurutan dalam satu jalur",
+          "bercabang",
+          "terpisah dari baterai",
+          "tanpa kabel"
+        ],
+        "answerIndex": 0,
+        "explanation": "Rangkaian seri hanya punya satu jalur arus."
+      },
+      {
+        "id": "q5",
+        "prompt": "Pada rangkaian paralel, jika satu lampu mati maka lampu lain ...",
+        "options": [
+          "ikut mati",
+          "meledak",
+          "semakin redup",
+          "tetap menyala"
+        ],
+        "answerIndex": 3,
+        "explanation": "Rangkaian paralel punya cabang, sehingga lampu lain tetap dialiri arus."
+      },
+      {
+        "id": "q6",
+        "prompt": "Pada rangkaian seri, jika satu lampu putus maka lampu lain ...",
+        "options": [
+          "tetap menyala",
+          "ikut padam",
+          "makin terang",
+          "berganti warna"
+        ],
+        "answerIndex": 1,
+        "explanation": "Jalur arus terputus sehingga semua lampu padam."
+      },
+      {
+        "id": "q7",
+        "prompt": "Fungsi saklar dalam rangkaian listrik adalah ...",
+        "options": [
+          "menambah tegangan",
+          "menyimpan arus",
+          "mengganti lampu",
+          "menghubungkan atau memutus arus"
+        ],
+        "answerIndex": 3,
+        "explanation": "Saklar menyalakan dan mematikan aliran listrik."
+      },
+      {
+        "id": "q8",
+        "prompt": "Setrika listrik mengubah energi listrik menjadi energi ...",
+        "options": [
+          "gerak",
+          "bunyi",
+          "panas",
+          "kimia"
+        ],
+        "answerIndex": 2,
+        "explanation": "Setrika menjadi panas saat dialiri listrik."
+      },
+      {
+        "id": "q9",
+        "prompt": "Kipas angin mengubah energi listrik menjadi energi ...",
+        "options": [
+          "bunyi",
+          "gerak",
+          "cahaya",
+          "panas"
+        ],
+        "answerIndex": 1,
+        "explanation": "Listrik memutar baling-baling kipas."
+      },
+      {
+        "id": "q10",
+        "prompt": "Tindakan yang aman saat memakai listrik adalah ...",
+        "options": [
+          "tidak memegang colokan dengan tangan basah",
+          "menarik kabel saat mencabut",
+          "bermain layang-layang dekat kabel",
+          "memasukkan paku ke stopkontak"
+        ],
+        "answerIndex": 0,
+        "explanation": "Air menghantarkan listrik, tangan basah berbahaya."
+      },
+      {
+        "id": "q11",
+        "prompt": "Aliran muatan listrik disebut ...",
+        "options": [
+          "gempa",
+          "angin",
+          "arus listrik",
+          "air"
+        ],
+        "answerIndex": 2,
+        "explanation": "Arus listrik adalah aliran muatan."
+      },
+      {
+        "id": "q12",
+        "prompt": "Rangkaian listrik dapat menyala bila rangkaian ...",
+        "options": [
+          "tertutup",
+          "terbuka",
+          "terputus",
+          "dibasahi"
+        ],
+        "answerIndex": 0,
+        "explanation": "Arus hanya mengalir pada rangkaian tertutup."
+      },
+      {
+        "id": "q13",
+        "prompt": "Jika saklar terbuka, maka lampu ...",
+        "options": [
+          "meledak",
+          "menyala",
+          "makin terang",
+          "padam"
+        ],
+        "answerIndex": 3,
+        "explanation": "Arus terputus sehingga lampu padam."
+      },
+      {
+        "id": "q14",
+        "prompt": "Kabel listrik dibungkus plastik karena plastik ...",
+        "options": [
+          "isolator",
+          "bahan bakar",
+          "magnet",
+          "konduktor"
+        ],
+        "answerIndex": 0,
+        "explanation": "Plastik tidak menghantarkan listrik."
+      },
+      {
+        "id": "q15",
+        "prompt": "Bahan logam seperti besi termasuk ...",
+        "options": [
+          "air",
+          "konduktor",
+          "isolator",
+          "bahan bakar"
+        ],
+        "answerIndex": 1,
+        "explanation": "Logam menghantarkan listrik."
+      },
+      {
+        "id": "q16",
+        "prompt": "Kawat tembaga dipakai pada kabel karena ...",
+        "options": [
+          "murah dan keras",
+          "mengapung",
+          "menghantarkan listrik dengan baik",
+          "tidak berat"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tembaga adalah konduktor yang baik."
+      },
+      {
+        "id": "q17",
+        "prompt": "Lampu LED lebih ... dibanding lampu pijar.",
+        "options": [
+          "boros energi",
+          "besar",
+          "hemat energi",
+          "panas sekali"
+        ],
+        "answerIndex": 2,
+        "explanation": "LED hemat energi dan lebih awet."
+      },
+      {
+        "id": "q18",
+        "prompt": "Alat pengaman yang putus saat arus terlalu besar adalah ...",
+        "options": [
+          "saklar",
+          "sekring",
+          "lampu",
+          "baterai"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sekring melindungi rangkaian."
+      },
+      {
+        "id": "q19",
+        "prompt": "Korsleting terjadi saat ...",
+        "options": [
+          "kabel positif dan negatif bersentuhan",
+          "saklar dimatikan",
+          "baterai dilepas",
+          "lampu menyala"
+        ],
+        "answerIndex": 0,
+        "explanation": "Korsleting dapat menimbulkan api."
+      },
+      {
+        "id": "q20",
+        "prompt": "Instalasi listrik rumah umumnya memakai rangkaian ...",
+        "options": [
+          "acak",
+          "seri",
+          "tertutup rapat tanpa jalur",
+          "paralel"
+        ],
+        "answerIndex": 3,
+        "explanation": "Paralel membuat alat dapat menyala sendiri-sendiri."
+      },
+      {
+        "id": "q21",
+        "prompt": "Lampu hias pohon natal yang padam semua saat satu lampu dilepas berarti dirangkai ...",
+        "options": [
+          "campuran",
+          "paralel",
+          "seri",
+          "acak"
+        ],
+        "answerIndex": 2,
+        "explanation": "Rangkaian seri hanya punya satu jalur."
+      },
+      {
+        "id": "q22",
+        "prompt": "Pada baterai terdapat kutub ...",
+        "options": [
+          "barat dan timur",
+          "positif dan negatif",
+          "utara saja",
+          "kiri dan kanan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Baterai punya dua kutub."
+      },
+      {
+        "id": "q23",
+        "prompt": "Elektromagnet dibuat dari paku yang dililit kawat dan dialiri ...",
+        "options": [
+          "listrik",
+          "panas",
+          "udara",
+          "air"
+        ],
+        "answerIndex": 0,
+        "explanation": "Arus listrik membuat paku menjadi magnet."
+      },
+      {
+        "id": "q24",
+        "prompt": "Listrik statis dapat dibuktikan dengan ...",
+        "options": [
+          "saklar ditekan",
+          "baterai dipasang",
+          "lampu menyala",
+          "penggaris plastik digosok menarik kertas kecil"
+        ],
+        "answerIndex": 3,
+        "explanation": "Gesekan menimbulkan muatan statis."
+      },
+      {
+        "id": "q25",
+        "prompt": "Pada saat petir terjadi, kita sebaiknya ...",
+        "options": [
+          "berteduh di bawah pohon tinggi",
+          "bermain di lapangan terbuka",
+          "memegang tiang logam",
+          "berlindung di dalam bangunan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bangunan tertutup lebih aman saat petir."
+      },
+      {
+        "id": "q26",
+        "prompt": "Energi listrik pada kulkas diubah menjadi energi ...",
+        "options": [
+          "dingin (pendinginan) dan gerak",
+          "panas saja",
+          "cahaya saja",
+          "bunyi saja"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kulkas mendinginkan dengan kompresor."
+      },
+      {
+        "id": "q27",
+        "prompt": "Baterai yang sudah habis daya sebaiknya ...",
+        "options": [
+          "dibuang ke sungai",
+          "dibuang ke tempat khusus",
+          "dikubur sembarangan",
+          "dibakar"
+        ],
+        "answerIndex": 1,
+        "explanation": "Baterai bekas mengandung bahan berbahaya."
+      },
+      {
+        "id": "q28",
+        "prompt": "Cara menghemat listrik di rumah adalah ...",
+        "options": [
+          "membiarkan TV menyala",
+          "membuka kulkas terus",
+          "mematikan alat listrik yang tidak dipakai",
+          "menyalakan lampu seharian"
+        ],
+        "answerIndex": 2,
+        "explanation": "Listrik yang tidak dipakai terbuang."
+      },
+      {
+        "id": "q29",
+        "prompt": "Lampu pijar menyala karena ... di dalamnya menjadi panas.",
+        "options": [
+          "air",
+          "kertas",
+          "kawat tipis",
+          "plastik"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kawat pijar memancarkan cahaya saat panas."
+      },
+      {
+        "id": "q30",
+        "prompt": "Alat yang dipakai untuk menyambungkan dan memutus arus dalam rangkaian adalah ...",
+        "options": [
+          "kabel",
+          "saklar",
+          "lampu",
+          "baterai"
+        ],
+        "answerIndex": 1,
+        "explanation": "Saklar membuka dan menutup rangkaian."
+      }
+    ]
+  },
+  {
+    "id": "pancasila-k5-musyawarah",
+    "categoryId": "pancasila",
+    "title": "Musyawarah dan keberagaman",
+    "grades": [
+      5
+    ],
+    "difficulty": 2,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Musyawarah adalah ...",
+        "options": [
+          "menunggu perintah",
+          "memutuskan sendiri",
+          "berunding bersama untuk mencapai kesepakatan",
+          "adu kekuatan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Musyawarah menyelesaikan masalah dengan berunding."
+      },
+      {
+        "id": "q2",
+        "prompt": "Sikap yang baik saat musyawarah adalah ...",
+        "options": [
+          "pergi saat kalah",
+          "marah bila berbeda",
+          "memotong pembicaraan",
+          "mendengarkan pendapat orang lain"
+        ],
+        "answerIndex": 3,
+        "explanation": "Menghargai pendapat teman adalah dasar musyawarah."
+      },
+      {
+        "id": "q3",
+        "prompt": "Setelah ada keputusan musyawarah, kita ...",
+        "options": [
+          "menolaknya diam-diam",
+          "menerima dan melaksanakannya",
+          "mengejek yang menang",
+          "tidak peduli"
+        ],
+        "answerIndex": 1,
+        "explanation": "Keputusan bersama dilaksanakan bersama."
+      },
+      {
+        "id": "q4",
+        "prompt": "Bhinneka Tunggal Ika artinya ...",
+        "options": [
+          "berbeda-beda tetapi tetap satu",
+          "bersatu untuk menang",
+          "satu suku satu bahasa",
+          "semua harus sama"
+        ],
+        "answerIndex": 0,
+        "explanation": "Indonesia beragam tetapi bersatu."
+      },
+      {
+        "id": "q5",
+        "prompt": "Sikap kita kepada teman yang berbeda agama adalah ...",
+        "options": [
+          "menghormati dan tidak memaksakan",
+          "memaksa ikut agama kita",
+          "menjauhi",
+          "mengejek"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sila pertama mengajarkan toleransi."
+      },
+      {
+        "id": "q6",
+        "prompt": "Ketua kelas dipilih dengan cara yang adil, yaitu ...",
+        "options": [
+          "siapa paling kuat",
+          "siapa paling keras bicara",
+          "ditunjuk teman akrab",
+          "musyawarah atau pemungutan suara"
+        ],
+        "answerIndex": 3,
+        "explanation": "Cara adil melibatkan pendapat semua anggota kelas."
+      },
+      {
+        "id": "q7",
+        "prompt": "Contoh keberagaman di Indonesia adalah ...",
+        "options": [
+          "hanya satu pulau",
+          "banyak suku dan bahasa daerah",
+          "hanya satu agama",
+          "semua warga satu adat"
+        ],
+        "answerIndex": 1,
+        "explanation": "Indonesia memiliki ratusan suku dan bahasa daerah."
+      },
+      {
+        "id": "q8",
+        "prompt": "Jika pendapatmu tidak dipilih dalam musyawarah, sebaiknya ...",
+        "options": [
+          "membenci teman",
+          "tidak mau ikut lagi",
+          "menghargai keputusan bersama",
+          "membuat kelompok sendiri"
+        ],
+        "answerIndex": 2,
+        "explanation": "Keputusan terbaik bagi bersama harus dihormati."
+      },
+      {
+        "id": "q9",
+        "prompt": "Lambang sila keempat Pancasila adalah ...",
+        "options": [
+          "bintang",
+          "kepala banteng",
+          "pohon beringin",
+          "rantai"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sila ke-4 berlambang kepala banteng."
+      },
+      {
+        "id": "q10",
+        "prompt": "Sikap yang bertentangan dengan musyawarah adalah ...",
+        "options": [
+          "mencari jalan tengah",
+          "bersikap sabar",
+          "bertukar pendapat",
+          "memaksakan kehendak"
+        ],
+        "answerIndex": 3,
+        "explanation": "Memaksakan kehendak tidak menghargai pendapat orang lain."
+      },
+      {
+        "id": "q11",
+        "prompt": "Hasil musyawarah yang disepakati bersama disebut ...",
+        "options": [
+          "mufakat",
+          "rebutan",
+          "perintah",
+          "paksaan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Mufakat adalah kesepakatan bersama."
+      },
+      {
+        "id": "q12",
+        "prompt": "Jika musyawarah tidak mencapai mufakat, keputusan dapat diambil dengan ...",
+        "options": [
+          "lari",
+          "undian siapa kuat",
+          "pemungutan suara",
+          "paksaan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pemungutan suara adalah jalan terakhir yang adil."
+      },
+      {
+        "id": "q13",
+        "prompt": "Cara menyampaikan pendapat yang baik adalah ...",
+        "options": [
+          "berteriak",
+          "marah-marah",
+          "memotong teman",
+          "dengan sopan dan jelas"
+        ],
+        "answerIndex": 3,
+        "explanation": "Pendapat disampaikan dengan santun."
+      },
+      {
+        "id": "q14",
+        "prompt": "Musyawarah dapat dilakukan di ...",
+        "options": [
+          "hanya di pasar",
+          "hanya di kebun",
+          "kelas, keluarga, dan RT",
+          "hanya di gedung besar"
+        ],
+        "answerIndex": 2,
+        "explanation": "Musyawarah bisa di mana saja ada keputusan bersama."
+      },
+      {
+        "id": "q15",
+        "prompt": "Yang bertugas memimpin jalannya musyawarah adalah ...",
+        "options": [
+          "penonton",
+          "pemimpin sidang atau ketua",
+          "orang yang paling keras",
+          "tamu"
+        ],
+        "answerIndex": 1,
+        "explanation": "Pemimpin mengatur agar musyawarah tertib."
+      },
+      {
+        "id": "q16",
+        "prompt": "Sikap yang sesuai dengan sila keempat adalah ...",
+        "options": [
+          "mengutamakan musyawarah",
+          "memaksakan kehendak",
+          "tidak mau mendengar",
+          "menang sendiri"
+        ],
+        "answerIndex": 0,
+        "explanation": "Sila keempat tentang musyawarah."
+      },
+      {
+        "id": "q17",
+        "prompt": "Bahasa persatuan bangsa Indonesia adalah ...",
+        "options": [
+          "Bahasa Inggris",
+          "Bahasa Sunda",
+          "Bahasa Jawa",
+          "Bahasa Indonesia"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bahasa Indonesia mempersatukan banyak suku."
+      },
+      {
+        "id": "q18",
+        "prompt": "Sumpah Pemuda diikrarkan pada tanggal ...",
+        "options": [
+          "17 Agustus 1945",
+          "28 Oktober 1928",
+          "1 Juni 1945",
+          "10 November 1945"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sumpah Pemuda lahir 28 Oktober 1928."
+      },
+      {
+        "id": "q19",
+        "prompt": "Pakaian adat, tari, dan rumah adat adalah contoh ...",
+        "options": [
+          "keberagaman budaya",
+          "barang impor",
+          "keseragaman",
+          "perbedaan yang harus dihilangkan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Budaya Indonesia beragam."
+      },
+      {
+        "id": "q20",
+        "prompt": "Sikap yang tepat terhadap perbedaan suku adalah ...",
+        "options": [
+          "menjauhi",
+          "memaksa mengikuti",
+          "saling menghargai",
+          "saling mengejek"
+        ],
+        "answerIndex": 2,
+        "explanation": "Perbedaan adalah kekayaan bangsa."
+      },
+      {
+        "id": "q21",
+        "prompt": "Berteman dengan semua orang tanpa membeda-bedakan suku adalah contoh ...",
+        "options": [
+          "persatuan",
+          "permusuhan",
+          "kesombongan",
+          "perpecahan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Persatuan menyatukan perbedaan."
+      },
+      {
+        "id": "q22",
+        "prompt": "Kerja bakti membersihkan lingkungan adalah contoh ...",
+        "options": [
+          "kesombongan",
+          "gotong royong",
+          "kecurangan",
+          "pemaksaan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Gotong royong mempererat persatuan."
+      },
+      {
+        "id": "q23",
+        "prompt": "Keputusan musyawarah sebaiknya bermanfaat untuk ...",
+        "options": [
+          "satu orang saja",
+          "diri sendiri saja",
+          "kepentingan bersama",
+          "kelompok tertentu saja"
+        ],
+        "answerIndex": 2,
+        "explanation": "Musyawarah mencari yang terbaik bagi semua."
+      },
+      {
+        "id": "q24",
+        "prompt": "Lagu daerah dan tarian daerah perlu ...",
+        "options": [
+          "diganti",
+          "dilarang",
+          "dilupakan",
+          "dilestarikan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Budaya daerah adalah warisan bangsa."
+      },
+      {
+        "id": "q25",
+        "prompt": "Mencintai produk dalam negeri menunjukkan sikap ...",
+        "options": [
+          "malas",
+          "boros",
+          "tidak peduli",
+          "cinta tanah air"
+        ],
+        "answerIndex": 3,
+        "explanation": "Membeli produk lokal membantu sesama anak bangsa."
+      },
+      {
+        "id": "q26",
+        "prompt": "Contoh musyawarah di sekolah adalah ...",
+        "options": [
+          "menyontek",
+          "bolos",
+          "memilih ketua kelas",
+          "memaksa teman"
+        ],
+        "answerIndex": 2,
+        "explanation": "Pemilihan ketua kelas dilakukan bersama."
+      },
+      {
+        "id": "q27",
+        "prompt": "Saat teman menyampaikan pendapat, kita ...",
+        "options": [
+          "memotong",
+          "mendengarkan sampai selesai",
+          "mengejek",
+          "pergi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Mendengarkan menghargai pembicara."
+      },
+      {
+        "id": "q28",
+        "prompt": "Musyawarah bertujuan ...",
+        "options": [
+          "mencapai keputusan bersama",
+          "menjatuhkan lawan",
+          "menang sendiri",
+          "membuat ribut"
+        ],
+        "answerIndex": 0,
+        "explanation": "Musyawarah mencari kesepakatan."
+      },
+      {
+        "id": "q29",
+        "prompt": "Indonesia terdiri atas banyak pulau dan suku, sehingga semboyan kita ...",
+        "options": [
+          "Bersatu Kita Teguh",
+          "Tut Wuri Handayani",
+          "Bhinneka Tunggal Ika",
+          "Maju Terus"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bhinneka Tunggal Ika berarti berbeda-beda tetapi tetap satu."
+      },
+      {
+        "id": "q30",
+        "prompt": "Kata kunci dalam sila keempat adalah ...",
+        "options": [
+          "persaingan",
+          "permusyawaratan",
+          "pemaksaan",
+          "perpecahan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sila keempat tentang kerakyatan dan permusyawaratan."
+      }
+    ]
+  },
+  {
+    "id": "pancasila-k6-hak-kewajiban",
+    "categoryId": "pancasila",
+    "title": "Hak dan kewajiban warga",
+    "grades": [
+      6
+    ],
+    "difficulty": 2,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Hak adalah ...",
+        "options": [
+          "sesuatu yang seharusnya kita terima",
+          "hadiah dari teman",
+          "sesuatu yang harus kita kerjakan",
+          "perintah guru"
+        ],
+        "answerIndex": 0,
+        "explanation": "Hak adalah sesuatu yang berhak kita dapatkan."
+      },
+      {
+        "id": "q2",
+        "prompt": "Kewajiban adalah ...",
+        "options": [
+          "hadiah",
+          "keinginan sendiri",
+          "sesuatu yang harus kita lakukan",
+          "sesuatu yang boleh ditinggalkan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kewajiban adalah tugas yang harus dilaksanakan."
+      },
+      {
+        "id": "q3",
+        "prompt": "Salah satu hak anak adalah ...",
+        "options": [
+          "mendapat pendidikan",
+          "tidak sekolah",
+          "memilih tidak makan",
+          "bekerja seharian"
+        ],
+        "answerIndex": 0,
+        "explanation": "Setiap anak berhak belajar di sekolah."
+      },
+      {
+        "id": "q4",
+        "prompt": "Kewajiban siswa di sekolah adalah ...",
+        "options": [
+          "datang sesuka hati",
+          "membolos",
+          "menaati tata tertib",
+          "mengganggu teman"
+        ],
+        "answerIndex": 2,
+        "explanation": "Taat tata tertib membuat sekolah tertib dan aman."
+      },
+      {
+        "id": "q5",
+        "prompt": "Kewajiban warga negara dewasa kepada negara adalah ...",
+        "options": [
+          "merusak fasilitas umum",
+          "membuang sampah sembarangan",
+          "tidak ikut aturan",
+          "membayar pajak"
+        ],
+        "answerIndex": 3,
+        "explanation": "Pajak dipakai untuk membangun jalan, sekolah, dan lainnya."
+      },
+      {
+        "id": "q6",
+        "prompt": "Hak dan kewajiban harus dijalankan secara ...",
+        "options": [
+          "hanya haknya saja",
+          "seimbang",
+          "berat sebelah",
+          "hanya kewajibannya saja"
+        ],
+        "answerIndex": 1,
+        "explanation": "Menerima hak harus diimbangi kewajiban."
+      },
+      {
+        "id": "q7",
+        "prompt": "Kewajiban anak di rumah adalah ...",
+        "options": [
+          "melawan orang tua",
+          "membantu orang tua sesuai kemampuan",
+          "menunggu disuruh terus",
+          "membiarkan rumah berantakan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Membantu pekerjaan rumah adalah wujud tanggung jawab."
+      },
+      {
+        "id": "q8",
+        "prompt": "Contoh menjalankan kewajiban warga adalah ...",
+        "options": [
+          "mencoret tembok",
+          "membuang sampah ke sungai",
+          "menebang pohon sembarangan",
+          "menjaga kebersihan lingkungan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Menjaga lingkungan adalah kewajiban semua warga."
+      },
+      {
+        "id": "q9",
+        "prompt": "Setiap warga berhak memeluk agama ...",
+        "options": [
+          "sesuai keyakinannya masing-masing",
+          "yang ditentukan tetangga",
+          "yang paling banyak pemeluknya",
+          "yang dipilihkan teman"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kebebasan beragama dijamin sesuai sila pertama."
+      },
+      {
+        "id": "q10",
+        "prompt": "Contoh mendahulukan kewajiban adalah ...",
+        "options": [
+          "bermain dulu lalu lupa PR",
+          "menyontek PR teman",
+          "mengerjakan PR dulu baru bermain",
+          "tidak mengerjakan PR"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tugas diselesaikan lebih dulu, setelah itu boleh bermain."
+      },
+      {
+        "id": "q11",
+        "prompt": "Hak anak untuk mendapat layanan kesehatan berarti anak ...",
+        "options": [
+          "tidak boleh sakit",
+          "harus bekerja",
+          "membayar sendiri",
+          "berhak berobat bila sakit"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kesehatan adalah hak setiap anak."
+      },
+      {
+        "id": "q12",
+        "prompt": "Anak berhak ... bersama teman.",
+        "options": [
+          "dihukum berat",
+          "bermain",
+          "bekerja sehari penuh",
+          "dilarang belajar"
+        ],
+        "answerIndex": 1,
+        "explanation": "Bermain adalah hak anak."
+      },
+      {
+        "id": "q13",
+        "prompt": "Kewajiban anak kepada orang tua adalah ...",
+        "options": [
+          "membentak",
+          "menghormati dan menaati nasihat yang baik",
+          "melawan",
+          "mengabaikan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Menghormati orang tua adalah kewajiban."
+      },
+      {
+        "id": "q14",
+        "prompt": "Kewajiban warga negara membela negara dapat dilakukan dengan ...",
+        "options": [
+          "merusak fasilitas",
+          "membuat kerusuhan",
+          "membolos",
+          "belajar dengan rajin dan menjaga persatuan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Bela negara bisa lewat hal yang baik di setiap bidang."
+      },
+      {
+        "id": "q15",
+        "prompt": "Warga negara yang sudah berusia 17 tahun berhak ...",
+        "options": [
+          "bekerja tanpa upah",
+          "diam di rumah",
+          "memilih dalam pemilihan umum",
+          "tidak sekolah"
+        ],
+        "answerIndex": 2,
+        "explanation": "Usia 17 tahun ke atas dapat memilih."
+      },
+      {
+        "id": "q16",
+        "prompt": "Menjaga fasilitas umum termasuk ...",
+        "options": [
+          "kewajiban warga",
+          "hak istimewa",
+          "larangan",
+          "pilihan saja"
+        ],
+        "answerIndex": 0,
+        "explanation": "Fasilitas umum milik bersama."
+      },
+      {
+        "id": "q17",
+        "prompt": "Menaati peraturan lalu lintas termasuk ...",
+        "options": [
+          "hak",
+          "kewajiban",
+          "hukuman",
+          "hadiah"
+        ],
+        "answerIndex": 1,
+        "explanation": "Aturan dibuat demi keselamatan bersama."
+      },
+      {
+        "id": "q18",
+        "prompt": "Setiap warga berhak menyampaikan pendapat dengan ...",
+        "options": [
+          "cara yang sopan dan bertanggung jawab",
+          "memaksa",
+          "merusak",
+          "memaki"
+        ],
+        "answerIndex": 0,
+        "explanation": "Hak berpendapat disertai tanggung jawab."
+      },
+      {
+        "id": "q19",
+        "prompt": "Menyuruh anak bekerja berat sehingga tidak bisa sekolah merupakan ...",
+        "options": [
+          "kewajiban anak",
+          "hal biasa",
+          "pelanggaran hak anak",
+          "hak orang tua"
+        ],
+        "answerIndex": 2,
+        "explanation": "Anak berhak belajar dan terlindungi."
+      },
+      {
+        "id": "q20",
+        "prompt": "Dasar hukum tertinggi di Indonesia adalah ...",
+        "options": [
+          "aturan RT",
+          "tata tertib kelas",
+          "peraturan sekolah",
+          "UUD 1945"
+        ],
+        "answerIndex": 3,
+        "explanation": "UUD 1945 adalah konstitusi negara."
+      },
+      {
+        "id": "q21",
+        "prompt": "Kewajiban warga di lingkungan RT antara lain ...",
+        "options": [
+          "membuang sampah sembarangan",
+          "mengganggu tetangga",
+          "merusak jalan",
+          "ikut kerja bakti"
+        ],
+        "answerIndex": 3,
+        "explanation": "Kerja bakti menjaga kebersihan bersama."
+      },
+      {
+        "id": "q22",
+        "prompt": "Setiap anak berhak mendapat nama dan ...",
+        "options": [
+          "kewarganegaraan",
+          "hukuman",
+          "uang",
+          "pekerjaan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Anak berhak atas identitas."
+      },
+      {
+        "id": "q23",
+        "prompt": "Setiap anak berhak dilindungi dari ...",
+        "options": [
+          "kasih sayang",
+          "permainan",
+          "kekerasan",
+          "pendidikan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Anak harus aman dari kekerasan."
+      },
+      {
+        "id": "q24",
+        "prompt": "Orang yang tidak menjalankan kewajiban dapat ...",
+        "options": [
+          "disayang semua orang",
+          "merugikan orang lain",
+          "mendapat penghargaan",
+          "tidak apa-apa"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kewajiban yang diabaikan merugikan orang lain."
+      },
+      {
+        "id": "q25",
+        "prompt": "Contoh tanggung jawab siswa adalah ...",
+        "options": [
+          "membuang sampah sembarangan",
+          "mengerjakan tugas tepat waktu",
+          "bolos",
+          "menyontek"
+        ],
+        "answerIndex": 1,
+        "explanation": "Tanggung jawab berarti menyelesaikan tugas sendiri."
+      },
+      {
+        "id": "q26",
+        "prompt": "Hak dan kewajiban ada pada ...",
+        "options": [
+          "orang dewasa saja",
+          "orang kaya saja",
+          "pejabat saja",
+          "setiap warga negara"
+        ],
+        "answerIndex": 3,
+        "explanation": "Semua warga memiliki hak dan kewajiban."
+      },
+      {
+        "id": "q27",
+        "prompt": "Menghormati hak orang lain termasuk ...",
+        "options": [
+          "hadiah",
+          "hukuman",
+          "kewajiban",
+          "pilihan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Kita wajib menghargai hak orang lain."
+      },
+      {
+        "id": "q28",
+        "prompt": "Sebelum menuntut hak, kita sebaiknya ...",
+        "options": [
+          "menjalankan kewajiban lebih dulu",
+          "marah-marah",
+          "menyalahkan orang lain",
+          "menunda semua kewajiban"
+        ],
+        "answerIndex": 0,
+        "explanation": "Hak dan kewajiban harus seimbang."
+      },
+      {
+        "id": "q29",
+        "prompt": "Belajar dengan tekun di sekolah adalah ...",
+        "options": [
+          "hukuman",
+          "kewajiban sekaligus hak",
+          "beban yang tidak perlu",
+          "larangan"
+        ],
+        "answerIndex": 1,
+        "explanation": "Belajar adalah hak dan kewajiban siswa."
+      },
+      {
+        "id": "q30",
+        "prompt": "Menggunakan listrik dan air dengan hemat adalah wujud ...",
+        "options": [
+          "tanggung jawab warga",
+          "pemborosan",
+          "hak istimewa",
+          "kesombongan"
+        ],
+        "answerIndex": 0,
+        "explanation": "Menghemat sumber daya adalah kewajiban bersama."
+      }
+    ]
+  },
+  {
+    "id": "inggris-k4-hewan-tubuh",
+    "categoryId": "bahasa-inggris",
+    "title": "Animals and body parts",
+    "grades": [
+      4,
+      5
+    ],
+    "difficulty": 1,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "\"Cat\" artinya ...",
+        "options": [
+          "ikan",
+          "kucing",
+          "burung",
+          "anjing"
+        ],
+        "answerIndex": 1,
+        "explanation": "Cat = kucing."
+      },
+      {
+        "id": "q2",
+        "prompt": "\"Dog\" artinya ...",
+        "options": [
+          "anjing",
+          "sapi",
+          "kelinci",
+          "kucing"
+        ],
+        "answerIndex": 0,
+        "explanation": "Dog = anjing."
+      },
+      {
+        "id": "q3",
+        "prompt": "\"Bird\" artinya ...",
+        "options": [
+          "ayam",
+          "ikan",
+          "burung",
+          "bebek"
+        ],
+        "answerIndex": 2,
+        "explanation": "Bird = burung."
+      },
+      {
+        "id": "q4",
+        "prompt": "\"Fish\" artinya ...",
+        "options": [
+          "kuda",
+          "kucing",
+          "burung",
+          "ikan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Fish = ikan."
+      },
+      {
+        "id": "q5",
+        "prompt": "\"Eye\" artinya ...",
+        "options": [
+          "hidung",
+          "telinga",
+          "mata",
+          "mulut"
+        ],
+        "answerIndex": 2,
+        "explanation": "Eye = mata."
+      },
+      {
+        "id": "q6",
+        "prompt": "\"Hand\" artinya ...",
+        "options": [
+          "perut",
+          "kepala",
+          "kaki",
+          "tangan"
+        ],
+        "answerIndex": 3,
+        "explanation": "Hand = tangan."
+      },
+      {
+        "id": "q7",
+        "prompt": "\"Ear\" artinya ...",
+        "options": [
+          "telinga",
+          "hidung",
+          "rambut",
+          "mata"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ear = telinga."
+      },
+      {
+        "id": "q8",
+        "prompt": "Bahasa Inggris dari \"kepala\" adalah ...",
+        "options": [
+          "hair",
+          "head",
+          "heart",
+          "hand"
+        ],
+        "answerIndex": 1,
+        "explanation": "Kepala = head."
+      },
+      {
+        "id": "q9",
+        "prompt": "We see with our ...",
+        "options": [
+          "eyes",
+          "nose",
+          "hands",
+          "ears"
+        ],
+        "answerIndex": 0,
+        "explanation": "Kita melihat dengan mata (eyes)."
+      },
+      {
+        "id": "q10",
+        "prompt": "\"Elephant\" artinya ...",
+        "options": [
+          "jerapah",
+          "harimau",
+          "gajah",
+          "kuda"
+        ],
+        "answerIndex": 2,
+        "explanation": "Elephant = gajah."
+      },
+      {
+        "id": "q11",
+        "prompt": "\"Cow\" artinya ...",
+        "options": [
+          "kerbau",
+          "kuda",
+          "kambing",
+          "sapi"
+        ],
+        "answerIndex": 3,
+        "explanation": "Cow = sapi."
+      },
+      {
+        "id": "q12",
+        "prompt": "\"Horse\" artinya ...",
+        "options": [
+          "keledai",
+          "kuda",
+          "kambing",
+          "sapi"
+        ],
+        "answerIndex": 1,
+        "explanation": "Horse = kuda."
+      },
+      {
+        "id": "q13",
+        "prompt": "\"Duck\" artinya ...",
+        "options": [
+          "burung",
+          "angsa",
+          "ayam",
+          "bebek"
+        ],
+        "answerIndex": 3,
+        "explanation": "Duck = bebek."
+      },
+      {
+        "id": "q14",
+        "prompt": "\"Chicken\" artinya ...",
+        "options": [
+          "bebek",
+          "ayam",
+          "ikan",
+          "burung"
+        ],
+        "answerIndex": 1,
+        "explanation": "Chicken = ayam."
+      },
+      {
+        "id": "q15",
+        "prompt": "\"Goat\" artinya ...",
+        "options": [
+          "domba",
+          "kuda",
+          "kambing",
+          "sapi"
+        ],
+        "answerIndex": 2,
+        "explanation": "Goat = kambing."
+      },
+      {
+        "id": "q16",
+        "prompt": "\"Rabbit\" artinya ...",
+        "options": [
+          "kelinci",
+          "kucing",
+          "kancil",
+          "tikus"
+        ],
+        "answerIndex": 0,
+        "explanation": "Rabbit = kelinci."
+      },
+      {
+        "id": "q17",
+        "prompt": "\"Monkey\" artinya ...",
+        "options": [
+          "beruang",
+          "monyet",
+          "kera besar",
+          "kucing"
+        ],
+        "answerIndex": 1,
+        "explanation": "Monkey = monyet."
+      },
+      {
+        "id": "q18",
+        "prompt": "\"Lion\" artinya ...",
+        "options": [
+          "singa",
+          "harimau",
+          "serigala",
+          "macan tutul"
+        ],
+        "answerIndex": 0,
+        "explanation": "Lion = singa."
+      },
+      {
+        "id": "q19",
+        "prompt": "\"Tiger\" artinya ...",
+        "options": [
+          "singa",
+          "kucing",
+          "kuda",
+          "harimau"
+        ],
+        "answerIndex": 3,
+        "explanation": "Tiger = harimau."
+      },
+      {
+        "id": "q20",
+        "prompt": "\"Snake\" artinya ...",
+        "options": [
+          "ikan",
+          "cacing",
+          "ular",
+          "kadal"
+        ],
+        "answerIndex": 2,
+        "explanation": "Snake = ular."
+      },
+      {
+        "id": "q21",
+        "prompt": "\"Nose\" artinya ...",
+        "options": [
+          "mata",
+          "hidung",
+          "mulut",
+          "telinga"
+        ],
+        "answerIndex": 1,
+        "explanation": "Nose = hidung."
+      },
+      {
+        "id": "q22",
+        "prompt": "\"Mouth\" artinya ...",
+        "options": [
+          "mata",
+          "telinga",
+          "hidung",
+          "mulut"
+        ],
+        "answerIndex": 3,
+        "explanation": "Mouth = mulut."
+      },
+      {
+        "id": "q23",
+        "prompt": "\"Leg\" artinya ...",
+        "options": [
+          "kaki",
+          "tangan",
+          "perut",
+          "kepala"
+        ],
+        "answerIndex": 0,
+        "explanation": "Leg = kaki."
+      },
+      {
+        "id": "q24",
+        "prompt": "\"Finger\" artinya ...",
+        "options": [
+          "kaki",
+          "rambut",
+          "jari",
+          "lengan"
+        ],
+        "answerIndex": 2,
+        "explanation": "Finger = jari."
+      },
+      {
+        "id": "q25",
+        "prompt": "\"Hair\" artinya ...",
+        "options": [
+          "bulu mata",
+          "kepala",
+          "rambut",
+          "kuku"
+        ],
+        "answerIndex": 2,
+        "explanation": "Hair = rambut."
+      },
+      {
+        "id": "q26",
+        "prompt": "\"Teeth\" artinya ...",
+        "options": [
+          "bibir",
+          "lidah",
+          "pipi",
+          "gigi"
+        ],
+        "answerIndex": 3,
+        "explanation": "Teeth = gigi."
+      },
+      {
+        "id": "q27",
+        "prompt": "\"Arm\" artinya ...",
+        "options": [
+          "kaki",
+          "lengan",
+          "jari",
+          "leher"
+        ],
+        "answerIndex": 1,
+        "explanation": "Arm = lengan."
+      },
+      {
+        "id": "q28",
+        "prompt": "\"Stomach\" artinya ...",
+        "options": [
+          "perut",
+          "bahu",
+          "dada",
+          "punggung"
+        ],
+        "answerIndex": 0,
+        "explanation": "Stomach = perut."
+      },
+      {
+        "id": "q29",
+        "prompt": "\"Knee\" artinya ...",
+        "options": [
+          "pergelangan",
+          "bahu",
+          "siku",
+          "lutut"
+        ],
+        "answerIndex": 3,
+        "explanation": "Knee = lutut."
+      },
+      {
+        "id": "q30",
+        "prompt": "Kita mendengar dengan ...",
+        "options": [
+          "ears",
+          "nose",
+          "eyes",
+          "hands"
+        ],
+        "answerIndex": 0,
+        "explanation": "Ears = telinga."
+      }
+    ]
+  },
+  {
+    "id": "inggris-k5-hari-bulan",
+    "categoryId": "bahasa-inggris",
+    "title": "Days and months",
+    "grades": [
+      5,
+      6
+    ],
+    "difficulty": 2,
+    "version": 2,
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "\"Monday\" artinya hari ...",
+        "options": [
+          "Minggu",
+          "Selasa",
+          "Rabu",
+          "Senin"
+        ],
+        "answerIndex": 3,
+        "explanation": "Monday = Senin."
+      },
+      {
+        "id": "q2",
+        "prompt": "Bahasa Inggris dari hari Sabtu adalah ...",
+        "options": [
+          "Tuesday",
+          "Saturday",
+          "Sunday",
+          "Thursday"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sabtu = Saturday."
+      },
+      {
+        "id": "q3",
+        "prompt": "\"Sunday\" artinya hari ...",
+        "options": [
+          "Sabtu",
+          "Minggu",
+          "Jumat",
+          "Senin"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sunday = Minggu."
+      },
+      {
+        "id": "q4",
+        "prompt": "\"Wednesday\" artinya hari ...",
+        "options": [
+          "Selasa",
+          "Kamis",
+          "Jumat",
+          "Rabu"
+        ],
+        "answerIndex": 3,
+        "explanation": "Wednesday = Rabu."
+      },
+      {
+        "id": "q5",
+        "prompt": "Banyak hari dalam satu minggu: ...",
+        "options": [
+          "five",
+          "eight",
+          "seven",
+          "six"
+        ],
+        "answerIndex": 2,
+        "explanation": "Satu minggu ada 7 hari (seven days)."
+      },
+      {
+        "id": "q6",
+        "prompt": "Bulan pertama dalam setahun dalam bahasa Inggris adalah ...",
+        "options": [
+          "January",
+          "March",
+          "February",
+          "June"
+        ],
+        "answerIndex": 0,
+        "explanation": "Januari = January."
+      },
+      {
+        "id": "q7",
+        "prompt": "Hari setelah Tuesday adalah ...",
+        "options": [
+          "Friday",
+          "Wednesday",
+          "Monday",
+          "Thursday"
+        ],
+        "answerIndex": 1,
+        "explanation": "Urutan: Monday, Tuesday, Wednesday."
+      },
+      {
+        "id": "q8",
+        "prompt": "Bahasa Inggris dari bulan Agustus adalah ...",
+        "options": [
+          "August",
+          "October",
+          "July",
+          "April"
+        ],
+        "answerIndex": 0,
+        "explanation": "Agustus = August."
+      },
+      {
+        "id": "q9",
+        "prompt": "Hari sebelum Friday adalah ...",
+        "options": [
+          "Wednesday",
+          "Saturday",
+          "Sunday",
+          "Thursday"
+        ],
+        "answerIndex": 3,
+        "explanation": "Thursday datang sebelum Friday."
+      },
+      {
+        "id": "q10",
+        "prompt": "\"December\" adalah bulan ke- ...",
+        "options": [
+          "10",
+          "11",
+          "12",
+          "9"
+        ],
+        "answerIndex": 2,
+        "explanation": "Desember adalah bulan terakhir, ke-12."
+      },
+      {
+        "id": "q11",
+        "prompt": "\"Tuesday\" artinya hari ...",
+        "options": [
+          "Kamis",
+          "Rabu",
+          "Selasa",
+          "Senin"
+        ],
+        "answerIndex": 2,
+        "explanation": "Tuesday = Selasa."
+      },
+      {
+        "id": "q12",
+        "prompt": "\"Thursday\" artinya hari ...",
+        "options": [
+          "Kamis",
+          "Selasa",
+          "Jumat",
+          "Rabu"
+        ],
+        "answerIndex": 0,
+        "explanation": "Thursday = Kamis."
+      },
+      {
+        "id": "q13",
+        "prompt": "\"Friday\" artinya hari ...",
+        "options": [
+          "Kamis",
+          "Sabtu",
+          "Minggu",
+          "Jumat"
+        ],
+        "answerIndex": 3,
+        "explanation": "Friday = Jumat."
+      },
+      {
+        "id": "q14",
+        "prompt": "Hari setelah Saturday adalah ...",
+        "options": [
+          "Sunday",
+          "Monday",
+          "Friday",
+          "Thursday"
+        ],
+        "answerIndex": 0,
+        "explanation": "Setelah Saturday adalah Sunday."
+      },
+      {
+        "id": "q15",
+        "prompt": "Hari setelah Monday adalah ...",
+        "options": [
+          "Sunday",
+          "Friday",
+          "Tuesday",
+          "Wednesday"
+        ],
+        "answerIndex": 2,
+        "explanation": "Setelah Monday adalah Tuesday."
+      },
+      {
+        "id": "q16",
+        "prompt": "Akhir pekan (weekend) terdiri atas hari ...",
+        "options": [
+          "Friday dan Monday",
+          "Saturday dan Sunday",
+          "Thursday dan Friday",
+          "Monday dan Tuesday"
+        ],
+        "answerIndex": 1,
+        "explanation": "Weekend adalah Sabtu dan Minggu."
+      },
+      {
+        "id": "q17",
+        "prompt": "\"February\" artinya bulan ...",
+        "options": [
+          "April",
+          "Maret",
+          "Februari",
+          "Januari"
+        ],
+        "answerIndex": 2,
+        "explanation": "February = Februari."
+      },
+      {
+        "id": "q18",
+        "prompt": "\"March\" artinya bulan ...",
+        "options": [
+          "April",
+          "Maret",
+          "Mei",
+          "Juni"
+        ],
+        "answerIndex": 1,
+        "explanation": "March = Maret."
+      },
+      {
+        "id": "q19",
+        "prompt": "\"May\" artinya bulan ...",
+        "options": [
+          "Juli",
+          "Juni",
+          "Maret",
+          "Mei"
+        ],
+        "answerIndex": 3,
+        "explanation": "May = Mei."
+      },
+      {
+        "id": "q20",
+        "prompt": "\"June\" artinya bulan ...",
+        "options": [
+          "Juni",
+          "Januari",
+          "Juli",
+          "Mei"
+        ],
+        "answerIndex": 0,
+        "explanation": "June = Juni."
+      },
+      {
+        "id": "q21",
+        "prompt": "\"July\" artinya bulan ...",
+        "options": [
+          "Juli",
+          "Agustus",
+          "Mei",
+          "Juni"
+        ],
+        "answerIndex": 0,
+        "explanation": "July = Juli."
+      },
+      {
+        "id": "q22",
+        "prompt": "\"October\" artinya bulan ...",
+        "options": [
+          "November",
+          "September",
+          "Oktober",
+          "Agustus"
+        ],
+        "answerIndex": 2,
+        "explanation": "October = Oktober."
+      },
+      {
+        "id": "q23",
+        "prompt": "Bulan setelah March adalah ...",
+        "options": [
+          "February",
+          "May",
+          "June",
+          "April"
+        ],
+        "answerIndex": 3,
+        "explanation": "Setelah March adalah April."
+      },
+      {
+        "id": "q24",
+        "prompt": "Bulan sebelum June adalah ...",
+        "options": [
+          "August",
+          "May",
+          "April",
+          "July"
+        ],
+        "answerIndex": 1,
+        "explanation": "Sebelum June adalah May."
+      },
+      {
+        "id": "q25",
+        "prompt": "Banyak bulan dalam satu tahun adalah ...",
+        "options": [
+          "ten",
+          "eleven",
+          "thirteen",
+          "twelve"
+        ],
+        "answerIndex": 3,
+        "explanation": "Satu tahun ada 12 bulan (twelve)."
+      },
+      {
+        "id": "q26",
+        "prompt": "Bahasa Inggris dari bulan September adalah ...",
+        "options": [
+          "November",
+          "September",
+          "October",
+          "December"
+        ],
+        "answerIndex": 1,
+        "explanation": "September = September."
+      },
+      {
+        "id": "q27",
+        "prompt": "Jika kemarin Monday, maka hari ini adalah ...",
+        "options": [
+          "Sunday",
+          "Friday",
+          "Tuesday",
+          "Wednesday"
+        ],
+        "answerIndex": 2,
+        "explanation": "Sehari setelah Monday adalah Tuesday."
+      },
+      {
+        "id": "q28",
+        "prompt": "Bulan ketiga dalam setahun adalah ...",
+        "options": [
+          "March",
+          "May",
+          "April",
+          "January"
+        ],
+        "answerIndex": 0,
+        "explanation": "January, February, March."
+      },
+      {
+        "id": "q29",
+        "prompt": "Hari pertama sekolah biasanya hari ...",
+        "options": [
+          "Friday",
+          "Saturday",
+          "Sunday",
+          "Monday"
+        ],
+        "answerIndex": 3,
+        "explanation": "Monday adalah hari Senin."
+      },
+      {
+        "id": "q30",
+        "prompt": "Bahasa Inggris dari \"November\" adalah bulan ...",
+        "options": [
+          "November",
+          "Desember",
+          "Oktober",
+          "September"
+        ],
+        "answerIndex": 0,
+        "explanation": "November = November."
+      }
+    ]
+  }
 ]
