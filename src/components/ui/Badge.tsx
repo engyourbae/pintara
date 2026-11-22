@@ -20,10 +20,10 @@ export function Badge({ tone = 'hijau', children }: { tone?: Tone; children: Rea
 }
 
 /** Wajib dipasang pada setiap data dummy agar tidak disangka data nyata. */
-export function SampleBadge() {
+export function SampleBadge({ label = 'DATA CONTOH' }: { label?: string }) {
   return (
     <span className="inline-flex items-center rounded-full border-2 border-dashed border-jingga-600 px-3 py-0.5 text-xs font-bold tracking-wide text-[#8A4410]">
-      DATA CONTOH
+      {label}
     </span>
   );
 }
