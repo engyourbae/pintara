@@ -10,7 +10,7 @@
         5
       ],
       "difficulty": 1,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -371,6 +371,246 @@
           ],
           "answerIndex": 0,
           "explanation": "Matahari adalah bintang terdekat dengan Bumi."
+        },
+        {
+          "id": "q31",
+          "prompt": "Planet yang berada di antara Bumi dan Jupiter adalah ...",
+          "options": [
+            "Venus",
+            "Saturnus",
+            "Merkurius",
+            "Mars"
+          ],
+          "answerIndex": 3,
+          "explanation": "Urutan: Bumi, Mars, Jupiter."
+        },
+        {
+          "id": "q32",
+          "prompt": "Planet yang berada di antara Jupiter dan Uranus adalah ...",
+          "options": [
+            "Saturnus",
+            "Mars",
+            "Neptunus",
+            "Venus"
+          ],
+          "answerIndex": 0,
+          "explanation": "Urutan: Jupiter, Saturnus, Uranus."
+        },
+        {
+          "id": "q33",
+          "prompt": "Planet tempat tinggal manusia adalah ...",
+          "options": [
+            "Bumi",
+            "Mars",
+            "Venus",
+            "Jupiter"
+          ],
+          "answerIndex": 0,
+          "explanation": "Manusia hidup di Bumi."
+        },
+        {
+          "id": "q34",
+          "prompt": "Yang termasuk planet batuan adalah ...",
+          "options": [
+            "Jupiter",
+            "Saturnus",
+            "Neptunus",
+            "Mars"
+          ],
+          "answerIndex": 3,
+          "explanation": "Merkurius, Venus, Bumi, dan Mars adalah planet batuan."
+        },
+        {
+          "id": "q35",
+          "prompt": "Yang termasuk planet gas raksasa adalah ...",
+          "options": [
+            "Jupiter",
+            "Merkurius",
+            "Venus",
+            "Mars"
+          ],
+          "answerIndex": 0,
+          "explanation": "Jupiter dan Saturnus adalah gas raksasa."
+        },
+        {
+          "id": "q36",
+          "prompt": "Bentuk Bulan yang berubah-ubah setiap malam disebut ...",
+          "options": [
+            "gerhana",
+            "rotasi",
+            "fase Bulan",
+            "revolusi"
+          ],
+          "answerIndex": 2,
+          "explanation": "Bulan tampak berbeda menurut posisinya."
+        },
+        {
+          "id": "q37",
+          "prompt": "Saat purnama, Bulan tampak ...",
+          "options": [
+            "setengah",
+            "bulat penuh",
+            "sabit tipis",
+            "tidak tampak"
+          ],
+          "answerIndex": 1,
+          "explanation": "Purnama berarti Bulan bulat penuh."
+        },
+        {
+          "id": "q38",
+          "prompt": "Bulan mengitari Bumi disebut ...",
+          "options": [
+            "revolusi Bulan",
+            "rotasi Bumi",
+            "gerhana",
+            "pergantian musim"
+          ],
+          "answerIndex": 0,
+          "explanation": "Bulan beredar mengelilingi Bumi."
+        },
+        {
+          "id": "q39",
+          "prompt": "Gerhana Matahari terjadi saat Matahari tertutup oleh ...",
+          "options": [
+            "Bumi",
+            "Bulan",
+            "Venus",
+            "Jupiter"
+          ],
+          "answerIndex": 1,
+          "explanation": "Bulan berada di antara Matahari dan Bumi."
+        },
+        {
+          "id": "q40",
+          "prompt": "Bintang yang paling terang di siang hari adalah ...",
+          "options": [
+            "Sirius",
+            "Polaris",
+            "Matahari",
+            "Antares"
+          ],
+          "answerIndex": 2,
+          "explanation": "Matahari adalah bintang terdekat."
+        },
+        {
+          "id": "q41",
+          "prompt": "Rasi bintang adalah ...",
+          "options": [
+            "satu bintang besar",
+            "planet kecil",
+            "kumpulan bintang yang membentuk pola",
+            "awan gelap"
+          ],
+          "answerIndex": 2,
+          "explanation": "Bintang-bintang tampak membentuk gambar."
+        },
+        {
+          "id": "q42",
+          "prompt": "Jarak Bumi ke Matahari sekitar ...",
+          "options": [
+            "150 km",
+            "1.500 km",
+            "150 ribu km",
+            "150 juta km"
+          ],
+          "answerIndex": 3,
+          "explanation": "Jaraknya sangat jauh."
+        },
+        {
+          "id": "q43",
+          "prompt": "Cahaya Matahari sampai ke Bumi dalam waktu sekitar ...",
+          "options": [
+            "8 detik",
+            "8 jam",
+            "8 hari",
+            "8 menit"
+          ],
+          "answerIndex": 3,
+          "explanation": "Cahaya sangat cepat tetapi jaraknya jauh."
+        },
+        {
+          "id": "q44",
+          "prompt": "Lapisan udara yang menyelimuti Bumi disebut ...",
+          "options": [
+            "litosfer",
+            "atmosfer",
+            "hidrosfer",
+            "biosfer"
+          ],
+          "answerIndex": 1,
+          "explanation": "Atmosfer adalah selimut udara."
+        },
+        {
+          "id": "q45",
+          "prompt": "Atmosfer bagi Bumi berguna untuk ...",
+          "options": [
+            "membuat gerhana",
+            "menarik Bulan",
+            "menghentikan rotasi",
+            "melindungi dari panas berlebih dan benda angkasa"
+          ],
+          "answerIndex": 3,
+          "explanation": "Atmosfer melindungi Bumi."
+        },
+        {
+          "id": "q46",
+          "prompt": "Sumbu Bumi miring sehingga ...",
+          "options": [
+            "terjadi perbedaan musim",
+            "Bumi berhenti berputar",
+            "siang berlangsung terus",
+            "Bulan menghilang"
+          ],
+          "answerIndex": 0,
+          "explanation": "Kemiringan sumbu memengaruhi musim."
+        },
+        {
+          "id": "q47",
+          "prompt": "Bentuk Bumi adalah ...",
+          "options": [
+            "datar",
+            "bulat seperti bola",
+            "kubus",
+            "segitiga"
+          ],
+          "answerIndex": 1,
+          "explanation": "Bumi bulat dan agak pepat."
+        },
+        {
+          "id": "q48",
+          "prompt": "Satelit buatan dipakai untuk ...",
+          "options": [
+            "membuat siang",
+            "komunikasi dan prakiraan cuaca",
+            "menarik ombak",
+            "menumbuhkan tanaman"
+          ],
+          "answerIndex": 1,
+          "explanation": "Satelit membantu komunikasi dan cuaca."
+        },
+        {
+          "id": "q49",
+          "prompt": "Orang yang bepergian ke luar angkasa disebut ...",
+          "options": [
+            "nelayan",
+            "pelaut",
+            "astronaut",
+            "penyelam"
+          ],
+          "answerIndex": 2,
+          "explanation": "Astronaut bertugas di luar angkasa."
+        },
+        {
+          "id": "q50",
+          "prompt": "Matahari memberikan ... bagi kehidupan di Bumi.",
+          "options": [
+            "air laut",
+            "angin topan",
+            "cahaya dan panas",
+            "gempa"
+          ],
+          "answerIndex": 2,
+          "explanation": "Cahaya dan panas Matahari penting bagi makhluk hidup."
         }
       ]
     },
@@ -383,7 +623,7 @@
         4
       ],
       "difficulty": 1,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -744,6 +984,246 @@
           ],
           "answerIndex": 0,
           "explanation": "Habitat yang terjaga membuat hewan langka dapat hidup dan berkembang."
+        },
+        {
+          "id": "q31",
+          "prompt": "Kelompok hewan berkulit sisik kering seperti ular dan kadal adalah ...",
+          "options": [
+            "reptil",
+            "amfibi",
+            "mamalia",
+            "unggas"
+          ],
+          "answerIndex": 0,
+          "explanation": "Ular dan kadal adalah reptil."
+        },
+        {
+          "id": "q32",
+          "prompt": "Contoh unggas adalah ...",
+          "options": [
+            "kucing",
+            "bebek",
+            "katak",
+            "ikan"
+          ],
+          "answerIndex": 1,
+          "explanation": "Unggas adalah hewan berbulu dan bersayap."
+        },
+        {
+          "id": "q33",
+          "prompt": "Paus bernapas dengan ...",
+          "options": [
+            "paru-paru",
+            "insang",
+            "trakea",
+            "kulit"
+          ],
+          "answerIndex": 0,
+          "explanation": "Paus mamalia yang bernapas dengan paru-paru."
+        },
+        {
+          "id": "q34",
+          "prompt": "Katak muda yang hidup di air disebut ...",
+          "options": [
+            "ulat",
+            "nimfa",
+            "kepompong",
+            "berudu"
+          ],
+          "answerIndex": 3,
+          "explanation": "Berudu berubah menjadi katak."
+        },
+        {
+          "id": "q35",
+          "prompt": "Daur hidup katak yang benar adalah ...",
+          "options": [
+            "telur, ulat, kepompong, katak",
+            "telur, kepompong, berudu, katak",
+            "berudu, telur, katak, ulat",
+            "telur, berudu, katak muda, katak dewasa"
+          ],
+          "answerIndex": 3,
+          "explanation": "Katak mengalami metamorfosis."
+        },
+        {
+          "id": "q36",
+          "prompt": "Kecoa mengalami metamorfosis ...",
+          "options": [
+            "sempurna",
+            "tidak ada",
+            "dua kali",
+            "tidak sempurna"
+          ],
+          "answerIndex": 3,
+          "explanation": "Kecoa tidak melewati tahap kepompong."
+        },
+        {
+          "id": "q37",
+          "prompt": "Belalang mengalami metamorfosis tidak sempurna. Tahap setelah telur adalah ...",
+          "options": [
+            "kepompong",
+            "nimfa",
+            "ulat",
+            "berudu"
+          ],
+          "answerIndex": 1,
+          "explanation": "Nimfa mirip belalang dewasa tetapi kecil."
+        },
+        {
+          "id": "q38",
+          "prompt": "Hewan yang memiliki tulang belakang disebut ...",
+          "options": [
+            "invertebrata",
+            "herbivora",
+            "vertebrata",
+            "nokturnal"
+          ],
+          "answerIndex": 2,
+          "explanation": "Vertebrata bertulang belakang."
+        },
+        {
+          "id": "q39",
+          "prompt": "Contoh hewan tanpa tulang belakang adalah ...",
+          "options": [
+            "ayam",
+            "cacing",
+            "kucing",
+            "ikan"
+          ],
+          "answerIndex": 1,
+          "explanation": "Cacing tidak bertulang belakang."
+        },
+        {
+          "id": "q40",
+          "prompt": "Tumbuhan yang hidup di gurun dan menyimpan air adalah ...",
+          "options": [
+            "teratai",
+            "kaktus",
+            "padi",
+            "bakau"
+          ],
+          "answerIndex": 1,
+          "explanation": "Kaktus menyimpan air di batangnya."
+        },
+        {
+          "id": "q41",
+          "prompt": "Teratai hidup di ...",
+          "options": [
+            "gurun",
+            "kutub",
+            "puncak gunung",
+            "air"
+          ],
+          "answerIndex": 3,
+          "explanation": "Teratai tumbuh di kolam."
+        },
+        {
+          "id": "q42",
+          "prompt": "Tumbuhan bakau hidup di daerah ...",
+          "options": [
+            "pantai berlumpur",
+            "gurun",
+            "kutub",
+            "puncak gunung"
+          ],
+          "answerIndex": 0,
+          "explanation": "Bakau tumbuh di pantai."
+        },
+        {
+          "id": "q43",
+          "prompt": "Tumbuhan yang menumpang dan mengambil makanan dari pohon lain adalah ...",
+          "options": [
+            "mangga",
+            "padi",
+            "benalu",
+            "bayam"
+          ],
+          "answerIndex": 2,
+          "explanation": "Benalu adalah tumbuhan parasit."
+        },
+        {
+          "id": "q44",
+          "prompt": "Jamur berperan sebagai ...",
+          "options": [
+            "pengurai",
+            "produsen",
+            "pemangsa",
+            "penyerbuk"
+          ],
+          "answerIndex": 0,
+          "explanation": "Jamur menguraikan sisa makhluk hidup."
+        },
+        {
+          "id": "q45",
+          "prompt": "Produsen dalam rantai makanan adalah ...",
+          "options": [
+            "singa",
+            "elang",
+            "pengurai",
+            "tumbuhan hijau"
+          ],
+          "answerIndex": 3,
+          "explanation": "Tumbuhan hijau membuat makanan sendiri."
+        },
+        {
+          "id": "q46",
+          "prompt": "Konsumen tingkat I adalah ...",
+          "options": [
+            "pemakan daging",
+            "pengurai",
+            "pemakan tumbuhan",
+            "produsen"
+          ],
+          "answerIndex": 2,
+          "explanation": "Herbivora memakan produsen."
+        },
+        {
+          "id": "q47",
+          "prompt": "Bunglon mengubah warna kulit untuk ...",
+          "options": [
+            "menyapa teman",
+            "menyamarkan diri dari musuh",
+            "mencari air",
+            "tidur"
+          ],
+          "answerIndex": 1,
+          "explanation": "Penyamaran melindungi bunglon."
+        },
+        {
+          "id": "q48",
+          "prompt": "Landak melindungi diri dengan ...",
+          "options": [
+            "cangkang",
+            "sayap",
+            "duri",
+            "racun"
+          ],
+          "answerIndex": 2,
+          "explanation": "Duri melindungi landak."
+        },
+        {
+          "id": "q49",
+          "prompt": "Kura-kura melindungi diri dengan ...",
+          "options": [
+            "cangkang",
+            "duri",
+            "sayap",
+            "bau"
+          ],
+          "answerIndex": 0,
+          "explanation": "Cangkang melindungi kura-kura."
+        },
+        {
+          "id": "q50",
+          "prompt": "Hewan yang hidup berkoloni dan memiliki ratu adalah ...",
+          "options": [
+            "kucing",
+            "harimau",
+            "lebah",
+            "gajah"
+          ],
+          "answerIndex": 2,
+          "explanation": "Lebah hidup dalam koloni."
         }
       ]
     },
@@ -756,7 +1236,7 @@
         4
       ],
       "difficulty": 1,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -1117,6 +1597,246 @@
           ],
           "answerIndex": 1,
           "explanation": "Apa yang sudah diunggah sulit ditarik kembali."
+        },
+        {
+          "id": "q31",
+          "prompt": "Saat bermain gim daring, sebaiknya kamu memakai nama ...",
+          "options": [
+            "lengkap",
+            "samaran tanpa data pribadi",
+            "alamat rumah",
+            "nomor telepon"
+          ],
+          "answerIndex": 1,
+          "explanation": "Jangan memakai data pribadi sebagai nama."
+        },
+        {
+          "id": "q32",
+          "prompt": "Jika ada yang mengancam di internet, kamu sebaiknya ...",
+          "options": [
+            "membalas ancamannya",
+            "memberi tahu orang dewasa terpercaya",
+            "merahasiakannya",
+            "membalas dendam"
+          ],
+          "answerIndex": 1,
+          "explanation": "Orang dewasa dapat membantumu."
+        },
+        {
+          "id": "q33",
+          "prompt": "Tautan dari sumber tak dikenal sebaiknya ...",
+          "options": [
+            "langsung dibuka",
+            "disebarkan",
+            "tidak dibuka",
+            "disimpan"
+          ],
+          "answerIndex": 2,
+          "explanation": "Tautan asing bisa berbahaya."
+        },
+        {
+          "id": "q34",
+          "prompt": "Saat membuat akun baru di aplikasi, anak sebaiknya ...",
+          "options": [
+            "membuat diam-diam",
+            "memakai data teman",
+            "memakai data palsu",
+            "didampingi orang tua"
+          ],
+          "answerIndex": 3,
+          "explanation": "Orang tua membantu mengatur akun yang aman."
+        },
+        {
+          "id": "q35",
+          "prompt": "Foto liburan dengan lokasi yang jelas yang diunggah umum dapat ...",
+          "options": [
+            "membuat lokasi aman",
+            "menghapus data",
+            "mempercepat internet",
+            "membuat orang asing tahu keberadaanmu"
+          ],
+          "answerIndex": 3,
+          "explanation": "Lokasi pribadi sebaiknya dirahasiakan."
+        },
+        {
+          "id": "q36",
+          "prompt": "Waktu bermain gawai yang sehat adalah ...",
+          "options": [
+            "dibatasi dan diselingi istirahat",
+            "sepanjang hari",
+            "sambil tidur",
+            "tanpa jeda"
+          ],
+          "answerIndex": 0,
+          "explanation": "Istirahat penting bagi mata dan badan."
+        },
+        {
+          "id": "q37",
+          "prompt": "Menatap layar terlalu lama dapat membuat mata ...",
+          "options": [
+            "lebih tajam",
+            "lelah dan pedih",
+            "lebih kuat",
+            "tidak berkedip selamanya"
+          ],
+          "answerIndex": 1,
+          "explanation": "Mata perlu diistirahatkan."
+        },
+        {
+          "id": "q38",
+          "prompt": "Hoaks adalah ...",
+          "options": [
+            "berita benar",
+            "iklan",
+            "lagu",
+            "berita bohong"
+          ],
+          "answerIndex": 3,
+          "explanation": "Hoaks tidak sesuai kenyataan."
+        },
+        {
+          "id": "q39",
+          "prompt": "Sebelum percaya pada kabar di internet, kita ...",
+          "options": [
+            "langsung menyebarkan",
+            "mengabaikan semuanya",
+            "memeriksa sumbernya",
+            "memercayai yang paling heboh"
+          ],
+          "answerIndex": 2,
+          "explanation": "Cek kebenaran dulu."
+        },
+        {
+          "id": "q40",
+          "prompt": "Mengunggah video teman yang memalukan tanpa izin adalah perbuatan ...",
+          "options": [
+            "wajib",
+            "lucu dan boleh",
+            "tidak baik",
+            "hebat"
+          ],
+          "answerIndex": 2,
+          "explanation": "Kita harus menghargai teman."
+        },
+        {
+          "id": "q41",
+          "prompt": "Perundungan siber adalah ...",
+          "options": [
+            "mengganggu atau menyakiti orang lewat internet",
+            "bermain gim",
+            "belajar daring",
+            "membuat video"
+          ],
+          "answerIndex": 0,
+          "explanation": "Perundungan di dunia maya tetap menyakitkan."
+        },
+        {
+          "id": "q42",
+          "prompt": "Jika temanmu dirundung di grup obrolan, kamu sebaiknya ...",
+          "options": [
+            "ikut mengejek",
+            "mendukung teman dan melapor ke orang dewasa",
+            "menertawakan",
+            "menyebarkan"
+          ],
+          "answerIndex": 1,
+          "explanation": "Bantu teman dan beri tahu orang dewasa."
+        },
+        {
+          "id": "q43",
+          "prompt": "Kata sandi sebaiknya tidak memuat ...",
+          "options": [
+            "huruf besar dan kecil",
+            "angka acak",
+            "simbol",
+            "tanggal lahir atau nama sendiri"
+          ],
+          "answerIndex": 3,
+          "explanation": "Data pribadi mudah ditebak."
+        },
+        {
+          "id": "q44",
+          "prompt": "Pada komputer sekolah, pilihan \"ingat saya\" sebaiknya ...",
+          "options": [
+            "tidak dipilih",
+            "dipilih",
+            "dipilih dua kali",
+            "tidak dibaca"
+          ],
+          "answerIndex": 0,
+          "explanation": "Agar orang lain tidak membuka akunmu."
+        },
+        {
+          "id": "q45",
+          "prompt": "Aplikasi yang meminta izin kamera dan kontak tanpa alasan jelas sebaiknya ...",
+          "options": [
+            "disetujui semua",
+            "dibagikan",
+            "ditolak izinnya",
+            "dibiarkan"
+          ],
+          "answerIndex": 2,
+          "explanation": "Tolak izin yang tidak perlu."
+        },
+        {
+          "id": "q46",
+          "prompt": "Kontrol orang tua berguna agar ...",
+          "options": [
+            "anak melihat konten sesuai usia",
+            "internet mati",
+            "gim hilang",
+            "sinyal kuat"
+          ],
+          "answerIndex": 0,
+          "explanation": "Kontrol orang tua membatasi konten."
+        },
+        {
+          "id": "q47",
+          "prompt": "Menyalin tugas dari internet tanpa menyebut sumber adalah ...",
+          "options": [
+            "cerdas",
+            "wajib",
+            "tidak jujur",
+            "kreatif"
+          ],
+          "answerIndex": 2,
+          "explanation": "Itu disebut plagiat."
+        },
+        {
+          "id": "q48",
+          "prompt": "Gambar milik orang lain di internet sebaiknya dipakai dengan ...",
+          "options": [
+            "mengaku milik sendiri",
+            "mengubah warnanya",
+            "menghapus namanya",
+            "izin atau mencantumkan sumber"
+          ],
+          "answerIndex": 3,
+          "explanation": "Hargai karya orang lain."
+        },
+        {
+          "id": "q49",
+          "prompt": "Saat belajar lewat video call, sebaiknya kamu ...",
+          "options": [
+            "berpakaian sopan dan bersikap baik",
+            "berteriak",
+            "merekam teman tanpa izin",
+            "membagikan tautan ke orang asing"
+          ],
+          "answerIndex": 0,
+          "explanation": "Jaga sopan santun saat belajar daring."
+        },
+        {
+          "id": "q50",
+          "prompt": "Jika ponselmu hilang, kamu sebaiknya ...",
+          "options": [
+            "diam saja",
+            "memberi tahu orang tua agar akun diamankan",
+            "meminjam ponsel orang asing",
+            "memberi sandi kepada penemu"
+          ],
+          "answerIndex": 1,
+          "explanation": "Akun perlu segera diamankan."
         }
       ]
     },
@@ -1129,7 +1849,7 @@
         5
       ],
       "difficulty": 2,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -1490,6 +2210,246 @@
           ],
           "answerIndex": 2,
           "explanation": "Petugas resmi tidak meminta data penting lewat pesan sembarang."
+        },
+        {
+          "id": "q31",
+          "prompt": "Pesan yang meminta kamu segera mengirim uang demi hadiah adalah ...",
+          "options": [
+            "kejutan",
+            "tugas sekolah",
+            "penipuan",
+            "iklan buku"
+          ],
+          "answerIndex": 2,
+          "explanation": "Hadiah tidak meminta uang lebih dulu."
+        },
+        {
+          "id": "q32",
+          "prompt": "Penjual online meminta sandi akunmu untuk \"verifikasi hadiah\". Kamu ...",
+          "options": [
+            "menolak",
+            "memberikan",
+            "membagikan",
+            "meneruskan"
+          ],
+          "answerIndex": 0,
+          "explanation": "Sandi tidak boleh diberikan."
+        },
+        {
+          "id": "q33",
+          "prompt": "Penipu sering menawarkan hadiah yang ...",
+          "options": [
+            "wajar",
+            "terlalu bagus untuk jadi nyata",
+            "sulit didapat",
+            "tidak ada"
+          ],
+          "answerIndex": 1,
+          "explanation": "Tawaran berlebihan perlu dicurigai."
+        },
+        {
+          "id": "q34",
+          "prompt": "Orang di gim mengajakmu pindah ke aplikasi obrolan lain secara rahasia. Kamu ...",
+          "options": [
+            "ikut",
+            "memberi nomor",
+            "menolak dan memberi tahu orang tua",
+            "bertemu"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rahasia seperti itu berbahaya."
+        },
+        {
+          "id": "q35",
+          "prompt": "Telepon dari nomor tak dikenal yang meminta kamu menyebut kode di ponsel sebaiknya ...",
+          "options": [
+            "dijawab",
+            "ditutup dan diceritakan ke orang tua",
+            "kode diberikan",
+            "dibiarkan"
+          ],
+          "answerIndex": 1,
+          "explanation": "Kode tidak boleh diberikan."
+        },
+        {
+          "id": "q36",
+          "prompt": "Pengumuman pemenang undian padahal kamu tidak ikut undian adalah ...",
+          "options": [
+            "tanda penipuan",
+            "tanda keberuntungan",
+            "undangan resmi",
+            "pengumuman sekolah"
+          ],
+          "answerIndex": 0,
+          "explanation": "Kamu tidak mungkin menang tanpa ikut."
+        },
+        {
+          "id": "q37",
+          "prompt": "Akun yang mengaku artis dan meminta uang kemungkinan ...",
+          "options": [
+            "asli",
+            "palsu",
+            "wajib dibantu",
+            "tidak berbahaya"
+          ],
+          "answerIndex": 1,
+          "explanation": "Akun palsu sering menipu."
+        },
+        {
+          "id": "q38",
+          "prompt": "Tombol \"klik di sini\" pada pesan mencurigakan sebaiknya ...",
+          "options": [
+            "tidak ditekan",
+            "cepat ditekan",
+            "dibagikan",
+            "ditekan dua kali"
+          ],
+          "answerIndex": 0,
+          "explanation": "Tautan bisa mencuri data."
+        },
+        {
+          "id": "q39",
+          "prompt": "Barang gratis tetapi harus mengisi banyak data pribadi biasanya ...",
+          "options": [
+            "hadiah asli",
+            "kejutan sekolah",
+            "penipuan pencuri data",
+            "hal biasa"
+          ],
+          "answerIndex": 2,
+          "explanation": "Data pribadi sangat berharga."
+        },
+        {
+          "id": "q40",
+          "prompt": "Muncul tulisan \"ponselmu terkena virus, klik sekarang\". Kamu ...",
+          "options": [
+            "mengkliknya",
+            "memasukkan sandi",
+            "mengunduh aplikasinya",
+            "menutupnya dan memberi tahu orang tua"
+          ],
+          "answerIndex": 3,
+          "explanation": "Pesan itu biasanya palsu."
+        },
+        {
+          "id": "q41",
+          "prompt": "Penipu sering memberi batas waktu singkat agar kamu ...",
+          "options": [
+            "tenang",
+            "tidak sempat berpikir",
+            "bertanya",
+            "tidur"
+          ],
+          "answerIndex": 1,
+          "explanation": "Panik membuat orang ceroboh."
+        },
+        {
+          "id": "q42",
+          "prompt": "Berbelanja online yang aman dilakukan ...",
+          "options": [
+            "sendiri lewat tautan asing",
+            "dengan membagi sandi",
+            "di toko apa saja",
+            "bersama orang tua di toko terpercaya"
+          ],
+          "answerIndex": 3,
+          "explanation": "Orang tua membantu memeriksa toko."
+        },
+        {
+          "id": "q43",
+          "prompt": "Orang tak dikenal meminta foto kartu orang tuamu. Kamu ...",
+          "options": [
+            "mengirim",
+            "memberi sebagian",
+            "memberi nomornya",
+            "menolak"
+          ],
+          "answerIndex": 3,
+          "explanation": "Data kartu sangat rahasia."
+        },
+        {
+          "id": "q44",
+          "prompt": "Cerita \"saudaramu butuh uang cepat tapi jangan bilang siapa-siapa\" adalah ...",
+          "options": [
+            "cerita biasa",
+            "ciri penipuan",
+            "kewajiban",
+            "tugas"
+          ],
+          "answerIndex": 1,
+          "explanation": "Penipu meminta kamu merahasiakannya."
+        },
+        {
+          "id": "q45",
+          "prompt": "Jika menerima pesan penipuan, sebaiknya ...",
+          "options": [
+            "diteruskan ke semua teman",
+            "dibalas",
+            "disimpan saja",
+            "dilaporkan dan tidak disebarkan"
+          ],
+          "answerIndex": 3,
+          "explanation": "Laporkan agar tidak ada korban lain."
+        },
+        {
+          "id": "q46",
+          "prompt": "Situs resmi biasanya memiliki alamat yang ...",
+          "options": [
+            "penuh angka acak",
+            "penuh tanda seru",
+            "jelas dan tidak aneh",
+            "berganti-ganti"
+          ],
+          "answerIndex": 2,
+          "explanation": "Alamat aneh patut dicurigai."
+        },
+        {
+          "id": "q47",
+          "prompt": "Teman gim menawarkan item langka asal kamu memberi kode masuk akun. Itu ...",
+          "options": [
+            "tukar tambah",
+            "hadiah",
+            "penipuan",
+            "aturan gim"
+          ],
+          "answerIndex": 2,
+          "explanation": "Kode akun tidak boleh diberikan."
+        },
+        {
+          "id": "q48",
+          "prompt": "Jika terlanjur memberi sandi ke orang asing, kamu pertama-tama ...",
+          "options": [
+            "memberi tahu orang tua agar sandi diganti",
+            "menunggu",
+            "menyalahkan diri",
+            "menghapus pesan"
+          ],
+          "answerIndex": 0,
+          "explanation": "Segera ganti sandi bersama orang dewasa."
+        },
+        {
+          "id": "q49",
+          "prompt": "Menceritakan pengalaman hampir ditipu kepada orang tua membuat ...",
+          "options": [
+            "kita malu",
+            "pasti dimarahi",
+            "tidak berguna",
+            "kita dan keluarga lebih waspada"
+          ],
+          "answerIndex": 3,
+          "explanation": "Bercerita membantu keluarga waspada."
+        },
+        {
+          "id": "q50",
+          "prompt": "Pesan mencurigakan yang mengaku dari sekolah tetapi minta sandi akun sebaiknya ...",
+          "options": [
+            "ditanyakan langsung kepada guru",
+            "dijawab cepat",
+            "disebarkan",
+            "diabaikan tanpa cerita"
+          ],
+          "answerIndex": 0,
+          "explanation": "Pastikan ke guru secara langsung."
         }
       ]
     },
@@ -1502,7 +2462,7 @@
         2
       ],
       "difficulty": 1,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -1863,6 +2823,246 @@
           ],
           "answerIndex": 1,
           "explanation": "Tubuh bersih membuat tidur nyenyak."
+        },
+        {
+          "id": "q31",
+          "prompt": "Kita mandi menggunakan ...",
+          "options": [
+            "pasir",
+            "oli",
+            "debu",
+            "sabun dan air bersih"
+          ],
+          "answerIndex": 3,
+          "explanation": "Sabun dan air bersih membersihkan badan."
+        },
+        {
+          "id": "q32",
+          "prompt": "Setelah buang air, kita mencuci tangan dengan ...",
+          "options": [
+            "sabun",
+            "pasir",
+            "tanah",
+            "oli"
+          ],
+          "answerIndex": 0,
+          "explanation": "Sabun membunuh kuman."
+        },
+        {
+          "id": "q33",
+          "prompt": "Makanan yang bisa merusak gigi bila terlalu banyak adalah ...",
+          "options": [
+            "sayur",
+            "air putih",
+            "permen",
+            "apel"
+          ],
+          "answerIndex": 2,
+          "explanation": "Gula merusak gigi."
+        },
+        {
+          "id": "q34",
+          "prompt": "Handuk basah sebaiknya ...",
+          "options": [
+            "dijemur",
+            "disimpan basah",
+            "dibuang",
+            "dilipat basah"
+          ],
+          "answerIndex": 0,
+          "explanation": "Handuk perlu kering."
+        },
+        {
+          "id": "q35",
+          "prompt": "Kamar tidur yang bersih membuat tidur ...",
+          "options": [
+            "gelisah",
+            "sakit",
+            "takut",
+            "nyenyak"
+          ],
+          "answerIndex": 3,
+          "explanation": "Kamar bersih nyaman."
+        },
+        {
+          "id": "q36",
+          "prompt": "Tempat sampah di kelas dipakai untuk ...",
+          "options": [
+            "membuang sampah",
+            "menyimpan buku",
+            "duduk",
+            "menaruh bekal"
+          ],
+          "answerIndex": 0,
+          "explanation": "Buang sampah pada tempatnya."
+        },
+        {
+          "id": "q37",
+          "prompt": "Sampah plastik dan sampah daun sebaiknya ...",
+          "options": [
+            "dicampur",
+            "dibakar di kelas",
+            "dipisahkan",
+            "dibuang ke selokan"
+          ],
+          "answerIndex": 2,
+          "explanation": "Memilah sampah menjaga lingkungan."
+        },
+        {
+          "id": "q38",
+          "prompt": "Sepatu yang basah sebaiknya ...",
+          "options": [
+            "dipakai terus",
+            "disimpan di tas",
+            "dikeringkan",
+            "dibiarkan lembap"
+          ],
+          "answerIndex": 2,
+          "explanation": "Sepatu kering lebih sehat."
+        },
+        {
+          "id": "q39",
+          "prompt": "Sebelum tidur kita membersihkan ...",
+          "options": [
+            "sepeda",
+            "mainan",
+            "gigi dan kaki",
+            "pintu"
+          ],
+          "answerIndex": 2,
+          "explanation": "Bersih sebelum tidur."
+        },
+        {
+          "id": "q40",
+          "prompt": "Jajanan yang aman biasanya ...",
+          "options": [
+            "terbuka dan berdebu",
+            "tertutup dan bersih",
+            "basi",
+            "penuh lalat"
+          ],
+          "answerIndex": 1,
+          "explanation": "Pilih makanan bersih."
+        },
+        {
+          "id": "q41",
+          "prompt": "Kuku yang kotor dapat membawa ...",
+          "options": [
+            "bunga",
+            "cahaya",
+            "angin",
+            "kuman"
+          ],
+          "answerIndex": 3,
+          "explanation": "Kuman menempel pada kuku."
+        },
+        {
+          "id": "q42",
+          "prompt": "Rambut yang kotor dapat membuat kepala ...",
+          "options": [
+            "dingin",
+            "tinggi",
+            "gatal",
+            "kuat"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rambut perlu dikeramas."
+        },
+        {
+          "id": "q43",
+          "prompt": "Mencuci tangan sebelum makan bertujuan ...",
+          "options": [
+            "membersihkan kuman",
+            "menambah rasa",
+            "membuat kenyang",
+            "membuat gelap"
+          ],
+          "answerIndex": 0,
+          "explanation": "Tangan bersih mencegah sakit."
+        },
+        {
+          "id": "q44",
+          "prompt": "Alat untuk menyisir rambut adalah ...",
+          "options": [
+            "sikat gigi",
+            "sisir",
+            "sapu",
+            "handuk"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sisir merapikan rambut."
+        },
+        {
+          "id": "q45",
+          "prompt": "Alat untuk menyapu lantai adalah ...",
+          "options": [
+            "sisir",
+            "sapu",
+            "sendok",
+            "pensil"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sapu membersihkan lantai."
+        },
+        {
+          "id": "q46",
+          "prompt": "Kita membuang ingus ke ...",
+          "options": [
+            "tisu",
+            "lantai",
+            "meja",
+            "baju teman"
+          ],
+          "answerIndex": 0,
+          "explanation": "Gunakan tisu."
+        },
+        {
+          "id": "q47",
+          "prompt": "Piring dan gelas yang sudah dipakai sebaiknya ...",
+          "options": [
+            "ditumpuk kotor",
+            "dicuci",
+            "dibuang",
+            "dijemur kotor"
+          ],
+          "answerIndex": 1,
+          "explanation": "Peralatan makan harus bersih."
+        },
+        {
+          "id": "q48",
+          "prompt": "Air bersih berwarna ...",
+          "options": [
+            "hitam",
+            "bening",
+            "cokelat pekat",
+            "hijau"
+          ],
+          "answerIndex": 1,
+          "explanation": "Air bersih jernih."
+        },
+        {
+          "id": "q49",
+          "prompt": "Rumah yang bersih dan rapi membuat penghuninya ...",
+          "options": [
+            "sakit",
+            "marah",
+            "sedih",
+            "nyaman dan sehat"
+          ],
+          "answerIndex": 3,
+          "explanation": "Bersih itu menyehatkan."
+        },
+        {
+          "id": "q50",
+          "prompt": "Cara menjaga kebersihan kelas adalah ...",
+          "options": [
+            "menaruh sampah di laci",
+            "melempar sampah",
+            "mencoret dinding",
+            "membuang sampah pada tempatnya"
+          ],
+          "answerIndex": 3,
+          "explanation": "Tempat sampah dipakai dengan benar."
         }
       ]
     },
@@ -1875,7 +3075,7 @@
         3
       ],
       "difficulty": 1,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -2236,6 +3436,246 @@
           ],
           "answerIndex": 3,
           "explanation": "Rp2.000 × 6 = Rp12.000."
+        },
+        {
+          "id": "q31",
+          "prompt": "Ayu menyisihkan Rp5.000 setiap hari. Setelah 9 hari tabungannya ...",
+          "options": [
+            "Rp50.000",
+            "Rp45.000",
+            "Rp35.000",
+            "Rp55.000"
+          ],
+          "answerIndex": 1,
+          "explanation": "9 × Rp5.000 = Rp45.000."
+        },
+        {
+          "id": "q32",
+          "prompt": "Tabungan Dodi Rp20.000 dan tabungan Eka Rp12.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp6.000",
+            "Rp9.000",
+            "Rp7.000",
+            "Rp8.000"
+          ],
+          "answerIndex": 3,
+          "explanation": "Rp20.000 − Rp12.000 = Rp8.000."
+        },
+        {
+          "id": "q33",
+          "prompt": "Ayu menyisihkan Rp3.000 setiap hari. Setelah 3 hari tabungannya ...",
+          "options": [
+            "Rp8.000",
+            "Rp11.000",
+            "Rp10.000",
+            "Rp9.000"
+          ],
+          "answerIndex": 3,
+          "explanation": "3 × Rp3.000 = Rp9.000."
+        },
+        {
+          "id": "q34",
+          "prompt": "Uang Rp24.000 ditabung dibagi rata untuk 3 minggu. Tiap minggu ditabung ...",
+          "options": [
+            "Rp9.000",
+            "Rp7.000",
+            "Rp8.000",
+            "Rp18.000"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rp24.000 : 3 = Rp8.000."
+        },
+        {
+          "id": "q35",
+          "prompt": "Bima ingin membeli mainan Rp25.000. Tabungannya Rp10.000. Kekurangannya ...",
+          "options": [
+            "Rp13.000",
+            "Rp18.000",
+            "Rp15.000",
+            "Rp17.000"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rp25.000 − Rp10.000 = Rp15.000."
+        },
+        {
+          "id": "q36",
+          "prompt": "Ayu menyisihkan Rp3.000 setiap hari. Setelah 4 hari tabungannya ...",
+          "options": [
+            "Rp12.000",
+            "Rp13.000",
+            "Rp15.000",
+            "Rp11.000"
+          ],
+          "answerIndex": 0,
+          "explanation": "4 × Rp3.000 = Rp12.000."
+        },
+        {
+          "id": "q37",
+          "prompt": "Tabungan Dodi Rp15.000 dan tabungan Eka Rp10.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp4.000",
+            "Rp5.000",
+            "Rp15.000",
+            "Rp3.000"
+          ],
+          "answerIndex": 1,
+          "explanation": "Rp15.000 − Rp10.000 = Rp5.000."
+        },
+        {
+          "id": "q38",
+          "prompt": "Ayu menyisihkan Rp5.000 setiap hari. Setelah 4 hari tabungannya ...",
+          "options": [
+            "Rp20.000",
+            "Rp23.000",
+            "Rp30.000",
+            "Rp18.000"
+          ],
+          "answerIndex": 0,
+          "explanation": "4 × Rp5.000 = Rp20.000."
+        },
+        {
+          "id": "q39",
+          "prompt": "Tabungan Dodi Rp25.000 dan tabungan Eka Rp10.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp18.000",
+            "Rp15.000",
+            "Rp13.000",
+            "Rp14.000"
+          ],
+          "answerIndex": 1,
+          "explanation": "Rp25.000 − Rp10.000 = Rp15.000."
+        },
+        {
+          "id": "q40",
+          "prompt": "Tabungan Dodi Rp30.000 dan tabungan Eka Rp5.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp35.000",
+            "Rp23.000",
+            "Rp24.000",
+            "Rp25.000"
+          ],
+          "answerIndex": 3,
+          "explanation": "Rp30.000 − Rp5.000 = Rp25.000."
+        },
+        {
+          "id": "q41",
+          "prompt": "Fira ingin menabung Rp20.000. Setiap hari ia menabung Rp2.000. Ia butuh ... hari.",
+          "options": [
+            "11 hari",
+            "10 hari",
+            "12 hari",
+            "9 hari"
+          ],
+          "answerIndex": 1,
+          "explanation": "Rp20.000 : Rp2.000 = 10."
+        },
+        {
+          "id": "q42",
+          "prompt": "Fira ingin menabung Rp40.000. Setiap hari ia menabung Rp5.000. Ia butuh ... hari.",
+          "options": [
+            "9 hari",
+            "10 hari",
+            "7 hari",
+            "8 hari"
+          ],
+          "answerIndex": 3,
+          "explanation": "Rp40.000 : Rp5.000 = 8."
+        },
+        {
+          "id": "q43",
+          "prompt": "Fira ingin menabung Rp40.000. Setiap hari ia menabung Rp2.000. Ia butuh ... hari.",
+          "options": [
+            "21 hari",
+            "22 hari",
+            "20 hari",
+            "19 hari"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rp40.000 : Rp2.000 = 20."
+        },
+        {
+          "id": "q44",
+          "prompt": "Bima ingin membeli mainan Rp25.000. Tabungannya Rp8.000. Kekurangannya ...",
+          "options": [
+            "Rp17.000",
+            "Rp19.000",
+            "Rp20.000",
+            "Rp16.000"
+          ],
+          "answerIndex": 0,
+          "explanation": "Rp25.000 − Rp8.000 = Rp17.000."
+        },
+        {
+          "id": "q45",
+          "prompt": "Fira ingin menabung Rp30.000. Setiap hari ia menabung Rp2.000. Ia butuh ... hari.",
+          "options": [
+            "16 hari",
+            "15 hari",
+            "17 hari",
+            "14 hari"
+          ],
+          "answerIndex": 1,
+          "explanation": "Rp30.000 : Rp2.000 = 15."
+        },
+        {
+          "id": "q46",
+          "prompt": "Tabungan Dodi Rp30.000 dan tabungan Eka Rp10.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp18.000",
+            "Rp21.000",
+            "Rp20.000",
+            "Rp19.000"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rp30.000 − Rp10.000 = Rp20.000."
+        },
+        {
+          "id": "q47",
+          "prompt": "Tabungan Dodi Rp20.000 dan tabungan Eka Rp10.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp10.000",
+            "Rp20.000",
+            "Rp8.000",
+            "Rp11.000"
+          ],
+          "answerIndex": 0,
+          "explanation": "Rp20.000 − Rp10.000 = Rp10.000."
+        },
+        {
+          "id": "q48",
+          "prompt": "Tabungan Dodi Rp20.000 dan tabungan Eka Rp5.000. Selisih tabungan mereka ...",
+          "options": [
+            "Rp16.000",
+            "Rp17.000",
+            "Rp18.000",
+            "Rp15.000"
+          ],
+          "answerIndex": 3,
+          "explanation": "Rp20.000 − Rp5.000 = Rp15.000."
+        },
+        {
+          "id": "q49",
+          "prompt": "Ayu menyisihkan Rp4.000 setiap hari. Setelah 4 hari tabungannya ...",
+          "options": [
+            "Rp16.000",
+            "Rp14.000",
+            "Rp26.000",
+            "Rp19.000"
+          ],
+          "answerIndex": 0,
+          "explanation": "4 × Rp4.000 = Rp16.000."
+        },
+        {
+          "id": "q50",
+          "prompt": "Bima ingin membeli mainan Rp25.000. Tabungannya Rp5.000. Kekurangannya ...",
+          "options": [
+            "Rp22.000",
+            "Rp21.000",
+            "Rp20.000",
+            "Rp30.000"
+          ],
+          "answerIndex": 2,
+          "explanation": "Rp25.000 − Rp5.000 = Rp20.000."
         }
       ]
     },
@@ -2248,7 +3688,7 @@
         2
       ],
       "difficulty": 1,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -2609,6 +4049,246 @@
           ],
           "answerIndex": 0,
           "explanation": "Pola naik 1, jadi 13 + 1 = 14."
+        },
+        {
+          "id": "q31",
+          "prompt": "87, 77, 67, 57, 47, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "38",
+            "36",
+            "47",
+            "37"
+          ],
+          "answerIndex": 3,
+          "explanation": "Pola turun 10, jadi 47 − 10 = 37."
+        },
+        {
+          "id": "q32",
+          "prompt": "10, ..., 20, 25, 30, 35. Bilangan yang hilang adalah ...",
+          "options": [
+            "15",
+            "16",
+            "14",
+            "20"
+          ],
+          "answerIndex": 0,
+          "explanation": "Selisih tiap bilangan adalah 5, jadi yang hilang 15."
+        },
+        {
+          "id": "q33",
+          "prompt": "12, 22, 32, 42, 52, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "63",
+            "61",
+            "62",
+            "72"
+          ],
+          "answerIndex": 2,
+          "explanation": "Pola naik 10, jadi 52 + 10 = 62."
+        },
+        {
+          "id": "q34",
+          "prompt": "7, 14, ..., 28, 35, 42. Bilangan yang hilang adalah ...",
+          "options": [
+            "22",
+            "21",
+            "20",
+            "28"
+          ],
+          "answerIndex": 1,
+          "explanation": "Selisih tiap bilangan adalah 7, jadi yang hilang 21."
+        },
+        {
+          "id": "q35",
+          "prompt": "19, ..., 27, 31, 35, 39. Bilangan yang hilang adalah ...",
+          "options": [
+            "24",
+            "22",
+            "23",
+            "27"
+          ],
+          "answerIndex": 2,
+          "explanation": "Selisih tiap bilangan adalah 4, jadi yang hilang 23."
+        },
+        {
+          "id": "q36",
+          "prompt": "15, 20, 25, 30, 35, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "41",
+            "40",
+            "39",
+            "45"
+          ],
+          "answerIndex": 1,
+          "explanation": "Pola naik 5, jadi 35 + 5 = 40."
+        },
+        {
+          "id": "q37",
+          "prompt": "l, n, p, r, ... Huruf berikutnya adalah ...",
+          "options": [
+            "t",
+            "u",
+            "s",
+            "v"
+          ],
+          "answerIndex": 0,
+          "explanation": "Huruf naik 2 langkah, jadi setelah r adalah t."
+        },
+        {
+          "id": "q38",
+          "prompt": "38, 33, 28, 23, 18, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "14",
+            "12",
+            "18",
+            "13"
+          ],
+          "answerIndex": 3,
+          "explanation": "Pola turun 5, jadi 18 − 5 = 13."
+        },
+        {
+          "id": "q39",
+          "prompt": "20, 25, 30, 35, ..., 45. Bilangan yang hilang adalah ...",
+          "options": [
+            "41",
+            "39",
+            "40",
+            "45"
+          ],
+          "answerIndex": 2,
+          "explanation": "Selisih tiap bilangan adalah 5, jadi yang hilang 40."
+        },
+        {
+          "id": "q40",
+          "prompt": "17, 23, 29, 35, 41, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "47",
+            "48",
+            "46",
+            "53"
+          ],
+          "answerIndex": 0,
+          "explanation": "Pola naik 6, jadi 41 + 6 = 47."
+        },
+        {
+          "id": "q41",
+          "prompt": "18, 24, 30, 36, 42, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "49",
+            "48",
+            "47",
+            "54"
+          ],
+          "answerIndex": 1,
+          "explanation": "Pola naik 6, jadi 42 + 6 = 48."
+        },
+        {
+          "id": "q42",
+          "prompt": "9, 12, 15, 18, 21, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "25",
+            "23",
+            "24",
+            "27"
+          ],
+          "answerIndex": 2,
+          "explanation": "Pola naik 3, jadi 21 + 3 = 24."
+        },
+        {
+          "id": "q43",
+          "prompt": "2, ..., 12, 17, 22, 27. Bilangan yang hilang adalah ...",
+          "options": [
+            "8",
+            "6",
+            "12",
+            "7"
+          ],
+          "answerIndex": 3,
+          "explanation": "Selisih tiap bilangan adalah 5, jadi yang hilang 7."
+        },
+        {
+          "id": "q44",
+          "prompt": "63, 58, 53, 48, 43, ... Bilangan berikutnya adalah ...",
+          "options": [
+            "39",
+            "37",
+            "38",
+            "43"
+          ],
+          "answerIndex": 2,
+          "explanation": "Pola turun 5, jadi 43 − 5 = 38."
+        },
+        {
+          "id": "q45",
+          "prompt": "h, j, l, n, ... Huruf berikutnya adalah ...",
+          "options": [
+            "q",
+            "p",
+            "o",
+            "r"
+          ],
+          "answerIndex": 1,
+          "explanation": "Huruf naik 2 langkah, jadi setelah n adalah p."
+        },
+        {
+          "id": "q46",
+          "prompt": "19, 26, ..., 40, 47, 54. Bilangan yang hilang adalah ...",
+          "options": [
+            "34",
+            "32",
+            "40",
+            "33"
+          ],
+          "answerIndex": 3,
+          "explanation": "Selisih tiap bilangan adalah 7, jadi yang hilang 33."
+        },
+        {
+          "id": "q47",
+          "prompt": "c, f, i, l, ... Huruf berikutnya adalah ...",
+          "options": [
+            "p",
+            "o",
+            "n",
+            "q"
+          ],
+          "answerIndex": 1,
+          "explanation": "Huruf naik 3 langkah, jadi setelah l adalah o."
+        },
+        {
+          "id": "q48",
+          "prompt": "17, 21, 25, ..., 33, 37. Bilangan yang hilang adalah ...",
+          "options": [
+            "29",
+            "30",
+            "28",
+            "33"
+          ],
+          "answerIndex": 0,
+          "explanation": "Selisih tiap bilangan adalah 4, jadi yang hilang 29."
+        },
+        {
+          "id": "q49",
+          "prompt": "14, 18, ..., 26, 30, 34. Bilangan yang hilang adalah ...",
+          "options": [
+            "22",
+            "23",
+            "21",
+            "26"
+          ],
+          "answerIndex": 0,
+          "explanation": "Selisih tiap bilangan adalah 4, jadi yang hilang 22."
+        },
+        {
+          "id": "q50",
+          "prompt": "4, 9, 14, ..., 24, 29. Bilangan yang hilang adalah ...",
+          "options": [
+            "20",
+            "18",
+            "24",
+            "19"
+          ],
+          "answerIndex": 3,
+          "explanation": "Selisih tiap bilangan adalah 5, jadi yang hilang 19."
         }
       ]
     },
@@ -2621,7 +4301,7 @@
         4
       ],
       "difficulty": 2,
-      "version": 2,
+      "version": 3,
       "questions": [
         {
           "id": "q1",
@@ -2982,6 +4662,246 @@
           ],
           "answerIndex": 1,
           "explanation": "Matahari terbit di timur dan terbenam di barat."
+        },
+        {
+          "id": "q31",
+          "prompt": "Semua mamalia menyusui. Paus adalah mamalia. Jadi paus ...",
+          "options": [
+            "bertelur",
+            "menyusui",
+            "bersayap",
+            "bersisik"
+          ],
+          "answerIndex": 1,
+          "explanation": "Paus termasuk mamalia."
+        },
+        {
+          "id": "q32",
+          "prompt": "Jika hari ini Kamis, kemarin adalah ...",
+          "options": [
+            "Jumat",
+            "Rabu",
+            "Selasa",
+            "Senin"
+          ],
+          "answerIndex": 1,
+          "explanation": "Sehari sebelum Kamis."
+        },
+        {
+          "id": "q33",
+          "prompt": "Jika hari ini Minggu, dua hari lagi adalah ...",
+          "options": [
+            "Senin",
+            "Rabu",
+            "Sabtu",
+            "Selasa"
+          ],
+          "answerIndex": 3,
+          "explanation": "Minggu → Senin → Selasa."
+        },
+        {
+          "id": "q34",
+          "prompt": "Mana yang tidak sejenis: kursi, meja, lemari, jeruk?",
+          "options": [
+            "kursi",
+            "jeruk",
+            "meja",
+            "lemari"
+          ],
+          "answerIndex": 1,
+          "explanation": "Jeruk bukan perabot."
+        },
+        {
+          "id": "q35",
+          "prompt": "Mana yang tidak sejenis: kucing, kambing, kuda, mangga?",
+          "options": [
+            "mangga",
+            "kucing",
+            "kambing",
+            "kuda"
+          ],
+          "answerIndex": 0,
+          "explanation": "Mangga adalah buah."
+        },
+        {
+          "id": "q36",
+          "prompt": "Dina lebih tinggi dari Eko. Eko lebih tinggi dari Fani. Yang paling pendek adalah ...",
+          "options": [
+            "Dina",
+            "Fani",
+            "Eko",
+            "sama saja"
+          ],
+          "answerIndex": 1,
+          "explanation": "Urutan: Dina, Eko, Fani."
+        },
+        {
+          "id": "q37",
+          "prompt": "Aku bilangan genap lebih dari 9 dan kurang dari 12. Aku adalah ...",
+          "options": [
+            "10",
+            "9",
+            "11",
+            "12"
+          ],
+          "answerIndex": 0,
+          "explanation": "Hanya 10 yang genap di antara 9 dan 12."
+        },
+        {
+          "id": "q38",
+          "prompt": "Jika ▲ = 4 dan ■ = 5, maka ▲ + ■ = ...",
+          "options": [
+            "10",
+            "8",
+            "9",
+            "20"
+          ],
+          "answerIndex": 2,
+          "explanation": "4 + 5 = 9."
+        },
+        {
+          "id": "q39",
+          "prompt": "Jika ▲ = 4 dan ■ = 5, maka ■ − ▲ = ...",
+          "options": [
+            "9",
+            "0",
+            "1",
+            "2"
+          ],
+          "answerIndex": 2,
+          "explanation": "5 − 4 = 1."
+        },
+        {
+          "id": "q40",
+          "prompt": "Aku punya dua roda dan dikayuh. Aku adalah ...",
+          "options": [
+            "mobil",
+            "perahu",
+            "pesawat",
+            "sepeda"
+          ],
+          "answerIndex": 3,
+          "explanation": "Sepeda dikayuh."
+        },
+        {
+          "id": "q41",
+          "prompt": "Aku dipakai untuk menghapus tulisan pensil. Aku adalah ...",
+          "options": [
+            "penggaris",
+            "rautan",
+            "lem",
+            "penghapus"
+          ],
+          "answerIndex": 3,
+          "explanation": "Penghapus menghapus pensil."
+        },
+        {
+          "id": "q42",
+          "prompt": "Jika sekarang pukul 10.00, tiga jam lagi pukul ...",
+          "options": [
+            "12.00",
+            "13.00",
+            "14.00",
+            "11.00"
+          ],
+          "answerIndex": 1,
+          "explanation": "10 + 3 = 13."
+        },
+        {
+          "id": "q43",
+          "prompt": "Jika sekarang pukul 15.00, dua jam yang lalu pukul ...",
+          "options": [
+            "12.00",
+            "14.00",
+            "13.00",
+            "17.00"
+          ],
+          "answerIndex": 2,
+          "explanation": "15 − 2 = 13."
+        },
+        {
+          "id": "q44",
+          "prompt": "Seekor ayam punya 2 kaki. Banyak kaki 4 ayam adalah ...",
+          "options": [
+            "8",
+            "6",
+            "12",
+            "4"
+          ],
+          "answerIndex": 0,
+          "explanation": "4 × 2 = 8."
+        },
+        {
+          "id": "q45",
+          "prompt": "Seekor kucing punya 4 kaki. Banyak kaki 3 kucing adalah ...",
+          "options": [
+            "7",
+            "9",
+            "12",
+            "10"
+          ],
+          "answerIndex": 2,
+          "explanation": "3 × 4 = 12."
+        },
+        {
+          "id": "q46",
+          "prompt": "Jika lampu lalu lintas merah, kendaraan harus ...",
+          "options": [
+            "berhenti",
+            "jalan terus",
+            "ngebut",
+            "berbelok cepat"
+          ],
+          "answerIndex": 0,
+          "explanation": "Merah berarti berhenti."
+        },
+        {
+          "id": "q47",
+          "prompt": "Urutan menanam biji yang benar adalah ...",
+          "options": [
+            "menyiram, menggali tanah, menanam biji",
+            "menanam biji, menyiram, menggali tanah",
+            "menyiram, menanam biji, menggali tanah",
+            "menggali tanah, menanam biji, menyiram"
+          ],
+          "answerIndex": 3,
+          "explanation": "Tanah digali dulu."
+        },
+        {
+          "id": "q48",
+          "prompt": "Bilangan yang tidak sejenis: 2, 4, 6, 9 adalah ...",
+          "options": [
+            "2",
+            "4",
+            "9",
+            "6"
+          ],
+          "answerIndex": 2,
+          "explanation": "9 adalah bilangan ganjil."
+        },
+        {
+          "id": "q49",
+          "prompt": "Rina punya 8 kelereng. Ia memberi 3 kelereng kepada Aldo, lalu menerima 2 dari Budi. Kelereng Rina sekarang ...",
+          "options": [
+            "7",
+            "5",
+            "9",
+            "13"
+          ],
+          "answerIndex": 0,
+          "explanation": "8 − 3 + 2 = 7."
+        },
+        {
+          "id": "q50",
+          "prompt": "Semua siswa piket hari Senin membawa sapu. Dimas piket hari Senin. Jadi Dimas ...",
+          "options": [
+            "membawa pel",
+            "tidak membawa apa-apa",
+            "libur",
+            "membawa sapu"
+          ],
+          "answerIndex": 3,
+          "explanation": "Dimas termasuk siswa piket Senin."
         }
       ]
     }
