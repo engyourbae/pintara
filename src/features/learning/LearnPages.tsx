@@ -36,7 +36,7 @@ export function LearnList() {
 
   return (
     <Page>
-      <PageHeader title="Belajar" subtitle="Pilih paket kuis, kumpulkan bintang." icon="book" aside={items.some(isSampleContent) ? <SampleBadge /> : undefined} />
+      <PageHeader title="Belajar" subtitle="Pilih paket kuis, kumpulkan bintang." icon="book" aside={items.some(isSampleContent) ? <SampleBadge label="DATA SOAL" /> : undefined} />
 
       <SearchBox value={search} onChange={setSearch} label="Cari pelajaran" placeholder="Cari pelajaran, mis. pecahan…" />
 
