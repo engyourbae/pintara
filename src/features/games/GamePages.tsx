@@ -27,6 +27,7 @@ const GAMES: GameInfo[] = [
   { to: `${GAME}/kuis-kilat`, title: 'Kuis Kilat', desc: '10 soal acak dari paket pilihanmu. Jawab cepat, raih beruntun.', icon: 'book', bg: 'bg-hijau-100', keys: ['kuis-kilat'], cat: 'Kata & Pengetahuan', isNew: true },
   { to: `${GAME}/benar-salah`, title: 'Benar atau Salah Kilat', desc: '30 detik, 3 nyawa. Tebak jawabannya benar atau salah.', icon: 'check', bg: 'bg-jingga-300', keys: ['benar-salah'], cat: 'Kata & Pengetahuan', isNew: true },
   { to: `${GAME}/pasangan-memori`, title: 'Pasangan Memori', desc: 'Cari kartu yang berpasangan dengan langkah paling sedikit.', icon: 'chip', bg: 'bg-langit-100', keys: ['memori-4', 'memori-6', 'memori-8'], cat: 'Ingatan', isNew: true },
+  { to: `${GAME}/kode-pintar`, title: 'Kode Pintar', desc: 'Susun dan ketik kode dari HTML sampai SQL, selangkah demi selangkah.', icon: 'chip', bg: 'bg-hijau-300', keys: ['kode-html', 'kode-css', 'kode-js', 'kode-sql'], cat: 'Coding', isNew: true },
 ];
 const CATS = [...new Set(GAMES.map((g) => g.cat))];
 
@@ -85,7 +86,10 @@ export function GameMenu() {
                         {g.isNew && <Badge tone="jingga">Baru</Badge>}
                       </span>
                       <span className="block text-tinta/85">{g.desc}</span>
-                      {best > 0 && (
+                      {best > 0 && g.cat === 'Coding' && (
+                        <span className="mt-1 block text-sm font-bold text-aksen-tua">{g.keys.reduce((s, k) => s + (p.gameBest[k] ?? 0), 0)} pelajaran selesai</span>
+                      )}
+                      {best > 0 && g.cat !== 'Coding' && (
                         <span className="mt-1 flex items-center gap-2 text-sm font-bold text-aksen-tua">
                           {g.isNew ? <Stars3 count={stars} /> : `Skor terbaik: ${best}`}
                           {g.isNew && !bestKey.startsWith('memori-') && <span>Skor {best}</span>}
