@@ -46,6 +46,12 @@ export interface Progress {
   kode: Record<string, number>;
   /** Nilai buatan anak pada bagian bebas Kode Pintar: kunci 'idPelajaran#nomorBaris' berisi baris lengkapnya. Hanya di perangkat. */
   kodeEdit: Record<string, string>;
+  /** Bintang terbaik (1-3) per level Komik Pintar. Hanya di perangkat; ringkasan ada di gameBest.komik (bintang×1000 + skor). */
+  komik: Record<string, number>;
+  /** Karakter pemain Komik Pintar terakhir dipilih ('cowok' atau 'cewek'). */
+  komikHero: string;
+  /** Koin dari Komik Pintar (penyelesaian pertama tiap level). Hanya di perangkat. */
+  koin: number;
   streak: number;
   lastDay: string;
 }
@@ -62,6 +68,9 @@ const EMPTY: Progress = {
   levelDone: {},
   kode: {},
   kodeEdit: {},
+  komik: {},
+  komikHero: '',
+  koin: 0,
   streak: 0,
   lastDay: '',
 };
@@ -178,6 +187,21 @@ export const progressActions = {
       kode: { ...(state.kode ?? {}), [lessonId]: Math.max(state.kode?.[lessonId] ?? 0, stars) },
       gameBest: { ...state.gameBest, [trackKey]: Math.max(state.gameBest[trackKey] ?? 0, doneInTrack) },
     });
+  },
+  /** Mencatat level Komik Pintar selesai. XP dan koin hanya diberikan pada penyelesaian pertama (gained/coins dihitung pemanggil). */
+  recordKomik(levelId: string, stars: number, best: number, gained: number, coins: number) {
+    save({
+      ...state,
+      ...touchStreak(state),
+      xp: state.xp + gained,
+      koin: (state.koin ?? 0) + (gained > 0 ? coins : 0),
+      komik: { ...(state.komik ?? {}), [levelId]: Math.max(state.komik?.[levelId] ?? 0, stars) },
+      gameBest: { ...state.gameBest, komik: Math.max(state.gameBest.komik ?? 0, best) },
+    });
+  },
+  setKomikHero(hero: string) {
+    if (state.komikHero === hero) return;
+    save({ ...state, komikHero: hero });
   },
   /** Tandai soal-soal ini selesai dikerjakan pada paket tersebut. */
   markLevelDone(contentId: string, ids: string[]) {
