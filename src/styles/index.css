@@ -184,3 +184,26 @@
 .km-vox{animation:km-vox 1.5s ease-out forwards}
 .km-arm{will-change:transform}
 @media (prefers-reduced-motion:reduce){.km-head,.km-nod,.km-wave2,.km-hop,.km-float,.km-twinkle,.km-blink,.km-talk{animation:none !important}.km-arm{transition:none !important}}
+
+/* Komik Pintar v3: gerak latar adegan baru */
+@keyframes km-steam{0%{transform:translateY(0) scale(.6);opacity:0}30%{opacity:.85}100%{transform:translateY(-24px) scale(1.4);opacity:0}}
+@keyframes km-swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes km-tick{to{transform:rotate(360deg)}}
+@keyframes km-slide{0%{transform:translateX(-14px)}100%{transform:translateX(14px)}}
+@keyframes km-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes km-glow{0%,100%{opacity:.2}50%{opacity:.55}}
+@keyframes km-walk{0%{transform:translateX(-12px)}100%{transform:translateX(12px)}}
+@keyframes km-across{0%{transform:translateX(-60px)}100%{transform:translateX(420px)}}
+@keyframes km-spin{to{transform:rotate(360deg)}}
+@keyframes km-flutter{0%,100%{transform:translate(0,0)}25%{transform:translate(40px,-14px)}50%{transform:translate(80px,4px)}75%{transform:translate(40px,16px)}}
+.km-steam{animation:km-steam 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.km-swing{animation:km-swing 4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 0%}
+.km-tick{animation:km-tick 60s steps(60) infinite;transform-box:fill-box;transform-origin:50% 100%}
+.km-slide{animation:km-slide 2.8s ease-in-out infinite alternate}
+.km-bob{animation:km-bob 3s ease-in-out infinite}
+.km-glow{animation:km-glow 3.6s ease-in-out infinite}
+.km-walk{animation:km-walk 4s ease-in-out infinite alternate}
+.km-across{animation:km-across 22s linear infinite}
+.km-spin{animation:km-spin 8s linear infinite;transform-box:fill-box;transform-origin:center}
+.km-flutter{animation:km-flutter 7s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.km-steam,.km-swing,.km-tick,.km-slide,.km-bob,.km-glow,.km-walk,.km-across,.km-spin,.km-flutter{animation:none !important}}
