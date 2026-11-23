@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
-import { Badge, Button, CheckRow, Card, ChoiceGroup, Icon, Page, PageHeader } from '@/components/ui';
+import { Badge, Button, CheckRow, Card, ChoiceGroup, Icon, Page, PageHeader, useConfirm } from '@/components/ui';
 import { Field, FormError } from '@/features/auth/parts';
 import { useAuth } from '@/hooks/useAuth';
 import {
   createChildAccount,
   friendlyError,
   listChildren,
+  PIN_RE,
   randomUsername,
   saveChildSettings,
 } from '@/services/firebase/auth';
+import { deleteChildAccount } from '@/services/firebase/childDelete';
 import type { ChildSummary, Grade } from '@/types';
 import { cn } from '@/utils/cn';
 
@@ -42,9 +44,54 @@ function Toggle({ label, desc, on, disabled, onChange }: { label: string; desc: 
   );
 }
 
-function ChildCard({ child, parentUid, onSaved }: { child: ChildSummary; parentUid: string; onSaved: (c: ChildSummary) => void }) {
+function ChildCard({
+  child,
+  parentUid,
+  onSaved,
+  onDeleted,
+}: {
+  child: ChildSummary;
+  parentUid: string;
+  onSaved: (c: ChildSummary) => void;
+  onDeleted: (uid: string, note: string) => void;
+}) {
+  const ask = useConfirm();
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [delOpen, setDelOpen] = useState(false);
+  const [delPin, setDelPin] = useState('');
+  const [delBusy, setDelBusy] = useState(false);
+  const [delStep, setDelStep] = useState('');
+
+  async function remove(withPin: boolean) {
+    const ok = await ask({
+      title: `Hapus akun ${child.displayName}?`,
+      message: withPin
+        ? 'Semua data anak ini dihapus permanen: progres, riwayat, keanggotaan kelas, pertemanan, dan akun masuknya. Tidak bisa dibatalkan.'
+        : 'Data anak dihapus (progres, riwayat, keanggotaan kelas, profil). Akun masuknya TIDAK bisa dihapus tanpa PIN: nama pengguna tetap terpakai dan sisa pertemanan tidak ikut terhapus. Tidak bisa dibatalkan.',
+      confirmLabel: 'Ya, hapus',
+      cancelLabel: 'Batal',
+      danger: true,
+    });
+    if (!ok) return;
+    setDelBusy(true);
+    setError('');
+    setDelStep('');
+    try {
+      const res = await deleteChildAccount({ uid: child.uid, username: child.username }, withPin ? delPin : null, setDelStep);
+      onDeleted(
+        child.uid,
+        res.authDeleted
+          ? `Akun ${child.displayName} dan semua datanya sudah dihapus.`
+          : `Data ${child.displayName} sudah dihapus. Akun masuknya tidak bisa dihapus tanpa PIN, jadi nama pengguna ${child.username || 'itu'} tetap terpakai.`,
+      );
+    } catch (e) {
+      setError(friendlyError(e));
+    } finally {
+      setDelBusy(false);
+      setDelStep('');
+    }
+  }
 
   async function update(patch: Partial<ChildSummary>) {
     setSaving(true);
@@ -96,6 +143,34 @@ function ChildCard({ child, parentUid, onSaved }: { child: ChildSummary; parentU
         <p className="mt-1 text-sm text-tinta/75">Pencatatan batas waktu belum aktif; nilai ini disimpan untuk fitur berikutnya.</p>
       </div>
       <FormError message={error} />
+      {!delOpen ? (
+        <Button variant="ghost" onClick={() => setDelOpen(true)}>
+          <Icon name="trash" size={20} /> Hapus akun anak
+        </Button>
+      ) : (
+        <div className="space-y-3 rounded-2xl border-2 border-merah-600 bg-merah-100 p-4">
+          <p className="font-semibold">Hapus akun {child.displayName}</p>
+          <p className="text-sm">Masukkan PIN anak agar akun masuknya ikut terhapus. Penghapusan tidak bisa dibatalkan.</p>
+          <Field
+            label="PIN anak (6 angka)"
+            value={delPin}
+            onChange={(e) => setDelPin(e.target.value.replace(/\D/g, '').slice(0, 6))}
+            inputMode="numeric"
+            autoComplete="off"
+            disabled={delBusy}
+          />
+          {delBusy && delStep && <p role="status" className="text-sm font-semibold">{delStep}</p>}
+          <Button block disabled={delBusy || !PIN_RE.test(delPin)} onClick={() => void remove(true)}>
+            {delBusy ? 'Menghapus…' : 'Hapus akun dan semua datanya'}
+          </Button>
+          <Button variant="sekunder" block disabled={delBusy} onClick={() => void remove(false)}>
+            Lupa PIN: hapus datanya saja
+          </Button>
+          <Button variant="ghost" block disabled={delBusy} onClick={() => { setDelOpen(false); setDelPin(''); setError(''); }}>
+            Batal
+          </Button>
+        </div>
+      )}
     </Card>
   );
 }
@@ -115,6 +190,7 @@ export function ChildAccounts() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [created, setCreated] = useState('');
+  const [removedNote, setRemovedNote] = useState('');
 
   const reload = useCallback(async () => {
     if (!parentUid) return;
@@ -156,6 +232,12 @@ export function ChildAccounts() {
       <PageHeader title="Akun Anak" subtitle="Buat akun anak dan atur izinnya." icon="user" />
 
       {loadError && <FormError message={loadError} />}
+      {removedNote && (
+        <p role="status" className="flex items-start gap-2 rounded-2xl border-2 border-tinta bg-hijau-100 px-4 py-3 font-semibold">
+          <Icon name="check" size={20} className="mt-0.5 shrink-0 text-aksen-tua" />
+          <span>{removedNote}</span>
+        </p>
+      )}
       {children === null && !loadError && <p role="status">Memuat…</p>}
       {children?.length === 0 && (
         <Card tone="catatan">
@@ -168,6 +250,10 @@ export function ChildAccounts() {
           child={c}
           parentUid={parentUid}
           onSaved={(next) => setChildren((list) => list?.map((x) => (x.uid === next.uid ? next : x)) ?? null)}
+          onDeleted={(uid, note) => {
+            setChildren((list) => list?.filter((x) => x.uid !== uid) ?? null);
+            setRemovedNote(note);
+          }}
         />
       ))}
 
