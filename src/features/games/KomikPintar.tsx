@@ -5,6 +5,7 @@ import { progressActions, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
 import { Chibi, SCENE_H, SCENE_W, type Mood, type Who } from './KomikArt';
 import { GardenScene, ObjArt, RoomScene } from './KomikScenes';
+import { BeachScene, FarmScene, KitchenScene, SchoolScene } from './KomikScenesBaru';
 import {
   chipState,
   komikBest,
@@ -602,7 +603,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
           aria-label="Ilustrasi komik. Ketuk benda yang tersembunyi untuk menemukannya."
           onClick={tapMiss}
         >
-          {L.scene === 'taman' ? <GardenScene {...sceneProps} /> : <RoomScene {...sceneProps} />}
+          {L.scene === 'taman' ? <GardenScene {...sceneProps} /> : L.scene === 'dapur' ? <KitchenScene {...sceneProps} /> : L.scene === 'kelas' ? <SchoolScene {...sceneProps} /> : L.scene === 'pantai' ? <BeachScene {...sceneProps} /> : L.scene === 'kebun' ? <FarmScene {...sceneProps} /> : <RoomScene {...sceneProps} />}
 
           {/* sasaran seret-letak */}
           {phase === 'main' &&

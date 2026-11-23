@@ -43,18 +43,26 @@ const POSE: Record<Mood, { l: ArmPose; r: ArmPose }> = {
 const EASE = '.5s cubic-bezier(.34,1.45,.5,1)';
 
 function Arm({ x, up, low, sleeve, cuff, wave, id }: { x: number; up: number; low: number; sleeve: string; cuff: string; wave?: boolean; id: string }) {
+  /* sisi dalam (arah badan) untuk jempol: lengan kiri -> kanan, lengan kanan -> kiri */
+  const side = x < 60 ? 1 : -1;
   return (
     <g className="km-arm" style={{ transform: `rotate(${up}deg)`, transformOrigin: `${x}px 105px`, transition: `transform ${EASE}` }}>
-      <g className="km-arm" style={{ transform: `rotate(${low}deg)`, transformOrigin: `${x}px 118px`, transition: `transform ${EASE}` }}>
-        <g className={wave ? 'km-wave2' : undefined} style={{ transformOrigin: `${x}px 118px` }}>
-          <rect x={x - 3.9} y={116} width={7.8} height={17} rx={3.9} fill={sleeve} stroke={INK} strokeWidth={1.7} />
-          <rect x={x - 4.1} y={127} width={8.2} height={5} rx={2} fill={cuff} stroke={INK} strokeWidth={1.4} />
-          <circle cx={x} cy={136.5} r={5.3} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.7} />
-          <path d={`M${x - 2} 134.5 Q${x} 133.4 ${x + 2} 134.5`} fill="none" stroke="#fff" strokeWidth={1} strokeLinecap="round" opacity={0.7} />
+      <circle cx={x} cy={119} r={5.1} fill={sleeve} stroke={INK} strokeWidth={1.7} />
+      <g className="km-arm" style={{ transform: `rotate(${low}deg)`, transformOrigin: `${x}px 119px`, transition: `transform ${EASE}` }}>
+        <g className={wave ? 'km-wave2' : undefined} style={{ transformOrigin: `${x}px 119px` }}>
+          {/* lengan bawah meruncing ke pergelangan */}
+          <path d={`M${x - 5} 117 L${x + 5} 117 L${x + 4} 133 Q${x} 135 ${x - 4} 133Z`} fill={sleeve} stroke={INK} strokeWidth={1.7} strokeLinejoin="round" />
+          <path d={`M${x - 4.6} 128.5 Q${x} 131 ${x + 4.6} 128.5 L${x + 4.2} 133 Q${x} 135 ${x - 4.2} 133Z`} fill={cuff} stroke={INK} strokeWidth={1.3} strokeLinejoin="round" />
+          {/* tangan: telapak bulat + jempol */}
+          <ellipse cx={x + side * 4.6} cy={138} rx={2.1} ry={3.3} transform={`rotate(${side * -28} ${x + side * 4.6} 138)`} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.4} />
+          <circle cx={x} cy={139} r={5.6} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.7} />
+          <path d={`M${x - 2.6} 136.6 Q${x} 135.4 ${x + 2.6} 136.6`} fill="none" stroke="#fff" strokeWidth={1.1} strokeLinecap="round" opacity={0.75} />
         </g>
       </g>
-      <rect x={x - 4.3} y={103} width={8.6} height={17} rx={4.3} fill={sleeve} stroke={INK} strokeWidth={1.7} />
-      <circle cx={x} cy={118} r={3.5} fill={sleeve} />
+      {/* lengan atas: lebih tebal di bahu, meruncing ke siku */}
+      <path d={`M${x - 5.6} 105 Q${x - 5.6} 100 ${x} 100 Q${x + 5.6} 100 ${x + 5.6} 105 L${x + 5} 119 Q${x} 122 ${x - 5} 119Z`} fill={sleeve} stroke={INK} strokeWidth={1.7} strokeLinejoin="round" />
+      <path d={`M${x - 3} 106 Q${x - 3.4} 112 ${x - 2.8} 116`} fill="none" stroke={CREAM_D} strokeWidth={1.6} strokeLinecap="round" opacity={0.8} />
+      <circle cx={x} cy={119} r={4.2} fill={sleeve} />
     </g>
   );
 }
@@ -258,6 +266,8 @@ export function Chibi({ who, mood = 'idle', size = 120, x, y, label }: ChibiProp
             <path d="M40 120 Q60 126 80 120 L81 131 Q60 137 39 131Z" fill={CREAM_D} stroke="none" opacity={0.7} />
             {who === 'boy' && (
               <>
+                <path d="M53 86 L67 86 L68 104 Q60 109 52 104Z" fill={`url(#${id}-skin)`} />
+                <path d="M53.5 94 Q60 99 66.5 94 L67.2 101 Q60 105 52.8 101Z" fill="#E9B997" stroke="none" opacity={0.55} />
                 <path d="M36 98 Q60 114 84 98 Q86 108 60 116 Q34 108 36 98Z" fill={CREAM_D} />
                 <path d="M47 118 Q60 124 73 118 L74 130 Q60 134 46 130Z" fill="#EFE2BC" strokeWidth={1.4} />
                 <path d="M55 106 L54 117 M65 106 L66 117" stroke={look.cuff} strokeWidth={2} strokeLinecap="round" fill="none" />
@@ -316,8 +326,8 @@ export function Chibi({ who, mood = 'idle', size = 120, x, y, label }: ChibiProp
         </g></g>
 
         {/* lengan (di depan badan dan kepala) */}
-        <Arm x={41} up={pose.l.up} low={pose.l.low} sleeve={sleeve} cuff={look.cuff} id={id} />
-        <Arm x={79} up={pose.r.up} low={pose.r.low} sleeve={sleeve} cuff={look.cuff} wave={mood === 'wave'} id={id} />
+        <Arm x={35} up={pose.l.up} low={pose.l.low} sleeve={sleeve} cuff={look.cuff} id={id} />
+        <Arm x={85} up={pose.r.up} low={pose.r.low} sleeve={sleeve} cuff={look.cuff} wave={mood === 'wave'} id={id} />
       </g>
       {mood === 'think' && <text x={98} y={30} fontSize={22} fontWeight={800} fill="#E8A21A" stroke={INK} strokeWidth={0.8} className="km-float">?</text>}
       {mood === 'confused' && <text x={98} y={30} fontSize={22} fontWeight={800} fill="#E8A21A" stroke={INK} strokeWidth={0.8} className="km-float">?</text>}

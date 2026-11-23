@@ -2,8 +2,11 @@ import type { FlowerColor, Mood } from './KomikArt';
 
 /** Data dan aturan Komik Pintar. Level 1 (taman) dan Level 2 (kamar); level lain mengikuti pola yang sama. */
 
-export type KObjKind = 'flower' | 'can' | 'butterfly' | 'book' | 'doll' | 'block' | 'car' | 'key';
-export type KScene = 'taman' | 'kamar';
+export type KObjKind =
+  | 'flower' | 'can' | 'butterfly' | 'book' | 'doll' | 'block' | 'car' | 'key'
+  | 'apple' | 'banana' | 'glass' | 'plate' | 'spoon' | 'pencil' | 'eraser' | 'bag' | 'ball'
+  | 'shell' | 'starfish' | 'bucket' | 'spade' | 'hat' | 'carrot' | 'tomato' | 'corn' | 'hoe' | 'cone';
+export type KScene = 'taman' | 'kamar' | 'dapur' | 'kelas' | 'pantai' | 'kebun';
 
 export interface KObj {
   id: string;
@@ -34,7 +37,7 @@ export interface KTarget {
   /** Nama tempat untuk kalimat penolakan. */
   label: string;
   band?: string;
-  kind: 'pot' | 'plant' | 'shelf' | 'bed' | 'box' | 'wardrobe';
+  kind: 'pot' | 'plant' | 'shelf' | 'bed' | 'box' | 'wardrobe' | 'basket' | 'rack' | 'drawer' | 'case' | 'hook' | 'castle' | 'umbrella' | 'shed' | 'scarecrow';
 }
 
 export interface KState {
@@ -151,7 +154,150 @@ export const LEVEL2: KLevel = {
   },
 };
 
-export const LEVELS: KLevel[] = [LEVEL1, LEVEL2];
+
+/* ───────── Level 3: Dapur Ceria ───────── */
+
+export const LEVEL3: KLevel = {
+  id: 'dapur',
+  title: 'Dapur Ceria',
+  desc: 'Dapurnya kacau! Temukan apel, pisang, gelas, piring, dan sendok, lalu simpan di tempatnya.',
+  scene: 'dapur',
+  bestKey: 'komik-dapur',
+  seconds: 75,
+  objs: [
+    { id: 'apel', kind: 'apple', name: 'apel', label: 'Apel', x: 132, y: 292, hints: ['Ada buah merah yang menggelinding jauh dari meja.', 'Lihat lantai di dekat sisi kiri meja.'], placeHint: 'Seret apel ke keranjang buah.' },
+    { id: 'pisang', kind: 'banana', name: 'pisang', label: 'Pisang', x: 140, y: 157, hints: ['Pisang kuning itu santai di atas meja dapur.', 'Lihat ujung kiri meja dapur.'], placeHint: 'Seret pisang ke keranjang buah.' },
+    { id: 'gelas', kind: 'glass', name: 'gelas', label: 'Gelas', x: 150, y: 92, hints: ['Gelas bening itu berdiri di tempat yang terkena sinar matahari.', 'Lihat ambang jendela.'], placeHint: 'Seret gelas ke rak di dinding.' },
+    { id: 'piring', kind: 'plate', name: 'piring', label: 'Piring', x: 322, y: 264, hints: ['Piring putih itu bersandar di kaki meja dapur.', 'Lihat lantai di sisi kanan.'], placeHint: 'Seret piring ke rak di dinding.' },
+    { id: 'sendok', kind: 'spoon', name: 'sendok', label: 'Sendok', x: 300, y: 162, hints: ['Sendok itu berenang di tempat cuci.', 'Lihat bak cuci di meja dapur.'], placeHint: 'Seret sendok ke laci.' },
+  ],
+  targets: [
+    { id: 'keranjang', accepts: ['apel', 'pisang'], cap: 2, x: 190, y: 340, r: 40, label: 'keranjang buah', kind: 'basket' },
+    { id: 'rak', accepts: ['gelas', 'piring'], cap: 2, x: 296, y: 98, r: 40, label: 'rak piring', kind: 'rack' },
+    { id: 'laci', accepts: ['sendok'], cap: 1, x: 235, y: 198, r: 32, label: 'laci', kind: 'drawer' },
+  ],
+  intro: [
+    { text: 'Wah, dapurku berantakan! Ayo bantu aku merapikannya.', mood: 'sad' },
+    { text: 'Cari apel, pisang, gelas, piring, dan sendok. Ketuk bendanya kalau ketemu!', mood: 'point' },
+    { text: 'Buah ke keranjang, gelas dan piring ke rak, sendok ke laci. Waktumu 75 detik!', mood: 'excited' },
+  ],
+  missions: [
+    { id: 'm1', text: 'Cari apel dan pisang', done: (s) => has(s, 'apel', 'pisang') },
+    { id: 'm2', text: 'Letakkan 2 buah ke keranjang', done: (s) => filled(s, 'keranjang', 2) },
+    { id: 'm3', text: 'Cari gelas dan piring, taruh di rak', done: (s) => filled(s, 'rak', 2) },
+    { id: 'm4', text: 'Temukan sendok dan simpan di laci', done: (s) => filled(s, 'laci') },
+  ],
+  win: 'Dapurku rapi dan wangi. Terima kasih, koki hebat!',
+};
+
+/* ───────── Level 4: Ruang Kelas ───────── */
+
+export const LEVEL4: KLevel = {
+  id: 'kelas',
+  title: 'Ruang Kelas',
+  desc: 'Kelasnya berantakan! Temukan pensil, penghapus, buku, tas, dan bola, lalu rapikan.',
+  scene: 'kelas',
+  bestKey: 'komik-kelas',
+  seconds: 75,
+  objs: [
+    { id: 'pensil', kind: 'pencil', name: 'pensil', label: 'Pensil', x: 160, y: 338, hints: ['Pensil itu menggelinding ke kolong meja.', 'Lihat lantai di bawah meja.'], placeHint: 'Seret pensil ke kotak pensil di meja.' },
+    { id: 'penghapus', kind: 'eraser', name: 'penghapus', label: 'Penghapus', x: 250, y: 119, hints: ['Penghapus itu istirahat di bawah papan tulis.', 'Lihat tempat kapur di papan.'], placeHint: 'Seret penghapus ke kotak pensil di meja.' },
+    { id: 'buku', kind: 'book', name: 'buku tulis', label: 'Buku', x: 134, y: 283, hints: ['Buku tulis itu terbuka di atas meja.', 'Lihat ujung kiri meja.'], placeHint: 'Seret buku ke rak buku.' },
+    { id: 'tas', kind: 'bag', name: 'tas', label: 'Tas', x: 292, y: 268, hints: ['Tas merah itu bersandar di dekat rak.', 'Lihat lantai di dekat rak buku.'], placeHint: 'Seret tas ke gantungan di dinding.' },
+    { id: 'bola', kind: 'ball', name: 'bola', label: 'Bola', x: 62, y: 232, hints: ['Bola oranye itu menggelinding ke sudut kiri.', 'Lihat dekat gantungan tas.'], placeHint: 'Seret bola ke keranjang bola.' },
+  ],
+  targets: [
+    { id: 'kotakpensil', accepts: ['pensil', 'penghapus'], cap: 2, x: 200, y: 288, r: 30, label: 'kotak pensil', kind: 'case' },
+    { id: 'rak', accepts: ['buku'], cap: 1, x: 321, y: 188, r: 40, label: 'rak buku', kind: 'shelf' },
+    { id: 'gantung', accepts: ['tas'], cap: 1, x: 40, y: 142, r: 30, label: 'gantungan tas', kind: 'hook' },
+    { id: 'keranjang', accepts: ['bola'], cap: 1, x: 160, y: 210, r: 32, label: 'keranjang bola', kind: 'basket' },
+  ],
+  intro: [
+    { text: 'Selamat pagi! Kelas kita berantakan sebelum belajar.', mood: 'sad' },
+    { text: 'Cari pensil, penghapus, buku, tas, dan bola. Ketuk bendanya kalau ketemu!', mood: 'point' },
+    { text: 'Alat tulis ke kotak pensil, buku ke rak, tas ke gantungan, bola ke keranjang. Waktumu 75 detik!', mood: 'excited' },
+  ],
+  missions: [
+    { id: 'm1', text: 'Cari pensil dan penghapus', done: (s) => has(s, 'pensil', 'penghapus') },
+    { id: 'm2', text: 'Taruh 2 alat tulis di kotak pensil', done: (s) => filled(s, 'kotakpensil', 2) },
+    { id: 'm3', text: 'Rapikan buku di rak', done: (s) => filled(s, 'rak') },
+    { id: 'm4', text: 'Gantung tas di gantungan', done: (s) => filled(s, 'gantung') },
+    { id: 'm5', text: 'Simpan bola di keranjang', done: (s) => filled(s, 'keranjang') },
+  ],
+  win: 'Hore! Kelas kita rapi. Siap belajar!',
+};
+
+/* ───────── Level 5: Pantai Seru ───────── */
+
+export const LEVEL5: KLevel = {
+  id: 'pantai',
+  title: 'Pantai Seru',
+  desc: 'Pantainya seru tapi berantakan! Temukan kerang, bintang laut, ember, sekop, dan topi.',
+  scene: 'pantai',
+  bestKey: 'komik-pantai',
+  seconds: 70,
+  objs: [
+    { id: 'kerang', kind: 'shell', name: 'kerang', label: 'Kerang', x: 30, y: 244, hints: ['Kerang cantik itu bersembunyi dekat batu.', 'Lihat sudut kiri, dekat batu di tepi laut.'], placeHint: 'Seret kerang ke istana pasir.' },
+    { id: 'bintang', kind: 'starfish', name: 'bintang laut', label: 'Bintang laut', x: 252, y: 226, hints: ['Bintang laut itu bermain di tepi ombak.', 'Lihat tepi laut di sisi kanan.'], placeHint: 'Seret bintang laut ke istana pasir.' },
+    { id: 'ember', kind: 'bucket', name: 'ember', label: 'Ember', x: 330, y: 256, hints: ['Ember biru itu berteduh di bawah pohon kelapa.', 'Lihat dekat batang pohon di kanan.'], placeHint: 'Seret ember ke keranjang pantai.' },
+    { id: 'sekop', kind: 'spade', name: 'sekop', label: 'Sekop', x: 150, y: 390, hints: ['Sekop itu setengah terkubur di pasir.', 'Lihat pasir di bagian bawah, di tengah.'], placeHint: 'Seret sekop ke keranjang pantai.' },
+    { id: 'topi', kind: 'hat', name: 'topi', label: 'Topi', x: 150, y: 176, hints: ['Topi jerami itu ditiup angin ke laut.', 'Lihat ombak di tengah laut.'], placeHint: 'Seret topi ke payung pantai.' },
+  ],
+  targets: [
+    { id: 'keranjang', accepts: ['ember', 'sekop'], cap: 2, x: 150, y: 300, r: 34, label: 'keranjang pantai', kind: 'basket' },
+    { id: 'istana', accepts: ['kerang', 'bintang'], cap: 2, x: 205, y: 350, r: 40, label: 'istana pasir', kind: 'castle' },
+    { id: 'payung', accepts: ['topi'], cap: 1, x: 300, y: 236, r: 34, label: 'payung pantai', kind: 'umbrella' },
+  ],
+  intro: [
+    { text: 'Pantai ini indah, tapi barang-barangku berserakan!', mood: 'sad' },
+    { text: 'Cari kerang, bintang laut, ember, sekop, dan topi. Ketuk bendanya kalau ketemu!', mood: 'point' },
+    { text: 'Hias istana pasir, simpan ember dan sekop, dan gantung topi di payung. Waktumu 70 detik!', mood: 'excited' },
+  ],
+  missions: [
+    { id: 'm1', text: 'Cari kerang dan bintang laut', done: (s) => has(s, 'kerang', 'bintang') },
+    { id: 'm2', text: 'Hias istana pasir dengan 2 benda', done: (s) => filled(s, 'istana', 2) },
+    { id: 'm3', text: 'Simpan ember dan sekop di keranjang', done: (s) => filled(s, 'keranjang', 2) },
+    { id: 'm4', text: 'Letakkan topi di payung', done: (s) => filled(s, 'payung') },
+  ],
+  win: 'Wow! Pantainya rapi dan cantik. Terima kasih!',
+};
+
+/* ───────── Level 6: Kebun Sayur ───────── */
+
+export const LEVEL6: KLevel = {
+  id: 'kebun',
+  title: 'Kebun Sayur',
+  desc: 'Waktunya panen! Temukan wortel, tomat, jagung, cangkul, dan caping, lalu simpan di tempatnya.',
+  scene: 'kebun',
+  bestKey: 'komik-kebun',
+  seconds: 80,
+  objs: [
+    { id: 'wortel', kind: 'carrot', name: 'wortel', label: 'Wortel', x: 258, y: 262, hints: ['Daun wortel mengintip dari dalam tanah.', 'Lihat bedeng di sisi kanan.'], placeHint: 'Seret wortel ke keranjang panen.' },
+    { id: 'tomat', kind: 'tomato', name: 'tomat', label: 'Tomat', x: 140, y: 238, hints: ['Tomat merah itu bersembunyi di antara daun.', 'Lihat bedeng dekat jalan setapak.'], placeHint: 'Seret tomat ke keranjang panen.' },
+    { id: 'jagung', kind: 'corn', name: 'jagung', label: 'Jagung', x: 200, y: 216, hints: ['Jagung kuning itu menjulang di tengah kebun.', 'Lihat di dekat pagar, bagian tengah.'], placeHint: 'Seret jagung ke keranjang panen.' },
+    { id: 'cangkul', kind: 'hoe', name: 'cangkul', label: 'Cangkul', x: 126, y: 300, hints: ['Cangkul itu bersandar di tepi jalan.', 'Lihat pinggir jalan setapak, sisi kiri.'], placeHint: 'Seret cangkul ke gudang.' },
+    { id: 'caping', kind: 'cone', name: 'caping', label: 'Caping', x: 330, y: 276, hints: ['Caping itu terbawa angin ke dekat bedeng.', 'Lihat rumput di sisi kanan.'], placeHint: 'Seret caping ke orang-orangan sawah.' },
+  ],
+  targets: [
+    { id: 'keranjang', accepts: ['wortel', 'tomat', 'jagung'], cap: 3, x: 190, y: 350, r: 40, label: 'keranjang panen', kind: 'basket' },
+    { id: 'gudang', accepts: ['cangkul'], cap: 1, x: 324, y: 208, r: 34, label: 'gudang', kind: 'shed' },
+    { id: 'orang', accepts: ['caping'], cap: 1, x: 52, y: 222, r: 34, label: 'orang-orangan sawah', kind: 'scarecrow' },
+  ],
+  intro: [
+    { text: 'Panen hampir tiba, tapi alat dan sayurku berpencar!', mood: 'sad' },
+    { text: 'Cari wortel, tomat, jagung, cangkul, dan caping. Ketuk bendanya kalau ketemu!', mood: 'point' },
+    { text: 'Sayur ke keranjang, cangkul ke gudang, caping ke orang-orangan sawah. Waktumu 80 detik!', mood: 'excited' },
+  ],
+  missions: [
+    { id: 'm1', text: 'Cari 3 sayur', done: (s) => has(s, 'wortel', 'tomat', 'jagung') },
+    { id: 'm2', text: 'Isi keranjang dengan 3 sayur', done: (s) => filled(s, 'keranjang', 3) },
+    { id: 'm3', text: 'Simpan cangkul di gudang', done: (s) => filled(s, 'gudang') },
+    { id: 'm4', text: 'Pasang caping di orang-orangan sawah', done: (s) => filled(s, 'orang') },
+  ],
+  win: 'Panen berhasil! Kebunku subur. Terima kasih!',
+};
+
+export const LEVELS: KLevel[] = [LEVEL1, LEVEL2, LEVEL3, LEVEL4, LEVEL5, LEVEL6];
 
 /* ───────── Kemajuan di dalam satu permainan ───────── */
 

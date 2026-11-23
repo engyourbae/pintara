@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 import { Bench, Bush, Butterfly, Flower, GardenBack, Pot, SCENE_H, SCENE_W, Tree, WateringCan, WiltedPlant } from './KomikArt';
+import { Item } from './KomikItems';
 import type { KObj } from './komikData';
 
-const INK = '#33432F';
+export const INK = '#33432F';
 
 /* ───────── Benda (digambar di tengah 0,0; muat dalam ±22) ───────── */
 
@@ -80,6 +81,7 @@ export function ObjArt({ o, x = 0, y = 0, s = 1 }: { o: KObj; x?: number; y?: nu
       {o.kind === 'block' && <Block s={s} />}
       {o.kind === 'car' && <Car s={s} />}
       {o.kind === 'key' && <Key s={s} />}
+      <Item kind={o.kind} s={s} />
     </g>
   );
 }
