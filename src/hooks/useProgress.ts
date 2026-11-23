@@ -188,15 +188,15 @@ export const progressActions = {
       gameBest: { ...state.gameBest, [trackKey]: Math.max(state.gameBest[trackKey] ?? 0, doneInTrack) },
     });
   },
-  /** Mencatat level Komik Pintar selesai. XP dan koin hanya diberikan pada penyelesaian pertama (gained/coins dihitung pemanggil). */
-  recordKomik(levelId: string, stars: number, best: number, gained: number, coins: number) {
+  /** Mencatat level Komik Pintar selesai. XP dan koin hanya diberikan pada penyelesaian pertama (gained/coins dihitung pemanggil). bestKey = kunci gameBest level itu. */
+  recordKomik(levelId: string, stars: number, bestKey: string, best: number, gained: number, coins: number) {
     save({
       ...state,
       ...touchStreak(state),
       xp: state.xp + gained,
       koin: (state.koin ?? 0) + (gained > 0 ? coins : 0),
       komik: { ...(state.komik ?? {}), [levelId]: Math.max(state.komik?.[levelId] ?? 0, stars) },
-      gameBest: { ...state.gameBest, komik: Math.max(state.gameBest.komik ?? 0, best) },
+      gameBest: { ...state.gameBest, [bestKey]: Math.max(state.gameBest[bestKey] ?? 0, best) },
     });
   },
   setKomikHero(hero: string) {
