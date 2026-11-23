@@ -81,3 +81,11 @@ Tanpa server, hal berikut **tidak bisa dijamin**:
 - Murid (akun `pnt_xxxxxx@anak.pintara.invalid`, email tidak nyata) tidak bisa memakai jalur ini. Pemulihan PIN murid BELUM ADA: tanpa server tidak ada cara aman bagi orang tua untuk menyetel PIN akun lain. Pilihan desain ada di catatan pemilik (lihat jawaban fase F29b).
 - Langkah opsional di Firebase Console (tanpa kode): Authentication > Templates > Password reset: ubah bahasa ke Indonesia, nama pengirim, subjek, dan isi pesan. Pastikan "Email enumeration protection" aktif bila ingin respons seragam dari server juga.
 - Diuji: tangga jeda reset (31 pemeriksaan bersama jeda login), tampilan dan validasi di Chromium (email murid ditolak, jeda hanya tercatat bila Firebase memproses). Belum diuji dengan pengiriman email sungguhan.
+
+## Hapus akun anak oleh orang tua (F30a-1) — Rules BARU, BELUM TERUJI
+- Kode: `src/services/firebase/childDelete.ts`, tombol di `ChildAccounts.tsx`. Konfirmasi `useConfirm` (danger).
+- Jalur dengan PIN: masuk sebagai anak lewat instance Firebase terpisah, hapus pertemanan/permintaan/blokir/undangan + simpul RTDB anak (sebisanya), lalu orang tua menghapus data kelas, riwayat, progres, nama pengguna, profil, dan `users/{anak}` PALING AKHIR, lalu `deleteUser` (akun Auth) dan dokumen `parent_accounts/{ortu}/children/{anak}`.
+- Jalur lupa PIN: hanya bagian orang tua. Akun Auth anak TIDAK bisa dihapus tanpa Admin SDK: tetap ada (yatim), nama penggunanya tetap terpakai, dan anak yang memegang PIN lama masih bisa masuk (tanpa data). Sisa `friendships`/`friend_requests`/`blocked_users` anak tidak ikut terhapus (teman bisa menghapus pertemanannya sendiri).
+- Urutan penting: Rules memakai `isParentOf` yang membaca `users/{anak}.parentUid`, jadi dokumen itu dihapus terakhir. Langkah idempoten; bila terputus, ulangi.
+- Perubahan Rules: orang tua (`isParentOf`) boleh menghapus `usernames` anaknya; membaca dan menghapus `class_members`, `results`, `quiz_answers` anaknya; penerima boleh menghapus `game_invitations`. Konsekuensi: orang tua kini juga bisa MEMBACA keanggotaan kelas dan hasil kelas anaknya.
+- Batas jujur: orang tua bisa menghapus `quiz_answers` anaknya (guru memberi kesempatan ulang dengan cara yang sama).

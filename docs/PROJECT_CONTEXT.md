@@ -188,3 +188,6 @@ Diubah: `src/types/index.ts`, `src/app/{App.tsx,navigation.ts}`, `src/layouts/Mo
 ## Catatan F29b (jeda login)
 - Jeda bertingkat salah sandi: `src/utils/loginGuard.ts` (murni, tanpa Firebase; tangga `LOCK_LADDER`), dipanggil dari `signInWithIdentifier` di `auth.ts`; UI `src/features/auth/LoginLock.tsx` (`useLoginLock`, `LoginLockNotice`) dipakai `MasukPage` (murid dan guru) dan `LoginPage` (admin). Detail dan batas jujur: `docs/keamanan.md`.
 - **Lupa sandi (F29b)**: `ForgotPassword.tsx` (di luar `<form>` masuk) di `MasukPage` (murid/orang tua dan guru-masuk) dan `LoginPage` (admin); `requestPasswordReset` di `auth.ts`; jeda reset di `loginGuard.ts` (`checkResetCooldown`, `recordResetRequest`). Tautan email, bukan OTP. Murid tidak punya pemulihan PIN (lihat `docs/keamanan.md`).
+
+## F30a-1 — Hapus akun anak (BELUM TERUJI dengan Firebase nyata)
+`childDelete.ts` (`deleteChildAccount(child, pin | null, onStep)`) + tombol "Hapus akun anak" di `ChildAccounts.tsx` (PIN → hapus lengkap; "Lupa PIN" → hanya data). Rules diubah (lihat `docs/keamanan.md`); publish ulang `firebase/firebase.rules`. Urutan hapus diuji dengan Firestore tiruan di memori (bukan Rules asli).
