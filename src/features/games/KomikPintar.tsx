@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 import { Badge, Button, ButtonLink, Card, CheckRow, Icon, Page, PageHeader, ProgressBar, useConfirm } from '@/components/ui';
 import { MODE_BASE } from '@/app/navigation';
 import { progressActions, useProgress } from '@/hooks/useProgress';
@@ -16,10 +16,13 @@ import {
   rejectLine,
   resultFor,
   SAY,
+  STORY,
+  STORY_TITLE,
   type KLevel,
   type KObj,
   type KResult,
   type KState,
+  type KStory,
   type KTarget,
 } from './komikData';
 import { aturSuara, bicara, siapkanSuara, stopBicara, suaraAktif, suaraTersedia, type Vokal } from './komikSuara';
@@ -58,14 +61,50 @@ function ObjIcon({ o, dim }: { o: KObj; dim?: boolean }) {
 
 /* ───────────────────────── Menu ───────────────────────── */
 
+/** Gambar kecil adegan level untuk kartu menu (tanpa benda tersembunyi dan tanpa karakter). */
+function LevelThumb({ l, locked }: { l: KLevel; locked: boolean }) {
+  const props = { objs: l.objs, hidden: () => false, placed: {}, chars: null };
+  return (
+    <svg viewBox={`0 0 ${SCENE_W} 300`} preserveAspectRatio="xMidYMid slice" className={cn('block h-36 w-full rounded-2xl border-2 border-tinta', locked && 'grayscale')} aria-hidden="true">
+      {l.scene === 'taman' ? <GardenScene {...props} /> : l.scene === 'dapur' ? <KitchenScene {...props} /> : l.scene === 'kelas' ? <SchoolScene {...props} /> : l.scene === 'pantai' ? <BeachScene {...props} /> : l.scene === 'kebun' ? <FarmScene {...props} /> : <RoomScene {...props} />}
+    </svg>
+  );
+}
+
 export function KomikPintar() {
   const p = useProgress();
   const [hero, setHero] = useState<string>(p.komikHero ?? '');
   const [suara, setSuara] = useState(suaraAktif());
   const [level, setLevel] = useState<KLevel | null>(null);
+  const [mode, setModeState] = useState<'cerita' | 'bebas'>(() => {
+    try {
+      return localStorage.getItem('komik-mode') === 'bebas' ? 'bebas' : 'cerita';
+    } catch {
+      return 'cerita';
+    }
+  });
+  const setMode = (m: 'cerita' | 'bebas') => {
+    setModeState(m);
+    try {
+      localStorage.setItem('komik-mode', m);
+    } catch {
+      /* penyimpanan tidak tersedia */
+    }
+  };
 
   if (level && hero) {
-    return <Play key={level.id} hero={hero} level={level} onExit={() => setLevel(null)} />;
+    const idx = LEVELS.findIndex((x) => x.id === level.id);
+    const next = LEVELS[idx + 1];
+    return (
+      <Play
+        key={level.id}
+        hero={hero}
+        level={level}
+        story={mode === 'cerita' ? STORY[level.id] : undefined}
+        onNext={mode === 'cerita' && next ? () => setLevel(next) : undefined}
+        onExit={() => setLevel(null)}
+      />
+    );
   }
   return (
     <Page>
@@ -110,17 +149,57 @@ export function KomikPintar() {
       )}
 
       <section className="space-y-3">
-        <h2 className="font-display text-xl font-semibold">Pilih level</h2>
+        <h2 className="font-display text-xl font-semibold">Pilih mode</h2>
+        <div className="grid grid-cols-2 gap-3">
+          {([['cerita', 'Mode cerita', 'Level nyambung, ada dialog'], ['bebas', 'Mode bebas', 'Pilih level sesukamu']] as const).map(([m, t, d]) => (
+            <button
+              key={m}
+              type="button"
+              aria-pressed={mode === m}
+              onClick={() => setMode(m)}
+              className={cn('stiker rounded-3xl p-3 text-left transition active:translate-y-1 active:shadow-none', mode === m ? 'bg-hijau-100 ring-4 ring-aksen' : 'bg-gading')}
+            >
+              <span className="block font-display text-lg font-semibold">{t}</span>
+              <span className="block text-sm text-tinta/80">{d}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="font-display text-xl font-semibold">{mode === 'cerita' ? STORY_TITLE : 'Pilih level'}</h2>
+        {mode === 'cerita' && (
+          <ol className="flex items-center justify-between gap-1" aria-label="Peta perjalanan cerita">
+            {LEVELS.map((l, i) => {
+              const done = (p.komik?.[l.id] ?? 0) > 0;
+              const open = i === 0 || (p.komik?.[LEVELS[i - 1].id] ?? 0) > 0;
+              return (
+                <li key={l.id} className="flex flex-1 items-center gap-1">
+                  <span className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-tinta font-display text-sm font-semibold', done ? 'bg-aksen text-white' : open ? 'bg-gading' : 'bg-white/60 text-tinta/50')}>{done ? '✓' : i + 1}</span>
+                  {i < LEVELS.length - 1 && <span className={cn('h-1 flex-1 rounded-full', done ? 'bg-aksen' : 'bg-tinta/20')} />}
+                </li>
+              );
+            })}
+          </ol>
+        )}
         {LEVELS.map((l, i) => {
           const stars = p.komik?.[l.id] ?? 0;
           const open = i === 0 || (p.komik?.[LEVELS[i - 1].id] ?? 0) > 0;
           const best = (p.gameBest[l.bestKey] ?? 0) % 1000;
+          const story = STORY[l.id];
           return (
             <Card key={l.id} className="space-y-2">
-              <div className="flex items-center justify-between gap-2">
-                <h3 className="text-xl">Level {i + 1}: {l.title}</h3>
-                <Badge tone="kuning">{l.seconds} detik</Badge>
+              <div className="relative">
+                <LevelThumb l={l} locked={!open} />
+                <span className="absolute left-2 top-2 rounded-full border-2 border-tinta bg-white px-2 py-0.5 text-xs font-bold">{mode === 'cerita' ? `Bab ${i + 1}` : `Level ${i + 1}`}</span>
+                <span className="absolute right-2 top-2"><Badge tone="kuning">{l.seconds} detik</Badge></span>
+                {!open && (
+                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-tinta/50 text-white">
+                    <Icon name="lock" size={40} />
+                  </div>
+                )}
               </div>
+              <h3 className="text-xl">{mode === 'cerita' ? `Bab ${i + 1}: ${story.judul}` : `Level ${i + 1}: ${l.title}`}</h3>
               <p className="text-tinta/85">{l.desc}</p>
               <p className="flex items-center gap-2 text-sm font-bold text-aksen-tua">
                 <Stars3 count={stars} size={18} />
@@ -136,7 +215,7 @@ export function KomikPintar() {
                   setLevel(l);
                 }}
               >
-                <Icon name={open ? 'play' : 'lock'} size={22} /> {!open ? 'Selesaikan level sebelumnya' : hero ? 'Mulai main' : 'Pilih karakter dulu'}
+                <Icon name={open ? 'play' : 'lock'} size={22} /> {!open ? 'Selesaikan level sebelumnya' : hero ? (mode === 'cerita' ? 'Mulai bab ini' : 'Mulai main') : 'Pilih karakter dulu'}
               </Button>
             </Card>
           );
@@ -169,8 +248,10 @@ interface Fx {
 /** Jari menutupi benda yang diseret; bayangan dan titik lepas diangkat sedikit ke atas jari. */
 const LIFT = 38;
 
-function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: () => void }) {
+function Play({ hero, level, story, onNext, onExit }: { hero: string; level: KLevel; story?: KStory; onNext?: () => void; onExit: () => void }) {
   const L = level;
+  /** Mode cerita: dialog bab dulu, lalu petunjuk level (tanpa sapaan pertama). */
+  const lines = useMemo(() => (story ? [...story.before, ...L.intro.slice(1)] : L.intro), [story, L]);
   const confirm = useConfirm();
   const playedBefore = (useProgress().komik?.[L.id] ?? 0) > 0;
   /** XP hanya pada penyelesaian pertama; ref ini berubah jadi false setelah kemenangan tercatat (juga untuk "Main lagi"). */
@@ -181,8 +262,8 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
   const [left, setLeft] = useState<number>(L.seconds);
   const [paused, setPaused] = useState(false);
   const [helps, setHelps] = useState(0);
-  const [bubble, setBubble] = useState<{ text: string }>({ text: L.intro[0].text });
-  const [guideMood, setGuideMood] = useState<Mood>(L.intro[0].mood);
+  const [bubble, setBubble] = useState<{ text: string }>({ text: lines[0].text });
+  const [guideMood, setGuideMood] = useState<Mood>(lines[0].mood);
   const [heroMood, setHeroMood] = useState<Mood>('idle');
   const [vox, setVox] = useState<{ text: string; key: number } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -260,7 +341,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
   /* cerita pembuka */
   useEffect(() => {
     if (phase === 'cerita') {
-      const line = L.intro[intro];
+      const line = lines[intro];
       setBubble({ text: line.text });
       setGuideMood(line.mood);
       const v: Vokal = intro === 0 ? 'sapa' : VOX[line.mood] ?? 'bicara';
@@ -269,7 +350,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
       lastSay.current = { v, kata: line.text.split(' ').length };
       lastVox.current = Date.now();
     }
-  }, [phase, intro, L]);
+  }, [phase, intro, lines]);
 
   function start() {
     finished.current = false;
@@ -340,7 +421,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
         progressActions.recordKomik(L.id, r.stars, L.bestKey, komikBest(r.stars, r.score), r.gained, r.coins);
         firstRef.current = false;
         setHeroMood('excited');
-        say(L.win, 'excited', 'berhasil');
+        say(story?.after ?? L.win, 'excited', 'berhasil');
         later(() => {
           const pop = bicara('berhasil', who);
           if (pop) setVox({ text: pop, key: Date.now() });
@@ -350,7 +431,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
         say(SAY.lose(), 'sad', 'kecewa');
       }
     },
-    [L, say, later, who],
+    [L, say, later, who, story],
   );
 
   const secLeft = Math.ceil(left);
@@ -639,8 +720,8 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
             {phase === 'cerita' && (
               <div className="mt-2 flex items-center justify-between gap-2">
                 <button type="button" onClick={start} className="min-h-[44px] px-2 text-sm font-bold text-aksen-tua underline">Lewati cerita</button>
-                <Button size="md" onClick={() => (intro + 1 < L.intro.length ? setIntro(intro + 1) : start())}>
-                  {intro + 1 < L.intro.length ? 'Lanjut' : 'Mulai!'}
+                <Button size="md" onClick={() => (intro + 1 < lines.length ? setIntro(intro + 1) : start())}>
+                  {intro + 1 < lines.length ? 'Lanjut' : 'Mulai!'}
                 </Button>
               </div>
             )}
@@ -717,7 +798,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
           {helps > 0 && <p className="text-xs text-tinta/70">Bantuan dipakai {helps}×. Bantuan mengurangi skor dan peluang bintang 3.</p>}
         </Card>
       ) : (
-        result && <ResultCard r={result} win={phase === 'selesai'} found={st.found.length} totalObjs={L.objs.length} placed={placedCount(st)} missions={doneCount} totalMissions={L.missions.length} left={Math.ceil(left)} onAgain={start} />
+        result && <ResultCard r={result} win={phase === 'selesai'} found={st.found.length} totalObjs={L.objs.length} placed={placedCount(st)} missions={doneCount} totalMissions={L.missions.length} left={Math.ceil(left)} onAgain={start} story={story} onNext={onNext} />
       )}
 
       {drag?.moved && (
@@ -734,7 +815,7 @@ function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: ()
   );
 }
 
-function ResultCard({ r, win, found, totalObjs, placed, missions, totalMissions, left, onAgain }: { r: KResult; win: boolean; found: number; totalObjs: number; placed: number; missions: number; totalMissions: number; left: number; onAgain: () => void }): ReactNode {
+function ResultCard({ r, win, found, totalObjs, placed, missions, totalMissions, left, onAgain, story, onNext }: { r: KResult; win: boolean; found: number; totalObjs: number; placed: number; missions: number; totalMissions: number; left: number; onAgain: () => void; story?: KStory; onNext?: () => void }): ReactNode {
   return (
     <Card tone={win ? 'hijau' : 'catatan'} className="space-y-3 text-center">
       <h2 className="text-2xl">{win ? 'Level selesai!' : 'Waktu habis'}</h2>
@@ -753,8 +834,12 @@ function ResultCard({ r, win, found, totalObjs, placed, missions, totalMissions,
       ) : (
         <p>Tidak apa-apa. Coba lagi, kamu pasti bisa!</p>
       )}
+      {win && story && (
+        <p className="rounded-2xl border-2 border-tinta bg-white p-3 text-left font-semibold">{story.after}</p>
+      )}
       <div className="grid gap-2">
-        <Button size="lg" block onClick={onAgain}>{win ? 'Main lagi' : 'Coba lagi'}</Button>
+        {win && story && onNext && <Button size="lg" block onClick={onNext}>Lanjut ke bab berikutnya</Button>}
+        <Button size="lg" block variant={win && story && onNext ? 'sekunder' : undefined} onClick={onAgain}>{win ? 'Main lagi' : 'Coba lagi'}</Button>
         <ButtonLink to={GAME} variant="sekunder" block>Kembali ke Permainan</ButtonLink>
       </div>
     </Card>

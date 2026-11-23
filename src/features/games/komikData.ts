@@ -377,3 +377,51 @@ export function rejectLine(o: KObj, t: KTarget): string {
   if (t.kind === 'wardrobe') return 'Lemari itu terkunci. Cari kuncinya dulu, ya.';
   return `${cap(o.name)} belum cocok di ${t.label}. Coba tempat lain!`;
 }
+
+/* ───────── Mode cerita: "Pesta Piknik Si Pemandu" ───────── */
+
+export interface KStory {
+  judul: string;
+  /** Dialog pembuka bab (menggantikan kalimat pertama intro level). */
+  before: { text: string; mood: Mood }[];
+  /** Kalimat penutup bab yang menyambung ke bab berikutnya. */
+  after: string;
+}
+
+export const STORY_TITLE = 'Pesta Piknik Si Pemandu';
+
+export const STORY: Record<string, KStory> = {
+  taman: {
+    judul: 'Menghias Taman',
+    before: [
+      { text: 'Selamat datang di Pesta Piknik! Hari ini aku mau mengundang semua teman.', mood: 'wave' },
+      { text: 'Pertama, tamanku harus cantik. Tapi bunga-bunganya malah bersembunyi!', mood: 'sad' },
+    ],
+    after: 'Tamannya cantik! Tapi pesta butuh tikar piknik, dan tikarnya terkunci di lemari kamarku.',
+  },
+  kamar: {
+    judul: 'Kunci di Kamar',
+    before: [{ text: 'Tikar piknik ada di lemari kamar. Sayangnya kamarku berantakan dan kuncinya hilang.', mood: 'think' }],
+    after: 'Lemari terbuka dan tikar piknik ketemu! Sekarang kita perlu bekal dari dapur.',
+  },
+  dapur: {
+    judul: 'Bekal dari Dapur',
+    before: [{ text: 'Perutku sudah keroncongan. Ayo siapkan bekal piknik di dapur!', mood: 'excited' }],
+    after: 'Bekal sudah rapi. Sekarang kita tulis undangan untuk teman sekelas.',
+  },
+  kelas: {
+    judul: 'Undangan di Kelas',
+    before: [{ text: 'Alat tulis dan bola permainan ada di kelas, tapi semuanya berserakan!', mood: 'point' }],
+    after: 'Undangan terkirim dan bola permainan siap. Saatnya menyiapkan pantai tempat piknik!',
+  },
+  pantai: {
+    judul: 'Piknik di Pantai',
+    before: [{ text: 'Hore, teman-teman sudah datang! Tapi pantainya perlu dirapikan dulu supaya kita bisa main.', mood: 'excited' }],
+    after: 'Pantainya rapi dan istana pasir berdiri. Satu lagi: hidangan penutup dari sayur segar di kebun!',
+  },
+  kebun: {
+    judul: 'Pesta Panen',
+    before: [{ text: 'Sebagai penutup, kita masak sup sayur segar. Ayo panen di kebun!', mood: 'happy' }],
+    after: 'Tamat! Pestanya meriah berkat bantuanmu. Kamu hebat, terima kasih ya!',
+  },
+};
