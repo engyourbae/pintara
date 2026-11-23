@@ -110,7 +110,8 @@ service cloud.firestore {
         && request.resource.data.keys().hasAll(['uid', 'createdAt'])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.createdAt == request.time;
-      allow delete: if isUser(resource.data.uid);
+      // Orang tua boleh menghapus nama pengguna anaknya (hapus akun anak, F30a-1).
+      allow delete: if isUser(resource.data.uid) || isParentOf(resource.data.uid);
     }
 
     // Profil publik MINIMAL (tanpa email, tanpa kelas, tanpa sekolah).
@@ -236,7 +237,8 @@ service cloud.firestore {
       // Jawaban murid untuk kuis guru: satu dokumen per murid per kuis, sekali kirim (tanpa update).
       // Guru memberi kesempatan ulang dengan menghapusnya. Benar/salah dihitung guru dari quiz_keys.
       match /quiz_answers/{answerId} {
-        allow read: if isClassTeacher(classId) || (isActiveMember(classId) && resource.data.uid == request.auth.uid);
+        allow read: if isClassTeacher(classId) || (isActiveMember(classId) && resource.data.uid == request.auth.uid)
+          || isParentOf(resource.data.uid);
         allow create: if isActiveMember(classId)
           && request.resource.data.keys().hasOnly(['uid', 'quizId', 'answers', 'submittedAt'])
           && request.resource.data.keys().hasAll(['uid', 'quizId', 'answers', 'submittedAt'])
@@ -247,12 +249,14 @@ service cloud.firestore {
           && request.resource.data.answers.size() == get(/databases/$(database)/documents/classes/$(classId)/teacher_quizzes/$(request.resource.data.quizId)).data.count
           && request.resource.data.submittedAt == request.time;
         allow update: if false;
-        allow delete: if isClassTeacher(classId);
+        // Orang tua hanya untuk menghapus data anaknya saat akun anak dihapus (F30a-1).
+        allow delete: if isClassTeacher(classId) || isParentOf(resource.data.uid);
       }
 
       // Hasil latihan siswa. Ditulis siswa sendiri (atau guru dari kuis langsung) dan dapat diulang.
       match /results/{resultId} {
-        allow read: if isClassTeacher(classId) || (isActiveMember(classId) && resource.data.uid == request.auth.uid);
+        allow read: if isClassTeacher(classId) || (isActiveMember(classId) && resource.data.uid == request.auth.uid)
+          || isParentOf(resource.data.uid);
         allow create, update: if (isClassTeacher(classId)
             || (isActiveMember(classId) && request.resource.data.uid == request.auth.uid))
           && request.resource.data.keys().hasOnly(['uid', 'quizId', 'score', 'correct', 'total', 'updatedAt'])
@@ -263,7 +267,7 @@ service cloud.firestore {
           && request.resource.data.correct is int && request.resource.data.correct >= 0
           && request.resource.data.correct <= request.resource.data.total
           && request.resource.data.updatedAt == request.time;
-        allow delete: if isClassTeacher(classId);
+        allow delete: if isClassTeacher(classId) || isParentOf(resource.data.uid);
       }
     }
 
@@ -281,7 +285,7 @@ service cloud.firestore {
 
     // Anggota kelas. ID dokumen = classId_uid. Siswa mengajukan (pending) dengan kode; guru menyetujui.
     match /class_members/{memberId} {
-      allow read: if isUser(resource.data.uid) || isClassTeacher(resource.data.classId);
+      allow read: if isUser(resource.data.uid) || isClassTeacher(resource.data.classId) || isParentOf(resource.data.uid);
       allow create: if signedIn() && hasUserDoc() && myRole() == 'student'
         && request.resource.data.keys().hasOnly(['classId', 'uid', 'code', 'status', 'joinedAt', 'displayName'])
         && request.resource.data.keys().hasAll(['classId', 'uid', 'code', 'status', 'joinedAt', 'displayName'])
@@ -297,7 +301,7 @@ service cloud.firestore {
         && request.resource.data.status in ['active', 'removed']
         && (!('groupId' in request.resource.data.keys())
             || (request.resource.data.groupId is string && request.resource.data.groupId.size() <= 20));
-      allow delete: if isUser(resource.data.uid) || isClassTeacher(resource.data.classId);
+      allow delete: if isUser(resource.data.uid) || isClassTeacher(resource.data.classId) || isParentOf(resource.data.uid);
     }
 
     // ───────────────────────── Konten (publik, hanya-baca) ─────────────────────────
@@ -517,7 +521,8 @@ service cloud.firestore {
           && resource.data.expiresAt > request.time
           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
           && request.resource.data.status in ['accepted', 'declined']);
-      allow delete: if isUser(resource.data.fromUid);
+      // Penerima juga boleh membersihkan (dipakai saat akun dihapus, F30a-1).
+      allow delete: if isUser(resource.data.fromUid) || isUser(resource.data.toUid);
     }
   }
 }
