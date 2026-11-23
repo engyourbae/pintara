@@ -28,7 +28,7 @@ const GAMES: GameInfo[] = [
   { to: `${GAME}/benar-salah`, title: 'Benar atau Salah Kilat', desc: '30 detik, 3 nyawa. Tebak jawabannya benar atau salah.', icon: 'check', bg: 'bg-jingga-300', keys: ['benar-salah'], cat: 'Kata & Pengetahuan', isNew: true },
   { to: `${GAME}/pasangan-memori`, title: 'Pasangan Memori', desc: 'Cari kartu yang berpasangan dengan langkah paling sedikit.', icon: 'chip', bg: 'bg-langit-100', keys: ['memori-4', 'memori-6', 'memori-8'], cat: 'Ingatan', isNew: true },
   { to: `${GAME}/kode-pintar`, title: 'Kode Pintar', desc: 'Susun dan ketik kode dari HTML sampai Python dan Git, selangkah demi selangkah.', icon: 'chip', bg: 'bg-hijau-300', keys: ['kode-html', 'kode-css', 'kode-js', 'kode-py', 'kode-sql', 'kode-git'], cat: 'Coding', isNew: true },
-  { to: `${GAME}/komik-pintar`, title: 'Komik Pintar', desc: 'Cari benda tersembunyi di ilustrasi komik, seret ke tempatnya, dan bantu pemandu sebelum waktu habis.', icon: 'search', bg: 'bg-langit-300', keys: ['komik'], cat: 'Cerita & Cari', isNew: true },
+  { to: `${GAME}/komik-pintar`, title: 'Komik Pintar', desc: 'Cari benda tersembunyi di ilustrasi komik, seret ke tempatnya, dan bantu pemandu sebelum waktu habis.', icon: 'search', bg: 'bg-langit-300', keys: ['komik', 'komik-kamar'], cat: 'Cerita & Cari', isNew: true },
 ];
 const CATS = [...new Set(GAMES.map((g) => g.cat))];
 
@@ -93,7 +93,7 @@ export function GameMenu() {
                       {best > 0 && g.cat !== 'Coding' && (
                         <span className="mt-1 flex items-center gap-2 text-sm font-bold text-aksen-tua">
                           {g.isNew ? <Stars3 count={stars} /> : `Skor terbaik: ${best}`}
-                          {g.isNew && !bestKey.startsWith('memori-') && bestKey !== 'komik' && <span>Skor {best}</span>}
+                          {g.isNew && !bestKey.startsWith('memori-') && !bestKey.startsWith('komik') && <span>Skor {best}</span>}
                         </span>
                       )}
                     </span>

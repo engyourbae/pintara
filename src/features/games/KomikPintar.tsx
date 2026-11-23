@@ -3,26 +3,30 @@ import { Badge, Button, ButtonLink, Card, CheckRow, Icon, Page, PageHeader, Prog
 import { MODE_BASE } from '@/app/navigation';
 import { progressActions, useProgress } from '@/hooks/useProgress';
 import { cn } from '@/utils/cn';
-import { Bench, Bush, Butterfly, Chibi, Flower, GardenBack, Pot, SCENE_H, SCENE_W, Tree, WateringCan, WiltedPlant, type Mood, type Who } from './KomikArt';
+import { Chibi, SCENE_H, SCENE_W, type Mood, type Who } from './KomikArt';
+import { GardenScene, ObjArt, RoomScene } from './KomikScenes';
 import {
   chipState,
   komikBest,
-  LEVEL1,
+  LEVELS,
   missionsDone,
   nextHiddenObj,
+  placedCount,
   rejectLine,
   resultFor,
   SAY,
+  type KLevel,
   type KObj,
   type KResult,
   type KState,
   type KTarget,
 } from './komikData';
-import { aturSuara, bicara, stopBicara, suaraAktif, suaraTersedia } from './komikSuara';
+import { aturSuara, bicara, siapkanSuara, stopBicara, suaraAktif, suaraTersedia, type Vokal } from './komikSuara';
 
 const GAME = `${MODE_BASE.student}/game`;
-const L = LEVEL1;
 const heroWho = (h: string): Who => (h === 'cewek' ? 'girl' : 'boy');
+/** Suasana pemandu -> jenis suara gibberish. Suasana biasa (bicara, menunjuk) = celoteh pendek tanpa gelembung suara. */
+const VOX: Partial<Record<Mood, Vokal>> = { wave: 'sapa', happy: 'senang', excited: 'senang', surprised: 'terkejut', confused: 'bingung', think: 'bingung', sad: 'kecewa' };
 
 function Stars3({ count, size = 20 }: { count: number; size?: number }) {
   return (
@@ -43,13 +47,10 @@ function Speaker({ on = true, size = 22 }: { on?: boolean; size?: number }) {
   );
 }
 
-/** Ikon kecil benda untuk daftar di bawah. */
 function ObjIcon({ o, dim }: { o: KObj; dim?: boolean }) {
   return (
     <svg viewBox="-24 -24 48 48" width={38} height={38} aria-hidden className={dim ? 'opacity-35 grayscale' : undefined}>
-      {o.kind === 'flower' && o.color && <Flower color={o.color} x={0} y={-2} s={1.5} stem={false} />}
-      {o.kind === 'can' && <WateringCan x={0} y={2} s={1.15} />}
-      {o.kind === 'butterfly' && <Butterfly x={0} y={-3} s={1.7} />}
+      <ObjArt o={o} s={1.15} />
     </svg>
   );
 }
@@ -60,27 +61,14 @@ export function KomikPintar() {
   const p = useProgress();
   const [hero, setHero] = useState<string>(p.komikHero ?? '');
   const [suara, setSuara] = useState(suaraAktif());
-  const [playing, setPlaying] = useState(false);
-  const stars = p.komik?.[L.id] ?? 0;
-  const bestScore = (p.gameBest.komik ?? 0) % 1000;
+  const [level, setLevel] = useState<KLevel | null>(null);
 
-  if (playing && hero) {
-    return <Play hero={hero} onExit={() => setPlaying(false)} />;
+  if (level && hero) {
+    return <Play key={level.id} hero={hero} level={level} onExit={() => setLevel(null)} />;
   }
   return (
     <Page>
       <PageHeader title="Komik Pintar" subtitle="Cari benda tersembunyi, seret ke tempatnya, dan bantu pemandu sebelum waktu habis." icon="search" />
-      <Card className="space-y-2">
-        <div className="flex items-center justify-between gap-2">
-          <h2 className="text-xl">Level 1: {L.title}</h2>
-          <Badge tone="kuning">{L.seconds} detik</Badge>
-        </div>
-        <p className="text-tinta/85">Taman jadi berantakan. Temukan 3 bunga, penyiram, dan kupu-kupu, lalu rapikan.</p>
-        <p className="flex items-center gap-2 text-sm font-bold text-aksen-tua">
-          <Stars3 count={stars} size={18} />
-          {bestScore > 0 && <span>Skor terbaik {bestScore}</span>}
-        </p>
-      </Card>
 
       <section className="space-y-3">
         <h2 className="font-display text-xl font-semibold">Pilih karakter</h2>
@@ -106,27 +94,53 @@ export function KomikPintar() {
           onChange={(v) => {
             setSuara(v);
             aturSuara(v);
+            if (v) {
+              siapkanSuara();
+              bicara('sapa', 'guide', { paksa: true });
+            }
           }}
         >
-          Suara pemandu: dialog dibacakan otomatis
+          Suara karakter: celoteh lucu ("Hiii-buup!")
         </CheckRow>
       ) : (
         <Card tone="catatan">
-          <p>Perangkat ini tidak punya suara bacaan. Dialog tetap tampil sebagai teks.</p>
+          <p>Perangkat ini tidak bisa memutar suara. Dialog tetap tampil sebagai teks.</p>
         </Card>
       )}
 
-      <Button
-        size="lg"
-        block
-        disabled={!hero}
-        onClick={() => {
-          progressActions.setKomikHero(hero);
-          setPlaying(true);
-        }}
-      >
-        <Icon name="play" size={22} /> {hero ? 'Mulai main' : 'Pilih karakter dulu'}
-      </Button>
+      <section className="space-y-3">
+        <h2 className="font-display text-xl font-semibold">Pilih level</h2>
+        {LEVELS.map((l, i) => {
+          const stars = p.komik?.[l.id] ?? 0;
+          const open = i === 0 || (p.komik?.[LEVELS[i - 1].id] ?? 0) > 0;
+          const best = (p.gameBest[l.bestKey] ?? 0) % 1000;
+          return (
+            <Card key={l.id} className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-xl">Level {i + 1}: {l.title}</h3>
+                <Badge tone="kuning">{l.seconds} detik</Badge>
+              </div>
+              <p className="text-tinta/85">{l.desc}</p>
+              <p className="flex items-center gap-2 text-sm font-bold text-aksen-tua">
+                <Stars3 count={stars} size={18} />
+                {best > 0 && <span>Skor terbaik {best}</span>}
+              </p>
+              <Button
+                size="lg"
+                block
+                disabled={!hero || !open}
+                onClick={() => {
+                  siapkanSuara();
+                  progressActions.setKomikHero(hero);
+                  setLevel(l);
+                }}
+              >
+                <Icon name={open ? 'play' : 'lock'} size={22} /> {!open ? 'Selesaikan level sebelumnya' : hero ? 'Mulai main' : 'Pilih karakter dulu'}
+              </Button>
+            </Card>
+          );
+        })}
+      </section>
       <ButtonLink to={GAME} variant="sekunder" block>
         Kembali ke Permainan
       </ButtonLink>
@@ -154,7 +168,8 @@ interface Fx {
 /** Jari menutupi benda yang diseret; bayangan dan titik lepas diangkat sedikit ke atas jari. */
 const LIFT = 38;
 
-function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
+function Play({ hero, level, onExit }: { hero: string; level: KLevel; onExit: () => void }) {
+  const L = level;
   const confirm = useConfirm();
   const playedBefore = (useProgress().komik?.[L.id] ?? 0) > 0;
   /** XP hanya pada penyelesaian pertama; ref ini berubah jadi false setelah kemenangan tercatat (juga untuk "Main lagi"). */
@@ -168,6 +183,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
   const [bubble, setBubble] = useState<{ text: string }>({ text: L.intro[0].text });
   const [guideMood, setGuideMood] = useState<Mood>(L.intro[0].mood);
   const [heroMood, setHeroMood] = useState<Mood>('idle');
+  const [vox, setVox] = useState<{ text: string; key: number } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const [drag, setDrag] = useState<Drag | null>(null);
   const [fx, setFx] = useState<Fx[]>([]);
@@ -183,6 +199,8 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
   const misses = useRef(0);
   const urgentSaid = useRef(false);
   const finished = useRef(false);
+  const lastVox = useRef(Date.now());
+  const lastSay = useRef<{ v: Vokal; kata: number }>({ v: 'sapa', kata: 6 });
   const timers = useRef<number[]>([]);
   const stRef = useRef(st);
   stRef.current = st;
@@ -190,6 +208,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
   leftRef.current = left;
   const helpsRef = useRef(helps);
   helpsRef.current = helps;
+  const who = heroWho(hero);
 
   const later = useCallback((fn: () => void, ms: number) => {
     timers.current.push(window.setTimeout(fn, ms));
@@ -202,11 +221,17 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
     [],
   );
 
+  /** Pemandu berbicara: gelembung teks + suara gibberish sesuai suasana (+ gelembung suara kecil bila ada). */
   const say = useCallback(
-    (text: string, mood: Mood = 'talk') => {
+    (text: string, mood: Mood = 'talk', vokal?: Vokal) => {
       setBubble({ text });
       setGuideMood(mood);
-      bicara(text);
+      const v = vokal ?? VOX[mood] ?? 'bicara';
+      const kata = text.split(' ').length;
+      lastSay.current = { v, kata };
+      const pop = bicara(v, 'guide', { kata });
+      if (pop) setVox({ text: pop, key: Date.now() + Math.random() });
+      lastVox.current = Date.now();
       later(() => setGuideMood((m) => (m === mood ? 'idle' : m)), 3200);
     },
     [later],
@@ -231,15 +256,19 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
     hintStage.current = 0;
   }, []);
 
-  /* suara cerita */
+  /* cerita pembuka */
   useEffect(() => {
     if (phase === 'cerita') {
       const line = L.intro[intro];
       setBubble({ text: line.text });
       setGuideMood(line.mood);
-      bicara(line.text);
+      const v: Vokal = intro === 0 ? 'sapa' : VOX[line.mood] ?? 'bicara';
+      const pop = bicara(v, 'guide', { kata: line.text.split(' ').length });
+      if (pop) setVox({ text: pop, key: Date.now() });
+      lastSay.current = { v, kata: line.text.split(' ').length };
+      lastVox.current = Date.now();
     }
-  }, [phase, intro]);
+  }, [phase, intro, L]);
 
   function start() {
     finished.current = false;
@@ -254,7 +283,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
     setPaused(false);
     setPhase('main');
     setHeroMood('idle');
-    say('Ayo mulai! Ketuk benda yang kamu temukan.', 'excited');
+    say(SAY.start(), 'excited');
   }
 
   /* waktu berjalan */
@@ -268,6 +297,19 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
       idle.current += dt;
       setLeft((v) => Math.max(0, v - dt));
     }, 200);
+    return () => window.clearInterval(id);
+  }, [phase, paused]);
+
+  /* gumaman kecil saat karakter diam lama (idle vocal), jarang agar tidak mengganggu */
+  useEffect(() => {
+    if (phase !== 'main' || paused) return;
+    const id = window.setInterval(() => {
+      if (Date.now() - lastVox.current > 9000) {
+        lastVox.current = Date.now();
+        const t = bicara('idle', 'guide');
+        if (t) setVox({ text: t, key: Date.now() });
+      }
+    }, 1000);
     return () => window.clearInterval(id);
   }, [phase, paused]);
 
@@ -294,22 +336,20 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
       dragRef.current = null;
       setPhase(done ? 'selesai' : 'gagal');
       if (done) {
-        progressActions.recordKomik(L.id, r.stars, komikBest(r.stars, r.score), r.gained, r.coins);
+        progressActions.recordKomik(L.id, r.stars, L.bestKey, komikBest(r.stars, r.score), r.gained, r.coins);
         firstRef.current = false;
-        setGuideMood('excited');
         setHeroMood('excited');
-        const t = SAY.win();
-        setBubble({ text: t });
-        bicara(t);
+        say(L.win, 'excited', 'berhasil');
+        later(() => {
+          const pop = bicara('berhasil', who);
+          if (pop) setVox({ text: pop, key: Date.now() });
+        }, 650);
       } else {
-        setGuideMood('sad');
         setHeroMood('sad');
-        const t = SAY.lose();
-        setBubble({ text: t });
-        bicara(t);
+        say(SAY.lose(), 'sad', 'kecewa');
       }
     },
-    [],
+    [L, say, later, who],
   );
 
   const secLeft = Math.ceil(left);
@@ -328,17 +368,17 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
     }
     const cur = stRef.current;
     const hidden = nextHiddenObj(L, cur);
-    const ready = L.objs.some((o) => chipState(cur, o) === 'siap');
+    const ready = L.objs.find((o) => chipState(cur, o) === 'siap');
     if (idle.current >= 28 && hintStage.current < 2) {
       hintStage.current = 2;
-      if (ready) say(SAY.tray(), 'point');
+      if (ready) say(ready.placeHint, 'point');
       else if (hidden) say(hidden.hints[1], 'point');
     } else if (idle.current >= 14 && hintStage.current < 1) {
       hintStage.current = 1;
-      if (ready) say(SAY.tray(), 'think');
+      if (ready) say(ready.placeHint, 'think');
       else if (hidden) say(hidden.hints[0], 'think');
     }
-  }, [secLeft, phase, paused, say]);
+  }, [secLeft, phase, paused, say, L]);
 
   /* menang bila semua misi selesai */
   useEffect(() => {
@@ -347,7 +387,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
       return () => window.clearTimeout(t);
     }
     return undefined;
-  }, [st, phase, finish]);
+  }, [st, phase, finish, L]);
 
   /* ───── interaksi ───── */
 
@@ -355,28 +395,23 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
 
   function tapObj(o: KObj) {
     if (!active || st.found.includes(o.id)) return;
-    const next = { ...st, found: [...st.found, o.id] };
+    const next: KState = { ...st, found: [...st.found, o.id] };
     setSt(next);
     progress();
     misses.current = 0;
     addFx(o.x, o.y, o.kind === 'butterfly' ? 'fly' : 'ok');
     reactHero('happy');
-    const flowers = L.objs.filter((x) => x.kind === 'flower');
-    if (o.kind === 'flower') {
-      if (flowers.every((f) => next.found.includes(f.id))) say(SAY.allFlowers(), 'happy');
-      else say(SAY.foundFlower(o.name[0].toUpperCase() + o.name.slice(1)), 'happy');
-    } else if (o.kind === 'can') say(SAY.foundCan(), 'happy');
-    else say(SAY.foundButterfly(), 'excited');
+    const extra = L.afterFound?.(o, next);
+    if (extra) say(extra, 'happy');
+    else if (o.kind === 'butterfly') say(SAY.foundButterfly(), 'excited');
+    else say(SAY.found(o.name), 'happy');
   }
 
   function tapMiss(e: ReactMouseEvent<SVGSVGElement>) {
     if (!active) return;
-    const svg = svgRef.current;
-    const ctm = svg?.getScreenCTM();
-    if (!svg || !ctm) return;
-    const x = (e.clientX - ctm.e) / ctm.a;
-    const y = (e.clientY - ctm.f) / ctm.d;
-    addFx(x, y, 'miss');
+    const ctm = svgRef.current?.getScreenCTM();
+    if (!ctm) return;
+    addFx((e.clientX - ctm.e) / ctm.a, (e.clientY - ctm.f) / ctm.d, 'miss');
     misses.current += 1;
     if (misses.current % 6 === 0) say(SAY.missMany(), 'think');
     else if (misses.current % 3 === 0) say(SAY.missTap(), 'confused');
@@ -385,13 +420,15 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
   function tryDrop(objId: string, t: KTarget) {
     const o = L.objs.find((x) => x.id === objId);
     if (!o || !active) return;
-    if (t.accepts === objId && !st.placed[t.id]) {
-      setSt((s) => ({ ...s, placed: { ...s.placed, [t.id]: objId } }));
+    const room = (st.placed[t.id]?.length ?? 0) < t.cap;
+    if (t.accepts.includes(objId) && room) {
+      setSt((s) => ({ ...s, placed: { ...s.placed, [t.id]: [...(s.placed[t.id] ?? []), objId] } }));
       progress();
       addFx(t.x, t.y - 20, 'ok');
       reactHero('happy');
       if (t.kind === 'plant') say(SAY.watered(), 'excited');
-      else say(SAY.potted(o.name[0].toUpperCase() + o.name.slice(1)), 'happy');
+      else if (t.kind === 'wardrobe') say(SAY.unlocked(), 'excited');
+      else say(SAY.placed(o.name), 'happy');
     } else {
       setShakeObj({ id: objId, n: Date.now() });
       say(rejectLine(o, t), 'think');
@@ -473,10 +510,9 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
     if (!active) return;
     setHelps((h) => h + 1);
     const hidden = nextHiddenObj(L, st);
-    const ready = L.objs.some((o) => chipState(st, o) === 'siap');
+    const ready = L.objs.find((o) => chipState(st, o) === 'siap');
     if (ready) {
-      const canReady = st.found.includes('can') && !Object.values(st.placed).includes('can');
-      say(canReady ? SAY.trayCan() : SAY.tray(), 'point');
+      say(ready.placeHint, 'point');
     } else if (hidden) {
       say(hidden.hints[1], 'point');
       setPing(hidden.id);
@@ -496,8 +532,23 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
   const doneCount = done.filter(Boolean).length;
   const curMission = L.missions[done.findIndex((d) => !d)]?.text ?? 'Semua misi selesai!';
   const ended = phase === 'selesai' || phase === 'gagal';
-  const who = heroWho(hero);
   const urgent = phase === 'main' && secLeft <= 20;
+  const sceneProps = {
+    objs: L.objs,
+    hidden: (id: string) => !st.found.includes(id),
+    placed: st.placed,
+    chars: (
+      <>
+        <Chibi who="guide" mood={guideMood} x={0} y={262} size={102} label="Pemandu hijau" />
+        <Chibi who={who} mood={heroMood} x={258} y={286} size={94} label="Pemain" />
+        {vox && (
+          <text key={vox.key} className="km-vox" x={52} y={268} textAnchor="middle" fontSize={17} fontWeight={800} fill="#fff" stroke="#33432F" strokeWidth={4} paintOrder="stroke" strokeLinejoin="round" aria-hidden>
+            {vox.text}
+          </text>
+        )}
+      </>
+    ),
+  };
 
   return (
     <div className="mx-auto w-full max-w-md select-none space-y-3 px-3 py-3" style={{ WebkitUserSelect: 'none', WebkitTouchCallout: 'none' }}>
@@ -516,7 +567,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
             setSuara(!suara);
             aturSuara(!suara);
           }}
-          aria-label={suara ? 'Matikan suara pemandu' : 'Nyalakan suara pemandu'}
+          aria-label={suara ? 'Matikan suara karakter' : 'Nyalakan suara karakter'}
           aria-pressed={suara}
           className="stiker flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gading active:translate-y-1 active:shadow-none"
         >
@@ -548,33 +599,10 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
           viewBox={`0 0 ${SCENE_W} ${SCENE_H}`}
           className="block h-auto w-full select-none"
           role="img"
-          aria-label="Ilustrasi taman. Ketuk benda yang tersembunyi untuk menemukannya."
+          aria-label="Ilustrasi komik. Ketuk benda yang tersembunyi untuk menemukannya."
           onClick={tapMiss}
         >
-          <GardenBack>
-            <Tree x={52} y={190} />
-            <Bench x={128} y={212} />
-            {/* benda tersembunyi (digambar di antara pohon, bangku, dan semak) */}
-            {L.objs.map((o) =>
-              st.found.includes(o.id) ? null : (
-                <g key={o.id}>
-                  {o.kind === 'flower' && o.color && <Flower color={o.color} x={o.x} y={o.y} s={o.id === 'f-kuning' ? 0.8 : 0.9} />}
-                  {o.kind === 'can' && <WateringCan x={o.x} y={o.y} s={0.9} />}
-                  {o.kind === 'butterfly' && <Butterfly x={o.x} y={o.y} s={0.85} />}
-                </g>
-              ),
-            )}
-            <Bush x={316} y={248} s={0.9} />
-            {L.targets.map((t) =>
-              t.kind === 'pot' ? (
-                <Pot key={t.id} x={t.x} y={t.y - 2} band={t.band ?? '#ccc'} filled={L.objs.find((o) => o.id === st.placed[t.id])?.color} />
-              ) : (
-                <WiltedPlant key={t.id} x={t.x} y={t.y + 14} revived={Boolean(st.placed[t.id])} />
-              ),
-            )}
-            <Chibi who="guide" mood={guideMood} x={0} y={262} size={102} label="Pemandu hijau" />
-            <Chibi who={who} mood={heroMood} x={258} y={286} size={94} label="Pemain" />
-          </GardenBack>
+          {L.scene === 'taman' ? <GardenScene {...sceneProps} /> : <RoomScene {...sceneProps} />}
 
           {/* sasaran seret-letak */}
           {phase === 'main' &&
@@ -596,14 +624,14 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
             )}
           {fx.map((f) =>
             f.kind === 'fly' ? (
-              <g key={f.key} className="km-fly"><Butterfly x={f.x} y={f.y} s={0.9} /></g>
+              <g key={f.key} className="km-fly"><ObjArt o={L.objs.find((o) => o.kind === 'butterfly') ?? L.objs[0]} x={f.x} y={f.y} /></g>
             ) : (
               <circle key={f.key} className="km-pop" cx={f.x} cy={f.y} r={f.kind === 'ok' ? 20 : 9} fill={f.kind === 'ok' ? '#FFD84D' : 'none'} stroke="#fff" strokeWidth={3} opacity={f.kind === 'ok' ? 0.9 : 0.8} />
             ),
           )}
         </svg>
 
-        {/* dialog pemandu: di langit, tidak menutupi benda penting */}
+        {/* dialog pemandu: di bagian atas adegan, tidak menutupi benda penting */}
         <div className="pointer-events-none absolute inset-x-2 top-2 z-10 flex items-start gap-2">
           <div className="pointer-events-auto flex-1 rounded-2xl border-2 border-tinta bg-white px-3 py-2 text-[15px] font-semibold leading-snug shadow-stiker" role="status" aria-live="polite">
             {bubble.text}
@@ -617,7 +645,15 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
             )}
           </div>
           {suaraTersedia() && (
-            <button type="button" onClick={() => bicara(bubble.text, true)} aria-label="Ulangi dialog" className="pointer-events-auto stiker flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gading active:translate-y-1 active:shadow-none">
+            <button
+              type="button"
+              onClick={() => {
+                const pop = bicara(lastSay.current.v, 'guide', { paksa: true, kata: lastSay.current.kata });
+                if (pop) setVox({ text: pop, key: Date.now() });
+              }}
+              aria-label="Putar suara karakter lagi"
+              className="pointer-events-auto stiker flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gading active:translate-y-1 active:shadow-none"
+            >
               <Speaker />
             </button>
           )}
@@ -662,7 +698,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
                     )}
                   >
                     <ObjIcon o={o} dim={s === 'tersembunyi'} />
-                    <span className={cn('text-[11px] font-bold leading-tight', s === 'tersembunyi' && 'text-tinta/55')}>{o.kind === 'flower' ? o.name.replace('bunga ', 'Bunga ') : o.kind === 'can' ? 'Penyiram' : 'Kupu-kupu'}</span>
+                    <span className={cn('text-[11px] font-bold leading-tight', s === 'tersembunyi' && 'text-tinta/55')}>{o.label}</span>
                     {s === 'selesai' && (
                       <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-tinta bg-hijau-500 text-white"><Icon name="check" size={12} /></span>
                     )}
@@ -680,7 +716,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
           {helps > 0 && <p className="text-xs text-tinta/70">Bantuan dipakai {helps}×. Bantuan mengurangi skor dan peluang bintang 3.</p>}
         </Card>
       ) : (
-        result && <ResultCard r={result} win={phase === 'selesai'} found={st.found.length} missions={doneCount} left={Math.ceil(left)} onAgain={start} />
+        result && <ResultCard r={result} win={phase === 'selesai'} found={st.found.length} totalObjs={L.objs.length} placed={placedCount(st)} missions={doneCount} totalMissions={L.missions.length} left={Math.ceil(left)} onAgain={start} />
       )}
 
       {drag?.moved && (
@@ -688,8 +724,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
           <svg viewBox="-24 -24 48 48" width={64} height={64} aria-hidden>
             {(() => {
               const o = L.objs.find((x) => x.id === drag.id);
-              if (!o) return null;
-              return o.kind === 'flower' && o.color ? <Flower color={o.color} x={0} y={0} s={1.9} stem={false} /> : <WateringCan x={0} y={4} s={1.5} />;
+              return o ? <ObjArt o={o} s={1.5} /> : null;
             })()}
           </svg>
         </div>
@@ -698,7 +733,7 @@ function Play({ hero, onExit }: { hero: string; onExit: () => void }) {
   );
 }
 
-function ResultCard({ r, win, found, missions, left, onAgain }: { r: KResult; win: boolean; found: number; missions: number; left: number; onAgain: () => void }): ReactNode {
+function ResultCard({ r, win, found, totalObjs, placed, missions, totalMissions, left, onAgain }: { r: KResult; win: boolean; found: number; totalObjs: number; placed: number; missions: number; totalMissions: number; left: number; onAgain: () => void }): ReactNode {
   return (
     <Card tone={win ? 'hijau' : 'catatan'} className="space-y-3 text-center">
       <h2 className="text-2xl">{win ? 'Level selesai!' : 'Waktu habis'}</h2>
@@ -706,9 +741,10 @@ function ResultCard({ r, win, found, missions, left, onAgain }: { r: KResult; wi
       <dl className="grid grid-cols-2 gap-2 text-left">
         <div className="rounded-2xl border-2 border-tinta bg-white p-2"><dt className="text-xs text-tinta/70">Skor</dt><dd className="font-display text-xl font-semibold">{r.score}</dd></div>
         <div className="rounded-2xl border-2 border-tinta bg-white p-2"><dt className="text-xs text-tinta/70">Sisa waktu</dt><dd className="font-display text-xl font-semibold">{win ? `${left} dtk` : '0 dtk'}</dd></div>
-        <div className="rounded-2xl border-2 border-tinta bg-white p-2"><dt className="text-xs text-tinta/70">Benda ditemukan</dt><dd className="font-display text-xl font-semibold">{found}/5</dd></div>
-        <div className="rounded-2xl border-2 border-tinta bg-white p-2"><dt className="text-xs text-tinta/70">Misi berhasil</dt><dd className="font-display text-xl font-semibold">{missions}/5</dd></div>
+        <div className="rounded-2xl border-2 border-tinta bg-white p-2"><dt className="text-xs text-tinta/70">Benda ditemukan</dt><dd className="font-display text-xl font-semibold">{found}/{totalObjs}</dd></div>
+        <div className="rounded-2xl border-2 border-tinta bg-white p-2"><dt className="text-xs text-tinta/70">Misi berhasil</dt><dd className="font-display text-xl font-semibold">{missions}/{totalMissions}</dd></div>
       </dl>
+      <p className="text-sm text-tinta/75">Benda diletakkan: {placed}</p>
       {win ? (
         <p className="font-semibold">
           Koin +{r.coins} · {r.gained > 0 ? `XP +${r.gained}` : 'XP hanya untuk penyelesaian pertama'}

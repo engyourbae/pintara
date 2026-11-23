@@ -2,167 +2,172 @@ import type { ReactNode } from 'react';
 
 /**
  * Gambar vektor Komik Pintar (tanpa berkas gambar: ringan, tajam di layar apa pun).
- * Karakter dipecah per bagian agar kedip, bicara, dan lambai bergerak sendiri-sendiri (CSS, bukan JavaScript).
+ * Karakter dipecah per bagian: lengan berputar di bahu dan siku (peralihan pose halus lewat CSS transition),
+ * kepala miring pelan, kedip tidak teratur, mulut membuka-menutup, ekspresi bertukar dengan memudar.
  * Pemain perempuan dan pemandu SELALU berhijab (rambut tidak pernah terlihat).
  */
 
 export type Mood = 'idle' | 'talk' | 'happy' | 'sad' | 'surprised' | 'think' | 'wave' | 'excited' | 'point' | 'confused';
 export type Who = 'guide' | 'boy' | 'girl';
 
-const INK = '#3A4A3A';
-const SKIN = '#FFE2CC';
+const INK = '#33432F';
 const CREAM = '#FBF3DC';
+const CREAM_D = '#EBDDB8';
 const DGREEN = '#2E6B34';
-const MOUTH = '#C8473B';
+const MOUTH = '#B8372E';
 
-const PAL = {
-  guide: { cloth: '#4FB848', clothDark: '#2F8F3A', iris: '#3E9A3A' },
-  girl: { cloth: '#B9E48E', clothDark: '#8DC869', iris: '#5B3A28' },
-  boy: { cloth: '#4FB848', clothDark: '#2F8F3A', iris: '#6B4426' },
+const LOOK = {
+  guide: { hijab: '#52BE4B', light: '#86DD74', dark: '#2F8F3A', iris: '#58B84E', irisD: '#1F6E2C', cuff: '#52BE4B' },
+  girl: { hijab: '#BDE68F', light: '#DDF4B8', dark: '#8DC869', iris: '#9A6A48', irisD: '#4B2C1C', cuff: '#A7D977' },
+  boy: { hijab: '#4A3024', light: '#7A563F', dark: '#33201A', iris: '#9A6A48', irisD: '#4B2C1C', cuff: '#52BE4B' },
 } as const;
 
-type Pt = [number, number];
-interface Pose {
-  l: Pt[]; // bahu kiri (di layar) -> siku -> tangan
-  r: Pt[];
-  waveR?: boolean;
-  cheer?: boolean;
+interface ArmPose {
+  up: number;
+  low: number;
 }
-const SL: Pt = [40, 104];
-const SR: Pt = [80, 104];
-const POSES: Record<Mood, Pose> = {
-  idle: { l: [SL, [34, 118], [36, 130]], r: [SR, [86, 118], [84, 130]] },
-  talk: { l: [SL, [34, 118], [36, 130]], r: [SR, [96, 108], [104, 100]] },
-  happy: { l: [SL, [32, 114], [38, 120]], r: [SR, [88, 114], [82, 120]] },
-  sad: { l: [SL, [40, 122], [52, 124]], r: [SR, [80, 122], [68, 124]] },
-  surprised: { l: [SL, [28, 108], [30, 96]], r: [SR, [92, 108], [90, 96]] },
-  think: { l: [SL, [34, 118], [36, 130]], r: [SR, [88, 106], [68, 90]] },
-  wave: { l: [SL, [34, 118], [36, 130]], r: [SR, [94, 94], [98, 74]], waveR: true },
-  excited: { l: [SL, [26, 92], [24, 70]], r: [SR, [94, 92], [96, 70]], cheer: true },
-  point: { l: [SL, [34, 118], [36, 130]], r: [SR, [98, 104], [112, 98]] },
-  confused: { l: [SL, [34, 118], [36, 130]], r: [SR, [90, 104], [76, 94]] },
+/** Sudut (derajat) lengan atas di bahu dan lengan bawah di siku. Kiri: positif = ke luar/atas. Kanan: negatif = ke luar/atas. */
+const POSE: Record<Mood, { l: ArmPose; r: ArmPose }> = {
+  idle: { l: { up: 5, low: -6 }, r: { up: -5, low: 6 } },
+  talk: { l: { up: 5, low: -6 }, r: { up: -34, low: 38 } },
+  happy: { l: { up: 26, low: -52 }, r: { up: -26, low: 52 } },
+  sad: { l: { up: 4, low: -64 }, r: { up: -4, low: 64 } },
+  surprised: { l: { up: 40, low: -120 }, r: { up: -40, low: 120 } },
+  think: { l: { up: 5, low: -6 }, r: { up: -40, low: 136 } },
+  wave: { l: { up: 5, low: -6 }, r: { up: -150, low: -8 } },
+  excited: { l: { up: 160, low: -8 }, r: { up: -160, low: 8 } },
+  point: { l: { up: 5, low: -6 }, r: { up: -84, low: 4 } },
+  confused: { l: { up: 5, low: -6 }, r: { up: -34, low: 108 } },
 };
+const EASE = '.5s cubic-bezier(.34,1.45,.5,1)';
 
-function Arm({ pts, sleeve, cuff }: { pts: Pt[]; sleeve: string; cuff: string }) {
-  const d = `M${pts[0][0]} ${pts[0][1]} L${pts[1][0]} ${pts[1][1]} L${pts[2][0]} ${pts[2][1]}`;
+function Arm({ x, up, low, sleeve, cuff, wave, id }: { x: number; up: number; low: number; sleeve: string; cuff: string; wave?: boolean; id: string }) {
   return (
-    <g strokeLinecap="round" strokeLinejoin="round">
-      <path d={d} stroke={INK} strokeWidth={11} fill="none" />
-      <path d={d} stroke={sleeve} strokeWidth={7.5} fill="none" />
-      <circle cx={pts[2][0]} cy={pts[2][1]} r={5.6} fill={SKIN} stroke={INK} strokeWidth={1.6} />
-      <circle cx={pts[1][0] + (pts[2][0] - pts[1][0]) * 0.62} cy={pts[1][1] + (pts[2][1] - pts[1][1]) * 0.62} r={3.4} fill={cuff} />
-    </g>
-  );
-}
-
-function Eyes({ mood, iris }: { mood: Mood; iris: string }) {
-  const happy = mood === 'happy' || mood === 'excited';
-  if (happy) {
-    return (
-      <g fill="none" stroke={INK} strokeWidth={2.8} strokeLinecap="round">
-        <path d="M40 66 Q47 56 54 66" />
-        <path d="M66 66 Q73 56 80 66" />
-      </g>
-    );
-  }
-  const big = mood === 'surprised';
-  const rx = big ? 7.4 : 6.4;
-  const ry = big ? 9 : 8;
-  const px = mood === 'think' ? 2 : 0;
-  const py = mood === 'think' ? -2.4 : mood === 'sad' ? 1.5 : 0;
-  return (
-    <g className="km-blink">
-      {[47, 73].map((cx) => (
-        <g key={cx}>
-          <ellipse cx={cx} cy={65} rx={rx} ry={ry} fill="#fff" stroke={INK} strokeWidth={1.6} />
-          <ellipse cx={cx + px} cy={65.5 + py} rx={rx - 1.6} ry={ry - 1.4} fill={iris} />
-          <ellipse cx={cx + px} cy={66 + py} rx={(rx - 1.6) * 0.55} ry={(ry - 1.4) * 0.6} fill="#1E2A1E" />
-          <circle cx={cx + px - 2.2} cy={61.5 + py} r={2.2} fill="#fff" />
-          <circle cx={cx + px + 2} cy={68 + py} r={1} fill="#fff" />
+    <g className="km-arm" style={{ transform: `rotate(${up}deg)`, transformOrigin: `${x}px 105px`, transition: `transform ${EASE}` }}>
+      <g className="km-arm" style={{ transform: `rotate(${low}deg)`, transformOrigin: `${x}px 118px`, transition: `transform ${EASE}` }}>
+        <g className={wave ? 'km-wave2' : undefined} style={{ transformOrigin: `${x}px 118px` }}>
+          <rect x={x - 3.9} y={116} width={7.8} height={17} rx={3.9} fill={sleeve} stroke={INK} strokeWidth={1.7} />
+          <rect x={x - 4.1} y={127} width={8.2} height={5} rx={2} fill={cuff} stroke={INK} strokeWidth={1.4} />
+          <circle cx={x} cy={136.5} r={5.3} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.7} />
+          <path d={`M${x - 2} 134.5 Q${x} 133.4 ${x + 2} 134.5`} fill="none" stroke="#fff" strokeWidth={1} strokeLinecap="round" opacity={0.7} />
         </g>
-      ))}
+      </g>
+      <rect x={x - 4.3} y={103} width={8.6} height={17} rx={4.3} fill={sleeve} stroke={INK} strokeWidth={1.7} />
+      <circle cx={x} cy={118} r={3.5} fill={sleeve} />
     </g>
   );
 }
 
-function Brows({ mood }: { mood: Mood }) {
-  const st = { fill: 'none', stroke: INK, strokeWidth: 2.2, strokeLinecap: 'round' as const };
-  if (mood === 'sad') return <g {...st}><path d="M40 52 L53 49" /><path d="M80 52 L67 49" /></g>;
-  if (mood === 'surprised') return <g {...st}><path d="M41 47 Q47 43 53 47" /><path d="M67 47 Q73 43 79 47" /></g>;
-  if (mood === 'confused') return <g {...st}><path d="M41 52 Q47 50 53 52" /><path d="M67 48 Q73 42 79 48" /></g>;
-  if (mood === 'excited' || mood === 'happy') return null;
-  return <g {...st} opacity={0.75}><path d="M41 52 Q47 49.5 53 52" /><path d="M67 52 Q73 49.5 79 52" /></g>;
-}
+const V = ({ on, children }: { on: boolean; children: ReactNode }) => <g style={{ opacity: on ? 1 : 0, transition: 'opacity .16s ease' }}>{children}</g>;
 
-function Mouth({ mood }: { mood: Mood }) {
-  const line = { fill: 'none', stroke: INK, strokeWidth: 2.2, strokeLinecap: 'round' as const };
-  switch (mood) {
-    case 'talk':
-      return <ellipse className="km-talk" cx={60} cy={78} rx={5.2} ry={4} fill={MOUTH} stroke={INK} strokeWidth={1.4} />;
-    case 'happy':
-    case 'excited':
-    case 'wave':
-      return <path d="M51 73 Q60 88 69 73 Z" fill={MOUTH} stroke={INK} strokeWidth={1.6} strokeLinejoin="round" />;
-    case 'sad':
-      return <path d="M54 81 Q60 75 66 81" {...line} />;
-    case 'surprised':
-      return <ellipse cx={60} cy={79} rx={3.6} ry={4.6} fill={MOUTH} stroke={INK} strokeWidth={1.4} />;
-    case 'confused':
-      return <path d="M53 79 Q56.5 74.5 60 79 T67 79" {...line} />;
-    case 'think':
-      return <path d="M55 77 Q61 80 66 76" {...line} />;
-    default:
-      return <path d="M54 76 Q60 81.5 66 76" {...line} />;
-  }
-}
-
-function Face({ mood, iris }: { mood: Mood; iris: string }) {
+function Eye({ cx, id, look }: { cx: number; id: string; look: (typeof LOOK)['guide'] }) {
+  const cy = 68;
+  const flick = cx < 60 ? -1 : 1;
   return (
     <g>
-      <Brows mood={mood} />
-      <Eyes mood={mood} iris={iris} />
-      <ellipse cx={39} cy={75} rx={5.5} ry={3.4} fill="#FF9E9E" opacity={0.5} />
-      <ellipse cx={81} cy={75} rx={5.5} ry={3.4} fill="#FF9E9E" opacity={0.5} />
-      <Mouth mood={mood} />
-      {mood === 'sad' && <path d="M38 70 Q36 76 38.5 78 Q41 76 38 70Z" fill="#8FD0F0" stroke={INK} strokeWidth={0.8} />}
+      <ellipse cx={cx} cy={cy} rx={7.6} ry={9.2} fill="#fff" stroke={INK} strokeWidth={1.2} />
+      <ellipse cx={cx} cy={cy + 0.6} rx={6.4} ry={8.2} fill={`url(#${id}-iris)`} />
+      <ellipse cx={cx} cy={cy + 1.2} rx={3.3} ry={4.6} fill="#18241A" />
+      <ellipse cx={cx} cy={cy + 6} rx={4.2} ry={1.8} fill={look.iris} opacity={0.55} />
+      <circle cx={cx - 2.4} cy={cy - 3.2} r={2.7} fill="#fff" />
+      <circle cx={cx + 2.3} cy={cy + 3.6} r={1.2} fill="#fff" />
+      <path d={`M${cx - 8} ${cy - 2.5} Q${cx} ${cy - 12.5} ${cx + 8} ${cy - 2.5}`} fill="none" stroke={INK} strokeWidth={2.6} strokeLinecap="round" />
+      <path d={`M${cx + flick * 7.4} ${cy - 3.2} q${flick * 3.2} -0.6 ${flick * 4} 1.6`} fill="none" stroke={INK} strokeWidth={1.8} strokeLinecap="round" />
     </g>
   );
 }
 
-function Hijab({ color, dark, leaf }: { color: string; dark: string; leaf?: boolean }) {
+function Face({ mood, id, look }: { mood: Mood; id: string; look: (typeof LOOK)['guide'] }) {
+  const happy = mood === 'happy' || mood === 'excited';
+  const t = mood === 'think' ? 'translate(2.2px,-2.6px)' : mood === 'sad' ? 'translate(0,1.8px)' : mood === 'confused' ? 'translate(-1.4px,-1px)' : 'translate(0,0)';
+  const sc = mood === 'surprised' ? 1.1 : 1;
+  const line = { fill: 'none', stroke: INK, strokeWidth: 2.2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
-    <g strokeLinejoin="round">
-      {/* belakang kepala dan bahu */}
-      <path d="M60 12 C28 12 17 38 19 62 C20 82 28 94 36 102 L84 102 C92 94 100 82 101 62 C103 38 92 12 60 12Z" fill={color} stroke={INK} strokeWidth={2} />
-      <path d="M26 74 Q30 94 40 100" fill="none" stroke={dark} strokeWidth={2} opacity={0.5} />
-      {leaf && (
-        <g className="km-sway">
-          <path d="M60 14 Q50 -2 40 6 Q48 16 60 14Z" fill="#7FD35A" stroke={INK} strokeWidth={1.6} />
-          <path d="M60 14 Q68 -4 80 4 Q72 16 60 14Z" fill="#5FBE48" stroke={INK} strokeWidth={1.6} />
+    <g>
+      <ellipse cx={38.5} cy={77} rx={7} ry={4.4} fill={`url(#${id}-blush)`} />
+      <ellipse cx={81.5} cy={77} rx={7} ry={4.4} fill={`url(#${id}-blush)`} />
+      {/* alis */}
+      <g {...line} strokeWidth={2} opacity={0.75}>
+        <V on={mood === 'idle' || mood === 'talk' || mood === 'wave' || mood === 'point' || mood === 'think'}><path d="M39.5 57 Q46.5 54 53.5 57" /><path d="M66.5 57 Q73.5 54 80.5 57" /></V>
+        <V on={mood === 'sad'}><path d="M39.5 60.5 L53 55.5" /><path d="M80.5 60.5 L67 55.5" /></V>
+        <V on={mood === 'surprised'}><path d="M39.5 53.5 Q46.5 49 53.5 53.5" /><path d="M66.5 53.5 Q73.5 49 80.5 53.5" /></V>
+        <V on={mood === 'confused'}><path d="M39.5 58.5 Q46.5 56.5 53.5 58.5" /><path d="M66.5 54 Q73.5 47.5 80.5 54" /></V>
+      </g>
+      {/* mata */}
+      <V on={!happy}>
+        <g className="km-blink" style={{ transformOrigin: '60px 68px' }}>
+          <g style={{ transform: `${t} scale(${sc})`, transformOrigin: '60px 68px', transition: 'transform .35s cubic-bezier(.3,1.3,.5,1)' }}>
+            <Eye cx={46.5} id={id} look={look} />
+            <Eye cx={73.5} id={id} look={look} />
+            {mood === 'sad' && <path d="M40 76 Q37.5 82 40.5 84 Q43 82 40 76Z" fill="#9AD8F4" stroke={INK} strokeWidth={0.9} />}
+          </g>
         </g>
-      )}
+      </V>
+      <V on={happy}>
+        <g {...line} strokeWidth={3}>
+          <path d="M39 70 Q46.5 59 54 70" />
+          <path d="M66 70 Q73.5 59 81 70" />
+        </g>
+      </V>
+      {/* mulut */}
+      <V on={mood === 'idle' || mood === 'point'}><path d="M53 78.5 Q60 85.5 67 78.5" {...line} /></V>
+      <V on={mood === 'talk'}>
+        <g className="km-talk" style={{ transformOrigin: '60px 78px' }}>
+          <path d="M53.5 77 Q60 77.5 66.5 77 Q65 88 60 88 Q55 88 53.5 77Z" fill={MOUTH} stroke={INK} strokeWidth={1.5} strokeLinejoin="round" />
+          <ellipse cx={60} cy={85} rx={3.8} ry={2} fill="#F58A94" />
+        </g>
+      </V>
+      <V on={happy || mood === 'wave'}>
+        <path d="M50.5 76.5 Q60 92 69.5 76.5Z" fill={MOUTH} stroke={INK} strokeWidth={1.6} strokeLinejoin="round" />
+        <path d="M54 83.5 Q60 89.5 66 83.5 Q60 80.5 54 83.5Z" fill="#F58A94" />
+        <path d="M52.5 77 Q60 79.6 67.5 77" fill="none" stroke="#fff" strokeWidth={2} strokeLinecap="round" />
+      </V>
+      <V on={mood === 'sad'}><path d="M54 85 Q60 78.5 66 85" {...line} /></V>
+      <V on={mood === 'surprised'}><ellipse cx={60} cy={82.5} rx={3.9} ry={5.2} fill={MOUTH} stroke={INK} strokeWidth={1.5} /></V>
+      <V on={mood === 'confused'}><path d="M52.5 82 Q56.5 76.5 60 82 T67.5 82" {...line} /></V>
+      <V on={mood === 'think'}><path d="M55 80 Q61 84 68 78.5" {...line} /></V>
     </g>
   );
 }
 
-/** Bagian depan hijab: bingkai wajah dan juntai dada. Digambar SETELAH wajah. */
-function HijabFront({ color, dark }: { color: string; dark: string }) {
+/* ───────── Hijab (pemandu dan pemain perempuan) ───────── */
+const HIJAB_BACK = 'M60 10 C32 10 19 34 20 62 C21 82 28 94 35 102 L85 102 C92 94 99 82 100 62 C101 34 88 10 60 10Z';
+const FACE = 'M30 62 C30 41 44 32 60 32 C76 32 90 41 90 62 C90 80 77 92 60 92 C43 92 30 80 30 62Z';
+const RING = 'M60 16 C34 16 24 37 25 62 C26 78 33 89 41 94 L79 94 C87 89 94 78 95 62 C96 37 86 16 60 16Z M33.5 62 C33.5 45 45 36.5 60 36.5 C75 36.5 86.5 45 86.5 62 C86.5 77 76 88.5 60 88.5 C44 88.5 33.5 77 33.5 62Z';
+
+function HijabBack({ id, look }: { id: string; look: (typeof LOOK)['guide'] }) {
   return (
     <g strokeLinejoin="round">
-      <path d="M31 62 C30 36 44 24 60 24 C76 24 90 36 89 62 C84 46 74 40 60 40 C46 40 36 46 31 62Z" fill={color} stroke={INK} strokeWidth={1.8} />
-      <path d="M33 80 Q60 98 87 80 L95 112 Q60 126 25 112Z" fill={color} stroke={INK} strokeWidth={2} />
-      <path d="M40 96 Q60 106 80 96" fill="none" stroke={dark} strokeWidth={1.8} opacity={0.55} />
+      <path d={HIJAB_BACK} fill={look.dark} stroke={INK} strokeWidth={2} />
+      <path d="M60 8 C31 9 17 34 18 62 C19 80 26 92 34 101" fill="none" stroke={look.hijab} strokeWidth={5} opacity={0.5} />
+      <path d="M36 90 Q60 106 84 90 L90 113 Q60 124 30 113Z" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={2} />
+      <path d="M46 100 Q50 108 48 117 M60 102 L60 119 M74 100 Q70 108 72 117" fill="none" stroke={look.dark} strokeWidth={1.6} strokeLinecap="round" opacity={0.55} />
+      <path d="M36 99 Q60 110 84 99" fill="none" stroke={look.light} strokeWidth={2.2} strokeLinecap="round" opacity={0.7} />
     </g>
   );
 }
 
-function Shoes({ accent }: { accent: string }) {
+function HijabRing({ id, look }: { id: string; look: (typeof LOOK)['guide'] }) {
   return (
-    <g stroke={INK} strokeWidth={1.8}>
-      <ellipse cx={47} cy={164} rx={11} ry={5.5} fill="#fff" />
-      <ellipse cx={73} cy={164} rx={11} ry={5.5} fill="#fff" />
-      <path d="M40 163 Q47 160 54 163" fill="none" stroke={accent} strokeWidth={2.4} />
-      <path d="M66 163 Q73 160 80 163" fill="none" stroke={accent} strokeWidth={2.4} />
+    <g strokeLinejoin="round">
+      <path d={RING} fillRule="evenodd" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={1.9} />
+      <path d="M36 54 Q40 41 54 38.5" fill="none" stroke={look.dark} strokeWidth={2} strokeLinecap="round" opacity={0.4} />
+      <path d="M33 32 Q44 20 62 19" fill="none" stroke={look.light} strokeWidth={3.4} strokeLinecap="round" opacity={0.75} />
+      <path d="M26 66 Q28 84 40 94" fill="none" stroke={look.dark} strokeWidth={1.8} strokeLinecap="round" opacity={0.5} />
+      <path d="M94 66 Q92 84 80 94" fill="none" stroke={look.dark} strokeWidth={1.8} strokeLinecap="round" opacity={0.5} />
+    </g>
+  );
+}
+
+function BoyHair({ id }: { id: string }) {
+  return (
+    <g strokeLinejoin="round" strokeLinecap="round">
+      <path d="M27 66 C21 32 40 7 62 8 C86 8 100 32 93 66 C91 56 88 49 83 45 C79 52 73 50 69 42 C64 52 56 50 52 42 C48 50 41 49 37 45 C32 50 28 57 27 66Z" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={2} />
+      <path d="M27 64 C24 71 26 79 31 82 C32 74 31 69 33 62Z" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={1.8} />
+      <path d="M93 64 C96 71 94 79 89 82 C88 74 89 69 87 62Z" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={1.8} />
+      <path d="M60 9 Q58 1 65 -1 Q64 4 67 9Z" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={1.5} />
+      <path d="M38 26 Q50 14 68 17" fill="none" stroke="#9A7258" strokeWidth={4.5} opacity={0.55} />
+      <path d="M45 46 Q47 40 50 38 M62 47 Q64 40 66 38" fill="none" stroke="#2A1812" strokeWidth={1.4} opacity={0.5} />
     </g>
   );
 }
@@ -171,7 +176,6 @@ interface ChibiProps {
   who: Who;
   mood?: Mood;
   size?: number;
-  /** Bila dipakai di dalam <svg> lain (adegan). */
   x?: number;
   y?: number;
   label?: string;
@@ -179,123 +183,150 @@ interface ChibiProps {
 
 /** Karakter chibi. Tinggi 170, lebar 120 (viewBox). Tidak dikendalikan pemain: hanya idle dan bereaksi. */
 export function Chibi({ who, mood = 'idle', size = 120, x, y, label }: ChibiProps) {
-  const p = PAL[who];
-  const pose = POSES[mood];
-  const sleeveFor = who === 'boy' ? CREAM : who === 'guide' ? CREAM : CREAM;
-  const accent = who === 'girl' ? '#7FBF55' : p.cloth;
-  const inner = (
-    <>
-      <ellipse cx={60} cy={166} rx={34} ry={5} fill="#000" opacity={0.12} />
-      <g className="km-breathe">
-        {/* kaki dan bawahan */}
-        <g stroke={INK} strokeWidth={1.8} strokeLinejoin="round">
-          {who === 'boy' ? (
-            <>
-              <path d="M41 126 L79 126 L80 160 L63 160 L60 138 L57 160 L40 160Z" fill={DGREEN} />
-              <path d="M41 142 L50 142 L50 150 L41 150Z" fill="#245A2B" strokeWidth={1.2} />
-            </>
-          ) : (
-            <>
-              <rect x={44} y={146} width={10} height={16} fill={SKIN} />
-              <rect x={66} y={146} width={10} height={16} fill={SKIN} />
-              <rect x={44} y={154} width={10} height={9} fill="#fff" />
-              <rect x={66} y={154} width={10} height={9} fill="#fff" />
-              <path d="M38 124 L82 124 L96 156 Q60 164 24 156Z" fill={DGREEN} />
-              <path d="M30 146 Q60 154 90 146" fill="none" stroke="#7FBF55" strokeWidth={1.8} />
-            </>
-          )}
-        </g>
-        <Shoes accent={accent} />
-        {/* badan */}
-        <g stroke={INK} strokeWidth={1.9} strokeLinejoin="round">
-          <path d="M38 98 Q60 94 82 98 L84 130 Q60 134 36 130Z" fill={CREAM} />
-          {who === 'boy' && <path d="M44 128 Q60 132 76 128" fill="none" stroke={p.cloth} strokeWidth={4} strokeLinecap="round" />}
-          {who !== 'boy' && <path d="M38 124 Q60 130 82 124 L82 130 Q60 135 38 130Z" fill={p.clothDark} stroke="none" />}
-        </g>
-        {/* tas kecil pemandu */}
-        {who === 'guide' && (
-          <g stroke={INK} strokeWidth={1.6}>
-            <path d="M34 112 Q60 142 90 112" fill="none" strokeWidth={2.6} stroke="#B98A4A" />
-            <rect x={78} y={124} width={17} height={14} rx={3} fill="#C99B55" />
-            <path d="M86.5 127 l1.8 3.7 4 .5 -2.9 2.8 .7 4 -3.6-1.9 -3.6 1.9 .7-4 -2.9-2.8 4-.5z" fill="#FFD84D" strokeWidth={0.8} />
-          </g>
-        )}
-        {who === 'boy' && (
-          <g>
-            <path d="M44 98 L44 126" stroke="#8A6B3F" strokeWidth={4} strokeLinecap="round" />
-            <path d="M76 98 L76 126" stroke="#8A6B3F" strokeWidth={4} strokeLinecap="round" />
-          </g>
-        )}
-        {/* lengan kiri */}
-        <Arm pts={pose.l} sleeve={sleeveFor} cuff={p.cloth} />
-        {/* kepala */}
-        <g className={mood === 'excited' ? 'km-cheer' : undefined}>
-          {who === 'boy' ? (
-            <>
-              <circle cx={32} cy={64} r={5} fill={SKIN} stroke={INK} strokeWidth={1.6} />
-              <circle cx={88} cy={64} r={5} fill={SKIN} stroke={INK} strokeWidth={1.6} />
-              <ellipse cx={60} cy={62} rx={29} ry={28} fill={SKIN} stroke={INK} strokeWidth={2} />
-            </>
-          ) : (
-            <>
-              <Hijab color={p.cloth} dark={p.clothDark} leaf={who === 'guide'} />
-              <ellipse cx={60} cy={63} rx={28.5} ry={27} fill={SKIN} stroke={INK} strokeWidth={1.8} />
-            </>
-          )}
-          <Face mood={mood} iris={p.iris} />
-          {who === 'boy' ? (
-            <g stroke={INK} strokeWidth={1.9} strokeLinejoin="round" fill="#4A3024">
-              <path d="M29 58 C26 28 44 12 62 14 C82 12 96 30 91 58 C88 46 82 38 72 36 C68 44 54 42 49 35 C40 38 33 46 29 58Z" />
-              <path d="M44 16 Q40 4 52 8 Q54 12 52 16Z" />
-              <path d="M64 14 Q70 2 78 10 Q76 14 74 16Z" />
-            </g>
-          ) : (
-            <HijabFront color={p.cloth} dark={p.clothDark} />
-          )}
+  const look = LOOK[who];
+  const id = `cb-${who}`;
+  const pose = POSE[mood];
+  const girlish = who !== 'boy';
+  const sleeve = CREAM;
+  const hop = mood === 'excited' || mood === 'happy';
+  return (
+    <svg x={x} y={y} width={size} height={(size * 170) / 120} viewBox="-4 -8 128 182" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : true} overflow="visible">
+      <defs>
+        <linearGradient id={`${id}-skin`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#FFF0E2" />
+          <stop offset="1" stopColor="#FFD2B2" />
+        </linearGradient>
+        <linearGradient id={`${id}-hj`} x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0" stopColor={look.light} />
+          <stop offset="0.55" stopColor={look.hijab} />
+          <stop offset="1" stopColor={look.dark} />
+        </linearGradient>
+        <linearGradient id={`${id}-iris`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={look.irisD} />
+          <stop offset="1" stopColor={look.iris} />
+        </linearGradient>
+        <radialGradient id={`${id}-blush`}>
+          <stop offset="0" stopColor="#FF8FA3" stopOpacity="0.7" />
+          <stop offset="1" stopColor="#FF8FA3" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id={`${id}-cloth`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={girlish ? '#3C8A44' : '#3A8A3F'} />
+          <stop offset="1" stopColor={DGREEN} />
+        </linearGradient>
+      </defs>
+      <ellipse cx={60} cy={168} rx={32} ry={4.6} fill="#000" opacity={0.13} />
+      <g className={hop ? (mood === 'excited' ? 'km-hop' : 'km-cheer') : undefined}>
+        <g className="km-breathe">
+          {/* jubah pemandu */}
           {who === 'guide' && (
-            <path transform="translate(86 36)" d="M0 -8 l2.4 5 5.4.7 -4 3.8 1 5.4 -4.8-2.6 -4.8 2.6 1-5.4 -4-3.8 5.4-.7z" fill="#FFD84D" stroke={INK} strokeWidth={1.3} strokeLinejoin="round" />
+            <g className="km-sway" style={{ transformOrigin: '60px 100px', transformBox: 'view-box' }}>
+              <path d="M32 98 Q10 130 22 164 L98 164 Q110 130 88 98Z" fill="#2C7F3A" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+              <path d="M30 104 Q16 130 24 160" fill="none" stroke="#5FBE48" strokeWidth={3} opacity={0.5} strokeLinecap="round" />
+              <path d="M26 140 Q22 154 26 164 M94 140 Q98 154 94 164" fill="none" stroke={look.dark} strokeWidth={1.6} opacity={0.5} strokeLinecap="round" />
+            </g>
+          )}
+          {/* kaki dan bawahan */}
+          <g stroke={INK} strokeWidth={1.8} strokeLinejoin="round">
+            {who === 'boy' ? (
+              <>
+                <path d="M41 126 L79 126 L81 160 L63 160 L60 139 L57 160 L39 160Z" fill={`url(#${id}-cloth)`} />
+                <path d="M41 143 L51 143 L51 152 L41 152Z" fill="#2A5D30" strokeWidth={1.3} />
+                <path d="M39 156 L57 156 M63 156 L81 156" stroke="#2A5D30" strokeWidth={2.4} fill="none" />
+              </>
+            ) : (
+              <>
+                <rect x={44} y={146} width={10} height={17} rx={3} fill={`url(#${id}-skin)`} />
+                <rect x={66} y={146} width={10} height={17} rx={3} fill={`url(#${id}-skin)`} />
+                <rect x={44} y={154} width={10} height={10} rx={2.5} fill="#fff" />
+                <rect x={66} y={154} width={10} height={10} rx={2.5} fill="#fff" />
+                <path d="M44 157 h10 M66 157 h10" stroke={look.hijab} strokeWidth={1.6} fill="none" />
+                <path d="M37 123 L83 123 L99 157 Q60 166 21 157Z" fill={`url(#${id}-cloth)`} />
+                <path d="M46 126 L40 160 M60 126 L60 163 M74 126 L80 160" stroke="#245A2B" strokeWidth={1.2} fill="none" opacity={0.7} />
+                <path d="M24 151 Q60 160 96 151" fill="none" stroke="#9BDC78" strokeWidth={2.2} strokeLinecap="round" />
+              </>
+            )}
+            {/* sepatu */}
+            <ellipse cx={47} cy={164.5} rx={11.5} ry={5.6} fill="#fff" />
+            <ellipse cx={73} cy={164.5} rx={11.5} ry={5.6} fill="#fff" />
+            <path d="M38 164 Q47 159.5 56 164 M64 164 Q73 159.5 82 164" fill="none" stroke={look.cuff} strokeWidth={2.6} strokeLinecap="round" />
+            <path d="M41 167 h12 M67 167 h12" stroke="#CFE6C0" strokeWidth={1.6} />
+          </g>
+          {/* badan */}
+          <g stroke={INK} strokeWidth={1.9} strokeLinejoin="round">
+            <path d="M38 99 Q60 94 82 99 L84 131 Q60 137 36 131Z" fill={CREAM} />
+            <path d="M40 120 Q60 126 80 120 L81 131 Q60 137 39 131Z" fill={CREAM_D} stroke="none" opacity={0.7} />
+            {who === 'boy' && (
+              <>
+                <path d="M36 98 Q60 114 84 98 Q86 108 60 116 Q34 108 36 98Z" fill={CREAM_D} />
+                <path d="M47 118 Q60 124 73 118 L74 130 Q60 134 46 130Z" fill="#EFE2BC" strokeWidth={1.4} />
+                <path d="M55 106 L54 117 M65 106 L66 117" stroke={look.cuff} strokeWidth={2} strokeLinecap="round" fill="none" />
+                <path d="M43 99 L43 128 M77 99 L77 128" stroke="#8A6B3F" strokeWidth={4.4} strokeLinecap="round" fill="none" />
+              </>
+            )}
+            {who === 'guide' && (
+              <>
+                <path d="M44 100 L55 100 L53 132 Q46 134 40 131Z" fill={`url(#${id}-hj)`} strokeWidth={1.5} />
+                <path d="M76 100 L65 100 L67 132 Q74 134 80 131Z" fill={`url(#${id}-hj)`} strokeWidth={1.5} />
+                <path d="M38 126 Q60 133 82 126" fill="none" stroke="#B98A4A" strokeWidth={3.4} />
+                <path d="M33 112 Q60 144 92 112" fill="none" stroke="#B98A4A" strokeWidth={2.6} />
+                <rect x={79} y={124} width={18} height={15} rx={3.4} fill="#C99B55" />
+                <path d="M88 127 l1.9 3.8 4.2 .6 -3 2.9 .7 4.1 -3.8-2 -3.8 2 .7-4.1 -3-2.9 4.2-.6z" fill="#FFD84D" strokeWidth={0.8} />
+              </>
+            )}
+          </g>
+        </g>
+
+        {/* kepala */}
+        <g transform="translate(60 100) scale(1.07) translate(-60 -100)"><g className={mood === 'talk' ? 'km-nod' : 'km-head'} style={{ transformOrigin: '60px 100px' }}>
+          {girlish ? (
+            <>
+              <HijabBack id={id} look={look} />
+              <ellipse cx={60} cy={96} rx={27} ry={6} fill="#000" opacity={0.12} />
+              <path d={FACE} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.8} />
+              <path d="M34 48 Q60 38 86 48 Q84 40 60 36 Q38 40 34 48Z" fill="#E9B997" opacity={0.55} />
+            </>
+          ) : (
+            <>
+              <ellipse cx={30.5} cy={66} rx={4.6} ry={5.6} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.7} />
+              <ellipse cx={89.5} cy={66} rx={4.6} ry={5.6} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.7} />
+              <path d={FACE} fill={`url(#${id}-skin)`} stroke={INK} strokeWidth={1.9} />
+            </>
+          )}
+          <Face mood={mood} id={id} look={look} />
+          {girlish ? <HijabRing id={id} look={look} /> : <BoyHair id={id} />}
+          {who === 'guide' && (
+            <>
+              <g className="km-sway" style={{ transformOrigin: '60px 16px', transformBox: 'view-box' }}>
+                <path d="M60 16 Q47 -4 34 6 Q44 18 60 16Z" fill="#86DD5F" stroke={INK} strokeWidth={1.7} strokeLinejoin="round" />
+                <path d="M60 16 Q72 -6 88 3 Q76 18 60 16Z" fill="#5FBE48" stroke={INK} strokeWidth={1.7} strokeLinejoin="round" />
+                <path d="M58 15 Q48 6 40 8" fill="none" stroke="#2F8F3A" strokeWidth={1.1} opacity={0.7} />
+              </g>
+              <path transform="translate(88 40)" d="M0 -8.5 l2.5 5.3 5.7 .8 -4.2 4 1 5.7 -5-2.8 -5 2.8 1-5.7 -4.2-4 5.7-.8z" fill="#FFD84D" stroke={INK} strokeWidth={1.4} strokeLinejoin="round" />
+            </>
           )}
           {who === 'girl' && (
-            <g transform="translate(86 38)" stroke={INK} strokeWidth={1.2}>
-              <circle cx={-3} cy={-3} r={3.6} fill="#fff" /><circle cx={3} cy={-3} r={3.6} fill="#fff" />
-              <circle cx={-3} cy={3} r={3.6} fill="#fff" /><circle cx={3} cy={3} r={3.6} fill="#fff" />
-              <circle cx={0} cy={0} r={2.4} fill="#FFD84D" />
+            <g transform="translate(88 41)" stroke={INK} strokeWidth={1.2}>
+              {[[-3.2, -3.2], [3.2, -3.2], [-3.2, 3.2], [3.2, 3.2]].map(([a, b]) => (
+                <circle key={`${a}${b}`} cx={a} cy={b} r={3.8} fill="#fff" />
+              ))}
+              <circle r={2.6} fill="#FFD84D" />
             </g>
           )}
-        </g>
-        {/* lengan kanan (di depan hijab) */}
-        {pose.waveR ? (
-          <g className="km-wave" style={{ transformOrigin: '80px 104px' }}>
-            <Arm pts={pose.r} sleeve={sleeveFor} cuff={p.cloth} />
-          </g>
-        ) : (
-          <Arm pts={pose.r} sleeve={sleeveFor} cuff={p.cloth} />
-        )}
+        </g></g>
+
+        {/* lengan (di depan badan dan kepala) */}
+        <Arm x={41} up={pose.l.up} low={pose.l.low} sleeve={sleeve} cuff={look.cuff} id={id} />
+        <Arm x={79} up={pose.r.up} low={pose.r.low} sleeve={sleeve} cuff={look.cuff} wave={mood === 'wave'} id={id} />
       </g>
-      {mood === 'think' && <text x={96} y={36} fontSize={22} fontWeight={800} fill="#E8A21A" stroke={INK} strokeWidth={0.8}>?</text>}
-      {mood === 'confused' && <text x={92} y={34} fontSize={22} fontWeight={800} fill="#E8A21A" stroke={INK} strokeWidth={0.8}>?</text>}
-      {mood === 'surprised' && <text x={94} y={34} fontSize={24} fontWeight={800} fill="#F26B21" stroke={INK} strokeWidth={0.8}>!</text>}
-      {(mood === 'excited' || mood === 'happy') && (
-        <g fill="#FFD84D" stroke={INK} strokeWidth={0.9}>
-          <path d="M104 40 l2 4.6 5 .6 -3.7 3.4 1 5 -4.3-2.5 -4.3 2.5 1-5 -3.7-3.4 5-.6z" />
-          <path d="M12 46 l1.6 3.6 3.9.5 -2.9 2.7.8 3.9 -3.4-2 -3.4 2 .8-3.9 -2.9-2.7 3.9-.5z" />
+      {mood === 'think' && <text x={98} y={30} fontSize={22} fontWeight={800} fill="#E8A21A" stroke={INK} strokeWidth={0.8} className="km-float">?</text>}
+      {mood === 'confused' && <text x={98} y={30} fontSize={22} fontWeight={800} fill="#E8A21A" stroke={INK} strokeWidth={0.8} className="km-float">?</text>}
+      {mood === 'surprised' && <text x={100} y={30} fontSize={24} fontWeight={800} fill="#F26B21" stroke={INK} strokeWidth={0.8} className="km-float">!</text>}
+      {hop && (
+        <g fill="#FFD84D" stroke={INK} strokeWidth={0.9} className="km-twinkle">
+          <path d="M108 38 l2 4.6 5 .6 -3.7 3.4 1 5 -4.3-2.5 -4.3 2.5 1-5 -3.7-3.4 5-.6z" />
+          <path d="M6 44 l1.6 3.6 3.9.5 -2.9 2.7.8 3.9 -3.4-2 -3.4 2 .8-3.9 -2.9-2.7 3.9-.5z" />
         </g>
       )}
-    </>
-  );
-  return (
-    <svg
-      x={x}
-      y={y}
-      width={size}
-      height={(size * 170) / 120}
-      viewBox="0 0 120 170"
-      role={label ? 'img' : undefined}
-      aria-label={label}
-      aria-hidden={label ? undefined : true}
-      overflow="visible"
-    >
-      {inner}
     </svg>
   );
 }

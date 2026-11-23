@@ -53,7 +53,7 @@ export const memoryScore = (stars: number, seconds: number): number => stars * 1
 export function starsOfBest(key: string, best: number): number {
   if (best <= 0) return 0;
   if (key.startsWith('memori-')) return Math.min(3, Math.floor(best / 100));
-  if (key === 'komik') return Math.min(3, Math.floor(best / 1000));
+  if (key.startsWith('komik')) return Math.min(3, Math.floor(best / 1000));
   if (key === 'kuis-kilat') return best >= 135 ? 3 : best >= 90 ? 2 : 1;
   if (key === 'benar-salah') return best >= 100 ? 3 : best >= 60 ? 2 : 1;
   return 0;
