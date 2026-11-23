@@ -21,6 +21,7 @@ const LOOK = {
   girl: { hijab: '#BDE68F', light: '#DDF4B8', dark: '#8DC869', iris: '#9A6A48', irisD: '#4B2C1C', cuff: '#A7D977' },
   boy: { hijab: '#4A3024', light: '#7A563F', dark: '#33201A', iris: '#9A6A48', irisD: '#4B2C1C', cuff: '#52BE4B' },
 } as const;
+type LookT = { readonly [K in keyof (typeof LOOK)["guide"]]: string };
 
 interface ArmPose {
   up: number;
@@ -60,7 +61,7 @@ function Arm({ x, up, low, sleeve, cuff, wave, id }: { x: number; up: number; lo
 
 const V = ({ on, children }: { on: boolean; children: ReactNode }) => <g style={{ opacity: on ? 1 : 0, transition: 'opacity .16s ease' }}>{children}</g>;
 
-function Eye({ cx, id, look }: { cx: number; id: string; look: (typeof LOOK)['guide'] }) {
+function Eye({ cx, id, look }: { cx: number; id: string; look: LookT }) {
   const cy = 68;
   const flick = cx < 60 ? -1 : 1;
   return (
@@ -77,7 +78,7 @@ function Eye({ cx, id, look }: { cx: number; id: string; look: (typeof LOOK)['gu
   );
 }
 
-function Face({ mood, id, look }: { mood: Mood; id: string; look: (typeof LOOK)['guide'] }) {
+function Face({ mood, id, look }: { mood: Mood; id: string; look: LookT }) {
   const happy = mood === 'happy' || mood === 'excited';
   const t = mood === 'think' ? 'translate(2.2px,-2.6px)' : mood === 'sad' ? 'translate(0,1.8px)' : mood === 'confused' ? 'translate(-1.4px,-1px)' : 'translate(0,0)';
   const sc = mood === 'surprised' ? 1.1 : 1;
@@ -135,7 +136,7 @@ const HIJAB_BACK = 'M60 10 C32 10 19 34 20 62 C21 82 28 94 35 102 L85 102 C92 94
 const FACE = 'M30 62 C30 41 44 32 60 32 C76 32 90 41 90 62 C90 80 77 92 60 92 C43 92 30 80 30 62Z';
 const RING = 'M60 16 C34 16 24 37 25 62 C26 78 33 89 41 94 L79 94 C87 89 94 78 95 62 C96 37 86 16 60 16Z M33.5 62 C33.5 45 45 36.5 60 36.5 C75 36.5 86.5 45 86.5 62 C86.5 77 76 88.5 60 88.5 C44 88.5 33.5 77 33.5 62Z';
 
-function HijabBack({ id, look }: { id: string; look: (typeof LOOK)['guide'] }) {
+function HijabBack({ id, look }: { id: string; look: LookT }) {
   return (
     <g strokeLinejoin="round">
       <path d={HIJAB_BACK} fill={look.dark} stroke={INK} strokeWidth={2} />
@@ -147,7 +148,7 @@ function HijabBack({ id, look }: { id: string; look: (typeof LOOK)['guide'] }) {
   );
 }
 
-function HijabRing({ id, look }: { id: string; look: (typeof LOOK)['guide'] }) {
+function HijabRing({ id, look }: { id: string; look: LookT }) {
   return (
     <g strokeLinejoin="round">
       <path d={RING} fillRule="evenodd" fill={`url(#${id}-hj)`} stroke={INK} strokeWidth={1.9} />
